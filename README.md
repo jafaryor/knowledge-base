@@ -1,2 +1,2 @@
-# Notes
-My notes from books and video courses
+# Knowledge Base
+My Personal Knowledge Base
