@@ -1,0 +1,8 @@
+With SERVER-SENT EVENTS, it's possible for a server to send new data to a web page
+    at any time, by pushing messages to the web page. These incoming messages can
+    be treated as Events + data inside the web page.
+
+Interfaces
+    EventSource
+        Defines all the features that handle connecting to a server, receiving
+        events/data, errors, closing a connection, etc.

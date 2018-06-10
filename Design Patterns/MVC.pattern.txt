@@ -1,0 +1,44 @@
+MVC is an architectural design pattern that encourages improved application
+    organization through a separation of concerns. It enforces the isolation
+    of business data (Models) from user interfaces (Views), with a third
+    component (Controllers) (tradi- tionally) managing logic, user-input
+    and coordinating both the models and views.
+
+MODELS manage the data for an application. They are concerned with neither
+    the user-interface nor presentation layers but instead represent unique
+    forms of data that an application may require. When a model changes
+    (e.g when it is updated), it will typically notify its observers
+    (e.g views, a concept we will cover shortly) that a change has
+    occurred so that they may react accordingly.
+VIEWS are a visual representation of models that present a filtered view
+    of their current state. A view typically observes a model and is notified
+    when the model changes, al- lowing the view to update itself accordingly.
+CONTROLLERS are an intermediary between models and views which are classically
+    responsible for two tasks: they both update the view when the model changes
+    and update the model when the user manipulates the view.
+Templating:
+    It has long been considered (and proven) a performance bad practice to
+    manually create large blocks of HTML markup in-memory through string
+    concatenation. Developers doing so have fallen prey to inperformantly
+    iterating through their data, wrapping it in nested divs and using
+    outdated techniques such as document.write to inject the 'template'
+    into the DOM. As this typically means keeping scripted markup inline
+    with your standard markup, it can quickly become both difficult to
+    read and more importantly, maintain such disasters, especially
+    when building non-trivially sized applications.
+    Use {{}} expression of HandelbarsJS instead.
+
+What does MVC give us?
+    This separation of concerns in MVC facilitates simpler modularization
+    of an application's functionality and enables:
+    • Easier overall maintenance. When updates need to be made to the
+        application it is very clear whether the changes are data-centric,
+        meaning changes to models and possibly controllers,
+        or merely visual, meaning changes to views.
+    • Decoupling models and views means that it is significantly more
+        straight-forward to write unit tests for business logic.
+    • Duplication of low-level model and controller code
+        (i.e what you may have been using instead) is eliminated across the application.
+    • Depending on the size of the application and separation of roles,
+        this modularity allows developers responsible for core logic and
+        developers working on the user- interfaces to work simultaneously.

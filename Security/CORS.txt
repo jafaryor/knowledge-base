@@ -1,0 +1,274 @@
+Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources
+    (e.g. fonts) on a web page to be requested from another domain outside the domain
+    from which the first resource was served. A web page may freely embed
+    cross-origin images, stylesheets, scripts, iframes, and videos. Certain
+    "cross-domain" requests, notably Ajax requests, are forbidden by default
+    by the same-origin security policy.
+
+The Cross Origin Resource Sharing (CORS) is one of the few techniques for relaxing the SOP.
+
+For security reasons, browsers restrict cross-origin HTTP requests initiated from
+    within scripts. For example, XMLHttpRequest and the Fetch API follow the same-origin
+    policy. This means that a web application using those APIs can only request HTTP
+    resources from the same domain the application was loaded from unless CORS
+    headers are used.
+
+This cross-origin sharing standard is used to enable cross-site HTTP requests for:
+    * Invocations of the XMLHttpRequest or Fetch APIs in a cross-site manner,
+        as discussed above.
+    * Web Fonts (for cross-domain font usage in @font-face within CSS), so that
+        servers can deploy TrueType fonts that can only be cross-site loaded
+        and used by web sites that are permitted to do so.
+    * WebGL textures.
+    * Images/video frames drawn to a canvas using drawImage.
+    * Stylesheets (for CSSOM access).
+    * Scripts (for unmuted exceptions).
+
+Functional overview
+    The Cross-Origin Resource Sharing standard works by adding new HTTP headers
+    that allow servers to describe the set of origins that are permitted to read
+    that information using a web browser.
+
+
+SIMPLE REQUESTS don’t trigger a CORS preflight.
+    A request that doesn’t trigger a CORS preflight—a so-called “simple request”
+    —is one that meets all the following conditions:
+        1) The only allowed methods are:
+            * GET
+            * HEAD
+            * POST
+        2) Apart from the headers set automatically by the user agent (for example,
+        Connection, User-Agent, or any of the other headers with names defined in
+        the Fetch spec as a “forbidden header name”), the only headers which are
+        allowed to be manually set are those which the Fetch spec defines as being
+        a “CORS-safelisted request-header”, which are:
+            * Accept
+            * Accept-Language
+            * Content-Language
+            * Content-Type (but note the additional requirements below)
+            * Last-Event-ID
+            * DPR
+            * Save-Data
+            * Viewport-Width
+            * Width
+        3) The only allowed values for the Content-Type header are:
+            * application/x-www-form-urlencoded
+            * multipart/form-data
+            * text/plain
+        4) No event listeners are registered on any XMLHttpRequestUpload object used
+        in the request; these are accessed using the XMLHttpRequest.upload property.
+        5) No ReadableStream object is used in the request.
+
+    Note: These are the same kinds of cross-site requests that web content can already
+        issue, and no response data is released to the requester unless the server sends
+        an appropriate header. Therefore, sites that prevent cross-site request forgery
+        have nothing new to fear from HTTP access control.
+    Note: WebKit Nightly and Safari Technology Preview place additional restrictions on
+        the values allowed in the Accept, Accept-Language, and Content-Language headers.
+        If any of those headers have ”non-standard” values, WebKit/Safari does not consider
+        the request to meet the conditions for a “simple request”. What WebKit/Safari
+        considers “non-standard” values for those headers is not documented except in the
+        following WebKit bugs: Require preflight for non-standard CORS-safelisted request
+        headers Accept, Accept-Language, and Content-Language, Allow commas in Accept,
+        Accept-Language, and Content-Language request headers for simple CORS, and Switch
+        to a blacklist model for restricted Accept headers in simple CORS requests. No
+        other browsers implement those extra restrictions, because they’re not part of
+        the spec.
+
+For example, suppose web content on domain http://foo.example wishes to invoke content
+    on domain http://bar.other:
+    -------------------------------------------------------------------------------------
+        GET /resources/public-data/ HTTP/1.1
+        Host: bar.other
+        User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+        Accept-Language: en-us,en;q=0.5
+        Accept-Encoding: gzip,deflate
+        Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+        Connection: keep-alive
+        Referer: http://foo.example/examples/access-control/simpleXSInvocation.html
+        Origin: http://foo.example              -> no domain other than http://foo.example can access the resource  in a cross-site manner
+
+
+        HTTP/1.1 200 OK
+        Date: Mon, 01 Dec 2008 00:23:53 GMT
+        Server: Apache/2.0.61 
+        Access-Control-Allow-Origin: *          -> resource can be accessed by any domain in a cross-site manner
+        Keep-Alive: timeout=2, max=100
+        Connection: Keep-Alive
+        Transfer-Encoding: chunked
+        Content-Type: application/xml
+
+        [XML Data]
+    -------------------------------------------------------------------------------------
+
+
+PREFLIGHTED REQUESTS first send an HTTP request by the OPTIONS method to the resource on
+    the other domain, in order to determine whether the actual request is safe to send.
+    Request is preflighted if any of the following conditions is true:
+        1) If the request uses any of the following methods:
+            * PUT
+            * DELETE
+            * CONNECT
+            * OPTIONS
+            * TRACE
+            * PATCH
+        2) Or if, apart from the headers set automatically by the user agent (for example, Connection, User-Agent, or any of the other header with a name defined in the Fetch spec as a “forbidden header name”), the request includes any headers other than those which the Fetch spec defines as being a “CORS-safelisted request-header”, which are the following:
+            * Accept
+            * Accept-Language
+            * Content-Language
+            * Content-Type (but note the additional requirements below)
+            * Last-Event-ID
+            * DPR
+            * Save-Data
+            * Viewport-Width
+            * Width
+        3) Or if the Content-Type header has a value other than the following:
+            * application/x-www-form-urlencoded
+            * multipart/form-data
+            * text/plain
+        4) Or if one or more event listeners are registered on an XMLHttpRequestUpload
+            object used in the request.
+        5) Or if a ReadableStream object is used in the request.
+
+    Let's take a look at the full exchange between client and server. The first exchange
+        is the preflight request/response:
+        -------------------------------------------------------------------------------------
+            OPTIONS /resources/post-here/ HTTP/1.1
+            Host: bar.other
+            User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+            Accept-Language: en-us,en;q=0.5
+            Accept-Encoding: gzip,deflate
+            Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+            Connection: keep-alive
+            Origin: http://foo.example
+            Access-Control-Request-Method: POST                             <--
+            Access-Control-Request-Headers: X-PINGOTHER, Content-Type       <--
+
+            HTTP/1.1 200 OK
+            Date: Mon, 01 Dec 2008 01:15:39 GMT
+            Server: Apache/2.0.61 (Unix)
+            Access-Control-Allow-Origin: http://foo.example
+            Access-Control-Allow-Methods: POST, GET, OPTIONS                -> viable methods to query the resource
+            Access-Control-Allow-Headers: X-PINGOTHER, Content-Type         -> confirming that these are permitted headers to be used with the actual request
+            Access-Control-Max-Age: 86400       -> value in seconds for how long the response to the preflight request can be cached for without sending another preflight request
+            Vary: Accept-Encoding, Origin
+            Content-Encoding: gzip
+            Content-Length: 0
+            Keep-Alive: timeout=2, max=100
+            Connection: Keep-Alive
+            Content-Type: text/plain
+        -------------------------------------------------------------------------------------
+    The server now has an opportunity to determine whether it wishes to accept a request
+        under these circumstances. Once the preflight request is complete, the real
+        request is sent:
+        -------------------------------------------------------------------------------------
+            POST /resources/post-here/ HTTP/1.1
+            Host: bar.other
+            User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+            Accept-Language: en-us,en;q=0.5
+            Accept-Encoding: gzip,deflate
+            Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+            Connection: keep-alive
+            X-PINGOTHER: pingpong
+            Content-Type: text/xml; charset=UTF-8
+            Referer: http://foo.example/examples/preflightInvocation.html
+            Content-Length: 55
+            Origin: http://foo.example
+            Pragma: no-cache
+            Cache-Control: no-cache
+
+            <?xml version="1.0"?><person><name>Arun</name></person>
+
+            HTTP/1.1 200 OK
+            Date: Mon, 01 Dec 2008 01:15:40 GMT
+            Server: Apache/2.0.61 (Unix)
+            Access-Control-Allow-Origin: http://foo.example
+            Vary: Accept-Encoding, Origin
+            Content-Encoding: gzip
+            Content-Length: 235
+            Keep-Alive: timeout=2, max=99
+            Connection: Keep-Alive
+            Content-Type: text/plain
+
+            [Some GZIP'd payload]
+        -------------------------------------------------------------------------------------
+
+
+Most browsers currently don’t support following redirects for preflighted requests.
+    If a redirect occurs for a preflighted request, most current browsers will
+    report an error message
+
+
+The HTTP response headers
+    This section lists the HTTP response headers that servers send back for access control
+    requests as defined by the Cross-Origin Resource Sharing specification.
+    * Access-Control-Allow-Origin
+        A returned resource may have one Access-Control-Allow-Origin header,
+        with the following syntax:
+        -------------------------------------------------------------------------------------
+            Access-Control-Allow-Origin: <origin> | *
+        -------------------------------------------------------------------------------------
+        The origin parameter specifies a URI that may access the resource. The browser
+        must enforce this. For requests without credentials, the server may specify "*"
+        as a wildcard, thereby allowing any origin to access the resource.
+    * Access-Control-Expose-Headers
+        Lets a server whitelist headers that browsers are allowed to access.
+        -------------------------------------------------------------------------------------
+            Access-Control-Expose-Headers: X-My-Custom-Header, X-Another-Custom-Header
+        -------------------------------------------------------------------------------------
+    * Access-Control-Max-Age
+        Indicates how long the results of a preflight request can be cached.
+        -------------------------------------------------------------------------------------
+            Access-Control-Max-Age: <delta-seconds>
+        -------------------------------------------------------------------------------------
+        The delta-seconds parameter indicates the number of seconds the results can be cached.
+    * Access-Control-Allow-Credentials
+        Indicates whether or not the response to the request can be exposed when the
+        credentials flag is true. When used as part of a response to a preflight request,
+        this indicates whether or not the actual request can be made using credentials.
+        Note that simple GET requests are not preflighted, and so if a request is made for
+        a resource with credentials, if this header is not returned with the resource, the
+        response is ignored by the browser and not returned to web content.
+        -------------------------------------------------------------------------------------
+            Access-Control-Allow-Credentials: true
+        -------------------------------------------------------------------------------------
+    * Access-Control-Allow-Methods
+        The Access-Control-Allow-Methods header specifies the method or methods allowed when
+        accessing the resource. This is used in response to a preflight request.
+        -------------------------------------------------------------------------------------
+            Access-Control-Allow-Methods: <method>[, <method>]*
+        -------------------------------------------------------------------------------------
+    * Access-Control-Allow-Headers
+        Used in response to a preflight request to indicate which HTTP headers can be used
+        when making the actual request.
+        -------------------------------------------------------------------------------------
+            Access-Control-Allow-Headers: <field-name>[, <field-name>]*
+        -------------------------------------------------------------------------------------
+
+    
+The HTTP request headers
+    This section lists headers that clients may use when issuing HTTP requests in order to
+    make use of the cross-origin sharing feature.
+    * Origin
+        Indicates the origin of the cross-site access request or preflight request.
+        -------------------------------------------------------------------------------------
+            Origin: <origin>
+        -------------------------------------------------------------------------------------
+        Note: The origin can be the empty string; this is useful, for example, if the
+        source is a data URL.
+    * Access-Control-Request-Method
+        used when issuing a preflight request to let the server know what HTTP method
+        will be used when the actual request is made.
+        -------------------------------------------------------------------------------------
+            Access-Control-Request-Method: <method>
+        -------------------------------------------------------------------------------------
+    * Access-Control-Request-Headers
+        used when issuing a preflight request to let the server know what HTTP headers will
+        be used when the actual request is made.
+        -------------------------------------------------------------------------------------
+            Access-Control-Request-Headers: <field-name>[, <field-name>]*
+        -------------------------------------------------------------------------------------
+

@@ -1,0 +1,40 @@
+The Public Key Pinning Extension for HTML5 (HPKP) is a security feature that tells a web client
+    to associate a specific cryptographic public key with a certain web server to decrease the
+    risk of MITM attacks with forged certificates.
+
+To enable this feature for your site, you need to return the Public-Key-Pins HTTP header when
+    your site is accessed over HTTPS:
+----------------------------------------------------------------------------------------------------
+    Public-Key-Pins:
+        pin-sha256="base64==";
+        max-age=expireTime
+        [; includeSubDomains]
+        [; report-uri="reportURI"]
+----------------------------------------------------------------------------------------------------
+where: 
+    * pin-sha256
+        The quoted string is the Base64 encoded Subject Public Key Information (SPKI) fingerprint.
+        It is possible to specify multiple pins for different public keys. Some browsers might
+        allow other hashing algorithms than SHA-256 in the future. See below on how to extract
+        this information out of a certificate or key file.
+    * max-age
+        The time, in seconds, that the browser should remember that this site is only to be accessed
+        using one of the defined keys.
+    * includeSubDomains Optional
+        If this optional parameter is specified, this rule applies to all of the site's subdomains as well.
+    * report-uri Optional
+        If this optional parameter is specified, pin validation failures are reported to the given URL.
+
+Report-Only header
+    Instead of using a Public-Key-Pins header you can also use a Public-Key-Pins-Report-Only header.
+    This header only sends reports to the report-uri specified in the header and does still allow
+    browsers to connect to the webserver even if the pinning is violated.
+
+Example:
+---------------------------------------------------------------------------------------------------
+    Public-Key-Pins: 
+        pin-sha256="cUPcTAZWKaASuYWhhneDttWpY3oBAkE3h2+soZS7sWs="; 
+        pin-sha256="M8HztCzM3elUxkcjR2S5P4hhyBNf6lHkmjAHKhpGPWE="; 
+        max-age=5184000; includeSubDomains; 
+        report-uri="https://www.example.org/hpkp-report"
+---------------------------------------------------------------------------------------------------

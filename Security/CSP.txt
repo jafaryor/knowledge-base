@@ -1,0 +1,112 @@
+Content Security Policy (CSP) is an added layer of security that helps to detect and
+    mitigate certain types of attacks, including Cross Site Scripting (XSS) and data
+    injection attacks. These attacks are used for everything from data theft to site
+    defacement or distribution of malware.
+
+To enable CSP, you need to configure your web server to return the Content-Security-Policy HTTP header.
+Alternatively, the <meta> element can be used to configure a policy, for example:
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';">
+
+Mitigating cross site scripting
+    Malicious scripts are executed by the victim's browser because the browser trusts
+    the source of the content, even when it's not coming from where it seems to be
+    coming from.
+    CSP makes it possible for server administrators to reduce or eliminate the vectors
+    by which XSS can occur by specifying the domains that the browser should consider
+    to be valid sources of executable scripts. A CSP compatible browser will then only
+    execute scripts loaded in source files received from those whitelisted domains,
+    ignoring all other script (including inline scripts and event-handling HTML attributes).
+
+Mitigating packet sniffing attacks
+    In addition to restricting the domains from which content can be loaded, the server
+    can specify which protocols are allowed to be used; for example (and ideally, from
+    a security standpoint), a server can specify that all content must be loaded using HTTPS.
+
+Using CSP
+    You can use the Content-Security-Policy HTTP header to specify your policy, like this:
+    ---------------------------------------------------------------------------
+        Content-Security-Policy: policy
+    ---------------------------------------------------------------------------
+    where policy is a string containing the policy directives describing your
+    Content Security Policy.
+    A policy is described using a series of policy directives, each of which describes
+    the policy for a certain resource type or policy area. Your policy should include a
+    default-src policy directive, which is a fallback for other resource types when they
+    don't have policies of their own (for a complete list, see the description of the
+    default-src directive). A policy needs to include a default-src or script-src
+    directive to prevent inline scripts from running, as well as blocking the use of
+    eval(). A policy needs to include a default-src or style-src directive to restrict
+    inline styles from being applied from a <style> element or a style attribute.
+
+Examples: Common use cases
+    * A web site administrator wants all content to come from the site's own origin
+        (this excludes subdomains.)
+        ---------------------------------------------------------------------------
+            Content-Security-Policy: default-src 'self'
+        ---------------------------------------------------------------------------        
+    * A web site administrator wants to allow content from a trusted domain and all
+        its subdomains (it doesn't have to be the same domain that the CSP is set on.)
+        ---------------------------------------------------------------------------        
+            Content-Security-Policy: default-src 'self' *.trusted.com
+        ---------------------------------------------------------------------------        
+    * A web site administrator wants to allow users of a web application to include
+        images from any origin in their own content, but to restrict audio or video
+        media to trusted providers, and all scripts only to a specific server that
+        hosts trusted code.
+        ---------------------------------------------------------------------------        
+            Content-Security-Policy: default-src 'self'; img-src *;
+            media-src media1.com media2.com; script-src userscripts.example.com
+        ---------------------------------------------------------------------------
+        1. Images may loaded from anywhere (note the "*" wildcard).
+        2. Media is only allowed from media1.com and media2.com
+            (and not from subdomains of those sites).
+        3. Executable script is only allowed from userscripts.example.com.
+    * A web site administrator for an online banking site wants to ensure that all
+        its content is loaded using SSL, in order to prevent attackers from
+        eavesdropping on requests.
+        ---------------------------------------------------------------------------        
+            Content-Security-Policy: default-src https://onlinebanking.jumbobank.com
+        ---------------------------------------------------------------------------
+    * A web site administrator of a web mail site wants to allow HTML in email, as
+        well as images loaded from anywhere, but not JavaScript or other
+        potentially dangerous content.
+        ---------------------------------------------------------------------------        
+            Content-Security-Policy: default-src 'self' *.mailsite.com; img-src *
+        ---------------------------------------------------------------------------
+        Note that this example doesn't specify a script-src; with the example CSP,
+        this site uses the setting specified by the default-src directive, which
+        means that scripts can be loaded only from the originating server.
+
+Testing your policy
+    To ease deployment, CSP can be deployed in report-only mode. The policy is not
+    enforced, but any violations are reported to a provided URI.
+    ---------------------------------------------------------------------------
+        Content-Security-Policy-Report-Only: policy 
+    ---------------------------------------------------------------------------
+    If both a Content-Security-Policy-Report-Only header and a
+    Content-Security-Policy header are present in the same response,
+    both policies are honored.
+    By default, violation reports aren't sent. To enable violation reporting,
+    you need to specify the report-uri policy directive
+    ---------------------------------------------------------------------------
+        Content-Security-Policy: default-src 'self'; report-uri
+        http://reportcollector.example.com/collector.cgi
+    ---------------------------------------------------------------------------
+    Then you need to set up your server to receive the reports;
+
+Violation report syntax
+    The report JSON object contains the following data:
+    * document-uri
+        The URI of the document in which the violation occurred.
+    * referrer
+        The referrer of the document in which the violation occurred.
+    * blocked-uri
+        The URI of the resource that was blocked from loading by the
+        Content Security Policy. If the blocked URI is from a different origin
+        than the document-uri, then the blocked URI is truncated to contain
+        just the scheme, host, and port.
+    * violated-directive
+        The name of the policy section that was violated.
+    * original-policy
+        The original policy as specified by the Content-Security-Policy HTTP header.
+

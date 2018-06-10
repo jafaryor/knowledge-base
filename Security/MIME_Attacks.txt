@@ -1,0 +1,23 @@
+MIME sniffing
+    In the absence of a MIME type, or in some other cases where a client believes they are
+    incorrectly set, browsers may conduct MIME sniffing, which is guessing the correct MIME
+    type by looking at the resource. Each browser performs this differently and under different
+    circumstances. There are some security concerns with this practice, as some MIME types
+    represent executable content and others not. Servers can block MIME sniffing by sending
+    the X-Content-Type-Options along the Content-Type.
+
+The X-Content-Type-Options response HTTP header is a marker used by the server to indicate
+    that the MIME types advertised in the Content-Type headers should not be changed and be
+    followed. This allows to opt-out (отказаться) of MIME type sniffing, or, in other words,
+    it is a way to say that the webmasters knew what they were doing.
+
+Syntax
+----------------------------------------------------------------------------------------------------
+    X-Content-Type-Options: nosniff
+----------------------------------------------------------------------------------------------------
+
+Directives
+    nosniff
+        Blocks a request if the requested type is
+            * "style" and the MIME type is not "text/css", or
+            * "script" and the MIME type is not a JavaScript MIME type.

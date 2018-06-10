@@ -1,0 +1,14 @@
+Cross-site request forgery (CSRF)
+    In this situation, someone includes an image that isn’t really an image
+    (for example in an unfiltered chat or forum), instead it really is a
+    request to your bank’s server to withdraw money:
+        <img src="http://bank.example.com/withdraw?account=bob&amount=1000000&for=mallory">
+
+    Now, if you are logged into your bank account and your cookies are still
+    valid (and there is no other validation), you will transfer money as soon
+    as you load the HTML that contains this image. There are a few techniques
+    that are used to prevent this from happening:
+        * As with XSS, input filtering is important.
+        * There should always be a confirmation required for any sensitive action.
+        * Cookies that are used for sensitive actions should have a short lifetime only.
+        * For more prevention tips, see the OWASP CSRF prevention cheat sheet.

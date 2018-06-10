@@ -1,0 +1,260 @@
+/* Controlling display order challenge
+
+In this challenge we'll tackle controlling display order as a way of adding source order independence to our design. This is especially powerful for responsive designs. Prior to working on the challenge, preview 
+
+1. The sidebar should appear on the left side of the layout, and the featured article on the right. Currently due to source order they appear on the wrong sides. Use Flexbox to change the order they display in.
+
+For the smaller screen layout we need to use Flexbox to rearrange a great deal of page content. For the remaining steps work in the @media rule for smaller screens.
+
+2. In the navigation, set the display order so that the search form displays first, in front of the remaining navigation
+
+3. In the main content styles, change the display order so that the following elements appear in this order: newsletter, events, intro, social
+
+4. In the spotlight section, change the display order so that the following elements appear in this order: item, news, facts
+
+************** BONUS ****************
+1. In the small screen layout, use Flexbox to set the entire page to a single column, and then display the main section regions in this order: header, spotlight, main, nav, footer. You'll need to create all the selectors for this styling, and decide how to best display the page in a single column while gaining control over source order.
+
+*/
+
+/* -------------------------------------------------- 
+   flexbox layout styles
+-----------------------------------------------------*/
+body {
+	width: 90%;
+	margin: 0 auto;
+}
+/* -------------------------------------------------- 
+   top navigation styles
+-----------------------------------------------------*/
+nav ul {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+nav li {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	-ms-flex-pack: center;
+	align-items: center;
+}
+nav li.search-form {
+	margin-left: auto;
+	margin-right: 1em;
+}
+/* -------------------------------------------------- 
+   header styles
+-----------------------------------------------------*/
+header hgroup {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: baseline;
+	-ms-flex-pack: baseline;
+	align-items: baseline;
+}
+/* -------------------------------------------------- 
+   main content styles
+-----------------------------------------------------*/
+section.main {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-bottom: 2em;
+}
+.featured {
+	-webkit-order: 1;
+	-ms-flex-order: 1;
+	order: 1;
+	-webkit-flex: 3;
+	-ms-flex:3;
+	flex:3;
+}
+.sidebar {
+	-webkit-order: 0;
+	-ms-flex-order: 0;
+	order: 0;
+	-webkit-flex: 1;
+	-ms-flex:1;
+	flex:1;
+	margin-right: 2em;
+} 
+ul.social {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-justify-content: space-around;
+	-ms-flex-pack: justify;
+	justify-content: space-around;
+}
+/* -------------------------------------------------- 
+   spotlight content styles
+-----------------------------------------------------*/
+.spotlight {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+.latest {
+	-webkit-flex: 1;
+	-ms-flex:1;
+	flex:1;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-flow: column;
+	-ms-flex-flow: column;
+	flex-flow: column;
+	flex-direction: column;
+}
+/* -------------------------------------------------- 
+   footer  styles
+-----------------------------------------------------*/
+footer {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	min-height: 4em;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+/* -------------------------------------------------- 
+   Smaller screen styles
+-----------------------------------------------------*/
+@media only screen and (max-width: 720px) {
+
+/*set direction to single column, set ordinal values*/
+body {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+nav {
+	-webkit-order: 3;
+	-ms-flex-order: 3;
+	order: 3;
+}
+header {
+	-webkit-order: 0;
+	-ms-flex-order: 0;
+	order:0;
+}
+.main {
+	-webkit-order: 2;
+	-ms-flex-order: 2;
+	order:2;
+}
+.spotlight {
+	-webkit-order: 1;
+	-ms-flex-order: 1;
+	order: 1;
+}
+footer {
+	-webkit-order: 4;
+	-ms-flex-order: 4;
+	order: 4;
+}
+
+/* -------------------------------------------------- 
+   top navigation styles
+-----------------------------------------------------*/
+nav ul {
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+nav li.search-form {
+	-webkit-order: -1;
+	-ms-flex-order: -1;
+	order: -1;
+	margin: 0 0 2em;
+	-webkit-align-self: center;
+	-ms-flex-item-align: center;
+	align-self: center;
+}
+/* -------------------------------------------------- 
+  header styles
+-----------------------------------------------------*/
+header hgroup {
+	-webkit-align-items: center;
+	-ms-flex-pack: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}
+/* -------------------------------------------------- 
+   main content styles
+-----------------------------------------------------*/
+section.main {
+	display: block;
+	margin-bottom: 2em;
+}
+.sidebar {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	margin-right: 0;
+} 
+.intro {
+	-webkit-order: 2;
+	-ms-flex-order: 2;
+	order: 2;
+	margin-top: 2em;
+}
+.social {
+	-webkit-order: 3;
+	-ms-flex-order: 3;
+	order: 3;
+	margin-top: 1em;
+}
+.newsletter {
+	-webkit-order: 0;
+	-ms-flex-order: 0;
+	flex-order: 0;
+	margin-bottom: 1em;
+}
+.events {
+	-webkit-order: 1;
+	-ms-flex-order: 1;
+	flex-order: 1;
+}
+/* -------------------------------------------------- 
+   spotlight content styles
+-----------------------------------------------------*/
+.spotlight {
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+.news {
+	-webkit-order: 1;
+	-ms-flex-order: 1;
+	order: 1;
+}
+.item {
+	-webkit-order: 0;
+	-ms-flex-order: 0;
+	order: 0;
+}
+.facts {
+	-webkit-order: 2;
+	-ms-flex-order: 2;
+	order: 2;
+}
+
+
+}

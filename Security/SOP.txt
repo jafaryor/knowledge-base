@@ -1,0 +1,95 @@
+SAME-ORIGIN POLICY
+
+SOP is an important concept in the web application security model. Under the policy,
+    a web browser permits scripts contained in a first web page to access data in a
+    second web page, but only if both web pages have the same origin. An origin is
+    defined as a combination of URI scheme, host name, and port number. This policy
+    prevents a malicious script on one page from obtaining access to sensitive data
+    on another web page through that page's Document Object Model.
+
+The same-origin policy restricts how a document or script loaded from one origin can
+    interact with a resource from another origin. It is a critical security mechanism
+    for isolating potentially malicious documents.
+
+Two pages have the same origin if the protocol, port (if one is specified),
+    and host are the same for both pages.
+
+The Same Origin Policy (SOP) is the policy browsers implement to prevent vulnerabilities
+    via Cross Site Scripting (XSS). This is mainly for protecting the server, as there
+    are many occasions when a server can be dealing with
+    authentication, cookies, sessions, etc.
+
+Inherited origins
+    Content from 'about:blank' and 'javascript:' URLs inherits the origin from the document
+    that loaded the URL, since the URL itself does not give any information about the
+    origin. 'data:' URLs get a new, empty, security context.
+
+IE Exceptions
+    Internet Explorer has two major exceptions when it comes to same origin policy
+    * Trust Zones: if both domains are in highly trusted zone e.g, corporate domains,
+        then the same origin limitations are not applied
+    * Port: IE doesn't include port into Same Origin components, therefore
+        http://company.com:81/index.html and http://company.com/index.html are
+        considered from same origin and no restrictions are applied.
+
+Changing origin
+    A page may change its own origin with some limitations. A script can set the value
+    of 'document.domain' to its current domain or a superdomain of its current domain.
+    If it sets it to a superdomain of its current domain, the shorter domain is used
+    for subsequent origin checks.
+    The port number is kept separately by the browser. Any call to the setter, including
+    document.domain = document.domain causes the port number to be overwritten with null.
+    Therefore one cannot make company.com:8080 talk to company.com by only setting
+    'document.domain = "company.com"' in the first. It has to be set in both so that port
+    numbers are both null.
+    Note: When using document.domain to allow a subdomain to access its parent securely,
+        you need to set document.domain to the same value in both the parent domain and the
+        subdomain. This is necessary even if doing so is simply setting the parent domain
+        back to its original value. Failure to do this may result in permission errors.
+
+Cross-origin network access
+    The same-origin policy controls interactions between two different origins, such as
+    when you use XMLHttpRequest or an <img> element. These interactions are typically
+    placed in three categories:
+        * Cross-origin writes are typically allowed. Examples are links, redirects and
+            form submissions. Certain rarely used HTTP requests require preflight.
+        * Cross-origin embedding is typically allowed. Examples are listed below.
+        * Cross-origin reads are typically not allowed, but read access is often leaked
+            by embedding. For example you can read the width and height of an embedded
+            image, the actions of an embedded script, or the availability of an
+            embedded resource.
+    Here are some examples of resources which may be embedded cross-origin:
+        * JavaScript with <script src="..."></script>. Error messages for syntax errors
+            are only available for same-origin scripts.
+        * CSS with <link rel="stylesheet" href="...">. Due to the relaxed syntax rules of
+            CSS, cross-origin CSS requires a correct Content-Type header. Restrictions vary
+            by browser: IE, Firefox, Chrome, Safari (scroll down to CVE-2010-0051) and Opera.
+        * Images with <img>. Supported image formats include PNG, JPEG, GIF, BMP, SVG, ...
+        * Media files with <video> and <audio>.
+        * Plug-ins with <object>, <embed> and <applet>.
+        * Fonts with @font-face. Some browsers allow cross-origin fonts, others require
+            same-origin fonts.
+        * Anything with <frame> and <iframe>. A site can use the X-Frame-Options header to
+            prevent this form of cross-origin interaction.
+
+How to block cross-origin access:
+    * To prevent cross-origin writes, check for an unguessable token in the request, known
+        as a Cross-Site Request Forgery (CSRF) token. You must prevent cross-origin reads of
+        pages that know this token.
+    * To prevent cross-origin reads of a resource, ensure that it is not embeddable. It is
+        often necessary to prevent embedding, because embedding a resource always leaks some
+        information about it.
+    * To prevent cross-origin embedding, ensure that your resource can not be interpreted as
+        one of the embeddable formats listed above. The browser does not respect the
+        Content-Type in most cases. For example if you point a <script> tag at an HTML document,
+        the browser will try to parse the HTML as JavaScript. When your resource is not an entry
+        point to your site, you can also use a CSRF token to prevent embedding.
+
+Cross-origin script API access
+    JavaScript APIs such as iframe.contentWindow, window.parent, window.open and window.opener
+        allow documents to directly reference each other. When the two documents do not have the
+        same origin, these references provide very limited access to Window and Location objects,
+        as described in the next two sections.
+    To communicate further between documents from different origins, use window.postMessage.
+
+'javascript:' - allows to run js which is in url.
