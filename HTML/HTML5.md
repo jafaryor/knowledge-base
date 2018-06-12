@@ -1,3 +1,8 @@
+`DOM`:
+* Document - means page
+* Object - pieces, components of the document
+* Model - what do we call these individual pieces and how do we describe relationship between them
+
 ## window.requestAnimationFrame()
 Method tells the browser that you wish to perform an animation and requests that the browser call a specified function to update an animation before the next repaint. The method takes a callback as an argument to be invoked before the repaint.
 ```javascript
