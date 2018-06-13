@@ -110,3 +110,11 @@ Violation report syntax
     * original-policy
         The original policy as specified by the Content-Security-Policy HTTP header.
 
+
+
+The HTTP Content-Security-Policy (CSP) 'script-src' directive specifies valid sources
+for JavaScript. This includes not only URLs loaded directly into <script> elements,
+but also things like inline script event handlers (onclick) and XSLT stylesheets
+which can trigger script execution.
+
+More: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src

@@ -127,3 +127,5 @@
 * __Distributed Networking__ - a distributed computing network system, where the computer programming and the data to be worked on are spread out across more than one computer.
 
 * In networking, __black holes__ refer to places in the network where incoming or outgoing traffic is silently discarded (or "dropped"), without informing the source that the data did not reach its intended recipient.
+
+* In cryptography, a __nonce__ is an arbitrary number that can be used just once. It is similar in spirit to a nonce word, hence the name. It is often a random or pseudo-random number issued in an authentication protocol to ensure that old communications cannot be reused in replay attacks.

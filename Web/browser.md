@@ -240,3 +240,63 @@ After the rules are matched, they are sorted according to the cascade rules. `We
 ## Layout
 When the `renderer` is created and added to the tree, it does not have a position and size. Calculating these values is called __`layout`__ or __`reflow`__.
 
+HTML uses a __flow based layout model__, meaning that most of the time it is possible to compute the geometry in a single pass. Elements later "in the flow" typically do not affect the geometry of elements that are earlier "in the flow", so layout can proceed left-to-right, top-to-bottom through the document. There are exceptions: for example, `HTML` tables may require more than one pass.
+
+> The coordinate system is relative to the root frame. Top and left coordinates are used.
+
+Layout is a recursive process. It begins at the root renderer, which corresponds to the `<html>` element of the `HTML` document. Layout continues recursively through some or all of the frame hierarchy, computing geometric information for each renderer that requires it.
+
+> The position of the root renderer is 0,0 and its dimensions are the viewport–the visible part of the browser window.
+
+All renderers have a `layout()` or `reflow()` method, each renderer invokes the `layout()` method of its children that need layout.
+
+### Dirty bit system
+In order not to do a full layout for every small change, browsers use a __`dirty bit`__ system. A renderer that is changed or added marks itself and its children as `"dirty"`: needing layout.
+
+There are two flags: `"dirty"`, and `"children are dirty"` which means that although the renderer itself may be OK, it has at least one child that needs a layout.
+
+### Global and incremental layout
+Layout can be triggered on the entire render tree–this is __`global layout`__. This can happen as a result of:
+* A global style change that affects all renderers, like a font size change.
+* As a result of a screen being resized
+
+Incremental layout is triggered (_asynchronously_) when renderers are dirty. For example when new renderers are appended to the render tree after extra content came from the network and was added to the DOM tree.
+
+### Asynchronous and Synchronous layout
+Incremental layout is done asynchronously. `Firefox` queues "reflow commands" for incremental layouts and a scheduler triggers batch execution of these commands. `WebKit` also has a timer that executes an incremental layout–the tree is traversed and "dirty" renderers are layout out.
+
+Scripts asking for style information, like `offsetHeight` can trigger incremental layout synchronously.
+
+> Global layout will usually be triggered synchronously.
+
+Sometimes layout is triggered as a callback after an initial layout because some attributes, like the scrolling position changed.
+
+When a layout is triggered by a `resize` or a change in the renderer position(and not size), the renders sizes are taken from a cache and not recalculated. In some cases only a sub tree is modified and layout does not start from the root. This can happen in cases where the change is local and does not affect its surroundings–like text inserted into text fields (otherwise every keystroke would trigger a layout starting from the root).
+
+## Painting
+In the painting stage, the render tree is traversed and the renderer's `paint()` method is called to display content on the screen. Painting uses the UI infrastructure component.
+
+Like layout, painting can also be:
+* __global__ - the entire tree is painted
+* __incremental__ - some of the renderers change in a way that does not affect the entire tree.
+
+The changed renderer invalidates its rectangle on the screen. This causes the OS to see it as a `dirty region` and generate a `paint()` event. The OS does it cleverly and coalesces (объединять) several regions into one. In Chrome it is more complicated because the renderer is in a different process then the main process. Chrome simulates the OS behavior to some extent. The presentation listens to these events and delegates the message to the render root. The tree is traversed until the relevant renderer is reached. It will repaint itself (and usually its children).
+
+### The painting order
+[`CSS2` defines the order of the painting process](http://www.w3.org/TR/CSS21/zindex.html). This is actually the order in which the elements are stacked in the `stacking contexts`. This order affects painting since the stacks are painted from back to front.
+
+The stacking order of a block renderer is:
+1. background color
+2. background image
+3. border
+4. children
+5. outline
+
+Before repainting, `WebKit` saves the old rectangle as a bitmap. It then paints only the delta between the new and old rectangles. 
+
+The browsers try to do the minimal possible actions in response to a change. So changes to an element's color will cause only repaint of the element. Changes to the element position will cause layout and repaint of the element, its children and possibly siblings. Adding a DOM node will cause layout and repaint of the node. Major changes, like increasing font size of the `<html></html>` element, will cause invalidation of caches, relayout and repaint of the entire tree.
+
+### The rendering engine's threads
+__The rendering engine is single threaded__. Almost everything, except network operations, happens in a single thread. In Firefox and Safari this is the main thread of the browser. In Chrome it's the tab process main thread. Network operations can be performed by several parallel threads. The number of parallel connections is limited (usually 2–6 connections).
+
+The browser main thread is an event loop. It's an infinite loop that keeps the process alive. It waits for events (like layout and paint events) and processes them.
