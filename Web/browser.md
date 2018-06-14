@@ -1,8 +1,44 @@
 # Web Browser
-
 The main function of a browser is to present the web resource you choose, by requesting it from the server and displaying it in the browser window. The resource is usually an HTML document, but may also be a `PDF`, image, or some other type of content. The location of the resource is specified by the user using a `URI` (Uniform Resource Identifier).
 
-### The browser's main components are:
+Say tou have entered _'google.com'_  and hit _Enter_ key. Actions which takes browser:
+1. ### Parse the URL
+
+    When no protocol or valid domain name is given the browser proceeds to feed the text given in the address box to the browser's default web search engine.
+
+    1. The browser checks its `preloaded HSTS` (HTTP Strict Transport Security) list. This is a list of websites that have requested to be contacted via HTTPS only.
+    2. If the website is in the list, the browser sends its request via HTTPS instead of HTTP. Otherwise, the initial request is sent via HTTP.
+
+2. ### DNS lookup
+
+    The browser tries to figure out the IP address for the entered domain. The DNS lookup proceeds as follows:
+    1. Browser cache: The browser caches DNS records for some time. Interestingly, the OS does not tell the browser the time-to-live for each DNS record, and so the browser caches them for a fixed duration (varies between browsers, 2 – 30 minutes).
+    2. OS cache: If the browser cache does not contain the desired record, the browser makes a system call (gethostbyname in Windows). The OS has its own cache.
+    3. Router cache: The request continues on to your router, which typically has its own DNS cache.
+    4. ISP DNS cache: The next place checked is the cache ISP’s DNS server. With a cache, naturally.
+    5. Recursive search: Your ISP’s DNS server begins a recursive search, from the root nameserver, through the .com top-level nameserver, to Google’s nameserver. Normally, the DNS server will have names of the .com nameservers in cache, and so a hit to the root nameserver will not be necessary.
+
+        ![dns-recursive-search](./images/dns-recursive-search.png)
+
+        For `maps.google.com`, first, the DNS recursor will contact the root `.` name server. The root name server will redirect it to `.com` domain name server. `.com` name server will redirect it to `google.com` name server. `google.com` name server will find the matching IP address for `maps.google.com` in its’ DNS records and return it to your DNS recursor which will send it back to your browser.
+
+3. ### Browser initiates a TCP connection with the server
+
+    Once the browser receives the correct IP address it will build a connection with the server that matches IP address to transfer information. Browsers use internet protocols to build such connections. There are a number of different internet protocols which can be used but TCP is the most common protocol used for any type of HTTP request.
+
+    In order to transfer data packets between your computer(client) and the server, it is important to have a TCP connection established. This connection is established using a process called the TCP/IP three-way handshake. This is a three step process where the client and the server exchange `SYN`(synchronize) and `ACK`(acknowledge) messages to establish a connection.
+
+    1. Client machine sends a `SYN` packet to the server over the internet asking if it is open for new connections.
+    2. If the server has open ports that can accept and initiate new connections, it’ll respond with an ACKnowledgment of the `SYN` packet using a `SYN`/`ACK` packet.
+    3. The client will receive the `SYN`/`ACK` packet from the server and will acknowledge it by sending an `ACK` packet.
+
+4. ### The browser sends an HTTP request to the web server
+
+5. ### The server handles the request and sends back an HTTP response
+
+6. ### The browser displays the HTML content
+
+## The browser's main components are:
 * __The `User Interface`:__ this includes the address bar, back/forward button, bookmarking menu, etc. Every part of the browser display except the window where you see the requested page.
 * __The `Browser Engine`:__ marshals (выстраивать) actions between the UI and the rendering engine.
 * __The `Rendering Engine`:__ responsible for displaying requested content. For example if the requested content is HTML, the rendering engine parses HTML and CSS, and displays the parsed content on the screen.
@@ -300,3 +336,11 @@ The browsers try to do the minimal possible actions in response to a change. So 
 __The rendering engine is single threaded__. Almost everything, except network operations, happens in a single thread. In Firefox and Safari this is the main thread of the browser. In Chrome it's the tab process main thread. Network operations can be performed by several parallel threads. The number of parallel connections is limited (usually 2–6 connections).
 
 The browser main thread is an event loop. It's an infinite loop that keeps the process alive. It waits for events (like layout and paint events) and processes them.
+
+### Example:
+
+![browser-painting-process](./images/browser-painting-process.gif)
+
+## Additional recources:
+* [Video](https://vimeo.com/44182484)
+* [Keynote](http://arvindr21.github.io/howBrowserWorks/#/)
