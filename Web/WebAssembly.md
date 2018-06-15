@@ -6,7 +6,7 @@ Most people, however, will use the `wasm` format as a compiler target, translati
 
 So you can take `C/C++` code, translate it into wasm using a compiler tool like [Emscripten](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Emscripten), and load the generated wasm module into a JavaScript app, where it will be safely and efficiently executed by the browser.
 
-You can compile _`TypeScript`_ to wasm with __[`wasm-util`](https://github.com/rsms/wasm-util)__.
+You can compile _`TypeScript`_ to `wasm` with __[AssemblyScript](https://github.com/AssemblyScript/assemblyscript)__.
 
 `WebAssembly` modules define functions that can be used from JavaScript. So just like you download a module like lodash from npm today and call functions that are part of its API, you will be able to download `WebAssembly` modules in the future.
 
