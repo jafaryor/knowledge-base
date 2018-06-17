@@ -1,14 +1,16 @@
 ## Progressive Web App
 Progressive Web Apps (`PWA`s) are web applications that are regular web pages or websites, but can appear to the user like traditional applications or native mobile applications. The application type attempts to combine features offered by most modern browsers with the benefits of a mobile experience.
 
-`PWA`s are taking advantage of new features supported by modern browsers, including [service workers](https://en.wikipedia.org/wiki/Web_worker) and web app [manifests](https://en.wikipedia.org/wiki/Manifest_file), that let users upgrade web apps to progressive web applications in their native operating system (OS). According to Google Developers, these characteristics are:
+`PWA`s are taking advantage of new features supported by modern browsers, including [service workers](https://en.wikipedia.org/wiki/Web_worker) and web app [manifests](https://en.wikipedia.org/wiki/Manifest_file), that let users upgrade web apps to progressive web applications in their native operating system (OS).
+
+According to Google Developers, these characteristics are:
 * __Progressive__ - Work for every user, regardless of browser choice because they’re built with progressive enhancement as a core tenet.
 * __Responsive__ - Fit any form factor: desktop, mobile, tablet, or forms yet to emerge.
 * __Connectivity independent__ - Service workers allow work offline, or on low quality networks.
 * __App-like__ - Feel like an app to the user with app-style interactions and navigation.
 * __Fresh__ - Always up-to-date thanks to the service worker update process.
 * __Safe__ - Served via HTTPS to prevent snooping and ensure content hasn’t been tampered with.
-* __Discoverable__ - Are identifiable as “applications” thanks to W3C manifests[7] and service worker registration scope allowing search engines to find them.
+* __Discoverable__ - Are identifiable as “applications” thanks to W3C manifests and service worker registration scope allowing search engines to find them.
 * __Re-engageable__ - Make re-engagement easy through features like push notifications.
 * __Installable__ - Allow users to “keep” apps they find most useful on their home screen without the hassle of an app store.
 * __Linkable__ - Easily shared via a URL and do not require complex installation.
