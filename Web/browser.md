@@ -248,27 +248,6 @@ Declarations with the same order will be sorted by __`specificity`__ and then th
 
 > The `HTML` visual attributes are translated to matching `CSS` declarations. They are treated as _author rules_ with _low priority_.
 
-__Specificity__:
-* count `1` if the declaration it is from is a `'style'` attribute rather than a rule with a selector, `0` otherwise (`= a`)
-* count the number of ID attributes in the selector (`= b`)
-* count the number of other attributes and pseudo-classes in the selector (`= c`)
-* count the number of element names and pseudo-elements in the selector (`= d`)
-
-```css
- *             {}  /* a=0 b=0 c=0 d=0 -> specificity = 0,0,0,0 */
- li            {}  /* a=0 b=0 c=0 d=1 -> specificity = 0,0,0,1 */
- li:first-line {}  /* a=0 b=0 c=0 d=2 -> specificity = 0,0,0,2 */
- ul li         {}  /* a=0 b=0 c=0 d=2 -> specificity = 0,0,0,2 */
- ul ol+li      {}  /* a=0 b=0 c=0 d=3 -> specificity = 0,0,0,3 */
- h1 + *[rel=up]{}  /* a=0 b=0 c=1 d=1 -> specificity = 0,0,1,1 */
- ul ol li.red  {}  /* a=0 b=0 c=1 d=3 -> specificity = 0,0,1,3 */
- li.red.level  {}  /* a=0 b=0 c=2 d=1 -> specificity = 0,0,2,1 */
- #x34y         {}  /* a=0 b=1 c=0 d=0 -> specificity = 0,1,0,0 */
- style=""          /* a=1 b=0 c=0 d=0 -> specificity = 1,0,0,0 */
-```
-
-Concatenating the four numbers `a-b-c-d` (in a number system with a large base) gives the specificity.
-
 After the rules are matched, they are sorted according to the cascade rules. `WebKit` uses _bubble sort_ for small lists and _merge sort_ for big ones. `WebKit` implements sorting by overriding the `">"` operator for the rules.
 
 `WebKit` uses a flag that marks if all top level style sheets (including `@imports`) have been loaded. If the style is not fully loaded when attaching, place holders are used and it is marked in the document, and they will be recalculated once the style sheets were loaded.

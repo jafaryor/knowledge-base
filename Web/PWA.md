@@ -17,7 +17,7 @@ Progressive Web Apps (`PWA`s) are web applications that are regular web pages or
 A cache manifest in HTML5 is a plain text file accompanying a web app that helps it run when there is no network connectivity. The caching mechanism reads this file and ensures that its contents are available locally. An HTML5 cache manifest is served with its content type set to `"text/cache-manifest"`.
 
 Example:
-```
+```html
 CACHE MANIFEST 
 /test.css
 /test.js
