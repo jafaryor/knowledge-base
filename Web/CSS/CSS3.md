@@ -249,3 +249,20 @@ Values:
 Within a _stacking context_, child elements are stacked according to the same rules previously explained. Importantly, the z-index values of its child _stacking contexts_ only have meaning in this parent. _Stacking contexts_ are treated atomically as a single unit in the parent _stacking context_.
 
 [More about _Stacking Context_](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context)
+
+## Others
+### Unit of measurement
+`rem` - size of root `em` (which is in the `html`/`body` tag).
+`em` - size of letter '`M`'.
+
+### Pseude-class selector vs Pseudo-element selector
+__Pseudo-element selector (`::`)__ - selects virtual elements.
+* `::after` - Insert something after the content of each element
+* `::before` - Insert something before the content of each element
+* `::first-letter` - Selects the first letter of each element
+* `::first-line` - Selects the first line of each element
+* `::selection` - Selects the portion of an element that is selected by a user
+
+__Pseude-class selector (`:`)__ - selects an element, state or property.
+
+`:active`, `:checked`, `:disabled`, `:empty`, `:enabled`, `:first-child`, `:first-of-type`, `:focus`, `:hover`, `:in-range`, `:invalid`, `:lang`, `:last-child`, `:last-of-type`, `:link`, `:not(selector)`, `:nth-child(n)`, `:nth-last-child(n)`, `:nth-last-of-type(n)`, `:nth-of-type(n)`, `:only-of-type`, `:only-child`, `:optional`, `:out-of-range`, `:read-only`, `:read-write`, `:required`, `:root`, `:target`, `:valid`, `:visited`

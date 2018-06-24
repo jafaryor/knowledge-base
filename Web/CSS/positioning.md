@@ -13,9 +13,9 @@ There are five types of `position` property:
 
     Absolute positioning needs __positioning context__ — which element the absolutely positioned element is positioned relative to. By default, it is the `<html>` element.
 
-    We can change the positioning context by putting `position: relative` to any parent of the absolute positioned element.
+    We can change the positioning context by putting `position: relative | absolute | fixed | sticky` to any parent of the absolute positioned element.
 
-    How it finds positioning context: It goes up from its direct parent to the `<html>` tag. The first element with `position: relative` will be its positioning context, otherwise positioning context will be `<html>`.
+    How it finds positioning context: It goes up from its direct parent to the `<html>` tag. The first element with __non-static positioning__ will be its positioning context, otherwise positioning context will be `<html>`.
 
 * `fixed` - removes our element from document flow, in the same way as absolute positioning. However instead of the offsets beign applied from the container, they are applied from the viewport.
 * `sticky` - is a newer positioning method which makes an element act like position: `static` until it hits a defined offset from the viewport, at which point it acts like position: `fixed`.

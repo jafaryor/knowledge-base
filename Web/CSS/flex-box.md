@@ -157,7 +157,9 @@ Basically, items will be laid out following either the main axis (from main-star
     ```
 
     In the picture below, the three items have flex factors of 1, 1, and 2.
-    ![flex-basis](./images/54.svg) 
+    ![flex-basis](./images/54.svg)
+
+    > __When `flex-direction` is `row`, `flex-basis` controls `width`. But when `flex-direction` is `column`, `flex-basis` controls `height`. That is the difference between `flex-basis` and `width`/`height` properties.__
 
 * ### flex
     This is the shorthand for __flex-grow__, __flex-shrink__ and __flex-basis__ combined. The second and third parameters (__flex-shrink__ and __flex-basis__) are optional. Default is __0 1 auto__.
