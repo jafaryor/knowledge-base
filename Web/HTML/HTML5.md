@@ -1,8 +1,3 @@
-`DOM`:
-* Document - means page
-* Object - pieces, components of the document
-* Model - what do we call these individual pieces and how do we describe relationship between them
-
 ## `<script></script>`
 The HTML `<script>` element is used to embed or reference executable code; this is typically used to embed or refer to JavaScript code.
 
@@ -105,3 +100,94 @@ window.requestAnimationFrame(callback);
 * __Return value__
 
     A long integer value, the request id, that uniquely identifies the entry in the callback list. This is a non-zero value, but you may not make any other assumptions about its value. You can pass this value to `window.cancelAnimationFrame()` to cancel the refresh callback request.
+
+## HTML5 Semantic Elements
+A semantic element clearly describes its meaning to both the browser and the developer.
+
+> ![html-semantic-elements](./images/html-semantic-elements.png)
+
+* `<article>`
+
+    Specifies independent, self-contained content. An article should make sense on its own, and it should be possible to read it independently from the rest of the web site.
+
+    Example for a newspaper: The sport `<article>` in the sport section, may have a technical section in each `<article>`.
+
+* `<aside>`
+
+    Defines content aside from the page content.
+
+* `<details>`
+
+    Defines additional details that the user can view or hide.
+    ```html
+    <details>
+        <summary>Copyright 1999-2018.</summary>
+        <p> - by Refsnes Data. All Rights Reserved.</p>
+        <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+    </details>
+    ```
+
+* `<figcaption>`
+
+    Defines a caption for a `<figure>` element.
+
+* `<figure>`
+
+    Specifies self-contained content, like illustrations, diagrams, photos, code listings, etc.
+    
+    An image and a caption can be grouped together in a `<figure>`.
+    ```html
+    <figure>
+        <img src="pic_trulli.jpg" alt="Trulli">
+        <figcaption>Fig1. - Trulli, Puglia, Italy.</figcaption>
+    </figure>
+    ```
+
+* `<footer>`
+* `<header>`
+* `<main>`
+
+    Specifies the main content of a document.
+
+* `<mark>`
+
+    Defines marked/highlighted text.
+
+* `<nav>`
+
+    Defines a set of navigation links.
+
+* `<section>`
+
+    Defines a section in a document. A _section_ is a thematic grouping of content, typically with a heading.
+    ```html
+    <section>
+        <h1>WWF</h1>
+        <p>The World Wide Fund for Nature (WWF) is....</p>
+    </section>
+    ```
+
+* `<summary>`
+
+    Defines a visible heading for a `<details>` element.
+
+* `<address>`
+
+    Defined contact information.
+    ```html
+    <address>
+        Please contact <a href='mailto:troymcclure@example.com'>Troy
+        McClure</a> for questions about this article.
+    </address>
+    ```
+
+* `<time>`
+
+    Defines a date/time.
+    ```html
+    <time datetime='2017-1-3 15:00-0800'>January 3rd</time>
+    ```
+
+    ![time-element](./images/time-element.png)
+
+### [Cool Resource about HTML and CSS](https://internetingishard.com/html-and-css/)

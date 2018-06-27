@@ -266,3 +266,15 @@ __Pseudo-element selector (`::`)__ - selects virtual elements.
 __Pseude-class selector (`:`)__ - selects an element, state or property.
 
 `:active`, `:checked`, `:disabled`, `:empty`, `:enabled`, `:first-child`, `:first-of-type`, `:focus`, `:hover`, `:in-range`, `:invalid`, `:lang`, `:last-child`, `:last-of-type`, `:link`, `:not(selector)`, `:nth-child(n)`, `:nth-last-child(n)`, `:nth-last-of-type(n)`, `:nth-of-type(n)`, `:only-of-type`, `:only-child`, `:optional`, `:out-of-range`, `:read-only`, `:read-write`, `:required`, `:root`, `:target`, `:valid`, `:visited`
+
+## Custom data attributes
+The `data-*` global attributes form a class of attributes called __custom data attributes__, that allow proprietary information to be exchanged between the HTML and its DOM representation by scripts.
+
+All such custom data are available via the `HTMLElement` interface of the element the attribute is set on. The `HTMLElement.dataset` property gives access to them.
+
+In `CSS` you can access them using `attr()` function. The `attr()` CSS function is used to retrieve the value of an attribute of the selected element and use it in the style sheet.
+```css
+p::before {
+  content: attr(data-foo);
+}
+```
