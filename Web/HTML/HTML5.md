@@ -188,6 +188,6 @@ A semantic element clearly describes its meaning to both the browser and the dev
     <time datetime='2017-1-3 15:00-0800'>January 3rd</time>
     ```
 
-    ![time-element](./images/time-element.png)
+    > ![time-element](./images/time-element.png)
 
 ### [Cool Resource about HTML and CSS](https://internetingishard.com/html-and-css/)

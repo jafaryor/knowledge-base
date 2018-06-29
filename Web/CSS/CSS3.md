@@ -278,3 +278,152 @@ p::before {
   content: attr(data-foo);
 }
 ```
+
+## CSS Variables
+Let's define variable with name `main-color` in global and local scope:
+```css
+:root {
+    // global scope
+    --main-color: red;
+}
+
+.block {
+    // local scope
+    --color: green;
+}
+```
+
+Use variable with `var` keyword. The secont argument is _default value_. The default value is applies if no valiable is found (first argument):
+```css
+.test {
+  font-size: var(--main-color, black)
+}
+```
+
+> CSS variables are case-sensitive.
+
+* You can't do math when declaring variable, use `calc()` instead.
+    ```css
+    :root {
+        --fontSize: 1rem;
+    }
+
+    h1 {
+        font-size: calc(var(--fontSize) * 2);
+    }
+    ```
+
+* CSS variables are resolved with the normal inheritance and cascade rules
+
+    > ![css-variable-inheritance](./images/css-variable-inheritance.png)
+
+* CSS variables can be made conditional with `@media` and other conditional rules
+
+    > ![css-media](./images/css-media.png)
+
+* CSS variables can be used in HTML’s style attribute.
+
+    > ![css-variable-inline-style](./images/css-variable-inline-style.png)
+
+* Multiple declarations are resolved with the standard cascade.
+
+    > ![css-variable-cascade](./images/css-variable-cascade.png)
+
+* Syntax errors are discarded, but invalid `var()` substitutions default to either the _initial_ or _inherited_ value of the property in question.
+
+* CSS variable provide Javascript API.
+    ```javascript
+    const root = document.documentElement;
+
+    // setting CSS variable value from JS
+    root.style.setProperty('--bg', 'black');
+    root.style.setProperty('--bg-text', 'white');
+    ```
+
+__[More detailed about CSS Variales](https://medium.freecodecamp.org/everything-you-need-to-know-about-css-variables-c74d922ea855)__
+
+`@apply` allows you to store a set of properties in a named custom property, then reference them in other style rules.
+```css
+:root {
+  --danger-theme: {
+    color: white;
+    background-color: red;
+  }
+}
+
+.danger {
+  @apply --danger-theme;
+}
+```
+
+`@custom-media` allows to define custom media queries.
+```css
+@custom-media --small-viewport (max-width: 30em);
+/* check out media queries ranges for a better syntax !*/
+
+@media (--small-viewport) {
+  /* styles for small viewport */
+}
+```
+
+__Media Queries Ranges__ allows to replace `min-`/`max-` with `<=` & `>=`.
+```css
+@media (width >= 500px) and (width <= 1200px) {
+  /* your styles */
+}
+
+/* or coupled with custom media queries */
+@custom-media --only-medium-screen (width >= 500px) and (width <= 1200px);
+
+@media (--only-medium-screen) {
+  /* your styles */
+}
+```
+
+`@custom-selector` allows you to create your own selectors.
+```css
+@custom-selector :--button button, .button;
+@custom-selector :--enter :hover, :focus;
+
+:--button {
+  /* styles for your buttons */
+}
+:--button:--enter {
+  /* hover/focus styles for your button */
+  /* Read more about :enter proposal */
+  /* http://discourse.specifiction.org/t/a-common-pseudo-class-for-hover-and-focus/877 */
+}
+```
+
+Nesting selectors
+```css
+a {
+  /* direct nesting (& MUST be the first part of selector)*/
+  & span {
+    color: white;
+  }
+
+  /* @nest rule (for complex nesting) */
+  @nest span & {
+    color: blue;
+  }
+
+  /* media query automatic nesting */
+  @media (min-width: 30em) {
+    color: yellow;
+  }
+}
+```
+
+`image-set()` function allows you to set different images for each kind of resolution of user device.
+```css
+.foo {
+  background-image: image-set(
+    url(img/test.png) 1x,
+    url(img/test-2x.png) 2x,
+    url(my-img-print.png) 600dpi
+  );
+}
+```
+
+__[More new features](http://cssnext.io/features/)__

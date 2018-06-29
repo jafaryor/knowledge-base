@@ -1,7 +1,7 @@
 // SWIFT 4.0
 
 // 1. BASICS
-let variable01: Int = 10, variable02: Int; // contant declaring
+let variable01: Int = 10, variable02: Int; // constant declaring
 var constant01 = 1804; // variable declaring
 /*
     Once you’ve declared a constant or variable of a certain type, you can’t declare it again with the same name,
