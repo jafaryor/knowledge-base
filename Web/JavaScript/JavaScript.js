@@ -1,4 +1,15 @@
 // Code style is not about personal preference and self-expression. Always use JSLint.
+
+/* 
+    Scope has to do with the the visibility of variables. In JavaScript,
+        scope is achieved through the use of functions.
+    Context - is object to which the method belongs.
+        When a function is called as a method of an object, this is set to the object the method is called on
+    Closure - is the combination of a function and the lexical environment
+        within which that function was declared.
+        Accessing variables outside of the immediate lexical scope creates a closure.
+*/
+
 //=====================================ES3======================================
 
 // ALWAYS PUT { IN THE RIGHT
@@ -431,7 +442,6 @@ functionObject.call(thisObject, argument...);
 
 
 // Closure
-// A closure is the combination of a function and the lexical environment within which that function was declared.
 // The context of an inner function includes the scope of the outer function.
 // An inner function enjoys that context even after the parent functions have returned.
 // Function scope work like block scope.
@@ -702,9 +712,8 @@ let, package, private, protected, public, static, yield;
     3) 'apply' and 'call' do not default to the global object.
     4) No 'with' statement.
     5) If you try to assign something to non-writable property => trow exception.
-        But it fails silently.
+        But it fails silently in non-strict mode.
     6) Deleting non-configurable properties also throw exception.
-    7) Restrictions on 'eval'. Don't recomended to use 'eval' as all.
     8) 'eval' and 'arguments' are reserved.
     9) 'arguments' no longer linked to parameters.
     10) No more arguments.caller and arguments.callee.
@@ -712,6 +721,20 @@ let, package, private, protected, public, static, yield;
     12) Duplicate names in an object literals or function parameters are a syntax error.
     13) Forgotting to use the 'new' prefix will throw an exception,
         not silently clobber the global object.
+    14) Makes debugging easier. Code errors that would otherwise have been ignored or
+        would have failed silently will now generate errors or throw exceptions, alerting
+        you sooner to problems in your code and directing you more quickly to their source.
+    15) Eliminates this coercion. Without strict mode, a reference to a this value of
+        "null" or "undefined" is automatically coerced to the global.
+    16) Disallows duplicate parameter values. Strict mode throws an error when it detects
+        a duplicate named argument for a function.
+
+        Note: It used to be (in ECMAScript 5) that strict mode would disallow duplicate property names in object.
+    17) Makes eval() safer. There are some differences in the way eval() behaves in
+        strict mode and in non-strict mode. Most significantly, in strict mode, variables and
+        functions declared inside of an eval() statement are not created in the containing scope
+        (they are created in the containing scope in non-strict mode, which can also be a
+        common source of problems).
 */
 // There is no methods for determining if strict mode is on, but it is easy to make your own.
 function inStricMode() {
