@@ -131,3 +131,5 @@
 * In cryptography, a __nonce__ is an arbitrary number that can be used just once. It is similar in spirit to a nonce word, hence the name. It is often a random or pseudo-random number issued in an authentication protocol to ensure that old communications cannot be reused in replay attacks.
 
 * Single instruction, multiple data (__SIMD__) -  is a class of parallel computers. It describes computers with multiple processing elements that perform the same operation on multiple data points simultaneously.
+
+* __Dead Code Elimination__ (also known as __DCE__, dead code removal, dead code stripping, or dead code strip) is a compiler optimization to remove code which does not affect the program results.

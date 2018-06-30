@@ -84,6 +84,8 @@ c(); // transforms to if (a) { b(); } c();
 
 
 // OBJECTS
+// Prototypes are the mechanism by which JavaScript objects inherit features from one another.
+
 // key of object is always turn to string
 var myObj = {
     foo: bar,
@@ -429,6 +431,7 @@ functionObject.call(thisObject, argument...);
 
 
 // Closure
+// A closure is the combination of a function and the lexical environment within which that function was declared.
 // The context of an inner function includes the scope of the outer function.
 // An inner function enjoys that context even after the parent functions have returned.
 // Function scope work like block scope.

@@ -115,6 +115,18 @@ https://www.adtrak.co.uk/blog/the-ultimate-css-selectors-cheatsheet/
 
 https://www.w3schools.com/css/css_pseudo_elements.asp
 
+### Pseude-class selector vs Pseudo-element selector
+__Pseudo-element selector (`::`)__ - selects virtual elements.
+* `::after` - Insert something after the content of each element
+* `::before` - Insert something before the content of each element
+* `::first-letter` - Selects the first letter of each element
+* `::first-line` - Selects the first line of each element
+* `::selection` - Selects the portion of an element that is selected by a user
+
+__Pseude-class selector (`:`)__ - selects an element, state or property.
+
+`:active`, `:checked`, `:disabled`, `:empty`, `:enabled`, `:first-child`, `:first-of-type`, `:focus`, `:hover`, `:in-range`, `:invalid`, `:lang`, `:last-child`, `:last-of-type`, `:link`, `:not(selector)`, `:nth-child(n)`, `:nth-last-child(n)`, `:nth-last-of-type(n)`, `:nth-of-type(n)`, `:only-of-type`, `:only-child`, `:optional`, `:out-of-range`, `:read-only`, `:read-write`, `:required`, `:root`, `:target`, `:valid`, `:visited`
+
 
 ## Background
 * `background-color`
@@ -250,22 +262,6 @@ Within a _stacking context_, child elements are stacked according to the same ru
 
 [More about _Stacking Context_](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context)
 
-## Others
-### Unit of measurement
-`rem` - size of root `em` (which is in the `html`/`body` tag).
-`em` - size of letter '`M`'.
-
-### Pseude-class selector vs Pseudo-element selector
-__Pseudo-element selector (`::`)__ - selects virtual elements.
-* `::after` - Insert something after the content of each element
-* `::before` - Insert something before the content of each element
-* `::first-letter` - Selects the first letter of each element
-* `::first-line` - Selects the first line of each element
-* `::selection` - Selects the portion of an element that is selected by a user
-
-__Pseude-class selector (`:`)__ - selects an element, state or property.
-
-`:active`, `:checked`, `:disabled`, `:empty`, `:enabled`, `:first-child`, `:first-of-type`, `:focus`, `:hover`, `:in-range`, `:invalid`, `:lang`, `:last-child`, `:last-of-type`, `:link`, `:not(selector)`, `:nth-child(n)`, `:nth-last-child(n)`, `:nth-last-of-type(n)`, `:nth-of-type(n)`, `:only-of-type`, `:only-child`, `:optional`, `:out-of-range`, `:read-only`, `:read-write`, `:required`, `:root`, `:target`, `:valid`, `:visited`
 
 ## Custom data attributes
 The `data-*` global attributes form a class of attributes called __custom data attributes__, that allow proprietary information to be exchanged between the HTML and its DOM representation by scripts.
@@ -427,3 +423,42 @@ a {
 ```
 
 __[More new features](http://cssnext.io/features/)__
+
+
+## Others
+### Unit of measurement
+`rem` - size of root `em` (which is in the `html`/`body` tag).
+`em` - size of letter '`M`'.
+
+### `white-space`
+The `white-space` CSS property determines how whitespace inside an element is handled.
+```css
+/* Keyword values */
+white-space: normal | nowrap | pre | pre-wrap | pre-line;
+
+/* Global values */
+white-space: inherit | initial | unset;
+```
+
+Values:
+* `normal`
+
+    Sequences of whitespace are collapsed. Newline characters in the source are handled the same as other whitespace. Lines are broken as necessary to fill line boxes.
+
+* `nowrap`
+
+    Collapses whitespace as for `normal`, but suppresses (запрещать) line breaks (text wrapping) within the source.
+
+* `pre`
+
+    Sequences of whitespace are preserved. Lines are only broken at newline characters in the source and at `<br>` elements.
+
+* `pre-wrap`
+
+    Sequences of whitespace are preserved. Lines are broken at newline characters, at `<br>`, and as necessary to fill line boxes.
+
+* `pre-line`
+
+    Sequences of whitespace are collapsed. Lines are broken at newline characters, at `<br>`, and as necessary to fill line boxes.
+
+__[More about `white-space`](https://developer.mozilla.org/en-US/docs/Web/CSS/white-space)__

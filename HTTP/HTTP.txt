@@ -127,11 +127,12 @@ HTTP Messages
     into a new binary structure, a frame, allowing optimizations like compression of headers
     and multiplexing.
     There are two types of HTTP messages, requests and responses, each with its own format.
+
     * REQUESTS.
             ----------------------
-            GET /path/to/ HTTP/1.1      -> METHOD(GET) PATH(/path/to/) VERSION_OF_PROTOCOL(HTTP/1.1)
-            Host: jafar.me              -> HEADERS 
-            Accept-Language: tj         -> HEADERS
+            GET /path/to/ HTTP/1.1      -> [Request Line] - METHOD(GET) PATH(/path/to/) VERSION_OF_PROTOCOL(HTTP/1.1)
+            Host: jafar.me              -> [Headers] - HEADER_START
+            Accept-Language: tj         -> [Headers] - HEADERS_END
             ----------------------
         Requests consists of the following elements:
         * An HTTP method, usually a verb like GET, POST or a noun like OPTIONS or HEAD that
@@ -143,22 +144,25 @@ HTTP Messages
         * Optional headers that convey additional information for the servers.
         * Or a body, for some methods like POST, similar to those in responses,
             which contain the resource sent.
+
     * RESPONSES.
-            ------------------------------------------------------------------------
-            HTTP/1.1 200 OK             -> VERSION_OF_PROTOCOL STATUS_CODE STATUS_MESSAGE
-            Date: Sat, 09 Oct 2010 14:28:02 GMT             -> HEADER_START
+            -----------------------------------------------
+            HTTP/1.1 200 OK                                 -> [HTTP Status Code] - VERSION_OF_PROTOCOL STATUS_CODE STATUS_MESSAGE
+            Date: Sat, 09 Oct 2010 14:28:02 GMT             -> [Headers] - HEADER_START
             Server: Apache
             Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT
             ETag: "51142bc1-7449-479b075b2891b"
             Accept-Ranges: bytes
             Content-Length: 29769
-            Content-Type: text/html                         -> HEADERS_END
+            Content-Type: text/html                         -> [Headers] - HEADERS_END
 
-            <!DOCTYPE html... (here comes the 29769 bytes of the requested web page)
-            ------------------------------------------------------------------------
+            <!DOCTYPE html... (here comes the 29769 bytes of the requested web page)    -> [Message Body]
+            -----------------------------------------------
         Responses consist of the following elements:
             * The version of the HTTP protocol they follow.
             * A status code, indicating if the request has been successful, or not, and why.
             * A status message, a non-authoritative short description of the status code.
             * HTTP headers, like those for requests.
             * Optionally, a body containing the fetched resource.
+
+    Note: Everything which goes inside "[]" is HTTP structure parts.
