@@ -1,4 +1,4 @@
-Hypertext Transfer Protocol (HTTP) is an application-layer protocol for transmitting
+Hypertext Transfer Protocol (`HTTP`) is an application-layer protocol for transmitting
     hypermedia documents, such as HTML. It was designed for communication between web
     browsers and web servers, but it can also be used for other purposes. HTTP follows
     a classical client-server model, with a client opening a connection to make a
