@@ -149,7 +149,7 @@ PREFLIGHTED REQUESTS first send an HTTP request by the OPTIONS method to the res
             HTTP/1.1 200 OK
             Date: Mon, 01 Dec 2008 01:15:39 GMT
             Server: Apache/2.0.61 (Unix)
-            Access-Control-Allow-Origin: http://foo.example
+            Access-Control-Allow-Origin: http://foo.example                 -> main header in CORS, which tells which domain can use the resource
             Access-Control-Allow-Methods: POST, GET, OPTIONS                -> viable methods to query the resource
             Access-Control-Allow-Headers: X-PINGOTHER, Content-Type         -> confirming that these are permitted headers to be used with the actual request
             Access-Control-Max-Age: 86400       -> value in seconds for how long the response to the preflight request can be cached for without sending another preflight request

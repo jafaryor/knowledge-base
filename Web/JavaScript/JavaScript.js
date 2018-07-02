@@ -1,12 +1,10 @@
 // Code style is not about personal preference and self-expression. Always use JSLint.
 
 /* 
-    Scope has to do with the the visibility of variables. In JavaScript,
-        scope is achieved through the use of functions.
+    Scope has to do with the the visibility of variables. In JavaScript, scope is achieved through the use of functions.
     Context - is object to which the method belongs.
         When a function is called as a method of an object, this is set to the object the method is called on
-    Closure - is the combination of a function and the lexical environment
-        within which that function was declared.
+    Closure - A closure is an inner function that has access to the variables in the outer (enclosing) function’s scope chain.
         Accessing variables outside of the immediate lexical scope creates a closure.
 */
 

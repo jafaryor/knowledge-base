@@ -73,11 +73,15 @@
         y: 20
     };
 
+    var getXFunction = obj01.getX;
+
     obj02.getX = obj01.getX;
     console.log(obj02.getX()); // 2 - as "this" refers to "obj02"
 
     obj02.getY = obj01.getY;
     console.log(obj02.getY()); // undefined - as "this" refers to global context ("window")
+
+    console.log(getXFunction()); // undefined - as "this" refers to global context ("window")
 })();
 
 // Task #5
@@ -172,6 +176,145 @@
     function isInteger(x) {
         return Math.round(x) === x;
     }
+})();
+
+// Task #8 - Polyfills
+(function() {
+    Function.prototype.bind = function() {
+        var fn = this,
+            args = Array.prototype.slice.call(arguments),
+            object = args.shift();
+
+        return function() {
+            return fn.apply(object, args.concat(Array.prototype.slice.call(arguments)));
+        };
+    };
+})();
+
+// Task #9
+(function() {
+    function isPalindrome(str) {
+        // we don't consider non-word characters (",", ".", ":", ";" ...), so we just remove them
+        str = str.replace(/\W/g, '').toLowerCase();
+
+        return (
+            str ==
+            str
+                .split('')
+                .reverse()
+                .join('')
+        );
+    }
+})();
+
+// Task #10
+(function() {
+    console.log(1 + '2' + '2'); // "122"
+    console.log(1 + +'2' + '2'); // "32"
+    console.log(1 + -'1' + '2'); // "02"
+    console.log(+'1' + '1' + '2'); // "112"
+    console.log('A' - 'B' + '2'); // "NaN2"
+    console.log('A' - 'B' + 2); // NaN
+})();
+
+// Task #11
+(function() {
+    console.log(0 || 1); // 1
+    console.log(1 || 2); // 1
+    console.log(0 && 1); // 0
+    console.log(1 && 2); // 2
+    // 0 == false, (1 <= x <= +Infinity) == true
+})();
+
+// Task #12
+(function() {
+    var list = readHugeList();
+
+    var nextListItem = function() {
+        var item = list.pop();
+
+        if (item) {
+            // nextListItem(); // will cause stack overflow for lasrge list
+            setTimeout(nextListItem, 0); // stack overflow is eliminated because the event loop handles the recursion
+            /*
+                When nextListItem runs, if item is not null, the timeout function (nextListItem)
+                is pushed to the event queue and the function exits, thereby leaving the call stack clear. 
+            */
+        }
+    };
+})();
+
+// Task #13
+(function() {
+    var a = {},
+        b = { key: 'b' },
+        c = { key: 'c' };
+
+    a[b] = 123;
+    a[c] = 456;
+
+    console.log(a[b]); // 456
+    /*
+        The reason for this is as follows: When setting an object property, JavaScript will implicitly
+        stringify the parameter value. In this case, since b and c are both objects, they will both be
+        converted to "[object Object]". As a result, a[b] anda[c] are both equivalent to a["[object Object]"]
+        and can be used interchangeably. Therefore, setting or referencing a[c] is precisely the same as
+        setting or referencing a[b].
+    */
+})();
+
+// Task #14
+// ===============================================================
+var length = 10; // also available as: this.length, window.length, length
+function fn() {
+    console.log(this.length);
+}
+
+var obj = {
+    length: 5,
+    method: function(fn) {
+        fn();
+        arguments[0]();
+    }
+};
+
+obj.method(fn, 1);
+// 10 - because fn() belongs to global scope (window)
+// 2 - because fn() becomes part of arguments object, which has prop length === 2
+// ===============================================================
+
+// Taks #15
+(function() {
+    (function() {
+        try {
+            throw new Error();
+        } catch (x) {
+            var x = 1,
+                y = 2;
+            console.log(x); // 1
+        }
+
+        console.log(x); // undefined - However var is hoisted, the error’s identifier (x) is only visible inside the catch block
+        console.log(y); // 2 - as var was hoisted
+    })();
+})();
+
+// Task #16
+(function() {
+    var x = 21;
+    var girl = function() {
+        ++x; // equivalent to "++undefined"
+        console.log(x); // local x is hiosted, but not initialized. So "undefined" was logged
+        var x = 20;
+        console.log(x); // 20
+    };
+
+    girl();
+})();
+
+// Task #17
+(function() {
+    console.log(typeof typeof 1); // -> typeof "number" -> "string"
 })();
 
 // More interview questions: https://github.com/ganqqwerty/123-Essential-JavaScript-Interview-Questions

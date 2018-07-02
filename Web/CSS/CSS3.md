@@ -427,8 +427,14 @@ __[More new features](http://cssnext.io/features/)__
 
 ## Others
 ### Unit of measurement
-`rem` - size of root `em` (which is in the `html`/`body` tag).
-`em` - size of letter '`M`'.
+* `in` - inches
+* `mm` - millimeters
+* `cm` - centimeters
+* `em` - size of letter '`M`'.
+* `rem` - size of root `em` (which is in the `html`/`body` tag). 
+* `pc` - picas (1 pc = 12 pt = 1/6th of an inch)
+* `pt` - points (1 pt = 1/72nd of an inch)
+* `px` - pixels (1 px = 1/96th of an inch)
 
 ### `white-space`
 The `white-space` CSS property determines how whitespace inside an element is handled.
