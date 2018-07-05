@@ -43,58 +43,62 @@ Patterns are not an exact solution. It’s important that we remember the role o
     patterns can be best used. This can ensure that pattern-based solutions continue
     to become more robust than ad-hoc solutions may be.
 
-**ANTI-PATTERN** is a bad design that is worthy of documenting. Examples
-    of anti-patterns in JavaScript are the following:
-* Polluting the global namespace by defining a large number of variables
-    in the global context
-* Passing strings rather than functions to either setTimeout or setInterval as this
-    triggers the use of eval() internally.
+**ANTI-PATTERN** is a bad design that is worthy of documenting. Examples of anti-patterns in JavaScript are the following:
+* Polluting the global namespace by defining a large number of variables in the global context
+* Passing strings rather than functions to either `setTimeout` or `setInterval` as this triggers the use of `eval()` internally.
 * Modifying the Object class prototype (this is a particularly bad anti-pattern)
 * Using JavaScript in an inline form as this is inflexible
-* The use of document.write where native DOM alternatives such as document.createElement
-    are more appropriate. document.write has been grossly misused over
+* The use of `document.write` where native DOM alternatives such as `document.createElement`
+    are more appropriate. `document.write` has been grossly misused over
     the years and has quite a few disadvantages including that if it's executed after the
-    page has been loaded it can actually overwrite the page you're on, whilst document.createElement
+    page has been loaded it can actually overwrite the page you're on, whilst `document.createElement`
     does not. You can see here for a live example of this in action.
     It also doesn't work with XHTML which is another reason opting for more DOMfriendly
-    methods such as document.createElement is favorable.
+    methods such as `document.createElement` is favorable.
 
 **Categories of Design Patterns:**
-* Creational Design Pattern -  focus on handling object creation mechanisms where objects
+* `Creational Design Pattern` -  focus on handling object creation mechanisms where objects
     are created in a manner suitable for the situation you are working in. The basic approach
     to object creation might otherwise lead to added complexity in a project whilst these
     patterns aim to solve this problem by controllingthe creation process.
-    [ Constructor, Factory, Abstract, Prototype, Singleton, Builder ]
-* Structural Design Patterns - are concerned with object composition and typically identify simple
+    [ `Constructor`, `Factory`, `Abstract`, `Prototype`, `Singleton`, `Builder` ]
+* `Structural Design Patterns` - are concerned with object composition and typically identify simple
     ways to realize relationships between different objects. They help ensure that when one
     part of a system changes, the entire structure of the system doesn't need to do the same.
     They also assist in recasting parts of the system which don't fit a particular purpose
     into those that do.
-    [  Decorator, Facade, Flyweight, Adapter, Proxy ]
-* Behavioral Design Patterns - focus on improving or streamlining the communication between
+    [  `Decorator`, `Facade`, `Flyweight`, `Adapter`, `Proxy` ]
+* `Behavioral Design Patterns` - focus on improving or streamlining the communication between
     disparate objects in a system.
-    [ Iterator, Mediator, Observer, Visitor ]
+    [ `Iterator`, `Mediator`, `Observer`, `Visitor` ]
 
-=================================================================================
+## Rules of thumb:
+* Sometimes creational patterns are competitors: there are cases when either `Prototype` or `Abstract Factory` could be used profitably. At other times they are complementary: `Abstract Factory` might store a set of `Prototypes` from which to clone and return product objects, Builder can use one of the other patterns to implement which components get built. `Abstract Factory`, `Builder`, and `Prototype` can use `Singleton` in their implementation.
 
-DESIGN PATTERNS LIST:
-- [x] [CONSTRUCTOR PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Constructor.pattern.js)
-- [x] [SINGLETON PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Singleton.pattern.js)
-- [x] [MODULE PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Module.pattern.js)
-- [x] [OBSERVER PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Observer.pattern.js)
-- [x] [MEDIATOR PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Mediator.pattern.js)
-- [x] [PROTOTYPE PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Prototype.pattern.js)
-- [x] [COMMAND PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Command.pattern.js)
-- [x] [FACADE PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Facade.pattern.js)
-- [x] [FACTORY PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Factory.pattern.js)
-- [x] [MIXIN PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Mixin.pattern.js)
-- [x] [DECORATOR PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Decorator.pattern.js)
-- [x] [FLYWEIGHT PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Flyweight.pattern.js)
-- [x] [NAMESPACE PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/Namespace.pattern.js)
-- [x] [MVC PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/MVC.pattern.txt)
-- [x] [MVP PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/MVP.pattern.txt)
-- [x] [MVVM PATTERN](https://github.com/jafaryor/Notes/blob/master/Design%20Patterns/MVVM.pattern.txt)
+* `Abstract Factory`, `Builder`, and `Prototype` define a factory object that's responsible for knowing and creating the class of product objects, and make it a parameter of the system. `Abstract Factory` has the factory object producing objects of several classes. `Builder` has the factory object building a complex product incrementally using a correspondingly complex protocol. `Prototype` has the factory object (aka prototype) building a product by copying a prototype object.
 
-=================================================================================
+* `Abstract Factory` classes are often implemented with `Factory Methods`, but they can also be implemented using `Prototype`.
+
+* `Abstract Factory` can be used as an alternative to `Facade` to hide platform-specific classes.
+
+* `Builder` focuses on constructing a complex object step by step. `Abstract Factory` emphasizes a family of product objects (either simple or complex). `Builder` returns the product as a final step, but as far as the `Abstract Factory` is concerned, the product gets returned immediately.
+
+* `Builder` is to creation as `Strategy` is to algorithm.
+
+* `Builder` often builds a `Composite`.
+
+* `Factory Methods` are usually called within Template methods.
+
+* `Factory Method`: creation through inheritance. `Prototype`: creation through delegation.
+
+* Often, designs start out using `Factory Method` (less complicated, more customizable, subclasses proliferate) and evolve toward `Abstract Factory`, `Prototype`, or `Builder` (more flexible, more complex) as the designer discovers where more flexibility is needed.
+
+* `Prototype` doesn't require subclassing, but it does require an Initialize operation. `Factory Method` requires subclassing, but doesn't require Initialize.
+
+* Designs that make heavy use of the `Composite` and `Decorator` patterns often can benefit from `Prototype` as well.
+
+## Design Pattern List:
 ![Image of Overview Table](./images/Overview01.png)
 ![Image of Overview Table](./images/Overview02.png)
+
+### [Great Resource about Design Patterns](https://sourcemaking.com/design_patterns)
