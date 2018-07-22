@@ -19,4 +19,10 @@ The HTTP protocol is based on a request/response pattern, which means that the s
         * Server can push message to Client only as long as client is connected to server. So if connection was lost, the client has to go and establish a new WebSocket connection again.
         * Server resource consuming.
 
-3. Another potential answer could be `Server-sent DOM Events`. Which is method of continuously sending data from a server to the browser, rather than repeatedly requesting it. However, this HTML5 feature is not supported by Microsoft Internet Explorer, thus making it less attractive solution.
+3. Another potential answer could be `Server-sent DOM Events`. Which is method of continuously sending data from a server to the browser, rather than repeatedly requesting it. However, this HTML5 feature is not supported by IE, thus making it less attractive solution. There is a standardized HTML5 API called `EventSource`. With SSE, data is encoded as `text/event-stream` in the header.
+
+4. `HTTP/2 Server Push`: Another standardised mechanism for pushing from server to client. These are known as "pushed responses" and the browser may cache these.
+
+5. `HTTP Streaming`: the server is configured to hold on to a specific request from a client and keep the response open so that it can push data through it. When updates pertaining to the request are available server-side, the server sends a response through the request-response channel, and only closes the connection when explicitly told to do so. In such a manner, a client can listen for updates from the server and receive them instantly with none of the overhead associated with HTTP headers and the opening/closing of connections. It also eliminates the need for polling.
+
+    To achieve an indefinite response, the server must respond to client requests by specifying Transfer Encoding: chunked in the header. This sets up a persistent connection from server to client and allows the server to send response data in chunks of newline-delimited strings. These chunks of data can then be received and processed on-the-fly by the client.
