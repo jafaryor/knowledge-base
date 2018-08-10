@@ -317,4 +317,39 @@ obj.method(fn, 1);
     console.log(typeof typeof 1); // -> typeof "number" -> "string"
 })();
 
+// Task #18
+(function() {
+    (function() {
+        foo(); // will call foo function which is below
+
+        foo = function() {
+            // redefine global foo function
+            console.log(1);
+        };
+    })();
+
+    // will
+    function foo() {
+        console.log(2);
+    }
+
+    foo(); // 2, 1
+})();
+
+// Task #19
+(function() {
+    var obj = {
+        a: 1
+    };
+
+    (function(obj) {
+        // we will create a new object, but doesn't modify the current one
+        obj = {
+            a: 2
+        };
+    })(obj);
+
+    console.log(obj.a); // 1
+})();
+
 // More interview questions: https://github.com/ganqqwerty/123-Essential-JavaScript-Interview-Questions
