@@ -1,4 +1,10 @@
 # Tail Call Optimization (TCO)
+
+### Recursion Types:
+* __Linear Recursive__ function is a function that only makes a single call to itself each time the function runs
+*  In __Tail Recursion__, the recursive call is the last thing the function does. Often, the value of the recursive call is returned. As such, tail recursive functions can often be easily implemented in an iterative manner; by taking out the recursive call and replacing it with a loop, the same effect can generally be achieved. In fact, a good compiler can recognize tail recursion and convert it to iteration in order to optimize the performance of the code.
+* __Binary Recursive__. Some recursive functions don't just have one call to themself, they have two (or more). Functions with two recursive calls are referred to as binary recursive functions.
+
 When a function call is made from inside another function, a second stack frame is allocated to separately manage the variables/state of that other function invocation. Not only does this allocation cost some processing time, but it also takes up some extra memory.
 
 JavaScript engines have to set an arbitrary limit to prevent such programming techniques from crashing by running the browser and device out of memory. That's why we get the frustrating "__RangeError: Maximum call stack size exceeded__" thrown if the limit is hit.
