@@ -352,4 +352,20 @@ obj.method(fn, 1);
     console.log(obj.a); // 1
 })();
 
+// Task #20
+(function() {
+    var x = 1; // it will throw error if let is used
+
+    function x() {}
+
+    console.log(x); // 1
+
+    /* because it transform into
+    var x;
+    function x() {}
+    x = 1;
+    console.log(x);
+    */
+})();
+
 // More interview questions: https://github.com/ganqqwerty/123-Essential-JavaScript-Interview-Questions
