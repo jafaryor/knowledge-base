@@ -1,4 +1,4 @@
-# F.I.R.S.T Principles of Unit Testing
+## `F.I.R.S.T` Principles of Unit Testing
 * ### Fast
     * A developer should not hesitate to run the tests as they are slow.
     * All of these including setup, the actual test and tear down should execute really fast (milliseconds) as you may have thousands of tests in your entire project.
@@ -56,15 +56,15 @@ int foo (int x, int y)
 }
 ```
 Assume this function is a part of some bigger program and this program was run with some test suite.
-* If during this execution function 'foo' was called at least once, then function coverage for this function is satisfied.
-* Statement coverage for this function will be satisfied if it was called e.g. as foo(1,1), as in this case, every line in the function is executed including z = x;.
-* Tests calling foo(1,1) and foo(0,1) will satisfy branch coverage because, in the first case, both if conditions are met and z = x; is executed, while in the second case, the first condition (x>0) is not satisfied, which prevents executing z = x;.
-* Condition coverage can be satisfied with tests that call foo(1,0) and foo(0,1). These are necessary because in the first cases, (x>0) evaluates to true, while in the second, it evaluates false. At the same time, the first case makes (y>0) false, while the second makes it true.
+* If during this execution function `foo` was called at least once, then function coverage for this function is satisfied.
+* Statement coverage for this function will be satisfied if it was called e.g. as `foo(1,1)`, as in this case, every line in the function is executed including `z = x`;.
+* Tests calling `foo(1,1)` and `foo(0,1)` will satisfy branch coverage because, in the first case, both if conditions are met and `z = x`; is executed, while in the second case, the first condition (`x>0`) is not satisfied, which prevents executing `z = x`;.
+* Condition coverage can be satisfied with tests that call `foo(1,0)` and `foo(0,1)`. These are necessary because in the first cases, (`x>0`) evaluates to `true`, while in the second, it evaluates `false`. At the same time, the first case makes (`y>0`) `false`, while the second makes it `true`.
 
 __Other coverage criteria__
 
 There are further coverage criteria, which are used less often:
-* __Linear Code Sequence and Jump__ (__LCSAJ__) coverage a.k.a. __JJ-Path__ coverage – has every LCSAJ/JJ-path been executed?
+* __Linear Code Sequence and Jump__ (__LCSAJ__) coverage a.k.a. __JJ-Path__ coverage – has every `LCSAJ`/`JJ`-path been executed?
 * __Path coverage__ – Has every possible route through a given part of the code been executed?
 * __Entry/exit coverage__ – Has every possible call and return of the function been executed?
 * __Loop coverage__ – Has every possible loop been executed zero times, once, and more than once?

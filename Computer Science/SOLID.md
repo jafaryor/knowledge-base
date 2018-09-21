@@ -1,24 +1,31 @@
-__S.O.L.I.D__ is an acronym for the first five object-oriented design(OOD) principles by
-    Robert C. Martin, popularly known as Uncle Bob.
+## `S.O.L.I.D`
 
-S.O.L.I.D stands for:
-When expanded the acronyms might seem complicated, but they are pretty simple to grasp.
-* S - Single-responsiblity principle
-    A class should have one and only one reason to change, meaning that a class
-    should have only one job.
-* O - Open-closed principle
+__`S.O.L.I.D`__ is an acronym for the first five object-oriented design(OOD) principles by Robert C. Martin, popularly known as Uncle Bob.
+
+`S.O.L.I.D` stands for:
+* __S__ - _Single-responsiblity principle_
+
+    A class should have one and only one reason to change, meaning that a class should have only one job.
+
+* __O__ - _Open-closed principle_
+    
     Objects or entities should be open for extension, but closed for modification.
-* L - Liskov substitution principle
-    Let q(x) be a property provable about objects of x of type T. Then q(y) should
-    be provable for objects y of type S where S is a subtype of T.
+
+* __L__ - _Liskov substitution principle_
+    
+    Let `q(x)` be a property provable about objects of `x` of type `T`. Then `q(y)` should be provable for objects `y` of type `S` where `S` is a subtype of `T`.
+    
     Every subclass/derived class should be substitutable for their base/parent class.
-* I - Interface segregation principle
+
+* __I__ - _Interface segregation principle_
+    
     A client should never be forced to implement an interface that it doesn't use
     or clients shouldn't be forced to depend on methods they do not use.
-* D - Dependency Inversion Principle
-    Entities must depend on abstractions not on concretions. It states that the high
-    level module must not depend on the low level module, but they should depend
-    on abstractions.
+
+* __D__ - _Dependency Inversion Principle_
+    
+    Entities must depend on abstractions not on concretions. It states that the high level module must not depend on the low level module, but they should depend on abstractions.
+
     Example:
     ```java
         class PasswordReminder {

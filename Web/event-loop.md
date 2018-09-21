@@ -1,7 +1,7 @@
 ## Runtime concepts
 JavaScript has a single __Call Stack__ (as JS is single-threaded language) in which it keeps track of what function we’re currently executing and what function is to be executed after that.
 
-Every time you call a setTimeout function or you do some async operation — it is added to the __Event Table__. This is a data structure which knows that a certain function should be triggered after a certain event. Once that event occurs (timeout, click, mouse move) it sends a notice. Bear in mind that the Event Table does not execute functions and does not add them to the call stack on it’s own. It’s sole purpose is to keep track of events and send them to the Event Queue.
+Every time you call a `setTimeout` function or you do some async operation — it is added to the __Event Table__. This is a data structure which knows that a certain function should be triggered after a certain event. Once that event occurs (timeout, click, mouse move) it sends a notice. Bear in mind that the Event Table does not execute functions and does not add them to the call stack on it’s own. It’s sole purpose is to keep track of events and send them to the Event Queue.
 
 The __Event Queue__ is a data structure similar to the stack — again you add items to the back but can only remove them from the front. It kind of stores the correct order in which the functions should be executed. It receives the function calls from the Event Table, but it needs to somehow send them to the Call Stack? This is where the Event Loop comes in.
 

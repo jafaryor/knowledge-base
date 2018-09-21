@@ -85,7 +85,6 @@
 })();
 
 // Task #5
-
 (function() {
     var obj = {
         do: function() {

@@ -1,4 +1,4 @@
-# Tail Call Optimization (TCO)
+## Tail Call Optimization (`TCO`)
 
 ### Recursion Types:
 * __Linear Recursive__ function is a function that only makes a single call to itself each time the function runs
