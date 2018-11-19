@@ -1,6 +1,9 @@
 # !/usr/bin/env python3
 
 import platform
+import json
+import pickle
+from functools import partial
 
 print('This is Python version {}'.format(platform.python_version()))
 
@@ -30,6 +33,18 @@ myList.append(4)
 
 for value in myList:
     print(value)
+
+sentence = "the quick brown fox jumps over the lazy dog"
+words = sentence.split()
+word_lengths = []
+
+for word in words:
+    if word != "the":
+        word_lengths.append(len(word))
+# or
+word_lengths = [len(word) for word in words if word != "the"]
+
+print(words)
 
 
 # Operators
@@ -104,6 +119,33 @@ else:
 def sum_two_numbers(a, b):
     return a + b
 
+def foo(first, *therest):
+    print("First: %s" % first)
+    print("And all the rest... %s" % list(therest))
+    # *therest receives the rest of arguments as a list
+
+# It is also possible to send functions arguments by keyword,
+# so that the order of the argument does not matter,
+def bar(first, second, third, **options):
+    if options.get("action") == "sum":
+        print("The sum is: %d" %(first + second + third))
+
+    if options.get("number") == "first":
+        return first
+
+result = bar(1, 2, 3, action = "sum", number = "first")
+print("Result: %d" %(result))
+
+# Partial functions
+# Partial functionns allow us to fix a certain number of arguments
+# of a function and generate a new function
+# from functools import partial
+def multiply(x,y):
+    return x * y
+# create a new function that multiplies by 2
+dbl = partial(multiply,2)
+print(dbl(4))
+
 
 # Classes and Objects
 # Classes are essentially a template to create your objects.
@@ -131,8 +173,46 @@ del phonebook["John"]           # remove
 phonebook.pop("Jill")           # also remove
 
 
-# Modules and Packages
-# A module is a piece of software that has a specific functionality.
+# Sets
+# Sets are lists with no duplicate entries.
+a = set(["Jake", "John", "Eric"])
+print(a)
+b = set(["John", "Jill"])
 
+# set inetersection
+print(a.intersection(b))
+# set symmetric difference
+print(a.symmetric_difference(b))
+print(b.symmetric_difference(a))
+# difference
+print(a.difference(b))
+print(b.difference(a))
+# union
+print(a.union(b))
+
+
+# Serialization
+# Python provides built-in JSON libraries to encode and decode JSON.
+# import json
+json_string = json.dumps([1, 2, 3, "a", "b", "c"])
+print(json.loads(json_string))
+
+# Python supports a Python proprietary data serialization method
+# called pickle (and a faster alternative called cPickle).
+pickled_string = pickle.dumps([1, 2, 3, "a", "b", "c"])
+print(pickle.loads(pickled_string))
+
+
+# Decorators
+def repeater(old_function):
+    def new_function(*args, **kwds): # See learnpython.org/page/Multiple%20Function%20Arguments for how *args and **kwds works
+        old_function(*args, **kwds) # we run the old function
+        old_function(*args, **kwds) # we do it twice
+    return new_function # we have to return the new_function, or it wouldn't reassign it to the value
+
+@repeater # calls the function twice
+def add(num1, num2):
+    print(num1 + num2)
+add(2, 3) # called twice
 
 

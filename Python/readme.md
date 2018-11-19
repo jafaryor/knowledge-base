@@ -202,9 +202,9 @@ bmi[bmi > 23]
 ```
 
 ### Pandas
-`Pandas` is a high-level data manipulation tool developed by Wes McKinney. It is built on the Numpy package and its key data structure is called the DataFrame. DataFrames allow you to store and manipulate tabular data in rows of observations and columns of variables.
+`Pandas` is a high-level data manipulation tool developed by Wes McKinney. It is built on the Numpy package and its key data structure is called the `DataFrame`. `DataFrame`s allow you to store and manipulate tabular data in rows of observations and columns of variables.
 
-There are several ways to create a DataFrame. One way way is to use a dictionary. For example:
+There are several ways to create a `DataFrame`. One way way is to use a dictionary. For example:
 ```python
 dict = {
         "country": ["Brazil", "Russia", "India", "China", "South Africa"],
@@ -224,7 +224,7 @@ print(brics)
 # 4   1.221   Pretoria  South Africa       52.98
 ```
 
-Another way to create a DataFrame is by importing a csv file using Pandas. Now, the csv `cars.csv` is stored and can be imported using `pd.read_csv`:
+Another way to create a `DataFrame` is by importing a csv file using Pandas. Now, the csv `cars.csv` is stored and can be imported using `pd.read_csv`:
 ```python
 # Import pandas as pd
 import pandas as pd
@@ -232,3 +232,103 @@ import pandas as pd
 # Import the cars.csv data: cars
 cars = pd.read_csv('cars.csv')
 ```
+
+There are several ways to index a `Pandas` `DataFrame`. One of the easiest ways to do this is by using square bracket notation.
+
+In the example below, you can use square brackets to select one column of the cars `DataFrame`. You can either use a single bracket or a double bracket. The single bracket with output a `Pandas` `Series`, while a double bracket will output a `Pandas` `DataFrame`.
+```python
+# Import pandas and cars.csv
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out country column as Pandas Series
+print(cars['cars_per_cap'])
+
+# Print out country column as Pandas DataFrame
+print(cars[['cars_per_cap']])
+
+# Print out DataFrame with country and drives_right columns
+print(cars[['cars_per_cap', 'country']])
+```
+
+Square brackets can also be used to access observations (rows) from a `DataFrame`.
+```python
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out first 4 observations
+print(cars[0:4])
+
+# Print out fifth, sixth, and seventh observation
+print(cars[4:6])
+```
+
+You can also use `loc` and `iloc` to perform just about any data selection operation. `loc` is label-based, which means that you have to specify rows and columns based on their row and column labels. `iloc` is integer index based, so you have to specify rows and columns by their integer index like you did in the previous exercise.
+```python
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out observation for Japan
+print(cars.iloc[2])
+
+# Print out observations for Australia and Egypt
+print(cars.loc[['AUS', 'EG']])
+```
+
+### Generators
+Generators are very easy to implement, but a bit difficult to understand.
+
+Generators are used to create iterators, but with a different approach. Generators are simple functions which return an iterable set of items, one at a time, in a special way.
+
+When an iteration over a set of item starts using the for statement, the generator is run. Once the generator's function code reaches a `yield` statement, the generator yields its execution back to the for loop, returning a new value from the set. The generator function can generate as many values (possibly infinite) as it wants, yielding each one in its turn.
+
+Here is a simple example of a generator function which returns 7 random integers:
+```python
+import random
+
+def lottery():
+    # returns 6 numbers between 1 and 40
+    for i in range(6):
+        yield random.randint(1, 40)
+
+    # returns a 7th number between 1 and 15
+    yield random.randint(1,15)
+
+for random_number in lottery():
+    print("And the next number is... %d!" %(random_number))
+```
+
+### Closure
+A Closure is a function object that remembers values in enclosing scopes even if they are not present in memory. It's very important to note that the nested functions can access the variables of the enclosing scope. However, at least in python, they are only readonly. However, one can use the "nonlocal" keyword explicitly with these variables in order to modify them.
+
+### Decorators
+Decorators allow you to make simple modifications to callable
+objects like functions, methods, or classes.
+```python
+@decorator
+def functions(arg):
+    return "value"
+
+# is equal to:
+
+def function(arg):
+    return "value"
+function = decorator(function)
+```
+As you may have seen, a decorator is just another function which takes a functions and returns one.
+
+### Code Introspection
+Code introspection is the ability to examine classes, functions and keywords to know what they are, what they do and what they know. Python provides several functions and utilities for code introspection.
+* `help()` # to get reference about passed argument
+* `dir()` 
+* `hasattr()` 
+* `id()` 
+* `type()` 
+* `repr()` 
+* `callable()` 
+* `issubclass()` 
+* `isinstance()` 
+* `__doc__ `
+* `__name__`
