@@ -1,5 +1,5 @@
 # Critical Rendering Path
-A popular metric commonly used in performance measurement and evaluation, is the total page load time.
+The order in which resources must be loaded for maximum efficiency is called the __Critical Rendering Path__.
 
 ### How does the browser rendering engine work?
 In order to render content the browser has to go through a series of steps:
@@ -99,3 +99,5 @@ More:
 > https://developers.google.com/speed/docs/insights/mobile
 
 ## 4. Server-Side Rendering
+
+[More about CRP](https://bitsofco.de/understanding-the-critical-rendering-path/)
