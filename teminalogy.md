@@ -85,7 +85,7 @@
 * __in-place algorithm__ - an algorithm which transforms input using no auxiliary data structure. _In-place algorithm_ updates input sequence only through replacement or swapping of elements. An algorithm which is not in-place is sometimes called __not-in-place__ or __out-of-place__.
 
 * __Sorting stability__ means that records with the same key retain their relative order before and after the sort.
-    
+
     Stable Sorting Algorithms:
     * Insertion Sort
     * Merge Sort
@@ -133,3 +133,7 @@
 * Single instruction, multiple data (__SIMD__) -  is a class of parallel computers. It describes computers with multiple processing elements that perform the same operation on multiple data points simultaneously.
 
 * __Dead Code Elimination__ (also known as __DCE__, dead code removal, dead code stripping, or dead code strip) is a compiler optimization to remove code which does not affect the program results.
+
+* __Emulators__ focus on recreating the behavior of a system, with no regard for how the system functions internally. __Simulators__ focus on modeling the components of a system.
+
+* __lie-fi__ - When your phone or tablet indicates that you are connected to a wireless network, however you are still unable to load webpages or use any internet services with your device.

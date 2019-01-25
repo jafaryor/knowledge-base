@@ -8,6 +8,8 @@
 ## `async / await`
 `async/await` allows you to write asynchronous code based on Promises, in a manner that allows you to reuse your synchronous code writing skills. By doing this, we can write code that is far cleaner and more understandable than our chained promise example.
 
+> In short: Async and Await is just a Syntactic Sugar For Promises. [More](https://medium.com/@matt.mcalister93/async-and-await-syntactic-sugar-for-promises-in-javascript-aee7ace36d14)
+
 An `async` function always returns a Promise. The Promise resolves to value that is returned by the function.
 
 Asynchronous functions can use the `await` operator in their bodies. The `await` operator can be attached to any variable. If that variable is not a Promise, the value returned for the `await` operator is the same as the variable.

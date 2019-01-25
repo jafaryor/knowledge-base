@@ -47,8 +47,45 @@ __Real User Monitoring__ (`RUM`) relies on JavaScript APIs in the browser to gat
 * _Resource Timing_ collects performance metrics for document-dependent resources. Stuff like style sheets, scripts, images, et cetera.
 
 
-[Performance Tools](https://developers.google.com/web/fundamentals/performance/speed-tools/)
+[Performance Measuring Tools](https://developers.google.com/web/fundamentals/performance/speed-tools/)
 
+### APIs used to measure the performance:
+* [`PerformanceObserver`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver) - interface is used to observe performance measurement events and be notified of new `PerformanceEntry`s as they are recorded in the browser's performance timeline.
 
+  > This feature is available in Web Workers.
 
+* [`DOMHighResTimeStamp`](https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp) - type is a `double` and is used to store a time value. The value could be a discrete point in time or the difference in time between two discrete points in time.
 
+> You must ensure your `PerformanceObserver` is registered in the `<head>` of your document before any stylesheets, so it runs before _First Paint_ happens.
+
+Once you have the data for a particular performance event, you can send it to whatever analytics service (_Google Analytics_) you use to capture the metric for the current user.
+
+The [RAIL performance model](https://developers.google.com/web/fundamentals/performance/rail) teaches us that in order for a user interface to feel smooth, it should respond within `100ms` of user input.
+
+| The Experience | The Metric |
+| - | - |
+| Is it happening? | First Paint (`FP`) / First Contentful Paint (`FCP`) |
+| Is it useful?	| First Meaningful Paint (`FMP`) / Hero Element Timing |
+| Is it usable? |	Time to Interactive (`TTI`) |
+| Is it delightful? |	Long Tasks (technically the absence of long tasks) |
+
+![perf-metrics-load-timeline](../images/perf-metrics-load-timeline.png)
+
+### Optimizing performance
+* __Optimizing `FP`/`FCP`__:
+  * [`HTTP/2` Server Push](https://developers.google.com/web/fundamentals/performance/http2/#server_push)
+  * [App Shell Pattern](https://developers.google.com/web/updates/2015/11/app-shell)
+
+* __Optimizing `FMP`/`TTI`__:
+  * Once you've identified the most critical UI elements on your page (the _hero elements_), you should ensure that your initial script load contains just the code needed to get those elements rendered and make them interactive.
+  * Try as hard as possible to minimize the time between `FMP` and `TTI`.
+  * One of the most frustrating experiences for a user is tapping on an element and then having nothing happen.
+
+* __Preventing long tasks__:
+
+  * Split up your code and prioritizing the order in which it's loaded.
+  * [`requestIdleCallback`](https://developers.google.com/web/updates/2015/08/using-requestidlecallback) will schedule work when there is free time at the end of a frame, or when the user is inactive. This means that there’s an opportunity to do your work without getting in the user’s way. You can postpone analytics task.
+
+    Scheduling non-essential work yourself is very difficult to do. It’s impossible to figure out exactly how much frame time remains
+
+> Test with low bandwidth and high latency
