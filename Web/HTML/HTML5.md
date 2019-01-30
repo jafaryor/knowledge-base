@@ -2,7 +2,7 @@
 The HTML `<script>` element is used to embed or reference executable code; this is typically used to embed or refer to JavaScript code.
 
 ### Attributes:
-* `async` = `false` - a Boolean attribute indicating that the browser should, if possible, execute the script asynchronously.
+* `async` = `false` - a Boolean attribute indicating that the browser should, if possible, execute the script asynchronously. The browser downloads the script asynchronously while it continues to parse the HTML document. When the script finishes downloading, parsing is blocked while the script executes.
 
     Dynamically inserted scripts (using `document.createElement`) execute asynchronously by default, so to turn on synchronous execution (i.e. scripts execute in the order they were inserted) set `async=false`.
 

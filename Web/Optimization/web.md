@@ -249,3 +249,33 @@ Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify
 [Article about how to convert GIF to Video](https://rigor.com/blog/2015/12/optimizing-animated-gifs-with-html5-video)
 
 [Step-by-step Instructions](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/)
+
+### PRPL
+`PRPL` is a pattern that optimizes for interactivity through aggressive code-splitting and caching.
+
+`PRPL` stands for:
+* __Push__ critical resources for the initial URL route using <link preload> and http/2.
+* __Render__ initial route.
+* __Pre-cache__ remaining routes.
+* __Lazy-load__ and create remaining routes on demand.
+
+### Progressive Bootstrapping
+Progressive rendering and bootstraping means you send a functionally viable (though minimal) view in the HTML, including JS and CSS. As more recources arrive, the app progressively "unlocks" features.
+
+### Resource Hints
+You can use Resource Hints like to perform a DNS lookup for domains hosting third-party scripts. When the request for them is finally made, time can be saved as the DNS lookup has already been carried out.
+```html
+<link rel="dns-prefetch" href="http://example.com">
+```
+If the third-party domain you are referencing uses HTTPS, you may also consider as this will both perform the DNS lookup and resolve TCP round-trips and handle TLS negotiations. These other steps can be very slow as they involve looking at SSL certificates for verification, so consider Resource Hints seriously if you find third-party setup time to be an issue.
+```html
+<link rel="preconnect" href="https://cdn.example.com">
+```
+
+### Fonts
+Preload fonts:
+```html
+<link rel="preload" href="/fonts/awesome-font.woff2" as="font">
+```
+
+Use `font-display` property.
