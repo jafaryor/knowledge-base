@@ -227,17 +227,7 @@ The [RAIL performance model](https://developers.google.com/web/fundamentals/perf
 
   Image resources for `<img>`, `<picture>`, srcset and SVGs can all take advantage of this optimization.
 
-* __GIF vs Video__
-
-  Delivering the same file as an MP4 video can often shave _80%_ or more off your file-size. Not only do GIFs often waste significant bandwidth, but they take longer to load, include fewer colors and generally offer sub-part user experiences.
-
-  [The Book of GIF](https://rigor.com/wp-content/uploads/2017/03/TheBookofGIFPDF.pdf)
-
-  Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify), [GIFV](https://blog.imgur.com//2014/10/09/introducing-gifv/)
-
-  [Article about how to convert GIF to Video](https://rigor.com/blog/2015/12/optimizing-animated-gifs-with-html5-video)
-
-  [Read More](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/automating-image-optimization/)
+[Read More](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/automating-image-optimization/)
 
 ### Image decode and resize costs
 
@@ -248,3 +238,44 @@ The [RAIL performance model](https://developers.google.com/web/fundamentals/perf
   > Omitting the `width` or `height` attributes on an image can also negatively impact performance. Without them, a browser assigns a smaller placeholder region for the image until sufficient bytes have arrived for it to know the correct dimensions. At that point, the document layout must be updated in what can be a costly step called reflow.
 
 ### Replace Animated GIFs with Video
+Delivering the same file as an MP4 video can often shave _80%_ or more off your file-size. Not only do GIFs often waste significant bandwidth, but they take longer to load, include fewer colors and generally offer sub-part user experiences.
+
+GIFs (and other animated image formats) are suboptimal because an image decode is incurred for every frame in the image, which can contribute to jank. This makes sense, because each frame in a GIF is simply another image.
+
+[The Book of GIF](https://rigor.com/wp-content/uploads/2017/03/TheBookofGIFPDF.pdf)
+
+Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify), [GIFV](https://blog.imgur.com//2014/10/09/introducing-gifv/)
+
+[Article about how to convert GIF to Video](https://rigor.com/blog/2015/12/optimizing-animated-gifs-with-html5-video)
+
+[Step-by-step Instructions](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/)
+
+### PRPL
+`PRPL` is a pattern that optimizes for interactivity through aggressive code-splitting and caching.
+
+`PRPL` stands for:
+* __Push__ critical resources for the initial URL route using <link preload> and http/2.
+* __Render__ initial route.
+* __Pre-cache__ remaining routes.
+* __Lazy-load__ and create remaining routes on demand.
+
+### Progressive Bootstrapping
+Progressive rendering and bootstraping means you send a functionally viable (though minimal) view in the HTML, including JS and CSS. As more recources arrive, the app progressively "unlocks" features.
+
+### Resource Hints
+You can use Resource Hints like to perform a DNS lookup for domains hosting third-party scripts. When the request for them is finally made, time can be saved as the DNS lookup has already been carried out.
+```html
+<link rel="dns-prefetch" href="http://example.com">
+```
+If the third-party domain you are referencing uses HTTPS, you may also consider as this will both perform the DNS lookup and resolve TCP round-trips and handle TLS negotiations. These other steps can be very slow as they involve looking at SSL certificates for verification, so consider Resource Hints seriously if you find third-party setup time to be an issue.
+```html
+<link rel="preconnect" href="https://cdn.example.com">
+```
+
+### Fonts
+Preload fonts:
+```html
+<link rel="preload" href="/fonts/awesome-font.woff2" as="font">
+```
+
+Use `font-display` property.
