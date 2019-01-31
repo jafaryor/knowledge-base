@@ -137,3 +137,5 @@
 * __Emulators__ focus on recreating the behavior of a system, with no regard for how the system functions internally. __Simulators__ focus on modeling the components of a system.
 
 * __lie-fi__ - When your phone or tablet indicates that you are connected to a wireless network, however you are still unable to load webpages or use any internet services with your device.
+
+* A content delivery network (__CDN__) refers to a geographically distributed group of servers which work together to provide fast delivery of Internet content.
