@@ -318,3 +318,47 @@ import { sortBy } from "lodash";
 // This will only pull in the sortBy routine.
 import sortBy from "lodash-es/sortBy";
 ```
+
+### Code Splitting
+Modern sites often combine all of their JavaScript into a single, large bundle. When JavaScript is served this way, loading performance suffers. Large amounts of JavaScript can also tie up the main thread, delaying interactivity. This is especially true of devices with less memory and processing power.
+
+An alternative to large bundles is code-splitting, which is where JavaScript is split into smaller chunks. This enables sending the minimal code required to provide value upfront, improving page-load times. The rest can be loaded on demand.
+
+Code-splitting can be done in the following ways:
+* __Vendor splitting__ separates vendor code (e.g., React, lodash, etc.) away from your app's code. This allows you to keep application and vendor code separate. This isolates the negative performance impacts of cache invalidation for returning users when either your vendor or app code changes. This should be done in every app.
+* __Entry point splitting__ separates code by entry point(s) in your app, which are the scripts where tools like webpack and Parcel start when they build a dependency tree of your app.
+
+    Conveniently, when there are multiple entry points, webpack treats them all as separate dependency trees, meaning that code is automatically split into named chunks like so.
+    
+    Though we've created nicely split chunks for each page, there's still a problem: There's a lot of duplicate code in each chunk. This is because webpack treats each entry point as its own dependency tree without assessing what code is shared between them.
+    
+    Here, the duplicate code comes from vendor scripts. To remedy this, we'll tell webpack to create a separate chunk for those scripts. To do this, we'll use the `optimization.splitChunks` configuration object.
+
+    If you really want to go for the gold, though, you can eliminate most or all shared code between bundles and employ a type of splitting called "commons splitting". In the example app, this can be achieved by creating another entry under `cacheGroups`
+
+    [Read More](https://developers.google.com/web/fundamentals/performance/optimizing-javascript/code-splitting/)
+
+* __Dynamic splitting__ separates code where `dynamic import()` statements are used. This type of splitting is often best for single page applications.
+
+    Another method is to lazy load scripts with the [`dynamic import()`](https://developers.google.com/web/updates/2017/11/dynamic-import) statement:
+
+    ```javascript
+    import("./myFancyModule.js").then(module => {
+        module.default(); // Call a module's default export
+    });
+    ```
+
+    Since import() returns a Promise, you can also use async/await:
+
+    ```javascript
+    let module = await import("./myFancyModule.js");
+    module.default(); // Access a module's default export
+    ```
+
+    When this approach makes sense: You're developing a single page application with many discrete pieces of functionality that not all users may, well, use. Lazy loading this functionality can reduce JS parse/compile activity as well as bytes sent over the network.
+
+    The most intuitive tool to use for dynamic code splitting is [Parcel](https://parceljs.org/). Without any configuration, Parcel builds a dependency tree accounting for both static and dynamic modules, and outputs scripts with names that nicely align with your inputs.
+
+    Like Parcel, webpack can split dynamic imports to separate files. It does so with little guidance, in fact.
+
+Use [Workbox](https://developers.google.com/web/tools/workbox/) to add service workers for your app.
