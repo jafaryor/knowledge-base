@@ -110,6 +110,8 @@ The [RAIL performance model](https://developers.google.com/web/fundamentals/perf
   * CSS effects
   * Web Fonts
 
+* __Use `<picture>`__ for responsive images.
+
 * __Vector vs. Raster images__
 
   * Vector images are ideal for images that consist of geometric shapes.
@@ -279,3 +281,40 @@ Preload fonts:
 ```
 
 Use `font-display` property.
+
+### Client Hint
+Client hints are a set of opt-in _HTTP request headers_ that give us insight into these aspects of the user’s device and the network they’re connected to. This is an another method of content negotiation, which means changing content responses based on browser request headers.
+
+___
+
+## Optimizing JavaScript
+Unlike images which only incur relatively trivial decode time once downloaded, JavaScript must be parsed, compiled, and then finally executed. Byte for byte, this makes JavaScript more expensive than other types of resources.
+
+![js_vs_image](../images/js_vs_image.png)
+
+### Tree shaking
+Tree shaking is a form of dead code elimination.
+
+When tree shaking, use the following Babel options:
+```javascript
+{
+  "presets": [
+    ["env", {
+      "modules": false
+    }]
+  ]
+}
+```
+
+To not let the Babel to transpile the ES6 Modules into CommonJS Modules, which are harder to tree shake.
+
+If you run into a stubborn library that won't respond to tree shaking, look to see if it exports its methods using the ES6 syntax. If it's exporting stuff in CommonJS format (e.g., `module.exports`), that code won't be tree shakeable by webpack.
+
+`Lodash` is a bit of a strange case in that tree shaking as it's described in this guide doesn't work. Because of how `Lodash` is architected, you have to a) install the `lodash-es` package in lieu of (вместо) regular old `lodash` and b) use a slightly different syntax (referred to as "cherry-picking") to shake off the other dependencies:
+```javascript
+// This still pulls in all of lodash even if everything is configured right.
+import { sortBy } from "lodash";
+
+// This will only pull in the sortBy routine.
+import sortBy from "lodash-es/sortBy";
+```

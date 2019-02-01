@@ -76,7 +76,7 @@ The HTML `<link>` element specifies relationships between the current document a
 * `rel` - This attribute names a relationship of the linked document to the current document. The attribute must be a space-separated list of the link [types values](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types). The most common use of this attribute is to specify a link to an external style sheet: the `rel` attribute is set to `stylesheet`, and the `href` attribute is set to the URL of an external style sheet to format the page.
 * `sizes` - defines the sizes of the icons for visual media contained in the resource. It must be present only if the `rel` contains the `icon` link types value.
 * `target` - defines the frame or window name that has the defined linking relationship or that will show the rendering of any linked resource.
-* `title` - The title attribute has special semantics on the `<link>` element. When used on a `<link rel="stylesheet"> `it defines a preferred or an alternate stylesheet. 
+* `title` - The title attribute has special semantics on the `<link>` element. When used on a `<link rel="stylesheet"> `it defines a preferred or an alternate stylesheet.
 * `type` - is used to define the type of the content linked to. The value of the attribute should be a MIME type such as text/html, text/css, and so on. The common use of this attribute is to define the type of style sheet linked and the most common current value is text/css, which indicates a Cascading Style Sheet format. It is also used on rel="preload" link types, to make sure the browser only downloads file types that it supports.
 * `methods` - the value of this attribute provides information about the functions that might be performed on an object.
 
@@ -120,7 +120,7 @@ A semantic element clearly describes its meaning to both the browser and the dev
 * `<figure>`
 
     Specifies self-contained content, like illustrations, diagrams, photos, code listings, etc.
-    
+
     An image and a caption can be grouped together in a `<figure>`.
     ```html
     <figure>
@@ -177,3 +177,23 @@ A semantic element clearly describes its meaning to both the browser and the dev
     > ![time-element](./images/time-element.png)
 
 ### [Cool Resource about HTML and CSS](https://internetingishard.com/html-and-css/)
+
+
+## `<picture></picture>`
+Contains zero or more `<source>` elements and one `<img>` element to provide versions of an image for different display/device scenarios. The browser will consider each child `<source>` element and choose the best match among them based on `media` and `type` attributes; if no matches are found, the URL of the `<img>` element's src attribute is selected. The selected image is then presented in the space occupied by the `<img>` element.
+```html
+<picture>
+    <source srcset="/media/examples/surfer-240-200.jpg"
+            media="(min-width: 800px)">
+    <img src="/media/examples/painted-hand-298-332.jpg" />
+</picture>
+```
+
+### Attributes
+* `media`
+
+  Specifies a media condition (similar to a media query) that the user agent will evaluate for each `<source>` element.
+
+* `type`
+
+  Specifies a _MIME type_ for the resource URL(s) in the `<source>` element's srcset attribute.
