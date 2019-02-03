@@ -95,3 +95,5 @@ __[More about HTTP/2](https://kinsta.com/learn/what-is-http2/#)__
 __[HTTP/2 Migration Instruction](https://www.smashingmagazine.com/2016/02/getting-ready-for-http2/)__
 
 __[HTTP/2 Frequently Asked Questions](https://http2.github.io/faq/)__
+
+__[Read More](https://developers.google.com/web/fundamentals/performance/http2/)__

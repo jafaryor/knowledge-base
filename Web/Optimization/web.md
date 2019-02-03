@@ -195,7 +195,7 @@ The [RAIL performance model](https://developers.google.com/web/fundamentals/perf
 
   Use [`Intersection Observer`](https://developers.google.com/web/updates/2016/04/intersectionobserver)
 
-  Libraries: [lazysizes](https://github.com/aFarkas/lazysizes), [Lazy Load XT](http://ressio.github.io/lazy-load-xt/), [BLazy.js](https://github.com/dinbror/blazy), [Unveil](http://luis-almeida.github.io/unveil/), [yall.js](https://github.com/malchata/yall.js)
+  [__Read More__](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/)
 
 * __Avoiding the `display: none` trap__
 
@@ -260,6 +260,8 @@ Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify
 * __Render__ initial route.
 * __Pre-cache__ remaining routes.
 * __Lazy-load__ and create remaining routes on demand.
+
+
 
 ### Progressive Bootstrapping
 Progressive rendering and bootstraping means you send a functionally viable (though minimal) view in the HTML, including JS and CSS. As more recources arrive, the app progressively "unlocks" features.
@@ -362,3 +364,39 @@ Code-splitting can be done in the following ways:
     Like Parcel, webpack can split dynamic imports to separate files. It does so with little guidance, in fact.
 
 Use [Workbox](https://developers.google.com/web/tools/workbox/) to add service workers for your app.
+
+### What ca ngo wrong when lazy loading images and videos
+* Layout shifting and placeholders
+
+    Lazy loading media can cause shifting in the layout if placeholders aren't used. These changes can be disorienting for users and trigger expensive DOM layout operations that consume system resources and contribute to jank. At a minimum, consider using a solid color placeholder occupying the same dimensions as the target image, or techniques such as [LQIP](http://www.guypo.com/introducing-lqip-low-quality-image-placeholders) or [SQIP](https://github.com/technopagan/sqip) that hint at the content of a media item before it loads.
+
+    For `<img>` tags, src should initially point to a placeholder until that attribute is updated with the final image URL. Use the `poster` attribute in a `<video>` element to point to a placeholder image. Additionally, use `width` and `height` attributes on both `<img>` and `<video>` tags. This ensures that transitioning from placeholders to final images won't change the rendered size of the element as media loads.
+
+    LQIP’s logic is simple. In a sense, this is like loading progressive JPEGs, except it’s page wide. There are more implementation details below, but it boils down to two main steps:
+    * Initially load the page with low quality images
+
+        ```html
+        <!-- An image that eventually gets lazy loaded by JavaScript -->
+        <img class="lazy" src="placeholder-image.jpg" data-src="image-to-lazy-load.jpg" alt="I'm an image!">
+        ```
+
+    * Once the page loaded (e.g. in the onload event), replace them with the full quality images
+
+* Image decoding delays
+
+    Loading large images in JavaScript and dropping them into the DOM can tie up the main thread, causing the user interface to be unresponsive for a short period of time while decoding occurs. [Asynchronously decoding images using the `decode` method](https://medium.com/dailyjs/image-loading-with-image-decode-b03652e7d2d2) prior to inserting them into the DOM can cut down on this sort of jank, but beware: It's not available everywhere yet, and it adds complexity to lazy loading logic.
+
+    ```javascript
+    var newImage = new Image();
+    newImage.src = "my-awesome-image.jpg";
+
+    if ("decode" in newImage) {
+        // Fancy decoding logic
+        newImage.decode().then(function() {
+            imageContainer.appendChild(newImage);
+        });
+    } else {
+        // Regular image load
+        imageContainer.appendChild(newImage);
+    }
+    ```
