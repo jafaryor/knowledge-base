@@ -52,7 +52,7 @@ __Real User Monitoring__ (`RUM`) relies on JavaScript APIs in the browser to gat
 ### APIs used to measure the performance:
 * [`PerformanceObserver`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver) - interface is used to observe performance measurement events and be notified of new `PerformanceEntry`s as they are recorded in the browser's performance timeline.
 
-  > This feature is available in Web Workers.
+    > This feature is available in Web Workers.
 
 * [`DOMHighResTimeStamp`](https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp) - type is a `double` and is used to store a time value. The value could be a discrete point in time or the difference in time between two discrete points in time.
 
@@ -94,15 +94,15 @@ The [RAIL performance model](https://developers.google.com/web/fundamentals/perf
 * Eliminate unnecessary data
 * Minification
 
-  It refers to the removal of whitespace and other nonessential characters like comments so that the code is still valid but as compact as possible. Minified code is still valid code in all respects and can be run immediately.
+    It refers to the removal of whitespace and other nonessential characters like comments so that the code is still valid but as compact as possible. Minified code is still valid code in all respects and can be run immediately.
 
 * Data Compression
 
-  Compressed code would have to be uncompressed first before execution.
+    Compressed code would have to be uncompressed first before execution.
 
 * Text compression with `GZIP`
 
-  `GZIP` is a generic compressor that can be applied to any stream of bytes. However, in practice, it performs best on text-based content.
+    `GZIP` is a generic compressor that can be applied to any stream of bytes. However, in practice, it performs best on text-based content.
 
 ### Image optimization:
 * __Use alternative technologies if possible__
@@ -135,28 +135,28 @@ The [RAIL performance model](https://developers.google.com/web/fundamentals/perf
 
 * __Selecting the right image format__
 
-  _JPEG_ are for photographs and realistic images. _PNG_ are for line art, text-heavy images, and images with few colors.
+    _JPEG_ are for photographs and realistic images. _PNG_ are for line art, text-heavy images, and images with few colors.
 
-  | Format | Transparency | Animation | Browser |
-  | - | - | - | - |
-  | [GIF](http://en.wikipedia.org/wiki/Graphics_Interchange_Format) |	Yes |	Yes |	All |
-  | [PNG](http://en.wikipedia.org/wiki/Portable_Network_Graphics) |	Yes |	No | All |
-  | [JPEG](http://en.wikipedia.org/wiki/JPEG) | No | No | All |
-  | [JPEG XR](http://en.wikipedia.org/wiki/JPEG_XR) | Yes | Yes | IE |
-  | [WebP](http://en.wikipedia.org/wiki/WebP) | Yes | Yes | Chrome, Opera, Android |
+    | Format | Transparency | Animation | Browser |
+    | - | - | - | - |
+    | [GIF](http://en.wikipedia.org/wiki/Graphics_Interchange_Format) |	Yes |	Yes |	All |
+    | [PNG](http://en.wikipedia.org/wiki/Portable_Network_Graphics) |	Yes |	No | All |
+    | [JPEG](http://en.wikipedia.org/wiki/JPEG) | No | No | All |
+    | [JPEG XR](http://en.wikipedia.org/wiki/JPEG_XR) | Yes | Yes | IE |
+    | [WebP](http://en.wikipedia.org/wiki/WebP) | Yes | Yes | Chrome, Opera, Android |
 
-  ![format-tree](../images/format-tree.png)
+    ![format-tree](../images/format-tree.png)
 
-  > If you are using a `Webview` to render content in your native application, then you have full control of the client and can use `WebP` exclusively! [Watch on YouTube](https://www.youtube.com/watch?v=pS8udLMOOaE)
+    > If you are using a `Webview` to render content in your native application, then you have full control of the client and can use `WebP` exclusively! [Watch on YouTube](https://www.youtube.com/watch?v=pS8udLMOOaE)
 
 * __Tools__
 
-  | Tool | Description |
-  | - | - |
-  | [gifsicle](http://www.lcdf.org/gifsicle/) | create and optimize GIF images |
-  | [jpegtran](http://jpegclub.org/jpegtran/) | optimize JPEG images |
-  | [optipng](http://optipng.sourceforge.net/) | lossless PNG optimization |
-  | [pngquant](http://pngquant.org/) | lossy PNG optimization |
+    | Tool | Description |
+    | - | - |
+    | [gifsicle](http://www.lcdf.org/gifsicle/) | create and optimize GIF images |
+    | [jpegtran](http://jpegclub.org/jpegtran/) | optimize JPEG images |
+    | [optipng](http://optipng.sourceforge.net/) | lossless PNG optimization |
+    | [pngquant](http://pngquant.org/) | lossy PNG optimization |
 
 * __Delivering scaled image assets__
 
@@ -164,19 +164,19 @@ The [RAIL performance model](https://developers.google.com/web/fundamentals/perf
 
 * __Remove unnecessary image metadata__
 
-  Many images contain unnecessary metadata about the asset: geo information, camera information, and so on. Use appropriate tools to strip this data
+    Many images contain unnecessary metadata about the asset: geo information, camera information, and so on. Use appropriate tools to strip this data
 
 ### Automating Image Optimization
 
 * The browser itself is capable of choosing which image format to display through the use of the `<picture>` tag. The `<picture> `tag utilizes multiple `<source>` elements, with one `<img>` tag, which is the actual DOM element which contains the image. The browser cycles through the sources and retrieves the first match. If the `<picture>` tag isn't supported in the user's browser, a `<div>` is rendered and the `<img>` tag is used.
-  ```html
-  <picture>
-      <source srcset='paul_irish.jxr' type='image/vnd.ms-photo'>
-      <source srcset='paul_irish.jp2' type='image/jp2'>
-      <source srcset='paul_irish.webp' type='image/webp'>
-      <img src='paul_irish.jpg' alt='paul'>
-  </picture>
-  ```
+    ```html
+    <picture>
+        <source srcset='paul_irish.jxr' type='image/vnd.ms-photo'>
+        <source srcset='paul_irish.jp2' type='image/jp2'>
+        <source srcset='paul_irish.webp' type='image/webp'>
+        <img src='paul_irish.jpg' alt='paul'>
+    </picture>
+    ```
 
   * `srcset`
 
@@ -193,41 +193,49 @@ The [RAIL performance model](https://developers.google.com/web/fundamentals/perf
 
 * __Lazy-load non-critical images__
 
-  Use [`Intersection Observer`](https://developers.google.com/web/updates/2016/04/intersectionobserver)
+    Use [`Intersection Observer`](https://developers.google.com/web/updates/2016/04/intersectionobserver)
 
-  [__Read More__](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/)
+    [__Read More__](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/)
 
 * __Avoiding the `display: none` trap__
 
-  Does `display: none` avoid triggering a request for an image `src`?
-  ```html
-  <div style="display:none"><img src="img.jpg"></div>
-  ```
-  No. The image will be requested although it is hidden.
+    Does `display: none` avoid triggering a request for an image `src`?
+    ```html
+    <div style="display:none"><img src="img.jpg"></div>
+    ```
+    No. The image will be requested although it is hidden.
 
-  Does `display: none` avoid triggering a request for a background: `url()`?
-  ```html
-  <div style="display:none">
-    <div style="background: url(img.jpg)"></div>
-  </div>
-  ```
-  Yes. CSS backgrounds aren’t fetched as soon as an element is parsed.
+    Does `display: none` avoid triggering a request for a background: `url()`?
+    ```html
+    <div style="display:none">
+        <div style="background: url(img.jpg)"></div>
+    </div>
+    ```
+    Yes. CSS backgrounds aren’t fetched as soon as an element is parsed.
 
 * __Caching image assets__
 
-  Most of the images you deliver to users are static assets that will not change in the future. The best caching strategy for such assets is aggressive caching. For this, set
-  ```
-  Cache-Control:public; max-age=31536000
-  ```
+    Most of the images you deliver to users are static assets that will not change in the future. The best caching strategy for such assets is aggressive caching. For this, set
+    ```
+    Cache-Control:public; max-age=31536000
+    ```
+
 * __Preloading critical image assets__
 
-  `<link rel=preload>` is a declarative fetch, allowing you to force the browser to make a request for a resource without blocking the document’s onload event. It enables increasing the priority of requests for resources that might otherwise not be discovered until later in the document parsing process.
+    `<link rel=preload>` is a declarative fetch, allowing you to force the browser to make a request for a resource without blocking the document’s onload event. It enables increasing the priority of requests for resources that might otherwise not be discovered until later in the document parsing process.
 
-  ```html
-  <link rel="preload" as="image" href="logo.jpg"/>
-  ```
+    ```html
+    <link rel="preload" as="image" href="logo.jpg"/>
+    ```
 
-  Image resources for `<img>`, `<picture>`, srcset and SVGs can all take advantage of this optimization.
+    Image resources for `<img>`, `<picture>`, srcset and SVGs can all take advantage of this optimization.
+
+* __Prefetch__
+
+    `prefetch` informs the browser of a resource that is expected to be needed as part of a future navigation or user interaction, for example, something that might be needed later, if the user takes the action we’re expecting. These resources are fetched at the Lowest priority in Chrome, when the current page is done loading and there’s bandwidth available.
+    ```html
+    <link rel="prefetch" href="page-2.html">
+    ```
 
 [Read More](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/automating-image-optimization/)
 
@@ -267,22 +275,29 @@ Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify
 Progressive rendering and bootstraping means you send a functionally viable (though minimal) view in the HTML, including JS and CSS. As more recources arrive, the app progressively "unlocks" features.
 
 ### Resource Hints
-You can use Resource Hints like to perform a DNS lookup for domains hosting third-party scripts. When the request for them is finally made, time can be saved as the DNS lookup has already been carried out.
-```html
-<link rel="dns-prefetch" href="http://example.com">
-```
-If the third-party domain you are referencing uses HTTPS, you may also consider as this will both perform the DNS lookup and resolve TCP round-trips and handle TLS negotiations. These other steps can be very slow as they involve looking at SSL certificates for verification, so consider Resource Hints seriously if you find third-party setup time to be an issue.
-```html
-<link rel="preconnect" href="https://cdn.example.com">
-```
+* `preconnect` informs the browser that your page intends to establish a connection to another origin, and that you’d like the process to start as soon as possible.
+
+    Establishing connections often involves significant time in slow networks, particularly when it comes to secure connections, as it may involve DNS lookups, redirects, and several round trips to the final server that handles the user’s request. Taking care of all this ahead of time can make your application feel much snappier to the user without negatively affecting the use of bandwidth.
+    ```html
+    <link rel="preconnect" href="https://cdn.example.com">
+    ```
+
+* `dns-prefetch` handles the DNS lookup only, so it’s a small subset of `preconnect`, but it’s got wider browser support, so it may serve as a nice fallback. You use it the exact same way:
+    ```html
+    <link rel="dns-prefetch" href="http://example.com">
+    ```
 
 ### Fonts
-Preload fonts:
-```html
-<link rel="preload" href="/fonts/awesome-font.woff2" as="font">
-```
+Fonts are a great example of late-discovered resources that must be fetched, often sitting at the bottom of one of several CSS files loaded by a page.
 
-Use `font-display` property.
+* Preload fonts:
+    ```html
+    <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="myfont.woff2">
+    ```
+
+    > Note that the use of crossorigin here is important; without this attribute, the preloaded font is ignored by the browser, and a new fetch takes place. This is because fonts are expected to be fetched anonymously by the browser, and the preload request is only made anonymous by using the crossorigin attribute.
+
+* Use `font-display` property.
 
 ### Client Hint
 Client hints are a set of opt-in _HTTP request headers_ that give us insight into these aspects of the user’s device and the network they’re connected to. This is an another method of content negotiation, which means changing content responses based on browser request headers.

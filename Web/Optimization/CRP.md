@@ -1,5 +1,5 @@
 # Critical Rendering Path
-The order in which resources must be loaded for maximum efficiency is called the __Critical Rendering Path__.
+The __Critical Path__ refers to the resources that must be loaded before your initial render.
 
 ### How does the browser rendering engine work?
 In order to render content the browser has to go through a series of steps:
