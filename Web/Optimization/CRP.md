@@ -1,6 +1,12 @@
 # Critical Rendering Path
 The __Critical Path__ refers to the resources that must be loaded before your initial render.
 
+Optimizing for performance is all about understanding what happens in these intermediate steps between receiving the HTML, CSS, and JavaScript bytes and the required processing to turn them into rendered pixels - that's the __critical rendering path__.
+
+![progressive-rendering](../images/progressive-rendering.png)
+
+By optimizing the critical rendering path we can significantly improve the time to first render of our pages.
+
 ### How does the browser rendering engine work?
 In order to render content the browser has to go through a series of steps:
 1. Document Object Model(DOM)
@@ -10,20 +16,19 @@ In order to render content the browser has to go through a series of steps:
 5. Paint.
 
 ## 1. Document Object Model
-To process a html file and get to the document object model event(DOM) the browser has to go through 4 steps:
+To process a html file and get to the document object model event (DOM) the browser has to go through 4 steps:
+* __Conversion__: The browser reads the raw bytes of HTML off the disk or network, and translates them to individual characters based on specified encoding of the file (for example, UTF-8).
+* __Tokenizing__: The browser converts strings of characters into distinct tokens—as specified by the W3C HTML5 standard; for example, `<html>`, `<body>`—and other strings within angle brackets. Each token has a special meaning and its own set of rules.
+* __Lexing__: The emitted tokens are converted into "objects," which define their properties and rules.
+* __DOM construction__: Finally, because the HTML markup defines relationships between different tags (some tags are contained within other tags) the created objects are linked in a tree data structure that also captures the parent-child relationships defined in the original markup: the HTML object is a parent of the body object, the body is a parent of the paragraph object, and so on.
 
-1. Convert bytes to characters
-2. Identify tokens
-3. Convert tokens to nodes
-4. Build DOM Tree
+![dom-flow](../images/dom-flow.png)
 
-__This means that the initial file size of your DOM tree will have a performance cost.__
+The final output of this entire process is the _Document Object Model_ (_DOM_) of our simple page, which the browser uses for all further processing of the page.
 
-In order to measure the full time needed for this process, you can record a timeline on chrome devtools while your page is loaded.
+> __Every time the browser processes HTML markup, it goes through all of the steps above.__
 
-In the timeline above you can see that the browser initially sends a request for the html, then it starts receiving the response in chunks of data, and initializes the html parser, as the parser finds any links for CSS or Javascript, it immediatelly sends a request for them, after that it also sends requests for all the other assets found in the rest of the page.
-
-When this process is finished the browser will have the full content of the page, but __to be able to render the browser has to wait for the CSS Object Model, also known as CSSOM event__, which will tell the browser how the elements should look like when rendered.
+The DOM tree captures the properties and relationships of the document markup, but it doesn't tell us how the element will look when rendered. That’s the responsibility of the CSSOM.
 
 ## 2. CSS Object Model
 > CSS Object model is how the browser takes a CSS file and converts it to "rules" it knows how to understand and create the styles you have in your CSS file.
@@ -55,7 +60,7 @@ Javascript is a powerful tool that can manipulate both the DOM and CSSOM, so to 
 
 When the parser finds a script tag it blocks DOM construction, then waits for the browser to get the file and for the javascript engine to parse the script, this is why __Javascript is parser blocking__.
 
-![Page_rendering](./images/CRP.png)
+![Page_rendering](../images/CRP.png)
 
 __Here we can understand the importance of the CSSOM event in the critical rendering path, this single event is blocking rendering and Javascript execution.__
 

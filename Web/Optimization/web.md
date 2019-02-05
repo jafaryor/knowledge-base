@@ -240,12 +240,11 @@ The [RAIL performance model](https://developers.google.com/web/fundamentals/perf
 [Read More](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/automating-image-optimization/)
 
 ### Image decode and resize costs
+When a browser fetches an image, it has to decode the image from the original source format (e.g JPEG) to a bitmap in memory. Often the image needs to be resized (e.g width has been set to a percentage of its container). Decoding and resizing images are expensive and can delay how long it takes for an image to be displayed.
 
-  When a browser fetches an image, it has to decode the image from the original source format (e.g JPEG) to a bitmap in memory. Often the image needs to be resized (e.g width has been set to a percentage of its container). Decoding and resizing images are expensive and can delay how long it takes for an image to be displayed.
+![image-pipeline](../images/image-pipeline.jpg)
 
-  ![image-pipeline](../images/image-pipeline.jpg)
-
-  > Omitting the `width` or `height` attributes on an image can also negatively impact performance. Without them, a browser assigns a smaller placeholder region for the image until sufficient bytes have arrived for it to know the correct dimensions. At that point, the document layout must be updated in what can be a costly step called reflow.
+> Omitting the `width` or `height` attributes on an image can also negatively impact performance. Without them, a browser assigns a smaller placeholder region for the image until sufficient bytes have arrived for it to know the correct dimensions. At that point, the document layout must be updated in what can be a costly step called reflow.
 
 ### Replace Animated GIFs with Video
 Delivering the same file as an MP4 video can often shave _80%_ or more off your file-size. Not only do GIFs often waste significant bandwidth, but they take longer to load, include fewer colors and generally offer sub-part user experiences.
@@ -345,11 +344,11 @@ Tree shaking is a form of dead code elimination.
 When tree shaking, use the following Babel options:
 ```javascript
 {
-  "presets": [
-    ["env", {
-      "modules": false
-    }]
-  ]
+    "presets": [
+        ["env", {
+        "modules": false
+        }]
+    ]
 }
 ```
 
