@@ -269,7 +269,37 @@ Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify
 * __Pre-cache__ remaining routes.
 * __Lazy-load__ and create remaining routes on demand.
 
+`PRPL` strives to optimize for:
+* Minimum time-to-interactive.
+  * Especially on first use (regardless of entry point).
+  * Especially on real-world mobile devices.
+* Maximum caching efficiency, especially over time as updates are released.
+* Simplicity of development and deployment.
 
+__App entrypoint__
+
+The entrypoint must import and instantiate the shell, as well as conditionally load any required polyfills.
+
+The main considerations for the entrypoint are:
+* Has minimal static dependencies, in other words, not much beyond the app-shell itself.
+* Conditionally loads required polyfills.
+* Uses absolute paths for all dependencies.
+
+__App shell__
+
+The shell is responsible for routing and usually includes the main navigation UI for the app.
+
+The app should lazy-load fragments as they're required. For example, when the user changes to a new route, it imports the fragment(s) associated with that route. This may initiate a new request to the server, or simply load the resource from the cache.
+
+The shell (including its static dependencies) should contain everything needed for first paint.
+
+__Bundled build__
+The build process could produce a set of different bundles: one bundle for the shell, and one bundle for each fragment.
+
+![app-build-bundles](../images/app-build-bundles.png)
+
+
+[Read More about PRPL](https://developers.google.com/web/fundamentals/performance/prpl-pattern/)
 
 ### Progressive Bootstrapping
 Progressive rendering and bootstraping means you send a functionally viable (though minimal) view in the HTML, including JS and CSS. As more recources arrive, the app progressively "unlocks" features.
@@ -346,9 +376,9 @@ Code-splitting can be done in the following ways:
 * __Entry point splitting__ separates code by entry point(s) in your app, which are the scripts where tools like webpack and Parcel start when they build a dependency tree of your app.
 
     Conveniently, when there are multiple entry points, webpack treats them all as separate dependency trees, meaning that code is automatically split into named chunks like so.
-    
+
     Though we've created nicely split chunks for each page, there's still a problem: There's a lot of duplicate code in each chunk. This is because webpack treats each entry point as its own dependency tree without assessing what code is shared between them.
-    
+
     Here, the duplicate code comes from vendor scripts. To remedy this, we'll tell webpack to create a separate chunk for those scripts. To do this, we'll use the `optimization.splitChunks` configuration object.
 
     If you really want to go for the gold, though, you can eliminate most or all shared code between bundles and employ a type of splitting called "commons splitting". In the example app, this can be achieved by creating another entry under `cacheGroups`

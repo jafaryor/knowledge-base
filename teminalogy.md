@@ -143,3 +143,5 @@
 * Browser __fingerprinting__ is the capability of a site to identify or
 re-identify a visiting user, user agent or device via configuration settings or
 other observable characteristics
+
+* __heuristic__ is a technique designed for solving a problem more quickly when classic methods are too slow, or for finding an approximate solution when classic methods fail to find any exact solution. The objective of a heuristic is to produce a solution in a reasonable time frame that is good enough for solving the problem at hand.
