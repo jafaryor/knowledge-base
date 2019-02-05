@@ -15,7 +15,7 @@ In order to render content the browser has to go through a series of steps:
 4. Layout
 5. Paint.
 
-## 1. Document Object Model
+## 1. Document Object Model (`DOM`)
 To process a html file and get to the document object model event (DOM) the browser has to go through 4 steps:
 * __Conversion__: The browser reads the raw bytes of HTML off the disk or network, and translates them to individual characters based on specified encoding of the file (for example, UTF-8).
 * __Tokenizing__: The browser converts strings of characters into distinct tokens—as specified by the W3C HTML5 standard; for example, `<html>`, `<body>`—and other strings within angle brackets. Each token has a special meaning and its own set of rules.
@@ -30,19 +30,20 @@ The final output of this entire process is the _Document Object Model_ (_DOM_) o
 
 The DOM tree captures the properties and relationships of the document markup, but it doesn't tell us how the element will look when rendered. That’s the responsibility of the CSSOM.
 
-## 2. CSS Object Model
+## 2. CSS Object Model (`CSSOM`)
 > CSS Object model is how the browser takes a CSS file and converts it to "rules" it knows how to understand and create the styles you have in your CSS file.
 
 Just as with HTML, the CSS rules need to be converted into something that the browser understands, so these rules go through the same steps as the document object model.
-
 1. Convert bytes to characters
 2. Identify tokens
 3. Convert tokens to nodes
 4. Build CSSOM
 
+![cssom-tree](../images/cssom-tree.png)
+
 In this stage the CSS parser goes through each node and gets the styles attributed to it.
 
-CSS is one of the most important elements of the critical rendering path, because the browser blocks page rendering until it receives and processes all the css files in your page, __CSS is render blocking__
+Why does the CSSOM have a tree structure? When computing the final set of styles for any object on the page, the browser starts with the most general rule applicable to that node (for example, if it is a child of a body element, then all body styles apply) and then recursively refines the computed styles by applying more specific rules; that is, the rules "cascade down."
 
 ## 3. The Render Tree
 __This stage is where the browser combines the DOM and CSSOM__, this process outputs a final render tree, which contains both the content and the style information of all the visible content on the screen.
