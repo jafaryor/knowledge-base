@@ -15,6 +15,8 @@ In order to render content the browser has to go through a series of steps:
 4. Layout
 5. Paint.
 
+__Optimizing the critical rendering path__ is the process of minimizing the total amount of time spent performing steps 1 through 5.
+
 ## 1. Document Object Model (`DOM`)
 To process a html file and get to the document object model event (DOM) the browser has to go through 4 steps:
 * __Conversion__: The browser reads the raw bytes of HTML off the disk or network, and translates them to individual characters based on specified encoding of the file (for example, UTF-8).
@@ -48,13 +50,32 @@ Why does the CSSOM have a tree structure? When computing the final set of styles
 ## 3. The Render Tree
 __This stage is where the browser combines the DOM and CSSOM__, this process outputs a final render tree, which contains both the content and the style information of all the visible content on the screen.
 
+To construct the render tree, the browser roughly does the following:
+1. Starting at the root of the DOM tree, traverse each visible node.
+    * Some nodes are not visible (for example, script tags, meta tags, and so on), and are omitted since they are not reflected in the rendered output.
+    * Some nodes are hidden via CSS and are also omitted from the render tree; for example, the span node---in the example above---is missing from the render tree because we have an explicit rule that sets the `display: none` property on it.
+2. For each visible node, find the appropriate matching CSSOM rules and apply them.
+3. Emit visible nodes with content and their computed styles.
+
+![render-tree-construction](../images/render-tree-construction.png)
+
+> Note that `visibility: hidden` is different from `display: none`. The former makes the element invisible, but the element still occupies space in the layout (that is, it's rendered as an empty box), whereas the latter (`display: none`) removes the element entirely from the render tree such that the element is invisible and is not part of the layout.
+
 ## 4. Layout
-__This stage is where the browser calculates the size and position of each visible element on the page__, every time an update to the render tree is made, or the size of the viewport changes, the browser has to run layout again.
+__This stage is where the browser calculates the size and position of each visible element on the page__.
+
+The output of the layout process is a "box model", which precisely captures the exact position and size of each element within the viewport: all of the relative measurements are converted to absolute pixels on the screen.
+
+[The list of actions which cause the reflow](https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
 
 ## 5. Paint
-__When we get to the paint stage, the browser has to pick up the layout result, and paint the pixels to the screen__, beware in this stage that not all styles have the same paint times, __also combinations of styles can have a greater paint time than the sum of their parts__. For an instance mixing a border-radius with a box-shadow, can triple the paint time of an element instead of using just one of the latter.
+__When we get to the paint stage, the browser has to pick up the layout result, and paint the pixels to the screen__. Beware in this stage that not all styles have the same paint times.
 
-> http://www.html5rocks.com/en/tutorials/speed/css-paint-times/
+The more complicated the styles, the more time taken for painting also (for example, a solid color is "cheap" to paint, while a drop shadow is "expensive" to compute and render).
+
+[CSS statements paint times](http://www.html5rocks.com/en/tutorials/speed/css-paint-times/)
+
+> __If either the DOM or CSSOM were modified, you would have to repeat the process in order to figure out which pixels would need to be re-rendered on the screen.__
 
 ## JavaScript
 Javascript is a powerful tool that can manipulate both the DOM and CSSOM, so to execute Javascript, the browser has to wait for the DOM, then it has to download and parse all the CSS files, get to the CSSOM event and only then finally execute Javascript.
