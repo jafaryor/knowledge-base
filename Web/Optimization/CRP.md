@@ -77,6 +77,28 @@ The more complicated the styles, the more time taken for painting also (for exam
 
 > __If either the DOM or CSSOM were modified, you would have to repeat the process in order to figure out which pixels would need to be re-rendered on the screen.__
 
+### CSS
+By default, CSS is treated as a __render blocking resource__, which means that the browser won't render any processed content until the CSSOM is constructed.
+
+Media types and media queries allow us to mark some CSS resources as non-render blocking.
+
+> __Both HTML and CSS are render blocking resources.__
+
+```html
+<!-- render-block -->
+<link href="style.css" rel="stylesheet">
+
+<!-- non render-block -->
+<link href="print.css" rel="stylesheet" media="print">
+<link href="other.css" rel="stylesheet" media="(min-width: 40em)">
+```
+
+> __By default all JavaScript is parser blocking. Because the browser does not know what the script is planning to do on the page, it assumes the worst case scenario and blocks the parser.__
+
+Whether we use a `<script>` tag or an inline JavaScript snippet, the browser pauses and executes the script before it can process the remainder of the document. If the browser hasn't finished downloading and building the CSSOM when we want to run our script. The browser delays script execution and DOM construction until it has finished downloading and constructing the CSSOM.
+
+Adding the `async` keyword to the script tag tells the browser not to block DOM construction while it waits for the script to become available, which can significantly improve performance.
+
 ## JavaScript
 Javascript is a powerful tool that can manipulate both the DOM and CSSOM, so to execute Javascript, the browser has to wait for the DOM, then it has to download and parse all the CSS files, get to the CSSOM event and only then finally execute Javascript.
 
