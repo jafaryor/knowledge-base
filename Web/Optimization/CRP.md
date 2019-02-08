@@ -115,8 +115,26 @@ There are only two cases when Javascript does not block on CSSOM:
 __Async scripts don’t block DOM construction and don’t have the need to wait for the CSSOM event__, this way your critical rendering path stays free from Javascript interference. This is a crucial part of optimising for the critical rendering path.
 
 # Optimizing the critical rendering path
-## 1. Minification & Obfuscation
+## Optimize JavaScript
+### Prefer asynchronous JavaScript resources
+Asynchronous resources unblock the document parser and allow the browser to avoid blocking on CSSOM prior to executing the script. Often, if the script can use the async attribute, it also means it is not essential for the first render.
 
+### Avoid synchronous server calls
+Use the `navigator.sendBeacon()` and the `fetch()` methods.
+
+The Beacon interface schedules an asynchronous and non-blocking request to a web server.
+* Beacon requests use HTTP `POST` and do not require a response.
+* Beacon requests are guaranteed to be initiated before the page unloads.
+
+[Read more about `navigator.sendBeacon()`](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API/Using_the_Beacon_API)
+
+### Defer parsing JavaScript
+To minimize the amount of work the browser has to perform to render the page, defer any non-essential scripts that are not critical to constructing the visible content for the initial render.
+
+### Avoid long running JavaScript
+Long running JavaScript blocks the browser from constructing the DOM, CSSOM, and rendering the page, so defer until later any initialization logic and functionality that is non-essential for the first render. If a long initialization sequence needs to run, consider splitting it into several stages to allow the browser to process other events in between.
+
+## 1. Minification & Obfuscation
 Make our critical assets as small as possible by minifying and compressing both the html and css. We can further optimize this resources by making use of html and css obfuscation.
 
 Tools:
@@ -124,10 +142,17 @@ Tools:
 https://github.com/webpack-contrib/css-loader
 https://code.google.com/p/closure-stylesheets/#Renaming
 
-## 2. Optimising CSS delivery
-With our resources optimized we need to get them to the client as fast as possible. A good strategy is to inline our css, so that we can get it to the client with the first html request, allowing the browser to get to the CSSOM event with only one request.
+## 2. Optimising CSS
+CSS is required to construct the render tree and JavaScript often blocks on CSS during initial construction of the page. Ensure that any non-essential CSS is marked as non-critical (for example, print and other media queries), and that the amount of critical CSS and the time to deliver it is as small as possible.
 
-__A good strategy is to inline only the css for the header and the main module of the page, and downloading the remaining css async__. You can hide the unstyled content of the page, while the client waits for the reamining CSS, this is made to avoid the flash of unstyled content.
+### Put CSS in the document head
+Specify all CSS resources as early as possible within the HTML document so that the browser can discover the `<link>` tags and dispatch the request for the CSS as soon as possible.
+
+### Avoid CSS imports
+The CSS import (`@import`) directive enables one stylesheet to import rules from another stylesheet file. However, avoid these directives because they introduce additional roundtrips into the critical path: the imported CSS resources are discovered only after the CSS stylesheet with the `@import` rule itself is received and parsed.
+
+### Inline render-blocking CSS
+For best performance, you may want to consider inlining the critical CSS directly into the HTML document. This eliminates additional roundtrips in the critical path and if done correctly can deliver a "one roundtrip" critical path length where only the HTML is a blocking resource.
 
 Tools:
 > https://github.com/filamentgroup/loadCSS
