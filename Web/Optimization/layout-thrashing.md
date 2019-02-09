@@ -1,5 +1,4 @@
 ## Layout Thrashing
-
 `Layout Thrashing` occurs when JavaScript violently writes, then reads, from the DOM, multiple times causing document reflows.
 
 ```javascript

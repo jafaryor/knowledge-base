@@ -18,13 +18,103 @@ Where:
 There are three ways the pipeline normally plays out for a given frame when you make a visual change, either with JavaScript, CSS, or Web Animations.
 * __JS / CSS > Style > Layout > Paint > Composite__
 
-  If you change a “layout” property, so that’s one that changes an element’s geometry, like its width, height, or its position with left or top, the browser will have to check all the other elements and “reflow” the page. Any affected areas will need to be repainted, and the final painted elements will need to be composited back together.
+    If you change a “layout” property, so that’s one that changes an element’s geometry, like its width, height, or its position with left or top, the browser will have to check all the other elements and “reflow” the page. Any affected areas will need to be repainted, and the final painted elements will need to be composited back together.
 
 * __JS / CSS > Style > Paint > Composite__
 
-  If you changed a “paint only” property, like a background image, text color, or shadows, in other words one that does not affect the layout of the page, then the browser skips layout, but it will still do paint.
+    If you changed a “paint only” property, like a background image, text color, or shadows, in other words one that does not affect the layout of the page, then the browser skips layout, but it will still do paint.
 
 * __JS / CSS > Style > Composite__
 
-  The cheapest and most desirable for high pressure points in an app's lifecycle, like animations or scrolling.
+    The cheapest and most desirable for high pressure points in an app's lifecycle, like animations or scrolling.
 
+### Optimize JS Execution
+* __Use `requestAnimationFrame` for visual changes instead of `setTimeout` and `setInteerval`__
+* __Reduce complexity or use Web Workers__
+
+    > Web Workers do not have DOM access
+
+* __Avoid micro-optimizing your JavaScript__
+
+### Reduce the Scope and Complexity of Style Calculations
+Changing the DOM, through adding and removing elements, changing attributes, classes, or through animation, will all cause the browser to recalculate element styles and, in many cases, layout (or reflow) the page, or parts of it. This process is called computed style calculation.
+* Reduce the complexity of your selectors; use a class-centric methodology like [BEM](https://ru.bem.info/).
+* Reduce the number of elements on which style calculation must be calculated. Reduce the scope by apply style calculation to an element with less children.
+
+### Avoid Large, Complex Layouts and Layout Thrashing
+Layout is almost always scoped to the entire document. If you have a lot of elements, it’s going to take a long time to figure out the locations and dimensions of them all.
+
+> Check out [CSS triggers](https://csstriggers.com/).
+
+__Use flexbox over older layout models__. The layout cost when using floats is much bigger than flexbox layout. So always use flexbox if possible.
+
+__Avoid forced synchronous layouts__. Use `requestAnimationFrame` to schedule our function to run at the start of the frame.
+
+__Avoid layout thrashing__.
+
+### Simplify Paint Complexity and Reduce Paint Areas
+* Changing any property apart from transforms or opacity always triggers paint.
+
+* Paint is often the most expensive part of the pixel pipeline; avoid it where you can.
+
+* Reduce paint areas
+
+    If you have a fixed header at the top of the page, and something being painted at the bottom the screen, the entire screen may end up being repainted.
+
+    > Note: On High DPI screens elements that are fixed position are automatically promoted to their own compositor layer. This is not the case on low DPI devices because the promotion changes text rendering from subpixel to grayscale, and layer promotion needs to be done manually.
+
+* Simplify paint complexity
+
+    When it comes to painting, some things are more expensive than others. For example, anything that involves a blur (like a shadow, for example) is going to take longer to paint than -- say -- drawing a red box.
+
+### Stick to Compositor-Only Properties and Manage Layer Count
+Reduce paint areas through layer promotion and orchestration of animations.
+
+The benefit of this approach is that elements that are regularly repainted, or are moving on screen with transforms, can be handled without affecting other elements. This is the same as with art packages like Sketch, GIMP, or Photoshop, where individual layers can be handled and composited on top of each other to create the final image.
+
+It gives the best-performing version of the pixel pipeline, avoiding both layout and paint, and only requires compositing changes. In order to achieve this you will need to stick to changing properties that can be handled by the compositor alone. Today there are only two properties for which that is true - `transforms` and `opacity`.
+
+Promote elements that you plan to animate. The best way to create a new layer is to use the [`will-change`](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change) CSS property
+```css
+.moving-element {
+    will-change: transform;
+}
+```
+
+For browsers that don’t support will-change, use `transform`:
+```css
+.moving-element {
+    transform: translateZ(0);
+}
+```
+
+Care must be taken not to create too many layers, however, as each layer requires both memory and management. In fact, on devices with limited memory the impact on performance can far outweigh any benefit of creating a layer. Every layer’s textures needs to be uploaded to the GPU, so there are further constraints in terms of bandwidth between CPU and GPU, and memory available for textures on the GPU.
+
+### Debounce Your Input Handlers
+* __Avoid long-running input handlers; they can block scrolling__
+
+* __Do not make style changes in input handlers.__
+
+* __Debounce your handlers; store event values and deal with style changes in the next requestAnimationFrame callback.__
+
+    Input handlers, like those for scroll and touch, are scheduled to run just before any `requestAnimationFrame` callbacks.
+
+    If you make a visual change inside one of those handlers, then at the start of the `requestAnimationFrame`, there will be style changes pending. If you then read visual properties at the start of the `requestAnimationFrame` callback, you will trigger a forced synchronous layout!
+
+    The solution to both of the problems above is the same: you should always debounce visual changes to the next `requestAnimationFrame` callback:
+    ```javascript
+    function onScroll (evt) {
+
+    // Store the scroll value for laterz.
+    lastScrollY = window.scrollY;
+
+    // Prevent multiple rAF callbacks.
+    if (scheduledAnimationFrame)
+        return;
+
+    scheduledAnimationFrame = true;
+    requestAnimationFrame(readAndUpdatePage);
+    }
+
+    window.addEventListener('scroll', onScroll);
+    ```
