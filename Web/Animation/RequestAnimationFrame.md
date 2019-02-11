@@ -16,7 +16,7 @@ window.requestAnimationFrame(callback);
 * Animations in background tabs get paused, conserving system resources and battery life.
 * If the system can't handle rendering at the screen's refresh rate, it can throttle animations and produce the callback less frequently (say, 30 times a second on a 60Hz screen). While this drops framerate in half, it keeps the animation consistent -- and as stated above, our eyes are much more attuned to variance than framerate. A steady 30Hz looks better than 60Hz that misses a few frames a second.
 
-Since we want a new frame ready on every screen refresh, there's only the time in between refreshes to do all the work to create a new frame. On a 60Hz display, that means we've got about 16ms to run all JavaScript, perform layout, paint, and whatever else the browser has to do to get the frame out. This means if the JavaScript inside your requestAnimationFrame callback takes longer than 16ms to run, you don't have any hope of producing a frame in time for v-sync!
+Since we want a new frame ready on every screen refresh, there's only the time in between refreshes to do all the work to create a new frame. On a 60Hz display, that means we've got about 16ms to run all JavaScript, perform layout, paint, and whatever else the browser has to do to get the frame out. This means if the JavaScript inside your `requestAnimationFrame` callback takes longer than 16ms to run, you don't have any hope of producing a frame in time for v-sync!
 
 ```javascript
 window.requestAnimationFrame = (function(){
@@ -29,6 +29,15 @@ window.requestAnimationFrame = (function(){
             window.setTimeout(callback, 1000 / 60);
         }
 })();
+
+window.cancelAnimationFrame = window.cancelAnimationFrame
+    || window.webkitCancelAnimationFrame
+    || window.webkitCancelRequestAnimationFrame
+    || window.mozCancelAnimationFrame
+    || window.mozCancelRequestAnimationFrame
+    || oCancelRequestAnimationFrame
+    || msCancelRequestAnimationFrame
+    || function(requestID){clearTimeout(requestID)} //fall back
 ```
 
 > What's better than lightweight JS in your event and rAF callbacks? No JS. On Chrome for Android in particular (and other browsers are working on similar features), CSS animations have the very desirable property that the browser can often run them even if JavaScript is running.

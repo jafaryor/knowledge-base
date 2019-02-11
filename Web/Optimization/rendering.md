@@ -118,3 +118,5 @@ Care must be taken not to create too many layers, however, as each layer require
 
     window.addEventListener('scroll', onScroll);
     ```
+
+__[Web Performance Optimization Techniques](https://perf.rocks/articles/)__
