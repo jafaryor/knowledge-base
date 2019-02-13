@@ -144,3 +144,5 @@ ngOnInit() {
         .switchMap(this.doHttp); // if user starts typing, we cancel the previous request and make a new one
 }
 ```
+
+### [Angular Optimization Techniques](https://netbasal.com/optimizing-the-performance-of-your-angular-application-f222f1c16354)
