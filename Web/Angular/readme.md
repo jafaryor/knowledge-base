@@ -30,7 +30,7 @@ Non-supported in `{{}}`:
 
 __`[]`__ - property binding. It then transforms into `{{}}`. So all rules from the `{{}}` also applies to the `[]`.
 
-__`()`__ - event binding. 
+__`()`__ - event binding.
 
 ### `*ngIf`:
 ```html
@@ -145,4 +145,19 @@ ngOnInit() {
 }
 ```
 
-### [Angular Optimization Techniques](https://netbasal.com/optimizing-the-performance-of-your-angular-application-f222f1c16354)
+### Angular Optimization Techniques
+* Using `ChangeDetectionStrategy.OnPush`
+
+    By default, Angular runs change detection on all components every time something changes in your app.
+
+    > Angular runs a change detection cycle twice for each binding in development mode.
+
+    We can set the `ChangeDetectionStrategy` of our component to `ChangeDetectionStrategy.OnPush` . This tells Angular that the component only depends on his `Inputs` ( aka pure ) and needs to be checked in only the following cases:
+    * The `Input` reference changes.
+    * An event occurred from the component or one of his children.
+    * You run change detection explicitly by calling `detectChanges()` / `tick()` / `markForCheck()`.
+
+
+
+
+__[Read More](https://netbasal.com/optimizing-the-performance-of-your-angular-application-f222f1c16354)__
