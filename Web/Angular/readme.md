@@ -145,19 +145,54 @@ ngOnInit() {
 }
 ```
 
-### Angular Optimization Techniques
-* Using `ChangeDetectionStrategy.OnPush`
+### [Angular Optimization Techniques](https://netbasal.com/optimizing-the-performance-of-your-angular-application-f222f1c16354)
+* __`OnPush`__
 
-    By default, Angular runs change detection on all components every time something changes in your app.
+    By default, Angular runs change detection on all components every time something changes in your app — from a click event to data received from an ajax call. (user events, timers, xhr, promises, etc.)
 
-    > Angular runs a change detection cycle twice for each binding in development mode.
-
-    We can set the `ChangeDetectionStrategy` of our component to `ChangeDetectionStrategy.OnPush` . This tells Angular that the component only depends on his `Inputs` ( aka pure ) and needs to be checked in only the following cases:
+    We can set the `ChangeDetectionStrategy` of our component to `ChangeDetectionStrategy.OnPush`. This tells Angular that the component only depends on his `Inputs` (aka pure) and needs to be checked in only the following cases:
     * The `Input` reference changes.
     * An event occurred from the component or one of his children.
     * You run change detection explicitly by calling `detectChanges()` / `tick()` / `markForCheck()`.
 
+* __`TrackBy`__
 
+    If, at some point, we need to change the data in the collection, Angular can’t keep track of items in the collection and has no knowledge of which items have been removed or added.
 
+    As a result, Angular needs to remove all the DOM elements associated with the data and create them again. This can mean a lot of DOM manipulations, especially in the case of a big collection. And, as we know, DOM manipulations are expensive.
 
-__[Read More](https://netbasal.com/optimizing-the-performance-of-your-angular-application-f222f1c16354)__
+    With `trackBy` function, Angular can track which items have been added or removed according to the unique identifier and only create or destroy the things that have changed.
+
+* __Avoid Computing Values in the Template__
+
+    If the value is not changed dynamically at runtime, a better solution would be to:
+
+    * Use pure pipes — Angular executes a pure pipe only when it detects a pure change to the input value.
+    * Creates a new property and set the value once
+
+* __Disable Change Detection__
+
+    Imagine that you have a component that depends on data that changes constantly, many times per second.
+
+    Updating the user interface whenever new data arrives can be expensive. A more efficient way would be to check and update the user interface every X seconds.
+
+    We can do that by detaching the component’s change detector and conducting a local check every x seconds.
+
+    ```typescript
+    @Component({
+        selector: 'giant-list',
+        template: `
+            <li *ngFor="let d of dataProvider.data">Data {{d}}</lig>
+        `,
+    })
+    class GiantList {
+        constructor(private ref: ChangeDetectorRef, private dataProvider: DataProvider) {
+            ref.detach();
+            setInterval(() => {
+            this.ref.detectChanges();
+            }, 5000);
+        }
+    }
+    ```
+
+* __Lazy Loading__
