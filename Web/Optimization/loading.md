@@ -259,6 +259,8 @@ Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify
 
 [Step-by-step Instructions](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/)
 
+[Converting MP4 to WEBM](https://gist.github.com/Vestride/278e13915894821e1d6f)
+
 ### PRPL
 `PRPL` is a pattern that optimizes for interactivity through aggressive code-splitting and caching.
 

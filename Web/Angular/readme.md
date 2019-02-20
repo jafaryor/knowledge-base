@@ -30,7 +30,7 @@ Non-supported in `{{}}`:
 
 __`[]`__ - property binding. It then transforms into `{{}}`. So all rules from the `{{}}` also applies to the `[]`.
 
-__`()`__ - event binding. 
+__`()`__ - event binding.
 
 ### `*ngIf`:
 ```html
@@ -146,7 +146,6 @@ ngOnInit() {
 ```
 
 ### [Angular Optimization Techniques](https://netbasal.com/optimizing-the-performance-of-your-angular-application-f222f1c16354)
-
 * __`OnPush`__
 
     By default, Angular runs change detection on all components every time something changes in your app — from a click event to data received from an ajax call. (user events, timers, xhr, promises, etc.)
