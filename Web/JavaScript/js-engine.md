@@ -1,5 +1,18 @@
-## Runtime concepts
-JavaScript has a single __Call Stack__ (as JS is single-threaded language) in which it keeps track of what function we’re currently executing and what function is to be executed after that.
+# JavaScript Engine
+A popular example of a JavaScript Engine is _Google’s V8_ engine. The V8 engine is used inside _Chrome_ and _Node.js_ for example. The Engine consists of two main components:
+* __Memory Heap__ — this is where the memory allocation happens
+* __Call Stack__ — this is where your stack frames are as your code executes
+
+So, we have the Engine but there is actually a lot more. We have those things called Web APIs which are provided by browsers, like the `DOM`, `AJAX`, `setTimeout` and much more.
+
+And then, we have the so popular __event loop__ and the __callback queue__.
+
+## Call Stack
+JavaScript is a single-threaded programming language, which means it has a single Call Stack. Therefore it can do one thing at a time.
+
+The __Call Stack__ is a data structure which records basically where in the program we are. If we step into a function, we put it on the top of the stack. If we return from a function, we pop off the top of the stack. That’s all the stack can do.
+
+Each entry in the Call Stack is called a __Stack Frame__.
 
 Every time you call a `setTimeout` function or you do some async operation — it is added to the __Event Table__. This is a data structure which knows that a certain function should be triggered after a certain event. Once that event occurs (timeout, click, mouse move) it sends a notice. Bear in mind that the Event Table does not execute functions and does not add them to the call stack on it’s own. It’s sole purpose is to keep track of events and send them to the Event Queue.
 
