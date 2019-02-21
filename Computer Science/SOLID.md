@@ -1,4 +1,5 @@
-## `S.O.L.I.D`
+## Software Design Principles
+### `S.O.L.I.D`
 
 __`S.O.L.I.D`__ is an acronym for the first five object-oriented design(OOD) principles by Robert C. Martin, popularly known as Uncle Bob.
 
@@ -60,3 +61,20 @@ __`S.O.L.I.D`__ is an acronym for the first five object-oriented design(OOD) pri
 
 more: https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#toc-liskov-substitution-principle
 [more](scotch.io)
+
+### KISS
+KISS means “Keep it simple, stupid”. It is probably one of the oldest principles of software design (but we keep forgetting it).
+
+> “The KISS principle states that most systems work best if they are kept simple rather than made complex; therefore simplicity should be a key goal in design and unnecessary complexity should be avoided.”
+
+Software systems must be maintained by human developers with limited capabilities, thus any increase in a system’s complexity also augments the difficulty to maintain it.
+
+### YAGNI
+YAGNI means “You Aren’t Gonna Need It”.  It is a principle of Extreme Programming (XP) that states that a programmer should not add functionality until really necessary.
+
+> “Always implement things when you actually need them, never when you just foresee that you need them.” – Ron Jeffries
+
+### DRY
+DRY stand for "Don't Repeat Yourself," a basic principle of software development aimed at reducing repetition of information.
+
+To avoid violating the DRY principle, divide your system into pieces. Divide your code and logic into smaller reusable units and use that code by calling it where you want.
