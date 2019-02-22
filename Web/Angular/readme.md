@@ -196,3 +196,9 @@ ngOnInit() {
     ```
 
 * __Lazy Loading__
+
+* __Run outside of Zone__
+
+  When starting a work consisting of one or more asynchronous tasks that don't require UI updates or error handling to be handled by Angular. Such tasks can be kicked off via runOutsideAngular and if needed, these tasks can reenter the Angular zone via run.
+
+  [Read more about NgZone](https://angular.io/api/core/NgZone)
