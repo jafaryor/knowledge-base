@@ -88,7 +88,37 @@ For browsers that don’t support will-change, use `transform`:
 }
 ```
 
-Care must be taken not to create too many layers, however, as each layer requires both memory and management. In fact, on devices with limited memory the impact on performance can far outweigh any benefit of creating a layer. Every layer’s textures needs to be uploaded to the GPU, so there are further constraints in terms of bandwidth between CPU and GPU, and memory available for textures on the GPU.
+A browser will promote an element to a compositing layer for many reasons, just a few of which are:
+* 3D transforms: `translate3d`, `translateZ` and so on;
+* `<video>`, `<canvas>` and `<iframe>` elements;
+* animation of `transform` and `opacity` via `Element.animate()`;
+* animation of `transform` and `opacity` via СSS transitions and animations;
+* `position: fixed`;
+* `will-change`;
+* `filter`;
+
+> Care must be taken not to create too many layers, however, as each layer requires both memory and management. In fact, on devices with limited memory the impact on performance can far outweigh any benefit of creating a layer. Every layer’s textures needs to be uploaded to the GPU, so there are further constraints in terms of bandwidth between CPU and GPU, and memory available for textures on the GPU.
+
+### Animate `transform` and `opacity` properties only
+The `transform` and `opacity` properties are guaranteed to neither affect nor be affected by the normal flow or DOM environment (that is, they won’t cause a reflow or repaint, so their animation can be completely offloaded to the GPU). Basically, this means you can effectively animate movement, scaling, rotation, opacity and affine transforms only.
+
+### Reduce size of composite layer
+The trick is pretty simple: Reduce the physical size of the composite layer with the `width` and `height` properties, and then upscale its texture with `transform: scale(…)`.
+
+Of course, this trick reduces memory consumption significantly for very simple, solid-colored layers only.
+
+> __Animation of `transform` and `opacity` via CSS transitions or animations automatically creates a compositing layer and works on the GPU.__
+
+### CSS animation vs JS animation
+CSS-based animation has a very important feature: It works entirely on the GPU. Because you declare how an animation should start and finish, the browser can prepare all of the required instructions ahead of the animation’s start and send them to the GPU.
+
+In the case of imperative JavaScript, all that the browser knows for sure is the state of the current frame. For a smooth animation, we’d have to calculate the new frame in the main browser thread and send it to the GPU at least 60 times per second.
+
+Besides the fact that these calculations and sending of data are much slower that CSS animation, they also depend on the workload of the main thread. It menas the JS animation may lag if the main thread is loaded.
+
+So, try to use CSS-based animation as much as possible, especially for loading and progress indicators. Not only is it much faster, but it won’t get blocked by heavy JavaScript calculations.
+
+[Read More about Composite Layers](https://www.smashingmagazine.com/2016/12/gpu-animation-doing-it-right/)
 
 ### Debounce Your Input Handlers
 * __Avoid long-running input handlers; they can block scrolling__
