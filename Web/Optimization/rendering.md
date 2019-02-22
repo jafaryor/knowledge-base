@@ -118,8 +118,6 @@ Besides the fact that these calculations and sending of data are much slower tha
 
 So, try to use CSS-based animation as much as possible, especially for loading and progress indicators. Not only is it much faster, but it won’t get blocked by heavy JavaScript calculations.
 
-[Read More about Composite Layers](https://www.smashingmagazine.com/2016/12/gpu-animation-doing-it-right/)
-
 ### Debounce Your Input Handlers
 * __Avoid long-running input handlers; they can block scrolling__
 
@@ -150,3 +148,5 @@ So, try to use CSS-based animation as much as possible, especially for loading a
     ```
 
 __[Web Performance Optimization Techniques](https://perf.rocks/articles/)__
+
+[__Read More about Composite Layers__](https://www.smashingmagazine.com/2016/12/gpu-animation-doing-it-right/)
