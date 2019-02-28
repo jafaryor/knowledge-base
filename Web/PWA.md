@@ -16,15 +16,24 @@ According to Google Developers, these characteristics are:
 * __Linkable__ - Easily shared via a URL and do not require complex installation.
 
 ### HTML5 Cache Manifest
-A cache manifest in HTML5 is a plain text file accompanying a web app that helps it run when there is no network connectivity. The caching mechanism reads this file and ensures that its contents are available locally. An HTML5 cache manifest is served with its content type set to `"text/cache-manifest"`.
+A [Cache Manifest](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache) in HTML5 is a plain text file accompanying a web app that helps it run when there is no network connectivity. The caching mechanism reads this file and ensures that its contents are available locally. An HTML5 cache manifest is served with its content type set to `"text/cache-manifest"`.
 
 Example:
-```html
-CACHE MANIFEST 
+```
+CACHE MANIFEST
 /test.css
 /test.js
 /test.png
 ```
+
+To enable the application cache for an application, you must include the `manifest` attribute in the `<html>`
+```html
+<html manifest="example.appcache">
+  ...
+</html>
+```
+
+> Use Service Workers instead as Cache Manifest is depricated.
 
 ### Service Workers
 A service worker is a script that your browser runs in the background, separate from a web page.
@@ -44,5 +53,12 @@ Benefits of service workers
 
 * Capable of responding to the resource requests originate elsewhere
 * Receive centralized updates
+
+[__Web App Manifest__](https://developers.google.com/web/fundamentals/web-app-manifest/) is a simple JSON file that tells the browser about your web application and how it should behave when 'installed' on the user's mobile device or desktop.
+
+When you have created the manifest, add a link tag to all the pages that encompass your web app:
+```html
+<link rel="manifest" href="/manifest.json">
+```
 
 __[More about Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers/)__
