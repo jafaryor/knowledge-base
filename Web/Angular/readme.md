@@ -145,6 +145,11 @@ ngOnInit() {
 }
 ```
 
+### `*ngSwitch` vs `*ngIf`
+With `NgIf` we can conditionally add or remove an element from the DOM.
+
+The key difference between the `NgIf` solution is that by using `NgSwitch` we evaluate the expression only once and then choose the element to display based on the result.
+
 ### [Angular Optimization Techniques](https://netbasal.com/optimizing-the-performance-of-your-angular-application-f222f1c16354)
 * __`OnPush`__
 
