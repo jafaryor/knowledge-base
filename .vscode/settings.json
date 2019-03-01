@@ -3,5 +3,6 @@
     "python.jediEnabled": false,
     "python.linting.pylintEnabled": true,
     "editor.detectIndentation": false,
-    "svg.preview.background": "black"
+    "svg.preview.background": "black",
+    "editor.autoIndent": false
 }
