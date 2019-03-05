@@ -41,7 +41,7 @@ Instead leverage the use of pure pipes thereby taking advantage of Angular cachi
 11. __Unsubscribing Observables__
 12. __Observable `share()` operator__: If you have subscribed the observable at multiple locations/components, then each subscription will try to produce the data even though the data is duplicate. We can avoid the processing of the duplicate data across subscriptions using the `share()` operator.
     ```javascript
-      this.data = this.http.get<any> ('apiUrl').pipe(share());
+        this.data = this.http.get<any> ('apiUrl').pipe(share());
     ```
 13. __Progressive Web Apps__: The PWA not just give you a load time optimization but also the runtime optimizations making your app more responsive, interactive, fast, smooth animations, offline support etc.
 14. `console.log()`: Using `console.log()` statements in your production code could be a bad idea as it will slow down the performance of the app and also logging objects with `console.log()` creates memory leak issue. When browser’s console window is open, the `console.log()` execution slows down even further by many times thus impacting site’s performance significantly. It’s better to completely remove the `console.log()` statements from your production code or at least have an environment specific conditional logging.

@@ -202,8 +202,22 @@ The key difference between the `NgIf` solution is that by using `NgSwitch` we ev
 
 * __Lazy Loading__
 
-* __Run outside of Zone__
+* __Avoiding Excessive Change Detection By Escaping The Angular Zone__
 
-  When starting a work consisting of one or more asynchronous tasks that don't require UI updates or error handling to be handled by Angular. Such tasks can be kicked off via runOutsideAngular and if needed, these tasks can reenter the Angular zone via run.
+    Angular applications are always executed inside an "Angular Zone". The most important effect this has is that change detection gets automatically executed without us having to do anything: Whenever any browser event (a click event, an HTTP response, a `setTimeout`, etc.) occurs, we enter the Angular Zone and run the event handling code. After that's done we exit the zone and Angular performs change detection for the application.
 
-  [Read more about NgZone](https://angular.io/api/core/NgZone)
+    For 99.9% of the time, this is exactly what we want. But with paint loops we have a problem, which is that `requestAnimationFrames` are also executed within the Angular Zone. And that means when we have an animation running we __end up running up to 60 change detections every second__.
+
+    There's a very easy way out of this, which is to take our paint loop and run it outside the Angular zone. We can do this by injecting the `NgZone` object into our canvas component, and then scheduling the first paint to run outside the zone by using the `runOutsideAngular` method:
+    ```typescript
+    constructor(private ngZone: NgZone) {}
+
+    ngOnInit() {
+        this.running = true;
+        this.ngZone.runOutsideAngular(() => this.paint());
+    }
+    ```
+
+    When starting a work consisting of one or more asynchronous tasks that don't require UI updates or error handling to be handled by Angular. Such tasks can be kicked off via `runOutsideAngular` and if needed, these tasks can reenter the Angular zone via `run`.
+
+    [Read more about NgZone](https://angular.io/api/core/NgZone)

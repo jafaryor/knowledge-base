@@ -107,15 +107,15 @@ Complex error handling is the website's responsibility.
     Link preload is not supported in every browser yet. You may want to detect its availability with the snippets below to adjust your performance metrics.
     ```javascript
     function preloadFullVideoSupported() {
-      const link = document.createElement('link');
-      link.as = 'video';
-      return (link.as === 'video');
+        const link = document.createElement('link');
+        link.as = 'video';
+        return (link.as === 'video');
     }
 
     function preloadFirstSegmentSupported() {
-      const link = document.createElement('link');
-      link.as = 'fetch';
-      return (link.as === 'fetch');
+        const link = document.createElement('link');
+        link.as = 'fetch';
+        return (link.as === 'fetch');
     }
     ```
 
@@ -124,10 +124,10 @@ Complex error handling is the website's responsibility.
     We're not using service workers yet as the [Cache API](https://developer.mozilla.org/en-US/docs/Web/API/Cache) is also accessible from the Window object.
     ```javascript
     const videoFileUrls = [
-      'bat_video_file_1.webm',
-      'cow_video_file_1.webm',
-      'dog_video_file_1.webm',
-      'fox_video_file_1.webm',
+        'bat_video_file_1.webm',
+        'cow_video_file_1.webm',
+        'dog_video_file_1.webm',
+        'fox_video_file_1.webm',
     ];
 
     // Let's create a video pre-cache and store all first segments of videos inside.
@@ -135,21 +135,21 @@ Complex error handling is the website's responsibility.
     .then(cache => Promise.all(videoFileUrls.map(videoFileUrl => fetchAndCache(videoFileUrl, cache))));
 
     function fetchAndCache(videoFileUrl, cache) {
-      // Check first if video is in the cache.
-      return cache.match(videoFileUrl)
-      .then(cacheResponse => {
-        // Let's return cached response if video is already in the cache.
-        if (cacheResponse) {
-          return cacheResponse;
-        }
-        // Otherwise, fetch the video from the network.
-        return fetch(videoFileUrl)
-        .then(networkResponse => {
-          // Add the response to the cache and return network response in parallel.
-          cache.put(videoFileUrl, networkResponse.clone());
-          return networkResponse;
+        // Check first if video is in the cache.
+        return cache.match(videoFileUrl)
+        .then(cacheResponse => {
+            // Let's return cached response if video is already in the cache.
+            if (cacheResponse) {
+                return cacheResponse;
+            }
+            // Otherwise, fetch the video from the network.
+            return fetch(videoFileUrl)
+            .then(networkResponse => {
+                // Add the response to the cache and return network response in parallel.
+                cache.put(videoFileUrl, networkResponse.clone());
+                return networkResponse;
+            });
         });
-      });
     }
     ```
 
@@ -159,10 +159,10 @@ Complex error handling is the website's responsibility.
     return fetch(videoFileUrl, { headers: { range: 'bytes=0-567139' } })
     .then(networkResponse => networkResponse.arrayBuffer())
     .then(data => {
-      const response = new Response(data);
-      // Add the response to the cache and return network response in parallel.
-      cache.put(videoFileUrl, response.clone());
-      return response;
+        const response = new Response(data);
+        // Add the response to the cache and return network response in parallel.
+        cache.put(videoFileUrl, response.clone());
+        return response;
     });
     ```
 
@@ -171,27 +171,27 @@ Complex error handling is the website's responsibility.
     Use `MSE` to feed that first segment of video to the video element.
     ```javascript
     function onPlayButtonClick(videoFileUrl) {
-      video.load(); // Used to be able to play video later.
+        video.load(); // Used to be able to play video later.
 
-      window.caches.open('video-pre-cache')
-      .then(cache => fetchAndCache(videoFileUrl, cache)) // Defined above.
-      .then(response => response.arrayBuffer())
-      .then(data => {
-        const mediaSource = new MediaSource();
-        video.src = URL.createObjectURL(mediaSource);
-        mediaSource.addEventListener('sourceopen', sourceOpen, { once: true });
+        window.caches.open('video-pre-cache')
+        .then(cache => fetchAndCache(videoFileUrl, cache)) // Defined above.
+        .then(response => response.arrayBuffer())
+        .then(data => {
+            const mediaSource = new MediaSource();
+            video.src = URL.createObjectURL(mediaSource);
+            mediaSource.addEventListener('sourceopen', sourceOpen, { once: true });
 
-        function sourceOpen() {
-          URL.revokeObjectURL(video.src);
+            function sourceOpen() {
+            URL.revokeObjectURL(video.src);
 
-          const sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp09.00.10.08"');
-          sourceBuffer.appendBuffer(data);
+            const sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp09.00.10.08"');
+            sourceBuffer.appendBuffer(data);
 
-          video.play().then(_ => {
-            // TODO: Fetch the rest of the video when user starts playing video.
-          });
-        }
-      });
+            video.play().then(_ => {
+                // TODO: Fetch the rest of the video when user starts playing video.
+            });
+            }
+        });
     }
     ```
 
@@ -201,45 +201,45 @@ Complex error handling is the website's responsibility.
 
     ```javascript
     addEventListener('fetch', event => {
-      event.respondWith(loadFromCacheOrFetch(event.request));
+        event.respondWith(loadFromCacheOrFetch(event.request));
     });
 
     function loadFromCacheOrFetch(request) {
-      // Search through all available caches for this request.
-      return caches.match(request)
-      .then(response => {
+        // Search through all available caches for this request.
+        return caches.match(request)
+        .then(response => {
 
-        // Fetch from network if it's not already in the cache.
-        if (!response) {
-          return fetch(request);
-          // Note that we may want to add the response to the cache and return
-          // network response in parallel as well.
-        }
-
-        // Browser sends a HTTP Range request. Let's provide one reconstructed
-        // manually from the cache.
-        if (request.headers.has('range')) {
-          return response.blob()
-          .then(data => {
-
-            // Get start position from Range request header.
-            const pos = Number(/^bytes\=(\d+)\-/g.exec(request.headers.get('range'))[1]);
-            const options = {
-              status: 206,
-              statusText: 'Partial Content',
-              headers: response.headers
+            // Fetch from network if it's not already in the cache.
+            if (!response) {
+            return fetch(request);
+            // Note that we may want to add the response to the cache and return
+            // network response in parallel as well.
             }
-            const slicedResponse = new Response(data.slice(pos), options);
-            slicedResponse.setHeaders('Content-Range': 'bytes ' + pos + '-' +
-                (data.size - 1) + '/' + data.size);
-            slicedResponse.setHeaders('X-From-Cache': 'true');
 
-            return slicedResponse;
-          });
+            // Browser sends a HTTP Range request. Let's provide one reconstructed
+            // manually from the cache.
+            if (request.headers.has('range')) {
+            return response.blob()
+            .then(data => {
+
+                // Get start position from Range request header.
+                const pos = Number(/^bytes\=(\d+)\-/g.exec(request.headers.get('range'))[1]);
+                const options = {
+                status: 206,
+                statusText: 'Partial Content',
+                headers: response.headers
+                }
+                const slicedResponse = new Response(data.slice(pos), options);
+                slicedResponse.setHeaders('Content-Range': 'bytes ' + pos + '-' +
+                    (data.size - 1) + '/' + data.size);
+                slicedResponse.setHeaders('X-From-Cache': 'true');
+
+                return slicedResponse;
+            });
+            }
+
+            return response;
         }
-
-        return response;
-      }
     }
     ```
 
@@ -256,11 +256,11 @@ Complex error handling is the website's responsibility.
 
     ```javascript
     if ('connection' in navigator) {
-      if (navigator.connection.type == 'cellular') {
-        // TODO: Prompt user before preloading video
-      } else {
-        // TODO: Preload the first segment of a video.
-      }
+        if (navigator.connection.type == 'cellular') {
+            // TODO: Prompt user before preloading video
+        } else {
+            // TODO: Preload the first segment of a video.
+        }
     }
     ```
 
@@ -269,12 +269,12 @@ Complex error handling is the website's responsibility.
     ```javascript
     if ('getBattery' in navigator) {
     navigator.getBattery()
-      .then(battery => {
-        // If battery is charging or battery level is high enough
-        if (battery.charging || battery.level > 0.15) {
-          // TODO: Preload the first segment of a video.
-        }
-      });
+        .then(battery => {
+            // If battery is charging or battery level is high enough
+            if (battery.charging || battery.level > 0.15) {
+            // TODO: Preload the first segment of a video.
+            }
+        });
     }
     ```
 
@@ -292,8 +292,8 @@ For the sake of simplicity, let's assume the entire video has been split into sm
 <link rel="preload" as="fetch" href="https://cdn.com/file_1.webm">
 ```
 
-
 Check out the [Media Session API](https://developers.google.com/web/updates/2017/02/media-session)
 
+#### [Read More](https://developers.google.com/web/fundamentals/media/video)
 
-__[Read More](https://developers.google.com/web/fundamentals/media/video)__
+#### [Ways of embedding SVG](https://vecta.io/blog/best-way-to-embed-svg/)
