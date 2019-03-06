@@ -150,6 +150,47 @@ With `NgIf` we can conditionally add or remove an element from the DOM.
 
 The key difference between the `NgIf` solution is that by using `NgSwitch` we evaluate the expression only once and then choose the element to display based on the result.
 
+### `ng-container`
+The `ng-container` directive provides us with an element that we can attach a structural directive to a section of the page, without having to create an extra element just for that.
+
+There is another major use case for the `ng-container` directive: it can also provide a placeholder for injecting a template dynamically into the page.
+
+We can take the template itself and instantiate it anywhere on the page, using the `ngTemplateOutlet` directive:
+```html
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="loading"></ng-container>
+```
+
+The value passed to this `ngTemplateOutlet` directive can be any expression that evaluates into a template reference, more on this later.
+
+Inside the `ng-template` tag body, we have access to the same context variables that are visible in the outer template. But each template can also define its own set of input variables.
+```javascript
+@Component({
+    selector: 'app-root',
+    template: `      
+    <ng-template #estimateTemplate let-lessonsCounter="estimate">
+        <div> Approximately {{lessonsCounter}} lessons ...</div>
+    </ng-template>
+
+    <ng-container 
+    *ngTemplateOutlet="estimateTemplate; context:ctx">
+    </ng-container>
+`})
+export class AppComponent {
+    @ViewChild('estimateTemplate')
+    private estimateTemplate: TemplateRef<any>;
+
+    totalEstimate = 10;
+    ctx = {estimate: this.totalEstimate};
+}
+```
+
+> The type of template is `TemplateRef`.
+
+
 ### [Angular Optimization Techniques](https://netbasal.com/optimizing-the-performance-of-your-angular-application-f222f1c16354)
 * __`OnPush`__
 
