@@ -53,14 +53,14 @@ In a waterfall model, each phase must be completed before the next phase can beg
 
 > ![sdlc_waterfall_model](./images/sdlc_waterfall_model.jpg)
 
-Some situations where the use of Waterfall model is most appropriate are:
+#### Application
 * Requirements are very well documented, clear and fixed.
 * Product definition is stable.
 * Technology is understood and is not dynamic.
 * There are no ambiguous requirements.
 * The project is short.
 
-Advantages:
+#### Advantages:
 * Simple and easy to understand and use
 * Easy to manage due to the rigidity of the model. Each phase has specific deliverables and a review process.
 * Phases are processed and completed one at a time.
@@ -70,7 +70,7 @@ Advantages:
 * Easy to arrange tasks.
 * Process and results are well documented.
 
-Disadvantages:
+#### Disadvantages:
 * No working software is produced until late during the life cycle.
 * High amounts of risk and uncertainty.
 * Not a good model for complex and object-oriented projects.
@@ -82,8 +82,94 @@ Disadvantages:
 * Integration is done as a "big-bang. at the very end, which doesn't allow identifying any technological or business bottleneck or challenges early.
 
 ### Iterative Model
+Iterative process starts with a simple implementation of a subset of the software requirements and iteratively enhances the evolving versions until the full system is implemented. At each iteration, design modifications are made and new functional capabilities are added. The basic idea behind this method is to develop a system through repeated cycles (iterative) and in smaller portions at a time (incremental).
 
+![sdlc_iterative_model](./images/sdlc_iterative_model.jpg)
 
+In this incremental model, the whole requirement is divided into various builds. During each iteration, the development module goes through the requirements, design, implementation and testing phases. Each subsequent release of the module adds function to the previous release. The process continues till the complete system is ready as per the requirement.
 
+#### Application
+* Requirements of the complete system are clearly defined and understood.
+* Major requirements must be defined; however, some functionalities or requested enhancements may evolve with time.
+* There is a time to the market constraint.
+* A new technology is being used and is being learnt by the development team while working on the project.
+* Resources with needed skill sets are not available and are planned to be used on contract basis for specific iterations.
+* There are some high-risk features and goals which may change in the future.
 
+#### Advantages:
+* Some working functionality can be developed quickly and early in the life cycle.
+* Results are obtained early and periodically.
+* Parallel development can be planned.
+* Progress can be measured.
+* Less costly to change the scope/requirements.
+* Testing and debugging during smaller iteration is easy.
+* Risks are identified and resolved during iteration; and each iteration is an easily managed milestone.
+* Easier to manage risk - High risk part is done first.
+* With every increment, operational product is delivered.
+* Issues, challenges and risks identified from each increment can be utilized/applied to the next increment.
+* Risk analysis is better.
+* It supports changing requirements.
+* Initial Operating time is less.
+* Better suited for large and mission-critical projects.
+* During the life cycle, software is produced early which facilitates customer evaluation and feedback.
+
+#### Disadvantages:
+* More resources may be required.
+* Although cost of change is lesser, but it is not very suitable for changing requirements.
+* More management attention is required.
+* System architecture or design issues may arise because not all requirements are gathered in the beginning of the entire life cycle.
+* Defining increments may require definition of the complete system.
+* Not suitable for smaller projects.
+* Management complexity is more.
+* End of project may not be known which is a risk.
+* Highly skilled resources are required for risk analysis.
+* Projects progress is highly dependent upon the risk analysis phase.
+
+### Spiral Model
+The spiral model has four phases. A software project repeatedly passes through these phases in iterations called Spirals.
+1. #### Identification
+
+    This phase starts with gathering the business requirements in the baseline spiral. In the subsequent spirals as the product matures, identification of system requirements, subsystem requirements and unit requirements are all done in this phase.
+
+    This phase also includes understanding the system requirements by continuous communication between the customer and the system analyst. At the end of the spiral, the product is deployed in the identified market.
+
+2. #### Design
+
+    The Design phase starts with the conceptual design in the baseline spiral and involves architectural design, logical design of modules, physical product design and the final design in the subsequent spirals.
+
+3. #### Construct or Build
+
+    The Construct phase refers to production of the actual software product at every spiral. In the baseline spiral, when the product is just thought of and the design is being developed a POC (Proof of Concept) is developed in this phase to get customer feedback.
+
+    Then in the subsequent spirals with higher clarity on requirements and design details a working model of the software called build is produced with a version number. These builds are sent to the customer for feedback.
+
+4. #### Evaluation and Risk Analysis
+
+    Risk Analysis includes identifying, estimating and monitoring the technical feasibility and management risks, such as schedule slippage and cost overrun. After testing the build, at the end of first iteration, the customer evaluates the software and provides feedback.
+
+![sdlc_spiral_model](./images/sdlc_spiral_model.jpg)
+
+#### Application:
+* When there is a budget constraint and risk evaluation is important.
+* For medium to high-risk projects.
+* Long-term project commitment because of potential changes to economic priorities as the requirements change with time.
+* Customer is not sure of their requirements which is usually the case.
+* Requirements are complex and need evaluation to get clarity.
+* New product line which should be released in phases to get enough customer feedback.
+* Significant changes are expected in the product during the development cycle.
+
+#### Advantages:
+* Changing requirements can be accommodated.
+* Allows extensive use of prototypes.
+* Requirements can be captured more accurately.
+* Users see the system early.
+* Development can be divided into smaller parts and the risky parts can be developed earlier which helps in better risk management.
+
+#### Disadvantages:
+* Management is more complex.
+* End of the project may not be known early.
+* Not suitable for small or low risk projects and could be expensive for small projects.
+* Process is complex
+* Spiral may go on indefinitely.
+* Large number of intermediate stages requires excessive documentation.
 
