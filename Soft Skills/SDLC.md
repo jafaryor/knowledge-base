@@ -218,7 +218,7 @@ The coding is performed based on the coding guidelines and standards.
 * Acceptance Testing
 
     Acceptance testing is associated with the business requirement analysis phase and involves testing the product in user environment.
-    
+
     Acceptance tests uncover the compatibility issues with the other systems available in the user environment. It also discovers the non-functional issues such as load and performance defects in the actual user environment.
 
 #### Application:
@@ -297,21 +297,124 @@ The most populat Agile methodoly is called __SCRUM__.
 ### RAD Model
 Rapid application development is a software development methodology that uses minimal planning in favor of rapid prototyping. A prototype is a working model that is functionally equivalent to a component of the product.
 
-In the RAD model, the functional modules are developed in parallel as prototypes and are integrated to make the complete product for faster product delivery. Since there is no detailed preplanning, it makes it easier to incorporate the changes within the development process.
+RAD model enables rapid delivery as it reduces the overall development time due to the reusability of the components and parallel development. RAD works well only if high skilled engineers are available and the customer is also committed to achieve the targeted prototype in the given time frame. If there is commitment lacking on either side the model may fail.
+
+Since there is no detailed preplanning, it makes it easier to incorporate the changes within the development process.
 
 The most important aspect for this model to be successful is to make sure that the prototypes developed are reusable.
-
-#### Application
-RAD projects follow iterative and incremental model and have small teams comprising of developers, domain experts, customer representatives and other IT resources working progressively on their component or prototype.
 
 #### Phases of the RAD Mode
 * Business Modeling
 
     A complete business analysis is performed to find the vital information for business, how it can be obtained, how and when is the information processed and what are the factors driving successful flow of information.
 
-* 
+* Data Modeling
+
+    The information gathered in the Business Modeling phase is reviewed and analyzed to form sets of data objects vital for the business. The attributes of all data sets is identified and defined. The relation between these data objects are established and defined in detail in relevance to the business model.
+
+* Process Modeling
+
+    The data object sets defined in the Data Modeling phase are converted to establish the business information flow needed to achieve specific business objectives as per the business model. Process descriptions for adding, deleting, retrieving or modifying a data object are given.
+
+* Application Generation
+
+    The actual system is built and coding is done by using automation tools to convert process and data models into actual prototypes.
+
+* Testing and Turnover
+
+    The overall testing time is reduced in the RAD model as the prototypes are independently tested during every iteration. However, the data flow and the interfaces between all the components need to be thoroughly tested with complete test coverage.
+
+![sdlc_rad_model](./images/sdlc_rad_model.jpg)
+
+#### Application
+RAD projects follow iterative and incremental model and have small teams comprising of developers, domain experts, customer representatives and other IT resources working progressively on their component or prototype.
+
+RAD model can be applied successfully to the projects in which clear modularization is possible. If the project cannot be broken into modules, RAD may fail.
+
+Scenarios where RAD can be used:
+* RAD should be used only when a system can be modularized to be delivered in an incremental manner.
+* It should be used if there is a high availability of designers for modeling.
+* It should be used only if the budget permits use of automated code generating tools.
+* RAD SDLC model should be chosen only if domain experts are available with relevant business knowledge.
+* Should be used where the requirements change during the project and working prototypes are to be presented to customer in small iterations of 2-3 months.
 
 #### Advantages:
-* 
+* Changing requirements can be accommodated.
+* Progress can be measured.
+* Iteration time can be short with use of powerful RAD tools.
+* Productivity with fewer people in a short time.
+* Reduced development time.
+* Increases reusability of components.
+* Quick initial reviews occur.
+* Encourages customer feedback.
+* Integration from very beginning solves a lot of integration issues.
 
+#### Disadvantages:
+* Dependency on technically strong team members for identifying business requirements.
+* Only system that can be modularized can be built using RAD.
+* Requires highly skilled developers/designers.
+* High dependency on modeling skills.
+* Inapplicable to cheaper projects as cost of modeling and automated code generation is very high.
+* Management complexity is more.
+* Suitable for systems that are component based and scalable.
+* Requires user involvement throughout the life cycle.
+* Suitable for project requiring shorter development times.
 
+### Software Prototype Model
+The Software Prototyping refers to building software application prototypes which displays the functionality of the product under development, but may not actually hold the exact logic of the original software.
+
+Software prototyping is becoming very popular as a software development model, as it enables to understand customer requirements at an early stage of development. It helps get valuable feedback from the customer and helps software designers and developers understand about what exactly is expected from the product under development.
+
+Following is a stepwise approach explained to design a software prototype.
+* Basic Requirement Identification
+
+    This step involves understanding the very basics product requirements especially in terms of user interface. The more intricate details of the internal design and external aspects like performance and security can be ignored at this stage.
+
+* Developing the initial Prototype
+
+    The initial Prototype is developed in this stage, where the very basic requirements are showcased and user interfaces are provided. These features may not exactly work in the same manner internally in the actual software developed. While, the workarounds are used to give the same look and feel to the customer in the prototype developed.
+
+* Review of the Prototype
+
+    The prototype developed is then presented to the customer and the other important stakeholders in the project. The feedback is collected in an organized manner and used for further enhancements in the product under development.
+
+* Revise and Enhance the Prototype
+
+    The feedback and the review comments are discussed during this stage and some negotiations happen with the customer based on factors like – time and budget constraints and technical feasibility of the actual implementation. The changes accepted are again incorporated in the new Prototype developed and the cycle repeats until the customer expectations are met.
+
+#### Software Prototyping Types:
+* Throwaway/Rapid Prototyping
+
+    Is also called as rapid or close ended prototyping. This type of prototyping uses very little efforts with minimum requirement analysis to build a prototype. Once the actual requirements are understood, the prototype is discarded and the actual system is developed with a much clear understanding of user requirements.
+
+* Evolutionary Prototyping
+
+    Is based on building actual functional prototypes with minimal functionality in the beginning. The prototype developed forms the heart of the future prototypes on top of which the entire system is built. By using evolutionary prototyping, the well-understood requirements are included in the prototype and the requirements are added as and when they are understood.
+
+* Incremental Prototyping
+
+    Refers to building multiple functional prototypes of the various sub-systems and then integrating all the available prototypes to form a complete system.
+
+* Extreme Prototyping
+
+    Is used in the web development domain. It consists of three sequential phases. First, a basic prototype with all the existing pages is presented in the HTML format. Then the data processing is simulated using a prototype services layer. Finally, the services are implemented and integrated to the final prototype. This process is called Extreme Prototyping used to draw attention to the second phase of the process, where a fully functional UI is developed with very little regard to the actual services.
+
+#### Application
+Software Prototyping is most useful in development of systems having high level of user interactions such as online systems. Systems which need users to fill out forms or go through various screens before data is processed. THis kind of systems can use prototyping very effectively to give the exact look and feel even before the actual software is developed.
+
+Software that involves too much of data processing and most of the functionality is internal with very little user interface does not usually benefit from prototyping.
+
+#### Advantages:
+* Increased user involvement in the product even before its implementation.
+* Since a working model of the system is displayed, the users get a better understanding of the system being developed.
+* Reduces time and cost as the defects can be detected much earlier.
+* Quicker user feedback is available leading to better solutions.
+* Missing functionality can be identified easily.
+* Confusing or difficult functions can be identified.
+
+#### Disadvantages:
+* Risk of insufficient requirement analysis owing to too much dependency on the prototype.
+* Users may get confused in the prototypes and actual systems.
+* Practically, this methodology may increase the complexity of the system as scope of the system may expand beyond original plans.
+* Developers may try to reuse the existing prototypes to build the actual system, even when it is not technically feasible.
+* The effort invested in building prototypes may be too much if it is not monitored properly.
