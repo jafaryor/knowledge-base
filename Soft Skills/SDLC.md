@@ -173,3 +173,145 @@ The spiral model has four phases. A software project repeatedly passes through t
 * Spiral may go on indefinitely.
 * Large number of intermediate stages requires excessive documentation.
 
+### V Model
+The V-Model is an extension of the waterfall model and is based on the association of a testing phase for each corresponding development stage. This means that for every single phase in the development cycle, there is a directly associated testing phase.
+
+![sdlc_v_model](./images/sdlc_v_model.jpg)
+
+#### Verification Phases:
+* Business Requirement Analysis
+
+    This phase involves detailed communication with the customer to understand his expectations and exact requirement.
+
+    The acceptance test design planning is done at this stage as business requirements can be used as an input for acceptance testing.
+
+* System Design
+
+    The system design will have the understanding and detailing the complete hardware and communication setup for the product under development. The system test plan is developed based on the system design.
+
+* Architectural Design
+
+    Architectural specifications are understood and designed in this phase. Usually more than one technical approach is proposed and based on the technical and financial feasibility the final decision is taken. The system design is broken down further into modules taking up different functionality. This is also referred to as __High Level Design__ (HLD).
+
+* Module Design
+
+    In this phase, the detailed internal design for all the system modules is specified, referred to as Low Level Design (LLD). These unit tests can be designed at this stage based on the internal module designs.
+
+#### Coding Phase
+The actual coding of the system modules designed in the design phase is taken up in the Coding phase. The best suitable programming language is decided based on the system and architectural requirements.
+
+The coding is performed based on the coding guidelines and standards.
+
+#### Validation Phases
+* Unit Testing
+
+    Unit tests designed in the module design phase are executed on the code during this validation phase.
+
+* Integration Testing
+
+    Integration testing is associated with the architectural design phase. Integration tests are performed to test the coexistence and communication of the internal modules within the system.
+
+* System Testing
+
+    System testing is directly associated with the system design phase. System tests check the entire system functionality and the communication of the system under development with external systems.
+
+* Acceptance Testing
+
+    Acceptance testing is associated with the business requirement analysis phase and involves testing the product in user environment.
+    
+    Acceptance tests uncover the compatibility issues with the other systems available in the user environment. It also discovers the non-functional issues such as load and performance defects in the actual user environment.
+
+#### Application:
+* Requirements are well defined, clearly documented and fixed.
+* Product definition is stable.
+* Technology is not dynamic and is well understood by the project team.
+* There are no ambiguous or undefined requirements.
+* The project is short.
+
+#### Advantages:
+* This is a highly-disciplined model and Phases are completed one at a time.
+* Works well for smaller projects where requirements are very well understood.
+* Simple and easy to understand and use.
+* Easy to manage due to the rigidity of the model. Each phase has specific deliverables and a review process.
+
+#### Disadvantages:
+* High risk and uncertainty.
+* Not a good model for complex and object-oriented projects.
+* Poor model for long and ongoing projects.
+* Not suitable for the projects where requirements are at a moderate to high risk of changing.
+* Once an application is in the testing stage, it is difficult to go back and change a functionality.
+* No working software is produced until late during the life cycle.
+
+### Big Bang Model
+The Big Bang model is an SDLC model where we do not follow any specific process. The development just starts with the required money and efforts as the input, and the output is the software developed which may or may not be as per customer requirement. This Big Bang Model does not follow a process/procedure and there is a very little planning required. Even the customer is not sure about what exactly he wants and the requirements are implemented on the fly without much analysis.
+
+#### Application
+This model is ideal for small projects with one or two developers working together and is also useful for academic or practice projects. It is an ideal model for the product where requirements are not well understood and the final release date is not given.
+
+#### Advantages
+* This is a very simple model
+* Little or no planning required
+* Easy to manage
+* Very few resources required
+* Gives flexibility to developers
+* It is a good learning aid for new comers or students.
+
+#### Disadvantages
+* Very High risk and uncertainty.
+* Not a good model for complex and object-oriented projects.
+* Poor model for long and ongoing projects.
+* Can turn out to be very expensive if requirements are misunderstood.
+
+### Agile Model
+Agile model believes that every project needs to be handled differently and the existing methods need to be tailored to best suit the project requirements. In Agile, the tasks are divided to time boxes (small time frames) to deliver specific features for a release.
+
+Iterative approach is taken and working software build is delivered after each iteration. Each build is incremental in terms of features; the final build holds all the features required by the customer.
+
+![sdlc_agile_model](./images/sdlc_agile_model.jpg)
+
+The most populat Agile methodoly is called __SCRUM__.
+
+#### Advantages:
+* Is a very realistic approach to software development.
+* Promotes teamwork and cross training.
+* Functionality can be developed rapidly and demonstrated.
+* Resource requirements are minimum.
+* Suitable for fixed or changing requirements
+* Delivers early partial working solutions.
+* Good model for environments that change steadily.
+* Minimal rules, documentation easily employed.
+* Enables concurrent development and delivery within an overall planned context.
+* Little or no planning required.
+* Easy to manage.
+* Gives flexibility to developers.
+
+#### Disadvantages:
+* Not suitable for handling complex dependencies.
+* More risk of sustainability, maintainability and extensibility.
+* An overall plan, an agile leader and agile PM practice is a must without which it will not work.
+* Strict delivery management dictates the scope, functionality to be delivered, and adjustments to meet the deadlines.
+* Depends heavily on customer interaction, so if customer is not clear, team can be driven in the wrong direction.
+* There is a very high individual dependency, since there is minimum documentation generated.
+* Transfer of technology to new team members may be quite challenging due to lack of documentation.
+
+### RAD Model
+Rapid application development is a software development methodology that uses minimal planning in favor of rapid prototyping. A prototype is a working model that is functionally equivalent to a component of the product.
+
+In the RAD model, the functional modules are developed in parallel as prototypes and are integrated to make the complete product for faster product delivery. Since there is no detailed preplanning, it makes it easier to incorporate the changes within the development process.
+
+The most important aspect for this model to be successful is to make sure that the prototypes developed are reusable.
+
+#### Application
+RAD projects follow iterative and incremental model and have small teams comprising of developers, domain experts, customer representatives and other IT resources working progressively on their component or prototype.
+
+#### Phases of the RAD Mode
+* Business Modeling
+
+    A complete business analysis is performed to find the vital information for business, how it can be obtained, how and when is the information processed and what are the factors driving successful flow of information.
+
+* 
+
+#### Advantages:
+* 
+
+
