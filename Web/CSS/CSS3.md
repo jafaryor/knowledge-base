@@ -171,7 +171,7 @@ __Pseude-class selector (`:`)__ - selects an element, state or property.
 ## Border
 * `border-radius`
 * `border-image` - shorthand property for setting all the `border-image-*` properties
-* `border-image-source` - 
+* `border-image-source` -
 * `border-image-slice` - specifies how to slice the border image into regions and apply styles for each one. [More](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice)
 * `border-image-width`
 * `border-image-outset` - specifies the distance by which the border image area extends beyond the border box
@@ -261,6 +261,8 @@ Values:
 Within a _stacking context_, child elements are stacked according to the same rules previously explained. Importantly, the z-index values of its child _stacking contexts_ only have meaning in this parent. _Stacking contexts_ are treated atomically as a single unit in the parent _stacking context_.
 
 [More about _Stacking Context_](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context)
+
+[What No One Told You About Z-Index](https://philipwalton.com/articles/what-no-one-told-you-about-z-index/)
 
 
 ## Custom data attributes
@@ -431,7 +433,7 @@ __[More new features](http://cssnext.io/features/)__
 * `mm` - millimeters
 * `cm` - centimeters
 * `em` - size of letter '`M`'.
-* `rem` - size of root `em` (which is in the `html`/`body` tag). 
+* `rem` - size of root `em` (which is in the `html`/`body` tag).
 * `pc` - picas (1 pc = 12 pt = 1/6th of an inch)
 * `pt` - points (1 pt = 1/72nd of an inch)
 * `px` - pixels (1 px = 1/96th of an inch)
