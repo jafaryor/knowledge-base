@@ -1,16 +1,16 @@
 ## RAD SDLC Model
 Rapid application development is a software development methodology that uses minimal planning in favor of rapid prototyping. A prototype is a working model that is functionally equivalent to a component of the product.
 
-RAD model enables rapid delivery as it reduces the overall development time due to the reusability of the components and parallel development. RAD works well only if high skilled engineers are available and the customer is also committed to achieve the targeted prototype in the given time frame. If there is commitment lacking on either side the model may fail.
+RAD model enables rapid delivery as it reduces the overall development time due to the reusability of the components and parallel development. RAD works well only if high skilled engineers are available and the customer is also committed to achieve the targeted prototype in the given time frame.
 
 Since there is no detailed preplanning, it makes it easier to incorporate the changes within the development process.
 
 The most important aspect for this model to be successful is to make sure that the prototypes developed are reusable.
 
-#### Phases of the RAD Mode
+#### Phases of the RAD Model
 * Business Modeling
 
-    A complete business analysis is performed to find the vital information for business, how it can be obtained, how and when is the information processed and what are the factors driving successful flow of information.
+    This step in the RAD model takes information gathered through many business-related sources. The analysis takes all the pertinent information from the company. This info is then combined into a useful description of how the information can be used when it is processed, and what is making this specific information successful for the industry.
 
 * Data Modeling
 
@@ -22,7 +22,7 @@ The most important aspect for this model to be successful is to make sure that t
 
 * Application Generation
 
-    The actual system is built and coding is done by using automation tools to convert process and data models into actual prototypes.
+    When all the information gathered is coded, and the system that is going to be used to create the prototype is built. The data models created are turned into actual prototypes that can be tested in the next step.
 
 * Testing and Turnover
 
@@ -30,20 +30,32 @@ The most important aspect for this model to be successful is to make sure that t
 
 ![sdlc_rad_model](../images/sdlc_rad_model.jpg)
 
+RAD is used on designing prototypes and then developers reengineer the prototypes into production-quality code
+
+#### RAD vs Agile
+| RAD Model |	Agile Model |
+| --- | --- |
+| RAD is used on designing prototypes and then developers reengineer the prototypes into production-quality code	| Prototypes are used only for design or basic business analysis during the inception phase |
+| Developers focus on creating the feature (no matter how bad it is at first) and then improve it | The team breaks down the solution into features |
+| RAD teams are managed by the project manager (PM)* | Team members are self-managing* |
+| The Agile standards described aren't adhered to in RAD | Developers find and fix the bugs in the code as quickly as possible and the team has the confidence to change the code without breaking the product. |
+| Developers work as individuals (often results in unmaintainable and poorly designed code) | Agile teams focus on communication and designing the product as a team |
+
 #### Application
 RAD projects follow iterative and incremental model and have small teams comprising of developers, domain experts, customer representatives and other IT resources working progressively on their component or prototype.
 
 RAD model can be applied successfully to the projects in which clear modularization is possible. If the project cannot be broken into modules, RAD may fail.
 
 Scenarios where RAD can be used:
-* RAD should be used only when a system can be modularized to be delivered in an incremental manner.
-* It should be used if there is a high availability of designers for modeling.
-* It should be used only if the budget permits use of automated code generating tools.
-* RAD SDLC model should be chosen only if domain experts are available with relevant business knowledge.
+* When the system can be modularized and then distributed in a divided form;
+* When there are many designers available for the modeling
+* When there is money in the budget for using automated code generating tools;
+* When a system needs to be produced in a short span of time (2-3 months).
+* Only if domain experts are available with relevant business knowledge.
 * Should be used where the requirements change during the project and working prototypes are to be presented to customer in small iterations of 2-3 months.
 
 #### Advantages:
-* Changing requirements can be accommodated.
+* Flexible and adaptable to changes.
 * Progress can be measured.
 * Iteration time can be short with use of powerful RAD tools.
 * Productivity with fewer people in a short time.
@@ -52,14 +64,15 @@ Scenarios where RAD can be used:
 * Quick initial reviews occur.
 * Encourages customer feedback.
 * Integration from very beginning solves a lot of integration issues.
+* With less people, productivity can be increased in short time
 
 #### Disadvantages:
 * Dependency on technically strong team members for identifying business requirements.
 * Only system that can be modularized can be built using RAD.
-* Requires highly skilled developers/designers.
-* High dependency on modeling skills.
 * Inapplicable to cheaper projects as cost of modeling and automated code generation is very high.
 * Management complexity is more.
 * Suitable for systems that are component based and scalable.
-* Requires user involvement throughout the life cycle.
-* Suitable for project requiring shorter development times.
+* It can't be used for smaller projects.
+* When technical risk is high, it is not suitable.
+* If developers are not committed to delivering software on time, RAD projects can fail.
+

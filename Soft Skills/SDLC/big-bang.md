@@ -10,7 +10,6 @@ This model is ideal for small projects with one or two developers working togeth
 * Easy to manage
 * Very few resources required
 * Gives flexibility to developers
-* It is a good learning aid for new comers or students.
 
 #### Disadvantages
 * Very High risk and uncertainty.

@@ -1,7 +1,9 @@
 ## Software Prototype SDLC Model
-The Software Prototyping refers to building software application prototypes which displays the functionality of the product under development, but may not actually hold the exact logic of the original software.
+The Prototyping Model is the SDLC Model in which a prototype (an early approximation of a final system or product) is built, tested, and then reworked as necessary until an acceptable prototype is finally achieved from which the complete system or product can now be developed.
 
 Software prototyping is becoming very popular as a software development model, as it enables to understand customer requirements at an early stage of development. It helps get valuable feedback from the customer and helps software designers and developers understand about what exactly is expected from the product under development.
+
+![sdlc_prototype_model](../images/sdlc_prototype_model.jpg)
 
 Following is a stepwise approach explained to design a software prototype.
 * Basic Requirement Identification
@@ -35,10 +37,16 @@ Following is a stepwise approach explained to design a software prototype.
 
 * Extreme Prototyping
 
-    Is used in the web development domain. It consists of three sequential phases. First, a basic prototype with all the existing pages is presented in the HTML format. Then the data processing is simulated using a prototype services layer. Finally, the services are implemented and integrated to the final prototype. This process is called Extreme Prototyping used to draw attention to the second phase of the process, where a fully functional UI is developed with very little regard to the actual services.
+    Is used in the web development domain. It consists of three sequential phases.
+
+    1. Basic prototype with all the existing pages is presented in the HTML format.
+    2. The data processing is simulated using a prototype services layer.
+    3. The services are implemented and integrated to the final prototype.
+
+    This process is called Extreme Prototyping used to draw attention to the second phase of the process, where a fully functional UI is developed with very little regard to the actual services.
 
 #### Application
-Software Prototyping is most useful in development of systems having high level of user interactions such as online systems. Systems which need users to fill out forms or go through various screens before data is processed. THis kind of systems can use prototyping very effectively to give the exact look and feel even before the actual software is developed.
+Software Prototyping is most useful in development of systems having high level of user interactions such as online systems. Systems which need users to fill out forms or go through various screens before data is processed. This kind of systems can use prototyping very effectively to give the exact look and feel even before the actual software is developed.
 
 Software that involves too much of data processing and most of the functionality is internal with very little user interface does not usually benefit from prototyping.
 
@@ -49,10 +57,12 @@ Software that involves too much of data processing and most of the functionality
 * Quicker user feedback is available leading to better solutions.
 * Missing functionality can be identified easily.
 * Confusing or difficult functions can be identified.
+* New requirements can be easily accommodated as there is scope for refinement.
 
 #### Disadvantages:
 * Risk of insufficient requirement analysis owing to too much dependency on the prototype.
 * Users may get confused in the prototypes and actual systems.
 * Practically, this methodology may increase the complexity of the system as scope of the system may expand beyond original plans.
-* Developers may try to reuse the existing prototypes to build the actual system, even when it is not technically feasible.
+* Developers in a hurry to build prototypes may end up with sub-optimal solutions.
 * The effort invested in building prototypes may be too much if it is not monitored properly.
+* The customer might lose interest in the product if he/she is not satisfied with the initial prototype.

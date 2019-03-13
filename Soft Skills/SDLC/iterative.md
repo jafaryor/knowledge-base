@@ -1,6 +1,10 @@
 ## Iterative SDLC Model
 Iterative process starts with a simple implementation of a subset of the software requirements and iteratively enhances the evolving versions until the full system is implemented. At each iteration, design modifications are made and new functional capabilities are added. The basic idea behind this method is to develop a system through repeated cycles (iterative) and in smaller portions at a time (incremental).
 
+Every iteration (which last from two to six weeks) includes the development of a separate component of the system, and after that, this component is added to the functional developed earlier.
+
+![sdlc_iterative_model](../images/sdlc_iterative_model.png)
+
 The process of Iterative Model is cyclic, unlike the more traditional models that focus on a rigorous step-by-step precess of development. It involves the following phases:
 * Planning Phase:
 
@@ -23,18 +27,19 @@ The process of Iterative Model is cyclic, unlike the more traditional models tha
     The final phase of the Iterative life cycle is the evaluation phase, where the entire team along with the client, examine the status of the project and validate whether it is as per the suggested requirements.
 
 #### Application
-* Requirements of the complete system are clearly defined and understood.
+* The requirements to the final product are strictly predefined.
 * Major requirements must be defined; however, some functionalities or requested enhancements may evolve with time.
 * There is a time to the market constraint.
 * A new technology is being used and is being learnt by the development team while working on the project.
 * Resources with needed skill sets are not available and are planned to be used on contract basis for specific iterations.
 * There are some high-risk features and goals which may change in the future.
+* Applied to the large-scale projects
 
 #### Advantages:
 * Some working functionality can be developed quickly and early in the life cycle.
 * Results are obtained early and periodically.
 * Parallel development can be planned.
-* Progress can be measured.
+* The progress is easely measurable.
 * Less costly to change the scope/requirements.
 * Testing and debugging during smaller iteration is easy.
 * Risks are identified and resolved during iteration; and each iteration is an easily managed milestone.
