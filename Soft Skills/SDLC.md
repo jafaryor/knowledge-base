@@ -41,7 +41,7 @@ The SDLC is not a methodology per se, but rather a description of the phases in 
 
 ___
 
-### SDLC Models
+## SDLC Models
 There are various software development life cycle models defined and designed which are followed during the software development process.
 
 Following are the most important and popular SDLC models followed in the industry:
@@ -52,6 +52,8 @@ Is a linear-sequential life cycle model.
 In a waterfall model, each phase must be completed before the next phase can begin and there is no overlapping in the phases.
 
 > ![sdlc_waterfall_model](./images/sdlc_waterfall_model.jpg)
+
+<table class="tablepress tablepress-id-6"><thead><tr class="row-1 odd"><th class="column-1">No</th><th class="column-2">Phase</th><th class="column-3">Activities Performed</th><th class="column-4">Deliverables</th></tr></thead><tbody class="row-hover"><tr class="row-2 even"><td class="column-1">1</td><td class="column-2">Requirement Analysis</td><td class="column-3">1. Capture all the requirements.<br> 2. Do brainstorming and walkthrough to understand the requirements.<br> 3. Do the requirements feasibility test to ensure that the requirements are testable or not.<br></td><td class="column-4">RUD ( Requirements Understanding Document)</td></tr><tr class="row-3 odd"><td class="column-1">2</td><td class="column-2">System Design</td><td class="column-3">1. As per the requirements, create the design<br> 2. Capture the hardware / software requirements.<br> 3. Document the designs<br></td><td class="column-4">HLD ( High Level Design document)<br> <br> LLD (Low level design document)<br></td></tr><tr class="row-4 even"><td class="column-1">3</td><td class="column-2">Implementation</td><td class="column-3">1. As per the design create the programes / code<br> 2. Integrate the codes for the next phase.<br> 3. Unit testing of the code<br></td><td class="column-4">Programs<br> Unit test cases and results<br></td></tr><tr class="row-5 odd"><td class="column-1">4</td><td class="column-2">System Testing</td><td class="column-3">1. Integrate the unit tested code and test it to make sure if it works as expected.                          2. Perform all the testing activities (Functional and non functional) to make sure that the system meets the requirements.<br> 3. In case of any anomaly, report it. <br> 4. Track your progress on testing through tools like traceability metrics, ALM<br> 5. Report your testing activities. <br></td><td class="column-4">Test cases<br> Test reports<br> Defect reports<br> Updated matrices.<br></td></tr><tr class="row-6 even"><td class="column-1">5</td><td class="column-2">System Deployment</td><td class="column-3">1. Make sure that the environment is up<br> 2. Make sure that there are no sev 1 defects open.<br> 3. Make sure that the test exit criteria are met. <br> 4. Deploy the application in the respective environment.<br> 5. Perform a sanity check in the environment after the application is deployed to ensure the application does not break. <br></td><td class="column-4">User Manual<br> <br> Environment definition / specification<br></td></tr><tr class="row-7 odd"><td class="column-1">6</td><td class="column-2">System maintenance</td><td class="column-3">1. Make sure that the application is up and running in the respective environment.<br> 2. Incase user encounters and defect, make sure to note and fix the issues faced.<br> 3. Incase any issue is fixed; the updated code is deployed in the environment. <br> 4.The application is always enhanced to incorporate more features, update the environment with the latest features<br></td><td class="column-4">User Manual<br> <br> List of production tickets<br> <br> List of new features implemented.<br></td></tr></tbody></table>
 
 #### Application
 * Requirements are very well documented, clear and fixed.
@@ -84,9 +86,26 @@ In a waterfall model, each phase must be completed before the next phase can beg
 ### Iterative Model
 Iterative process starts with a simple implementation of a subset of the software requirements and iteratively enhances the evolving versions until the full system is implemented. At each iteration, design modifications are made and new functional capabilities are added. The basic idea behind this method is to develop a system through repeated cycles (iterative) and in smaller portions at a time (incremental).
 
-![sdlc_iterative_model](./images/sdlc_iterative_model.jpg)
+The process of Iterative Model is cyclic, unlike the more traditional models that focus on a rigorous step-by-step precess of development. It involves the following phases:
+* Planning Phase:
 
-In this incremental model, the whole requirement is divided into various builds. During each iteration, the development module goes through the requirements, design, implementation and testing phases. Each subsequent release of the module adds function to the previous release. The process continues till the complete system is ready as per the requirement.
+    This is the first stage of the iterative model, where proper planning is done by the team, which helps them in mapping out the specifications documents, establish software or hardware requirements and generally prepare for the upcoming stages of the cycle.
+
+* Analysis and Design Phase
+
+    Once the planning is complete for the cycle, an analysis is performed to point out the appropriate business logic, database models and to know any other requirements of this particular stage. Moreover, the design stage also occurs in this phase of iterative model, where the technical requirements are established that will be utilized in order to meet the need of analysis stage.
+
+* Implementation Phase
+
+    This is the third and the most important phase of the iterative model. Here, the actual implementation and coding process is executed. All planning, specification, and design documents up to this point are coded and implemented into this initial iteration of the project.
+
+* Testing Phase
+
+    After the current build iteration is coded and implemented, testing is initiated in the cycle to identify and locate any potential bugs or issues that may have been in the software.
+
+* Evaluation Phase
+
+    The final phase of the Iterative life cycle is the evaluation phase, where the entire team along with the client, examine the status of the project and validate whether it is as per the suggested requirements.
 
 #### Application
 * Requirements of the complete system are clearly defined and understood.
@@ -126,6 +145,8 @@ In this incremental model, the whole requirement is divided into various builds.
 * Projects progress is highly dependent upon the risk analysis phase.
 
 ### Spiral Model
+Provides support for Risk Handling. In its diagrammatic representation, it looks like a spiral with many loops. The exact number of loops of the spiral is unknown and can vary from project to project. Each loop of the spiral is called a _Phase_ of the software development process.
+
 The spiral model has four phases. A software project repeatedly passes through these phases in iterations called Spirals.
 1. #### Identification
 
@@ -418,3 +439,5 @@ Software that involves too much of data processing and most of the functionality
 * Practically, this methodology may increase the complexity of the system as scope of the system may expand beyond original plans.
 * Developers may try to reuse the existing prototypes to build the actual system, even when it is not technically feasible.
 * The effort invested in building prototypes may be too much if it is not monitored properly.
+
+___
