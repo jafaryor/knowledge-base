@@ -76,3 +76,38 @@ Scenarios where RAD can be used:
 * When technical risk is high, it is not suitable.
 * If developers are not committed to delivering software on time, RAD projects can fail.
 
+### Code Generation Tools
+ACG tools may directly translate the software specification (low-level and/or highlevel requirements) into source code, thereby potentially eliminating or automating
+several software development and verification activities.
+
+Automatic code generation is vital to the cost effectiveness of development. It eliminates the manual effort in coding from design, therefore, accelerating the process while decreasing the chance of errors when compared to manual coding from requirements or models.
+
+The reason to use code generation are fundamentally four: productivity, simplification, portability, and consistency.
+
+* Productivity
+
+    With code generation you write the generator once and it can be reused as many times as you need. Providing the specific inputs to the generator and invoke it is significantly faster than writing the code manually, therefore code generation permits to save time.
+
+* Simplification
+
+    With code generation you generate your code from some  abstract description. It means that your source of truth becomes that description, not the code. That description is typically easier to analyze and check compared with the whole generated code.
+
+* Portability
+
+    Once you have a process to generate code for a certain language or framework you can simply change the generator and target a different language or framework. You can also target multiple platforms at once. For example, with a parser generator you can get a parser in C#, Java and C++. Another example: you might write a UML diagram and use code generation to create both a skeleton class in C# and the SQL code to create a database for MySQL. So the same abstract description can be used to generate different kinds of artifacts.
+
+* Consistency
+
+    With code generation you get always the code you expect. The generated code is designed according to the same principles, the naming rule match, etc. The code always works the way you expect, of course except in the case of bugs in the generator. The quality of the code is consistent. With code written manually instead you can have different developers use different styles and occasionally introduce errors even in the most repetitive code.
+
+As all tools code generation is not perfect, it has mainly two issues:
+
+* Maintenance
+
+    When you use a code generator tool your code becomes dependent on it. A code generator tool must be maintained. If you created it you have to keep updating it, if you are just using an existing one you have to hope that somebody keep maintaining it or you have to take over yourself. So the advantages of code generation are not free. This is especially risky if you do not have or cannot find the right competencies to work on the generator.
+
+* Complexity
+
+    Code generated automatically tend to be more complex than code written by hand. Sometimes it has to do with glue code, needed to link different parts together, or the fact that the generator supports more use cases than the one you need. In this second case the generated code can do more than what you want, but this is not necessarily an advantage. Generated code is also surely less optimized than the one you can write by hand. Sometimes the difference is small and not significant, but if your application need to squeeze every bit of performance code generation might not be optimal for you.
+
+#### [Read More](https://tomassetti.me/code-generation/)

@@ -45,5 +45,13 @@ ___
 There are various software development life cycle models defined and designed which are followed during the software development process.
 
 Following are the most important and popular SDLC models followed in the industry:
+* Waterfall model
+* Iterative model
+* Spiral model
+* V-shaped model
+* Big Bang model
+* Agile model
+* RAD model
+* Software prototype model
 
 [Read More](https://medium.com/existek/sdlc-models-explained-agile-waterfall-v-shaped-iterative-spiral-e3f012f390c5)
