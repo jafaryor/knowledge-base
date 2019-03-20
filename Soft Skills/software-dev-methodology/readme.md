@@ -83,7 +83,6 @@ Every business should decide on organizing the work process inside the company, 
 
     ![scrum](../images/scrum.png)
 
-* #### Kanban
 * #### Extreme Programming
 
     Extreme Programming approach (__XP__) refers to an agile software engineering methodology. It was created to avoid the development of functions that are not currently needed. It aimed at the creation of a top-notch (high standard) final product with no regard for frequent changes in requirements. Another aim of this method is reducing the costs of software essentials. To achieve that, continuous testing and planning are applied.
@@ -146,8 +145,39 @@ Every business should decide on organizing the work process inside the company, 
 
     It suits to large-scale complex systems. Spiral is generally chosen over the waterfall approach for large, expensive, and complicated projects.
 
+    The Spiral Lifecycle Model is a sophisticated lifecycle model that focuses on early identification and reduction of project risks. A spiral project starts on a small scale, explores risks, makes a plan to handle the risks, and then decides whether to take the next step of the project (to do the next iteration of the spiral). It derives its rapid development benefit from continuously reducing the projects risk level. Success at using the Spiral Lifecycle Model depends on conscientious, attentive, and knowledgeable management.
 
+    You can find the steps in the Spiral model as follows:
+    1. The new system requirements are defined in details
+    2. A preliminary design is created
+    3. A first prototype of the new system is constructed from the preliminary design
+    4. A second prototype is evolved using four steps:
+        1. evaluation of the first prototype;
+        2. defining the requirements for the second prototype;
+        3. planning and designing the second prototype;
+        4. constructing and testing the second prototype
+    5. If the risk is great the project could be aborted. Risk factors might involve development cost overruns
+    6. The existing prototype is evaluated in the same manner as was the previous prototype, and, if necessary, another prototype is developed from it
+    7. The preceding steps are iterated until the customer is satisfied
+    8. The final system is constructed (based on the refined prototype)
+    9. The final system is thoroughly evaluated and tested
+    10. Routine maintenance is carried out on a continuing basis to prevent large-scale failures and to minimize downtime
 
+    __Pros:__
+    * Risk factors are considerably reduced
+    * Excellent for large and complex projects
+    * Allows for additional functionality later
+    * Suitable for highly risky projects with varied business needs
+
+    __Cons:__
+    * Costly model in software development
+    * Failure in risk analysis phase may damage the whole project
+    * Not appropriate for low-risk projects
+    * Might get continued and never finish
+
+* #### Kanban
+
+    The term Kanban has a verbatim translation. “Kan” means visible or visual and “ban” means a card or board.
 
 #### [Software Development Methodologies](https://medium.com/@gianpaul.r/software-development-methodologies-a856883a7630)
 
