@@ -179,8 +179,6 @@ Every business should decide on organizing the work process inside the company, 
 
     The term Kanban has a verbatim translation. “Kan” means visible or visual and “ban” means a card or board.
 
-#### [Software Development Methodologies](https://medium.com/@gianpaul.r/software-development-methodologies-a856883a7630)
+* #### Crystal Methods
 
-#### [Study on A Few Software Development Methodologies](https://medium.com/@AmirHassanAzimi/study-on-a-few-software-development-methodologies-46b639d08d6e)
-
-#### [Top 6 software development methodologies](https://medium.com/@Iren.Korkishko/top-6-software-development-methodologies-1626c5ea50ea)
+* #### Dynamic System Development Method
