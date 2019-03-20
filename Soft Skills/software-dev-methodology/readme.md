@@ -44,13 +44,13 @@ Every business should decide on organizing the work process inside the company, 
 
     __Pros:__
     * Easy to understand and functional
-    * Simple enough to handle as model is rigid 
+    * Simple enough to handle as model is rigid
     * Saves significant amount of time
     * Allows for easy testing and analysis
     * It allows for departmentalization and managerial control
 
     __Cons:__
-    * Only matches precise needs 
+    * Only matches precise needs
     * Not applicable for maintenance projects
     * Does not allow editing in the testing phase
     * No option to know possible outcome of a project
@@ -85,8 +85,68 @@ Every business should decide on organizing the work process inside the company, 
 
 * #### Kanban
 * #### Extreme Programming
+
+    Extreme Programming approach (__XP__) refers to an agile software engineering methodology. It was created to avoid the development of functions that are not currently needed. It aimed at the creation of a top-notch (high standard) final product with no regard for frequent changes in requirements. Another aim of this method is reducing the costs of software essentials. To achieve that, continuous testing and planning are applied.
+
+    It is the best choice if your client has a deadline to deliver the product with no clear understanding of how it must work, and the risk is higher. XP techniques are setup to address and mitigate the risks and increase the likelihood of success.
+
+    Unlike Waterfall methodology, where the requirements for the system are determined and often “frozen”, XP means that the cost of changing the requirements at a later stage in the project can be very high.
+
+    XP team is supposed to have a customer on site, who specifies and prioritizes work for the team, and who can answer questions as soon as they arise.
+
+    Extreme programmers only write code to meet actual needs at the present time in a project. For reviewing the code XP programmers work in pairs, sharing one screen and keyboard (which also improves communication) so that all code is reviewed as it is written.
+
+    In Extreme Programming, tests are written before the code is written. The code is considered complete when it passes the tests (but then it needs refactoring to remove complexity). Despite it’s thought that XP could only work in small teams of fewer than 12 persons, it has been used successfully on teams of over a hundred developers.
+
+    __Pros:__
+    * It lays focus on customer involvement
+    * Establishes rational plans and schedules
+    * Developers are exceptionally committed to the project
+    * Equipped with modernistic methods for quality software
+
+    __Cons:__
+    * Effectiveness depends on the people involved
+    * Requires frequent meeting for development raising total costs
+    * Necessitates for excessive development changes
+    * Exact possibilities and future outcomes are really unknown
+
+    ![extreme-programming](../images/extreme-programming.png)
+
 * #### Rapid Application Development Methodology
+
+    Rapid Application Development (RAD) Methodology is created to take the maximum advantage of the development software. It aimed to reduce the amount of construction needed to build a product. RAD is a condensed development process that produces a high-quality system with low investment costs. It’s possible due to the ability to quickly adjust needed things. It aimed at providing quick results.
+
+    RAD is most effective for projects with a well-defined business objective and a clearly defined user group, but which are not computationally complex. It is especially useful if the project is of small to medium size and time sensitive. However, it requires a stable team composition with highly skilled developers. Deep knowledge is essential when working on a condensed development timeline that requires approval after each construction phase.
+
+    RAD (rapid application development) proposes that products can be developed faster and of higher quality by:
+    * using workshops or focus groups to gather requirements.
+    * prototyping and user testing of designs
+    * re-using software components.
+    * following a schedule that defers design improvements to the next product version.
+    * keeping review meetings and other team communication informal.
+
+    RAD usually embraces object-oriented programming methodology, which inherently fosters (поощрять) software re-use.
+
+    __Pros:__
+    * Makes the entire development process effortless
+    * Assists client in taking quick reviews
+    * Encourages feedback from customers for improvement
+
+    __Cons:__
+    * Dependant on the team for performance
+    * Works on modularized system confined on this methodology
+    * Requires extremely skilled personnel to handle complexities
+    * Not applicable for the small budgeted projects
+
+    ![rad-methodology](../images/rad-methodology.png)
+
 * #### Spiral
+
+    The Spiral methodology extends the Waterfall model by adding rapid prototyping.
+
+    It suits to large-scale complex systems. Spiral is generally chosen over the waterfall approach for large, expensive, and complicated projects.
+
+
 
 
 #### [Software Development Methodologies](https://medium.com/@gianpaul.r/software-development-methodologies-a856883a7630)
