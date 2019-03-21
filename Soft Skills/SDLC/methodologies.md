@@ -1,6 +1,6 @@
 ## Software Development Methodologies
 Every business should decide on organizing the work process inside the company, according to its priorities and projects in development.
-* #### Agile
+* ### Agile
 
     Agile software development is a conceptual framework for undertaking software engineering projects. There are a number of agile software development methodologies like Scrum, Crystal Methods and Dynamic Systems Development Model.
 
@@ -23,7 +23,7 @@ Every business should decide on organizing the work process inside the company, 
     * Focuses on working with software and lacks documentation efficiency
     * Chances of getting off-track as outcome are not clear
 
-* #### Waterfall
+* ### Waterfall
 
     The Waterfall model is a sequential development approach, in which development is seen as flowing steadily downwards (like a waterfall) through several phases, typically:
     * analysis
@@ -56,7 +56,7 @@ Every business should decide on organizing the work process inside the company, 
     * No option to know possible outcome of a project
     * Not excellent for long and ongoing projects
 
-* #### Scrum
+* ### Scrum
 
     Scrum is an iterative and incremental agile software development framework for managing product development.
 
@@ -83,7 +83,7 @@ Every business should decide on organizing the work process inside the company, 
 
     ![scrum](../images/scrum.png)
 
-* #### Extreme Programming
+* ### Extreme Programming
 
     Extreme Programming approach (__XP__) refers to an agile software engineering methodology. It was created to avoid the development of functions that are not currently needed. It aimed at the creation of a top-notch (high standard) final product with no regard for frequent changes in requirements. Another aim of this method is reducing the costs of software essentials. To achieve that, continuous testing and planning are applied.
 
@@ -111,7 +111,7 @@ Every business should decide on organizing the work process inside the company, 
 
     ![extreme-programming](../images/extreme-programming.png)
 
-* #### Rapid Application Development Methodology
+* ### Rapid Application Development Methodology
 
     Rapid Application Development (RAD) Methodology is created to take the maximum advantage of the development software. It aimed to reduce the amount of construction needed to build a product. RAD is a condensed development process that produces a high-quality system with low investment costs. It’s possible due to the ability to quickly adjust needed things. It aimed at providing quick results.
 
@@ -139,7 +139,7 @@ Every business should decide on organizing the work process inside the company, 
 
     ![rad-methodology](../images/rad-methodology.png)
 
-* #### Spiral
+* ### Spiral
 
     The Spiral methodology extends the Waterfall model by adding rapid prototyping.
 
@@ -175,9 +175,54 @@ Every business should decide on organizing the work process inside the company, 
     * Not appropriate for low-risk projects
     * Might get continued and never finish
 
-* #### Kanban
+* ### Kanban
 
-    The term Kanban has a verbatim translation. “Kan” means visible or visual and “ban” means a card or board.
+    Kanban is a visualisation method that helps you see the flow of work through your team.
+
+    Used in this way, it will show inefficiencies in your workflow and help you make tactical improvements. Central to Kanban is the visual board.
+
+    ![kanban-principles](../images/kanban-principles.png)
+
+    ![kanban-practices](../images/kanban-practices.png)
+
+    Where:
+
+    * __Limit Work in Progress (WIP)__: WIP is the number of items (i.e. cards, tickets, stories, tasks etc) that a team is currently working on.
+
+        There are lots of good reasons why you should limit WIP:
+        * You complete work faster
+        * You get feedback faster
+        * You deliver value to your customer faster
+        * You avoid context switching
+        * You can easily see bottlenecks
+        * You won’t be flooded by unfinished work because it helps you manage capacity
+
+    * __Make process policies explicit__: A list of “rules” for each stage of the workflow.
+
+    * __Improve collaboratively, evolve experimentally__: The one event I advise you borrow from Scrum and lock into your team calendar from the get-go is regular Retrospectives. A key difference between Scrum-styled verses Kanban-styled Retrospectives is the focus on metrics and experimentation in Kanban.
+
+    * __Manage flow__: Good Kanban teams focus on WIP. Great Kanban teams focus on flow — they use three artefacts and events to manage flow:
+
+        1) The Kanban board helps them see actual and potential bottlenecks.
+        2) Metrics (e.g. lead time, cycle time, queues and throughput) help them analyse flow. They use visualisation and metrics to find the biggest constraints they have and
+        3) Retrospectives to make tactical process improvements to remove these constraints.
+
+    #### How a Kanban board works:
+    * The simplest Kanban board has a three-stage workflow — to do, doing and done.
+    * A Kanban board isn’t a ticketing system. It helps you to visualise the flow of work through your team. Flow goes from left to right.
+    * __To do__: Is the backlog. The backlog should be in prioritised order with the most important things first. The higher up an item is in the backlog, the better quality it should be i.e. the right size and the right amount of information for someone in your team to pick it up and work on it. Don’t spend too much time planning items further down the backlog. Priorities may change and that would be wasted effort. You want to plan just in time.
+    * __Doing__: Is the process that a piece of work goes through from the time you start work on it through to completion. Limiting your WIP in this stage of the workflow is one of the key practices of Kanban.
+    * __Done__: Is when your work has been completed. The goal is to get valuable work flowing through your team as quickly as possible. In order to measure speed you use Cycle Time: The average time it takes for an item to move from doing to done.
+
+    ![kanban-work](../images/kanban-work.png)
+
+    Once you are up and running as a Kanban team, you will need to work on incremental process improvements. This is where Retrospectives come in. How to hold it:
+    1. Open: Use a quick check-in activity to set the stage and engage the team.
+    2. Last improvement: Review the last experiment. What did we learn from it? Should we keep it or discard it?
+    3. Kanban board & metrics: Review the board and/or metrics. What does the data show you?
+    4. Generate insights: Discuss what is working well and what isn’t working well. Identify the biggest constraint. Discuss the root cause.
+    5. Next improvement: Agree on an experiment to remove the constraint. Use the hypothesis driven format, “We believe `<this improvement>`. Will result in `<this outcome>`. We will know we have succeeded when `<we see this measurable signal>`.”
+    6. Close: Use a quick closing activity to end the Retrospective.
 
 * #### Crystal Methods
 
