@@ -89,6 +89,7 @@ A semantic element clearly describes its meaning to both the browser and the dev
 
 ### [Cool Resource about HTML and CSS](https://internetingishard.com/html-and-css/)
 
+___
 
 ## `<script></script>`
 The HTML `<script>` element is used to embed or reference executable code; this is typically used to embed or refer to JavaScript code.
@@ -140,6 +141,7 @@ The HTML `<script>` element is used to embed or reference executable code; this 
 
 > __Scripts without `async` or `defer` attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.__
 
+___
 
 ## `<style></style>`
 The HTML `<style>` element contains style information for a document.
@@ -154,6 +156,7 @@ The HTML `<style>` element contains style information for a document.
 
     Firefox lets the user select the stylesheet using the View > Page Style submenu. Internet Explorer also supports this feature (beginning with IE 8), also accessed from View > Page Style. Chrome requires an extension to use the feature (as of version 48). The web page can also provide its own user interface to let the user switch styles.
 
+___
 
 ## `<link>`
 The HTML `<link>` element specifies relationships between the current document and an external resource.
@@ -181,6 +184,82 @@ Examples:
 <link rel="stylesheet" href="mystylesheet.css" onload="sheetLoaded()" onerror="sheetError()">
 ```
 
+___
+
+## `<meta>`
+Represents metadata that cannot be represented by other HTML meta-related elements, like `<base>`, `<link>`, `<script>`, `<style>` or `<title>`.
+
+### Attributes:
+* `charset`
+
+    This attribute declares the page's character encoding. It must contain a [standard IANA MIME name for character encodings](https://www.iana.org/assignments/character-sets).
+
+* `content`
+
+    This attribute contains the value for the `http-equiv` or `name` attribute, depending on which is used.
+
+* `http-equiv`
+
+    The attribute is named `http-equiv`(alent) because all the allowed values are names of particular HTTP headers:
+
+    * `"content-security-policy"`
+
+        Allows page authors to define a content policy for the current page. Content policies mostly specify allowed server origins and script endpoints which help guard against cross-site scripting attacks.
+
+    * `"refresh"`
+
+        This instruction specifies:
+        * The number of seconds until the page should be reloaded - only if the `content` attribute contains a positive integer.
+        * The number of seconds until the page should redirect to another - only if the `content` attribute contains a positive integer followed by the string '`;url=`', and a valid URL.
+
+    * [`Cache-control`](https://www.metatags.org/meta_http_equiv_cache_control)
+
+        The meta cache control tag allows Web publishers to define how pages should be handled by caches.
+
+        The allowed values are:
+        * `Public` - public means that the resource can be cached by any cache (browser, CDN, etc)
+        * `Private` - private means that the resource can only be cached by the browser.
+        * `no-Cache` - tells the browser to cache the file but not to use it until it checks with the server to validate we have the latest version. This validation is done with the ETag header.
+        * `no-Store` - tells the browser to always request the resource from the server
+
+        You may add this Cache-control meta tag to all of your web-pages, so not only in the first index page. Make sure that on every page relevant meta tags are added.
+
+* `name`
+
+    This attribute defines the name of a piece of document-level metadata.
+
+    > It should not be set if one of the attributes `itemprop`, `http-equiv` or `charset` is also set.
+
+    `name` is associated with the value contained by the `content` attribute. The possible values for the `name` attribute are:
+
+    * `application-name` which defines the name of the application running in the web page.
+    * `author` which defines the name of the document's author.
+    * `description` which contains a short and accurate summary of the content of the page. Several browsers, like Firefox and Opera, use this as the default description of bookmarked pages.
+    * `generator` which contains the identifier of the software that generated the page
+    * `keywords` which contains words relevant to the page's content separated by commas.
+    * `referrer` which controls the `Referer` HTTP header attached to requests sent from the document.
+
+        The `Referer` request header contains the address of the previous web page from which a link to the currently requested page was followed.
+
+    * `creator` which defines the name of the creator of the document, such as an organization or institution.
+    * `publisher` which defines the name of the document's publisher.
+    * `robots` which defines the behaviour that cooperative crawlers, or "robots", should use with the page.
+
+        > The robot still needs to access the page in order to read these rules. To prevent bandwidth consumption, use a `robots.txt` file.
+
+    * `viewport`, which gives hints about the size of the initial size of the viewport. Used by mobile devices only.
+
+#### Note:
+Depending on the attributes set, the kind of metadata can be one of the following:
+* If `name` is set, it is document-level metadata, applying to the whole page.
+* If `http-equiv` is set, it is a pragma directive — information normally given by the web server about how the web page is served.
+* If `charset` is set, it is a charset declaration — the character encoding used by the webpage.
+* If `itemprop` is set, it is user-defined metadata — transparent for the user-agent as the semantics of the metadata is user-specific.
+
+
+#### [Read More about `<meta>` tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta)
+
+___
 
 ## `<picture></picture>`
 Contains zero or more `<source>` elements and one `<img>` element to provide versions of an image for different display/device scenarios. The browser will consider each child `<source>` element and choose the best match among them based on `media` and `type` attributes; if no matches are found, the URL of the `<img>` element's src attribute is selected. The selected image is then presented in the space occupied by the `<img>` element.
@@ -200,3 +279,33 @@ Contains zero or more `<source>` elements and one `<img>` element to provide ver
 * `type`
 
     Specifies a _MIME type_ for the resource URL(s) in the `<source>` element's srcset attribute.
+
+___
+
+
+## `<base>`
+Specifies the base URL to use for all relative URLs contained within a document.
+
+> There can be only one <base> element in a document.
+
+The base URL of a document can be queried from a script using `document.baseURI`.
+
+### Attributes:
+* `href`
+
+    The base URL to be used throughout the document for relative URL addresses.
+
+    > If this attribute is specified, this element must come before any other elements with attributes whose values are URLs. Absolute and relative URLs are allowed.
+
+* `target`
+
+    Specifies the default `target` for all hyperlinks and forms in the page. The following keywords have special meanings:
+
+    * `_self`: Load the result into the same browsing context as the current one. This value is the default if the attribute is not specified.
+    * `_blank`: Load the result into a new unnamed browsing context.
+    * `_parent`: Load the result into the parent browsing context of the current one. If there is no parent, this option behaves the same way as `_self`.
+    * `_top`: Load the result into the top-level browsing context (that is, the browsing context that is an ancestor of the current one, and has no parent). If there is no parent, this option behaves the same way as `_self`.
+
+    > If this attribute is specified, this element must come before any other elements with attributes whose values are URLs.
+
+___

@@ -59,3 +59,5 @@ After the browser caches the response, the cached version is used until it's no 
 How do you get the best of both worlds: client-side caching and quick updates? You change the URL of the resource and force the user to download the new response whenever its content changes. Typically, you do this by embedding a fingerprint of the file, or a version number, in its filename—for example, `style.x234dff.css`.
 
 __[Read More](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)__
+
+#### [A Web Developer’s Guide to Browser Caching](https://medium.com/@codebyamir/a-web-developers-guide-to-browser-caching-cc41f3b73e7c)
