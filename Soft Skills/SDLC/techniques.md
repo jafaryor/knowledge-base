@@ -7,6 +7,23 @@
 
     TDD helps to ensure the quality by focusing on requirement before writing the code. It assists in keeping the code clear, simple and testable by breaking it down into small achievable steps. It is also provides documentation about how the system works for anyone coming into the team later
 
+    ![tdd](../images/tdd.png)
+
+    __Pros:__
+    * Easy to iterate on code when the suite of tests back you up.
+    * Makes code easier to maintain and refactor.
+    * You never run out of time, and end up missing out the tests
+    * Forces your code to be more modular (otherwise they’d be hard to test against).
+    * Documents your code better than documentation (it doesn’t go out of date, since you’re running it all the time).
+    * Creates a common code pattern that can be followed by other devs
+    * Never get carried away and write more code than is necessary
+    
+    __Cons:__
+    * The test suite itself has to be maintained; tests are not be completely deterministic (i.e. reliant on external dependencies).
+    * Can slow down development, compared to non tested code.
+    * Can over complicate code structure if over thought
+    * Writing good unit tests is an art form. Don’t focus too much on metrics like code coverage. They do not tell you about the quality of the unit tests.
+
 * #### Behavior-Driven Development (BDD)
 
     Behavioral Driven Development (BDD) is a software development approach that has evolved from TDD (Test Driven Development). It differs by being written in a shared language (English), which improves communication between tech and non-tech teams and stakeholders. In both development approaches, tests are written ahead of the code, but in BDD, tests are more user-focused and based on the system’s behavior.
@@ -19,7 +36,17 @@
 
 * #### Acceptance-Test-Driven Development (ATDD)
 
-    This and BDD are often, in my experience, used interchangeably, particularly if the acceptance test is expressed in the Given-When-Then pattern.
+    The name acceptance tests was changed from functional tests. This better reflects the intent, which is to guarantee that a customers requirements have been met and the system is acceptable
+
+    A user story is not considered complete until it has passed its acceptance tests
+
+    Acceptance tests usually are just black box system tests.
+
+    Acceptance tests should be automated so they can be run often.
+
+    Acceptance Test Driven Development (ATDD) is a practice in which the whole team collaboratively discusses acceptance criteria, with examples, and then distills them into a set of concrete acceptance tests before development begins.
+
+    It’s the best way to ensure that we all have the same shared understanding of what it is we’re actually building.
 
 * #### MDD
 
@@ -51,5 +78,3 @@ This is the proposed template for writing BDD test cases for a user story, which
 1. Given a certain scenario
 2. When an action takes place
 3. Then this should be the outcome.
-
-#### [Study on A Few Software Development Methodologies](https://medium.com/@AmirHassanAzimi/study-on-a-few-software-development-methodologies-46b639d08d6e)
