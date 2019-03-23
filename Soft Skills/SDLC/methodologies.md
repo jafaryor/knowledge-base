@@ -56,33 +56,6 @@ Every business should decide on organizing the work process inside the company, 
     * No option to know possible outcome of a project
     * Not excellent for long and ongoing projects
 
-* ### Scrum
-
-    Scrum is an iterative and incremental agile software development framework for managing product development.
-
-    A key principle of Scrum is the dual recognition that customers will change their minds about what they want or need (requirements volatility) and that there will. Scrum adopts an evidence-based empirical approach — accepting that the problem cannot be fully understood or defined up front, and instead focusing on how to maximize the team’s ability to deliver quickly, to respond to emerging requirements, and to adapt to evolving technologies and changes in market conditions.
-
-    Main features of Scrum:
-    * a living backlog of prioritized work to be done
-    * completion of a fixed set of backlog items in a series of short iterations or sprints
-    * a brief daily meeting (“a scrum”) for explaining the progress, describing an upcoming work and possible obstacles
-    * a brief planning session in which the backlog items for the sprint will be defined
-    * a brief heartbeat retrospective when all team members reflect about the past sprint
-
-    Scrum is best suited when the cost of delay is high and deadlines should meet a minimal delay. Scrum is often used when the end product is unclear or the requirements have no proper feedback from the clients. Here the client is involved in the whole process and determine and focus on certain sprint product backlog items that need to be completed (along with the team). Scrum takes its place among flexible methodologies that are appropriate for long-run development with frequent changes to requirements.
-
-    __Pros:__
-    * Decision making lies in the hands of the team
-    * Business requirement document is considered insignificant
-    * Lightly controlled method empathizing with constant updating
-
-    __Cons:__
-    * The processing method suffers because of wavering costs
-    * Not suitable for big sized projects
-    * Requires highly expert team, which has no place for novices
-
-    ![scrum](../images/scrum.png)
-
 * ### Extreme Programming
 
     Extreme Programming approach (__XP__) refers to an agile software engineering methodology. It was created to avoid the development of functions that are not currently needed. It aimed at the creation of a top-notch (high standard) final product with no regard for frequent changes in requirements. Another aim of this method is reducing the costs of software essentials. To achieve that, continuous testing and planning are applied.
@@ -224,6 +197,163 @@ Every business should decide on organizing the work process inside the company, 
     5. Next improvement: Agree on an experiment to remove the constraint. Use the hypothesis driven format, “We believe `<this improvement>`. Will result in `<this outcome>`. We will know we have succeeded when `<we see this measurable signal>`.”
     6. Close: Use a quick closing activity to end the Retrospective.
 
+* ### Scrum
+
+    Scrum is an iterative and incremental agile software development framework for managing product development.
+
+    A key principle of Scrum is the dual recognition that customers will change their minds about what they want or need (requirements volatility) and that there will. Scrum adopts an evidence-based empirical approach — accepting that the problem cannot be fully understood or defined up front, and instead focusing on how to maximize the team’s ability to deliver quickly, to respond to emerging requirements, and to adapt to evolving technologies and changes in market conditions.
+
+    Main features of Scrum:
+    * a living backlog of prioritized work to be done
+    * completion of a fixed set of backlog items in a series of short iterations or sprints
+    * a brief daily meeting (“a scrum”) for explaining the progress, describing an upcoming work and possible obstacles
+    * a brief planning session in which the backlog items for the sprint will be defined
+    * a brief heartbeat retrospective when all team members reflect about the past sprint
+
+    Scrum is best suited when the cost of delay is high and deadlines should meet a minimal delay. Scrum is often used when the end product is unclear or the requirements have no proper feedback from the clients. Here the client is involved in the whole process and determine and focus on certain sprint product backlog items that need to be completed (along with the team). Scrum takes its place among flexible methodologies that are appropriate for long-run development with frequent changes to requirements.
+
+    __Pros:__
+    * Decision making lies in the hands of the team
+    * Business requirement document is considered insignificant
+    * Lightly controlled method empathizing with constant updating
+
+    __Cons:__
+    * The processing method suffers because of wavering costs
+    * Not suitable for big sized projects
+    * Requires highly expert team, which has no place for novices
+
+    ![scrum](../images/scrum.png)
+
+    #### How it works:
+    ![scrum-start](../images/scrum-start.jpeg)
+
+    There are 3 roles:
+    * Product Owner
+
+        The Product Owner represents the business and handles the relationship between the product and the investment of time, resources, and energy that the business is incurring. The PO ensure that maximum ROI is achieved.
+
+        Tactically, they help the team understand what is higher priority and what is lower priority, what might be more valuable to work on and less valuable to work on. Their role is to help shift resources and time and attention. Sometimes, but not always, they may prioritize things on the backlog but they are the only ones who can ask the team to work and who can change the order of the backlog.
+
+        Finally, they help the team understand the requirements so as to maximize time and resources to produce higher efficiency and effectiveness (thus boosting ROI). They do this by creating user stories that generally look like this:
+
+        > As a `<type of user>`, I want to `<do something>`, so that `<some value is created>`.
+
+        A Product Owner:
+        * Holds and maintains vision for the product
+        * Represents the interests of the business
+        * Represents the customer(s)
+        * Owns the backlog
+        * Orders and priorities the product backlog
+        * Creates acceptance criteria for the items in backlog
+        * Is available to assist and answer team’s questions
+
+    * Scrum Master
+
+        The Scrum Master plays the role of coach and helps guide the team to better self-organization, performance, and decision making. While the team focuses on building the best product, the SM focuses on building a high-performance team.
+
+        In summary, they:
+        * The resident Scrum expert and advisor
+        * A coach for the team
+        * The remove blockers, impediments, and help the team continue to move forward
+        * The facilitate the backlog and the other parts of Scrum
+
+    * Team Member
+
+        A Team Member has the most authority in the Scrum system as they have the authority to decide how the work gets done, what tools they should use, what techniques should be deployed, and the associated costs of those decisions.
+
+        Team Members:
+        * Responsible for completing user stories to incrementally increase the value of the product
+        * Self-organize to get all of the work done
+        * Owns and creates the estimates for the work
+        * Owns the “how to do the work” decisions
+        * Avoids single-minded, specialist-thinking and instead considers the team’s performance in aggregate above their own
+
+    __The Product Backlog__ is the master list of all of the planned and desired deliverables for the product. This can (and should) include features, bugs, documentation, Q/A, and more, essentially including anything that is meaningful and important to create for the product as a whole.
+
+    Items within the backlog are called __user stories__.
+
+    The list of backlog items or user stories is prioritized and ordered from the most important to the least important. The items at the top are also specific, well understood, and can be executed against quickly and efficiently. This means that they are also generally small tasks. Items further down the list are more ambiguous, less defined, and larger in scope and scale.
+
+    Each item in the backlog should generally have the following:
+    * Which users the story will benefit (who is it for)
+    * A brief description of the desired functionality (what needs to be built)
+    * The reason that this story is valuable (why we should do it)
+    * An estimate as to how much work the story requires to implement
+    * Acceptance criteria that will help the team know when it has been implemented correctly
+
+    __Sprint Backlog__ is the team’s to do list for the sprint. Unlike The Product Backlog, it has a finite life-span: The length of the agreed upon sprint. It includes all the stories that the team has committed to delivering in the sprint and the associated tasks.
+
+    __Burn Charts__ help the team understand the relationship between time and scope. Points are on the y-axis while sprints are on the x-axis. As time progresses, one can see how many points are remaining in the overall product and the relative speed and pace at which the team is working through the points and the sprints.
+
+    ![burn-chart](../images/burn-chart.jpeg)
+
+    __Task Board__ represents all the team’s tasks visibly so that everyone knows what is being worked on and by whom. The more simple of task boards have three columns:
+    * To Do
+    * Doing
+    * Done
+
+    Effective Scrum Teams define what _“done”_ means and then apply it to their Task Board and user stories. This is what is often described as the _“Definition of Done”_.
+
+    __Sprint Cycle__ consists of several meetings, often called _“ceremonies”_:
+    * Sprint Planning
+
+        The goal is for the team to commit to a set of deliverables for the sprint and to also identify the tasks required to deliver upon the agreed user stories or backlog items. With the team, the Product Owner presents the suggested stories to prioritize and the team discusses their position and priority.
+
+        The Product Owner decides which stories are going to be considered for the sprint while the team members doing the work are the ones who decide how much work they can reasonably take on.
+
+        In the second part of the meeting the team then decides how the work will be done, decomposing the agreed stories into tasks. As tasks are defined the resulting stories on the backlog may change as well as more information become apparent and usable. It is not uncommon for a team to over-commit to the number of user stories in the beginning and then have to remove some as more details emerge.
+
+        The result of this planning session is the Sprint Backlog which consists of the aforementioned user stories and the resulting associated tasks.
+
+    * Daily Scrum/ Daily Standup
+
+        Is when most teams hold a quick meeting near the beginning of the day to share the following:
+        1. What tasks have been completed since the last Daily Scrum
+        2. What tasks are to be completed by the next Daily Scrum
+        3. What obstacles are slowing the team down
+
+        Each member of the team participates and the meeting should be pointed, specific, and brief. The point is for everyone to get an idea of global progress and to identify issues before they become larger ones. This allows the team to actively inspect and adapt to changes in near real-time.
+
+    * Story Time
+
+        Happens mid-Sprint to discuss how the team can improve on the stories in the product backlog which are user stories for future sprints. These are not user stories in the current sprint.
+
+        The Product Owner defines and refines the acceptance criteria for user stories in the backlog and also point values for stories that do not yet have an estimate. This is essentially an opportunity for the team to guess at how much work will be required to get the story done.
+
+        Not all Scrum Teams have an official Story Time and many teams do this at-will daily.
+
+    * Sprint Review
+
+        A public declaration that the current sprint or cycle is done and it’s time to show the work that’s been completed. Stakeholders from the business are often invited to review progress as well.
+
+        The stakeholders, upon review, will undoubtedly have feedback and suggestions and it is the job of the PO primarily to capture these things for review later.
+
+    * Retrospective
+
+        The final meeting for the team to gather so that they can inspect, adapt, and optimize their ever-improving performance as a team. This meeting is just for the team itself.
+
+        The conversations should revolve around what they learned during the sprint and how that learning can be effectively applied to the next sprint so that work can be done more efficiently and more effectively.
+
+    The Sprint Cycle is a fixed period of time where you work on small parts of the larger product. The goal after each sprint is the same: A demonstrable working piece of software.
+
+    It is very common for teams to have sprint cycles that last 2 weeks, although in early-stage ventures the cycle times might be as small as 1 week. When Scrum was first introduced the cycles were around 4 weeks or one month.
+
+    The goal of short sprints or cycles is so that continuous improvement happens faster and that any important learnings aren’t lost into the ether. The Scrum process is designed specifically to catch these new and important learnings and then apply them immediately into the system for improvement.
+
+    For a one week sprint, you’ll usually have the following with time breakdowns:
+    * Monday: Sprint Planning (1–2 hours)
+    * Tuesday: Daily Standup (15 minutes)
+    * Wednesday: Daily Standup (15 minutes), Story Time (1 hour)
+    * Thursday: Daily Standup (15 minutes)
+    * Friday: Daily Standup (15 minutes), Sprint Review (30 minutes), Retrospective (1–2 hours)
+
+    ![scrum-sprint-cycle](../images/scrum-sprint-cycle.jpeg)
+
+    #### [Read More about Scrum](https://guide.freecodecamp.org/agile/scrum/)
+
 * #### Crystal Methods
 
 * #### Dynamic System Development Method
+
+
+https://medium.freecodecamp.org/why-agile-sucks-at-your-company-and-what-you-can-do-about-it-f4bebcc661c3

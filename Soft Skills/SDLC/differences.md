@@ -35,4 +35,6 @@ So, what’s in the Kanban? Let’s take a look in contrast with Scrum:
 * One of most important things in Kanban is to measure the lead time (average time to complete one item, called “cycle time”). This is very important because it gives you an opportunity to optimize the process to make lead time as small and predictable as possible.
 * Changes are done as needed in Kanban. In Scrum, changes can’t interrupt the Sprint
 
+![scrum-vs-kanban](../images/scrum-vs-kanban.png)
+
 #### [Scrum vs. Kanban](https://medium.com/@thorbjorn.sigberg/scrum-vs-kanban-c73dc70e8eef)
