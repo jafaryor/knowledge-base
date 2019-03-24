@@ -230,7 +230,7 @@ Every business should decide on organizing the work process inside the company, 
     There are 3 roles:
     * Product Owner
 
-        The Product Owner represents the business and handles the relationship between the product and the investment of time, resources, and energy that the business is incurring. The PO ensure that maximum ROI is achieved.
+        The Product Owner represents the business and handles the relationship between the product and the investment of time, resources, and energy that the business is incurring. The PO ensure that maximum _ROI (Return On Investment)_ is achieved.
 
         Tactically, they help the team understand what is higher priority and what is lower priority, what might be more valuable to work on and less valuable to work on. Their role is to help shift resources and time and attention. Sometimes, but not always, they may prioritize things on the backlog but they are the only ones who can ask the team to work and who can change the order of the backlog.
 
@@ -271,6 +271,8 @@ Every business should decide on organizing the work process inside the company, 
     __The Product Backlog__ is the master list of all of the planned and desired deliverables for the product. This can (and should) include features, bugs, documentation, Q/A, and more, essentially including anything that is meaningful and important to create for the product as a whole.
 
     Items within the backlog are called __user stories__.
+
+    “Product Backlog items have the attributes of a _description_, _order_, _estimate_, and _value_.” — The Scrum Guide
 
     The list of backlog items or user stories is prioritized and ordered from the most important to the least important. The items at the top are also specific, well understood, and can be executed against quickly and efficiently. This means that they are also generally small tasks. Items further down the list are more ambiguous, less defined, and larger in scope and scale.
 
@@ -314,7 +316,7 @@ Every business should decide on organizing the work process inside the company, 
 
         Each member of the team participates and the meeting should be pointed, specific, and brief. The point is for everyone to get an idea of global progress and to identify issues before they become larger ones. This allows the team to actively inspect and adapt to changes in near real-time.
 
-    * Story Time
+    * Story Time/Grooming
 
         Happens mid-Sprint to discuss how the team can improve on the stories in the product backlog which are user stories for future sprints. These are not user stories in the current sprint.
 
@@ -322,7 +324,7 @@ Every business should decide on organizing the work process inside the company, 
 
         Not all Scrum Teams have an official Story Time and many teams do this at-will daily.
 
-    * Sprint Review
+    * Sprint Review/Demo
 
         A public declaration that the current sprint or cycle is done and it’s time to show the work that’s been completed. Stakeholders from the business are often invited to review progress as well.
 
