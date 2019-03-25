@@ -38,3 +38,6 @@ So, what’s in the Kanban? Let’s take a look in contrast with Scrum:
 ![scrum-vs-kanban](../images/scrum-vs-kanban.png)
 
 #### [Scrum vs. Kanban](https://medium.com/@thorbjorn.sigberg/scrum-vs-kanban-c73dc70e8eef)
+
+### Scrum vs Kanban vs Scrumban
+![scrum-kanban-scrumban](../images/scrum-kanban-scrumban.png)

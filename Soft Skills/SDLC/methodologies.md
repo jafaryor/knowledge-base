@@ -1,5 +1,7 @@
 ## Software Development Methodologies
 Every business should decide on organizing the work process inside the company, according to its priorities and projects in development.
+___
+
 * ### Agile
 
     Agile software development is a conceptual framework for undertaking software engineering projects. There are a number of agile software development methodologies like Scrum, Crystal Methods and Dynamic Systems Development Model.
@@ -22,6 +24,8 @@ Every business should decide on organizing the work process inside the company, 
     __Cons:__
     * Focuses on working with software and lacks documentation efficiency
     * Chances of getting off-track as outcome are not clear
+
+___
 
 * ### Waterfall
 
@@ -56,55 +60,7 @@ Every business should decide on organizing the work process inside the company, 
     * No option to know possible outcome of a project
     * Not excellent for long and ongoing projects
 
-* ### Extreme Programming
-
-    Extreme programming is a software-development discipline that organizes people to produce higher-quality software more productively.
-
-    Extreme Programming approach (__XP__) refers to an agile software engineering methodology. It was created to avoid the development of functions that are not currently needed. It aimed at the creation of a top-notch (high standard) final product with no regard for frequent changes in requirements. Another aim of this method is reducing the costs of software essentials. To achieve that, continuous testing and planning are applied.
-
-    According to XP methodologies you have to implement the features with minimum working code. Once that’s done you can go back and beautify your code. Let the design evolve from the requirements, don’t do upfront design. Don’t think of the future requirements, just do the minimum required.
-
-    It is the best choice if your client has a deadline to deliver the product with no clear understanding of how it must work, and the risk is higher. XP techniques are setup to address and mitigate the risks and increase the likelihood of success.
-
-    Unlike Waterfall methodology, where the requirements for the system are determined and often “frozen”, XP means that the cost of changing the requirements at a later stage in the project can be very high.
-
-    XP team is supposed to have a customer on site, who specifies and prioritizes work for the team, and who can answer questions as soon as they arise.
-
-    Extreme programmers only write code to meet actual needs at the present time in a project. For reviewing the code XP programmers work in pairs, sharing one screen and keyboard (which also improves communication) so that all code is reviewed as it is written.
-
-    Refactoring and Test Driven Development (TDD) are used with extreme programing.
-    
-    Programming in pairs and code reviews are two aspects involved with XP and user stories and communications are the cores of planning in XP.
-
-    The code is considered complete when it passes the tests (but then it needs refactoring to remove complexity). Despite it’s thought that XP could only work in small teams of fewer than 12 persons, it has been used successfully on teams of over a hundred developers.
-
-    If the exact requirements are not clearly defined beforehand and you have to search for the optimal solution to your client’s business problem, XP is for you. It will take you and the client on a journey of learning together.
-
-    #### XP’s Life Cycle Stages:
-
-    https://medium.com/@rajkiranbande/extreme-programming-709f6957e0ec
-
-    https://medium.com/@AmirHassanAzimi/extreme-programming-xp-35223784976e
-
-    https://medium.com/agility-path/5-reasons-why-extreme-programming-isnt-popular-83790418b901
-
-    https://medium.com/@bean00/extreme-programming-xp-practices-9a00e342605e
-
-    https://medium.com/@jameshamann/xp-extreme-programming-f3ad1b04c154
-
-    __Pros:__
-    * It lays focus on customer involvement
-    * Establishes rational plans and schedules
-    * Developers are exceptionally committed to the project
-    * Equipped with modernistic methods for quality software
-
-    __Cons:__
-    * Effectiveness depends on the people involved
-    * Requires frequent meeting for development raising total costs
-    * Necessitates for excessive development changes
-    * Exact possibilities and future outcomes are really unknown
-
-    ![extreme-programming](../images/extreme-programming.png)
+___
 
 * ### Rapid Application Development Methodology
 
@@ -134,6 +90,9 @@ Every business should decide on organizing the work process inside the company, 
 
     ![rad-methodology](../images/rad-methodology.png)
 
+
+___
+
 * ### Spiral
 
     The Spiral methodology extends the Waterfall model by adding rapid prototyping.
@@ -161,7 +120,7 @@ Every business should decide on organizing the work process inside the company, 
     __Pros:__
     * Risk factors are considerably reduced
     * Excellent for large and complex projects
-    * Allows for additional functionality later
+    * Allows for adding functionality later
     * Suitable for highly risky projects with varied business needs
 
     __Cons:__
@@ -169,6 +128,144 @@ Every business should decide on organizing the work process inside the company, 
     * Failure in risk analysis phase may damage the whole project
     * Not appropriate for low-risk projects
     * Might get continued and never finish
+
+___
+
+* ### Extreme Programming
+
+    Extreme Programming approach (__XP__) refers to an agile software engineering methodology.
+    Extreme programming is a software-development discipline that organizes people to produce higher-quality software more productively.
+
+    According to XP methodologies you have to implement the features with minimum working code. Once that’s done you can go back and beautify your code. Let the design evolve from the requirements, don’t do upfront design. Don’t think of the future requirements, just do the minimum required.
+
+    It is the best choice if your client has a deadline to deliver the product with no clear understanding of how it must work, the risk is higher, and you have to search for the optimal solution to your client’s business problem. It will take you and the client on a journey of learning together.
+
+    #### XP Practices:
+    * __The Planning Game__
+
+        Business and technical teams work together to create a plan, which is updated at regular intervals.
+
+    * __Small Releases__
+
+        Put a system into production quickly, and then release small versions in short cycles.
+
+    * __Metaphor__
+
+        Guide development with a simple shared story of how the system works.
+
+    * __Simple Design__
+
+        Keep the system as simple as possible, and remove complexity as soon as it’s discovered.
+
+        Benefits:
+        * A simple design is easier to understand
+        * A simple design is easier to extend or modify (compared to a complex design)
+        * A simple design only includes what is necessary to meet the requirements as they are right now.
+
+    * __TDD__
+
+        For a programmer following TDD, he would come up with a quick, simple, and sufficient solution, and then a quick, relatively simple refactoring afterwards.
+
+        The reason for testing first is to give programmer some idea and goals.
+
+    * __Refactoring__
+
+        I also refactor. Refactoring is crucial to ensuring that your code will be easy to change, and thus easy to extend and maintain. Sometimes, refactoring makes it much easier to add a new feature.
+
+        If you don’t refactor, then your program will eventually become a mess and become unmaintainable.
+
+        > The cost of changing the requirements at a later stage in the project can be very high.
+
+    * __Pair Programming__
+
+    * __Collective Ownership__
+
+        “Anyone can change any code anywhere in the system at any time.”
+
+    * __Continuous Integration__
+
+    * __40-Hour Week__
+
+    * __On-site Customer__
+
+        Include a real user on the team, to be able to answer any questions.
+
+    * __Coding Standards__
+
+        Programmers agree to certain rules and conventions, to allow the code to be clear, consistent, and expressive.
+
+    ![xp-chart](../images/xp-chart.png)
+
+    #### What value will it add:
+    1. __Communication__
+
+        Extreme Programming emphasises on teamwork. Communication is an important aspect when we are working as a team. It needs to happen on daily basis and it can involve daily meetings with the key stakeholders, knowledge transfer, status updates, requirement gathering, etc.
+
+        F2F discussions play a key role in this. Pair programming (discussed later) ensures the communication happens at the lowest possible level.
+
+    2. __Simplicity__
+
+        Simplicity urges to focus on what has been asked than predicting the future. This also helps in taking small baby steps towards solving a larger problem. While designing the solution to the problem one should keep in mind the KISS principle (Keep It Simple, Stupid! or Keep It Short and Simple).
+
+        While developing the designed solution, just develop what is currently required than assuming that this is going to scale in future, i.e. YAGNI — You Aren’t Gonna Need It!
+
+    3. __Feedback__
+
+        Feedback involves communication at regular intervals with your team and client. It can be your pair reviewing your code or it can be your client who is providing the inputs on the piece of software you showcased. This is how feedback typically works at different stages of the software development lifecycle.
+
+    4. __Courage__
+
+        One should tell the truth about their progress and estimates. One should also accumulate courage to raise the issues that are harmful to the team. Courage teaches us how to succeed according to the plan, rather than documenting the reasons for the failure.
+
+    5. __Respect__
+
+        Respect value is about seeking respect from the team members as well as self-respect. When working in a team, every individual should respect the other team member irrespective of their role in the project or the work experience tag they are carrying. It also involves respect towards others’ time e.g. developers shouldn’t commit breaking changes. If at all something fails, they should fix or revert that first in order to unblock other team members.
+
+    #### XP’s Life Cycle Stages:
+    1. __Planning__
+    2. __Designing__
+
+        The core goal is continuously search for system implementation that is as simple as possible
+
+    3. __Coding__
+
+        This phase includes pair programming, metaphor, regular integration and firm observance such as 40-hour workweeks with no overtimes, code review and refactoring.
+
+    4. __Testing__
+
+        testing is always comes with coding and development stage rather than after the completion.
+
+        Follow TDD. The reason for testing first is to give programmer some idea and goals.
+
+    5. __Listening to client__
+
+        Also developers can provide clients with feedback about the technical aspects if they understand the requirements well enough.
+
+        All feedbacks captured will be revised the requirements by development team and that will become a foundation of new design. After this phase the cycle will be repeated over again.
+
+    ![extreme-programming](../images/extreme-programming.png)
+
+    __Pros:__
+    * Fast. Time savings are available because of the fact that XP focuses on the timely delivery of final products.
+    * Extreme Programming teams save lots of money because they don’t use too much documentation. They usually solve problems through discussions inside of the team.
+    * Code Simplicity.
+    * It lays focus on customer involvement.
+    * Developers are exceptionally committed to the project.
+    * Equipped with modernistic methods for quality software.
+
+    __Cons:__
+    * Effectiveness depends on the people involved
+    * Requires frequent meeting for development raising total costs
+    * Necessitates for excessive development changes
+    * Exact possibilities and future outcomes are really unknown
+    * Lack of documentation. The constant changes cannot be documented properly.
+    * Stress. There is a lot of pressure working with tight deadlines.
+    * Need investment for hiring skilled professionals, automated tests & continuous delivery infrastructure.
+    * TDD & Pair programming Cons.
+
+    [Why eXtreme Programming isn’t popular](https://medium.com/agility-path/5-reasons-why-extreme-programming-isnt-popular-83790418b901)
+
+___
 
 * ### Kanban
 
@@ -218,6 +315,8 @@ Every business should decide on organizing the work process inside the company, 
     4. Generate insights: Discuss what is working well and what isn’t working well. Identify the biggest constraint. Discuss the root cause.
     5. Next improvement: Agree on an experiment to remove the constraint. Use the hypothesis driven format, “We believe `<this improvement>`. Will result in `<this outcome>`. We will know we have succeeded when `<we see this measurable signal>`.”
     6. Close: Use a quick closing activity to end the Retrospective.
+
+___
 
 * ### Scrum
 
@@ -373,11 +472,88 @@ Every business should decide on organizing the work process inside the company, 
 
     ![scrum-sprint-cycle](../images/scrum-sprint-cycle.jpeg)
 
-    #### [Read More about Scrum](https://guide.freecodecamp.org/agile/scrum/)
+    [Read More about Scrum](https://guide.freecodecamp.org/agile/scrum/)
 
-* #### Crystal Methods
+    [Why Agile sucks at your company](https://medium.freecodecamp.org/why-agile-sucks-at-your-company-and-what-you-can-do-about-it-f4bebcc661c3)
 
-* #### Dynamic System Development Method
+___
 
+* ### Scrumban
 
-https://medium.freecodecamp.org/why-agile-sucks-at-your-company-and-what-you-can-do-about-it-f4bebcc661c3
+    Scrumban is an Agile development methodology that is a hybrid of Scrum and Kanban. In the simplest level, Scrumban is just the application of the principles of the Kanban method on top of your Scrum processes.
+
+    In Scrumban, the teamwork is organized in small iterations and monitored with the help of a visual board, similar to Scrum and kanban boards.
+
+    Planning meetings are held to determine what User Stories to complete in the next iteration. The User Stories are then added to the board and the team completes them, the team working on a few User Stories at a time as practical (the work-in-progress, or WIP, limit).
+
+    To keep iterations short, WIP limits are thus used, and a planning trigger is set in place for the team to know when to plan next - when WIP falls below a predetermined level.
+
+    There are no predefined roles in Scrumban; the team keeps the roles they already have.
+
+    ![scrumban](../images/scrumban.png)
+
+    The biggest difference is in the board itself. We change the pull order of items. While in Scrum, the order of the sprint planning process and all tasks are pre-set prior to working, this can cause a level of rigidity that can result in skipping problems that arise during the process, and which may never get addressed prior to release.
+
+    One of the greatest advantages of Kanban is that problems are identified throughout the process and can be identified before getting to the end point.
+
+    #### Comparison of Scrumban to Scrum
+    * __Iterations__: The iteration is the defining characteristic of Scrum, whereas Scrumban takes the Kanban approach of continuous workflow - with iterations being optional.
+    * __Team roles__: Scrum has defined roles with development team members wearing all the hats of a development project , whereas Scrumban only requires roles as needed.
+    * __Visualization__: Scrum can use a board, but is mostly dependent on backlogs and burndown charts, while Scrumban, like Kanban, is dependent on the Scrumban Board for maintaining visibility into the work.
+    * __Meetings__: Both Scrum and Scrumban hold daily meetings, but there are no Sprint or release planning meetings and retrospectives in Scrumban. Scrumban embraces on-demand planning.
+    * __Estimating__: Scrum teams must estimate the time work takes in order to meet the commitments of a Sprint, whereas Scrumban doesn’t have a time constraint. Instead, estimating becomes apparent over time as the team accomplishes more tasks.
+    * __WIP__: The Scrum WIP (Work in Progress) is defined entirely by the Sprint backlog and planned at the start of each Sprint, while the Scrumban team limits the WIP to the available resources.
+    * __Change__: Change is welcomed in Scrum because it can be responded to and planned in a subsequent Sprint, but in Scrumban change is responded to instantaneously. The lack of Sprints and backlogs means there are no limits to when tasks can be introduced. Change becomes a matter of a resource becoming available to take it on.
+    * __Feature Freeze__: Although Scrumban responds to change instantaneously, there is a limit. Scrumban adopts feature freeze - a cut-off time where changes or additional features cannot be added because the project deadline is approaching.
+    * __Triage__: Since Scrumban does not embrace estimating, the triage stage is critical. As a project deadline approaches, Scrumban triage enables the project manager to terminate work on less important features in order to complete essential features on time.
+
+    #### Comparison of Scrumban to Kanban
+    * __Team roles__: Kanban has no prescribed roles, but in Scrumban there is a definite team and may have required roles.
+    * __Meetings__: Kanban does not require meetings, but Scrumban consists of daily meetings. Daily meetings help to maintain the collaboration between team members and to overcome impediments to progress.
+    * __Metrics__: Both Kanban and Scrumban rely on measuring lead time and cycle time (sometimes used interchangeably) as their key metric. This metric estimates the average time it takes to complete a specific task.
+
+    Lead time is what the customer sees from the time a request is made to delivery.
+
+    Cycle time is the time from the work beginning to delivery.
+
+    #### Application
+    * A project has a great deal of unexpected change to user stories and reworking of priorities.
+    * You want to add pull features to the Scrum development process.
+    * Scrum has been unsuccessful due to any number of issues or because there are not enough resources to meet the time constraints of Scrum.
+    * The work is event-driven, such as help desk support, where priorities shift constantly.
+    * The team is entirely focused on adding features and supporting an existing product.
+    * Scrum is utilized by your development team, but you are interested in some principles of Kanban.
+    * You find some of the rigidness of Scrum limits your team’s ability to adapt to change.
+    * You’re transitioning to Kanban, but need to make small methodology changes in order to limit disruption.
+
+    #### Pros:
+    * Allows continuous improvement of the workflow by learning from the past.
+
+        Whereas Scrum is focused on pure workflow, once a sprint is in place, it’s difficult to make changes.  However, within Scrumban, if a developer during another sprint notices a problem, not only can he or she modify the current sprint, by adding important pieces into the flow, this knowledge can be shared across other sprints to improve the entire process.
+
+    * No limits on the size of stories brought in to the board.
+
+        In Scrumban, stories can be larger than the normal one, two, or five bar size;  this allows bringing in stories that may have come from another sprint or epic, even if it wasn’t planned.
+
+    * Ensures continuous flow of work.
+
+        Work no longer needs to stop if a developer has completed her part of a sprint.  She can move on to the next task without having to wait for a new sprint to begin.
+
+    * Allow for Specialists
+
+        The team can remain cross-functional however there is also space to allow for specialized resources. Sometimes a developer or Ops professional may have skills that are not necessarily shared by others in the group. Often his work within a sprint may be minimal compared to others, but he has other tasks that need to be accomplished. In Scrumban, is no reason for him to sit on his hands while everyone else finishes their roles. By bringing this person’s tasks outside of the individual sprint,  he can work in his own stream alongside existing sprints.
+
+    [More about Scrumban](https://www.practicallogix.com/scrum-and-kanban-how-scrumban-can-help/)
+___
+
+* ### Crystal Methods
+
+___
+
+* ### Dynamic System Development Method
+
+___
+
+* ### Feature-Driven Develpment (FDD)
+
+___
