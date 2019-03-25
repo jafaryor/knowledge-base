@@ -58,7 +58,11 @@ Every business should decide on organizing the work process inside the company, 
 
 * ### Extreme Programming
 
+    Extreme programming is a software-development discipline that organizes people to produce higher-quality software more productively.
+
     Extreme Programming approach (__XP__) refers to an agile software engineering methodology. It was created to avoid the development of functions that are not currently needed. It aimed at the creation of a top-notch (high standard) final product with no regard for frequent changes in requirements. Another aim of this method is reducing the costs of software essentials. To achieve that, continuous testing and planning are applied.
+
+    According to XP methodologies you have to implement the features with minimum working code. Once that’s done you can go back and beautify your code. Let the design evolve from the requirements, don’t do upfront design. Don’t think of the future requirements, just do the minimum required.
 
     It is the best choice if your client has a deadline to deliver the product with no clear understanding of how it must work, and the risk is higher. XP techniques are setup to address and mitigate the risks and increase the likelihood of success.
 
@@ -68,7 +72,25 @@ Every business should decide on organizing the work process inside the company, 
 
     Extreme programmers only write code to meet actual needs at the present time in a project. For reviewing the code XP programmers work in pairs, sharing one screen and keyboard (which also improves communication) so that all code is reviewed as it is written.
 
-    In Extreme Programming, tests are written before the code is written. The code is considered complete when it passes the tests (but then it needs refactoring to remove complexity). Despite it’s thought that XP could only work in small teams of fewer than 12 persons, it has been used successfully on teams of over a hundred developers.
+    Refactoring and Test Driven Development (TDD) are used with extreme programing.
+    
+    Programming in pairs and code reviews are two aspects involved with XP and user stories and communications are the cores of planning in XP.
+
+    The code is considered complete when it passes the tests (but then it needs refactoring to remove complexity). Despite it’s thought that XP could only work in small teams of fewer than 12 persons, it has been used successfully on teams of over a hundred developers.
+
+    If the exact requirements are not clearly defined beforehand and you have to search for the optimal solution to your client’s business problem, XP is for you. It will take you and the client on a journey of learning together.
+
+    #### XP’s Life Cycle Stages:
+
+    https://medium.com/@rajkiranbande/extreme-programming-709f6957e0ec
+
+    https://medium.com/@AmirHassanAzimi/extreme-programming-xp-35223784976e
+
+    https://medium.com/agility-path/5-reasons-why-extreme-programming-isnt-popular-83790418b901
+
+    https://medium.com/@bean00/extreme-programming-xp-practices-9a00e342605e
+
+    https://medium.com/@jameshamann/xp-extreme-programming-f3ad1b04c154
 
     __Pros:__
     * It lays focus on customer involvement
