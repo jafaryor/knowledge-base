@@ -556,4 +556,39 @@ ___
 
 * ### Feature-Driven Develpment (FDD)
 
+    Feature driven development is aligned with Agile methodology. It is a design oriented agile process in which the project is divided into features wherein the features are a small part of the complete project.
+
+    FDD follows a 5 step process:
+    1. __Develop a model__
+
+    2. __Build a feature list__
+
+        Using the knowledge of the 1st process, the team constructs the feature list instead of a product backlog.
+
+        The whole project is further divided into features which need to be delivered every two weeks based on the length of the Sprint.
+
+    3. __Plan by feature__
+
+        Once the feature list is planned. It is up to the development team to decide which features to develop first. Teams are selected and assigned the feature set.
+
+        FDD is different from traditional agile as it gives responsibility to individual developers instead of adopting collective ownership.
+
+    4. __Design by feature__
+
+        A lead developer selects a set of features to be developed in the next sprint. Depending on the requirements, testers, designers, and technical authors may join the team in the sprint. This team works together under a domain expert on the details of each selected feature and consequently
+
+    5. __Build by feature__
+
+        After the design inspection is complete, the code is developed and unit tested. The complete set of features are added to the build after the approval of the technical architect.
+
+    #### Pros:
+    * Works great for large-scale products requiring constant updating and always delivers value.
+    * Based on the best and well-documented software development practices, ensuring developers with any experience can find their role and successfully work on the project.
+    * The resulting features are always better than the initial ones
+
+    #### Cons:
+    * This model cannot be used by smaller or one-man teams of developers, as well as for smaller projects with strict deadlines.
+    * The success of this model relies heavily on having the highly-skilled team leads monitoring the process throughout the development cycles.
+    * Documentation is poor if any. The software owner gets the feature, yet its precise description is outside the scope of FDD model.
+
 ___

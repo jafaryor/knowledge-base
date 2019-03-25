@@ -41,3 +41,8 @@ So, what’s in the Kanban? Let’s take a look in contrast with Scrum:
 
 ### Scrum vs Kanban vs Scrumban
 ![scrum-kanban-scrumban](../images/scrum-kanban-scrumban.png)
+
+### FDD vs Scrum
+It is quite clear that both are collaborative, both put more emphasis on quality of components while developing short iteration features that are constantly tracked.
+
+The difference is that SCRUM does not focus on any specific engineering practice while FDD focuses on a specific engineering practice with long feedback loops along with a feature team that takes clear recognizable goals.
