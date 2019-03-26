@@ -552,6 +552,43 @@ ___
 
 * ### Dynamic System Development Method
 
+    DSDM is an agile software development methodology. It is an iterative, incremental approach that is largely based on the Rapid Application Development (RAD ) methodology.
+
+    DSDM advocates the use of several proven practices, including:
+    * Facilitated Workshops.
+    * Modelling and Iterative Development.
+    * MoSCoW Prioritisation - to identify the order and importance of the requirements.
+    * Time boxing.
+
+    DSDM has been developed to address common problems faced by projects such as late delivery, cost overruns or the final deliverable not being completely fit for purpose.
+
+    DSDM addresses these problems by creating an agile environment which is collaborative and flexible, yet remaining focused on hitting deadlines and maintaining the appropriate level of quality and rigour.
+
+    DSDM involves all stakeholders such as the business representatives throughout an iterative and incremental lifecycle.
+
+    DSDM has 9 principles:
+    1) Active user involvement – Imperative.
+    2) Teams must be empowered to make decisions.
+    3) Focus on frequent delivery.
+    4) Criterion for accepted deliverable (Fitness for Business).
+    5) Iterative and incremental development – Mandatory.
+    6) All changes during development must be reversible.
+    7) Requirements are base lined at high level.
+    8) Testing is integrated throughout the life cycle.
+    9) Collaborative and co-operative approach.
+
+    ![dsdm](../images/dsdm.png)
+
+    Pros:
+    * Basic product functionality can be delivered rapidly
+    * Developers have easy access to end users
+    * Projects are reliably completed on time
+
+    Cons:
+    * Can represent a dramatic and disruptive change in company culture
+    * Costly to implement
+    * Not ideal for small organizations
+
 ___
 
 * ### Feature-Driven Develpment (FDD)
@@ -592,3 +629,5 @@ ___
     * Documentation is poor if any. The software owner gets the feature, yet its precise description is outside the scope of FDD model.
 
 ___
+
+#### [Software Development Methodologies](https://medium.com/paymo/project-management-methodologies-the-complete-guide-fba376ef288a)

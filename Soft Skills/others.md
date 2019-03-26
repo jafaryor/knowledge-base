@@ -26,3 +26,13 @@ Cons:
 * You are using 2 programmers instead of 1 (costly from a business perspective)
 * If there is a huge discrepancy in skill between the pairs, the more experienced pair might lose patience, and the less experienced pair might lose confidence
 If the pairs don’t get along or aren’t compatible, the session will not be effective
+
+__Timeboxing__: is the approach for completing the project incrementally by breaking it down into splitting the project in portions, each with a fixed budget and a delivery date. For each portion a number of requirements are prioritised and selected. Because time and budget are fixed, the only remaining variables are the requirements.
+
+__MoSCoW__: is a technique for prioritising work items or requirements. It is an acronym that stands for:
+1. Must have : All features classified in this group must be implemented and if they are not delivered, the system would simply not work
+2. Should have : Features of this priority is important to the system but can be omitted if time constraints endanger.
+3. Could have : These features enhance the system with functional items which can easily be reassigned to a later timebox.
+4 .Want to have : These features only serve a limited group of users and are of little value.
+
+__PRINCE2__
