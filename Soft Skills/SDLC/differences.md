@@ -1,4 +1,7 @@
 ## Methodology differencies
+### Agile vs Scrum
+Agile describes a set of principles in the Agile Manifesto for building software through iterative development. On the other hand, Scrum is a specific set of rules to follow when practicing Agile software development. Agile is the philosophy and Scrum is the methodology to implement the Agile philosophy.
+
 ### Scrum vs Kanban
 The first step to understand this difference is to know that Kanban is not just a board. Kanban is a framework, methodology, process (call it as you prefer) and the board is just a tool.
 
@@ -13,6 +16,8 @@ Kanban is better for production support. The limit here is not a Sprint, the lim
 | Roles | Product owner, scrum master, development team | No required roles |
 | Key metrics | Velocity | Lead time, cycle time, WIP |
 | Change philosophy | Teams should not make changes during the sprint. | Change can happen at any time |
+
+![matrix-scrum-kanban](../images/matrix-scrum-kanban.gif)
 
 ![kanban-vs-scrum](../images/kanban-vs-scrum.png)
 
@@ -39,8 +44,26 @@ So, what’s in the Kanban? Let’s take a look in contrast with Scrum:
 
 #### [Scrum vs. Kanban](https://medium.com/@thorbjorn.sigberg/scrum-vs-kanban-c73dc70e8eef)
 
+#### HOW DO KANBAN AND SCRUM RELATE TO EACH OTHER?
+Kanban and Scrum are both frameworks for Agile software development. They both take large, complex tasks and break them down into smaller chunks. Kanban and Scrum also work toward continual improvement and optimization of the process, and want to keep work highly visible.
+
+While both Kanban and Scrum are very adaptive, Scrum is more rigid than Kanban. Scrum has more constraints, whereas Kanban is more flexible.
+
 ### Scrum vs Kanban vs Scrumban
 ![scrum-kanban-scrumban](../images/scrum-kanban-scrumban.png)
+
+### Agile vs Waterfall
+
+![matrix-waterfall-agile](../images/matrix-waterfall-agile.gif)
+
+#### Difference:
+* Waterfall is a structured process, where you can’t start on a new phase until the previous one has been completed. On the other hand, Agile is a flexible process, allowing you to move through the project as you like.
+* Waterfall is sequential and Agile does not enforce a linear process.
+* Waterfall projects usually include defined requirements in advance, whereas requirements are expected to change and evolve in Agile projects.
+* In Waterfall projects, you can’t change things that were done in previous stages, whereas Agile is very accommodating to changes.
+
+#### Similarities:
+Agile was specifically created to be the opposite of Waterfall. However, you can say that both Agile and Waterfall have the same goal. They both want to deliver quality products in an efficient way.
 
 ### FDD vs Scrum
 It is quite clear that both are collaborative, both put more emphasis on quality of components while developing short iteration features that are constantly tracked.

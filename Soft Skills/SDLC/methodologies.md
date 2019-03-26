@@ -1,5 +1,10 @@
 ## Software Development Methodologies
 Every business should decide on organizing the work process inside the company, according to its priorities and projects in development.
+
+__Framework__ is an overview of how its guidelines should be implemented. While __methodologies__ offer strict principles and practices for completing a project.
+
+Frameworks are more flexible because they can adapt to changing situations or to a company’s own needs, leaving room for the person in charge to find the best way of completing a project.
+
 ___
 
 * ### Agile
@@ -45,6 +50,13 @@ ___
     Emphasis is on planning, time schedules, target dates, budgets and implementation of an entire system at one time. Tight control is maintained over the life of the project via extensive written documentation, formal reviews, and approval/signoff by the user and information technology management occurring at the end of most phases before beginning the next phase. Written documentation is an explicit deliverable of each phase.
 
     Despite its inflexibility and thoughts of being out of date, this methodology intended to get rid of unnecessary paperwork, time-consuming regular meetings, and backlogs. So, this is a great choice for the small projects where all the aspects of development are known beforehand and a bad solution for complicated projects since it is quite inflexible.
+
+    __Application__:
+    * You don’t expect changes in scope and you’re working with fixed-price contracts
+    * The project is very simple or you’ve done it many times before
+    * Requirements are very well known and fixed
+    * Customers know exactly what they want in advance
+    * You’re working with orderly and predictable projects
 
     __Pros:__
     * Easy to understand and functional
@@ -316,6 +328,16 @@ ___
     5. Next improvement: Agree on an experiment to remove the constraint. Use the hypothesis driven format, “We believe `<this improvement>`. Will result in `<this outcome>`. We will know we have succeeded when `<we see this measurable signal>`.”
     6. Close: Use a quick closing activity to end the Retrospective.
 
+    __Application__:
+    * You need to add stories or change sprints on the fly
+    * You don’t need iterations
+    * Estimation isn’t necessary
+    * You want the ability to release at any time
+    * Continuous improvement is already emphasized
+    * Your team doesn’t respond well to big changes
+    * You want to improve delivery flow
+    * The system needs to be easy to understand
+
 ___
 
 * ### Scrum
@@ -332,16 +354,6 @@ ___
     * a brief heartbeat retrospective when all team members reflect about the past sprint
 
     Scrum is best suited when the cost of delay is high and deadlines should meet a minimal delay. Scrum is often used when the end product is unclear or the requirements have no proper feedback from the clients. Here the client is involved in the whole process and determine and focus on certain sprint product backlog items that need to be completed (along with the team). Scrum takes its place among flexible methodologies that are appropriate for long-run development with frequent changes to requirements.
-
-    __Pros:__
-    * Decision making lies in the hands of the team
-    * Business requirement document is considered insignificant
-    * Lightly controlled method empathizing with constant updating
-
-    __Cons:__
-    * The processing method suffers because of wavering costs
-    * Not suitable for big sized projects
-    * Requires highly expert team, which has no place for novices
 
     ![scrum](../images/scrum.png)
 
@@ -470,6 +482,24 @@ ___
     * Thursday: Daily Standup (15 minutes)
     * Friday: Daily Standup (15 minutes), Sprint Review (30 minutes), Retrospective (1–2 hours)
 
+    __Application__:
+    * The project requirements will change and evolve
+    * Continuous feedback is required
+    * You have to figure out how to do a large part of the work because you haven't done it before
+    * You don’t need to commit to a fixed release date
+    * The project team wants autonomy
+    * You need to deliver software on a regular basis
+
+    __Pros:__
+    * Decision making lies in the hands of the team
+    * Business requirement document is considered insignificant
+    * Lightly controlled method empathizing with constant updating
+
+    __Cons:__
+    * The processing method suffers because of wavering costs
+    * Not suitable for big sized projects
+    * Requires highly expert team, which has no place for novices
+
     ![scrum-sprint-cycle](../images/scrum-sprint-cycle.jpeg)
 
     [Read More about Scrum](https://guide.freecodecamp.org/agile/scrum/)
@@ -547,6 +577,20 @@ ___
 ___
 
 * ### Crystal Methods
+
+    Crystal is a family of related agile methodologies based on the ideas that:
+
+    * No one methodology can fit all projects
+    * They should be tuned by the project participants to fit themselves,
+    * They should be light and communication-centric.
+
+    The three elements common to all Crystal family members are frequent delivery, close communication, and reflective improvement.
+
+    With this flexible methodology, people are the most important part of a project. All processes must be adapted to their needs. While the books describing Crystal provide resources for tuning the details of your team’s method, there are no specifically required techniques or tools. The way in which you use Crystal depends entirely on your project and team.
+
+    For example, Crystal Clear is commonly used for projects handled by small teams and those who work from a single location. Crystal Sapphire, on the other hand, is preferred for large projects that might pose a risk to human life. This ability to adapt to different project types is why Crystal focuses on 6 main elements: people, interaction, community, communication, skills, and talents.
+
+    The members of the method family are color-coded according to how many people are being coordinated (Clear, Yellow, Orange, Red, and so on).
 
 ___
 
@@ -627,6 +671,18 @@ ___
     * This model cannot be used by smaller or one-man teams of developers, as well as for smaller projects with strict deadlines.
     * The success of this model relies heavily on having the highly-skilled team leads monitoring the process throughout the development cycles.
     * Documentation is poor if any. The software owner gets the feature, yet its precise description is outside the scope of FDD model.
+
+___
+
+* ### PRINCE2 (PRojects IN Controlled Environments)
+
+    PRINCE2 is a project management method that enforces the need to split project accountability between a board and a project manager. While the board’s responsibility is to bring in the required resources and focus on business justification, the project manager handles all tasks and manages the team on a daily basis.
+
+    PRINCE2 offers better control over your resources, increased risk management, defined team roles and responsibilities, an emphasis on the end user and the final product, a consistent approach to review cycles, organized plans, and controllable project management phases. This method contains all the needed tools, practices, and procedures that will favorably take a project from start to finish.
+
+    Best for: Construction and architecture, marketing, but works for other industries too.
+
+    Tools to use: Microsoft Project, in-STEP BLUE, P2ware
 
 ___
 
