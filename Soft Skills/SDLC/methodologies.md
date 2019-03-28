@@ -102,7 +102,6 @@ ___
 
     ![rad-methodology](../images/rad-methodology.png)
 
-
 ___
 
 * ### Spiral
