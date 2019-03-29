@@ -93,3 +93,5 @@ Verify that API endpoints perform appropriate authorization and authentication c
 Different teams have different merge policies: some teams allow only project owners to merge, while other teams allow the contributor to merge after a positive code review.
 
 #### [Read more](https://medium.com/palantir/code-review-best-practices-19e02780015f)
+
+#### [Read Even More](https://medium.com/@schrockn/on-code-reviews-b1c7c94d868c)
