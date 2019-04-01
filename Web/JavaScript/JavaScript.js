@@ -3,7 +3,7 @@
 // jshint ignore: start
 // Code style is not about personal preference and self-expression. Always use JSLint.
 
-/* 
+/*
     Scope has to do with the the visibility of variables. In JavaScript, scope is achieved through the use of functions.
     Context - is object to which the method belongs.
         When a function is called as a method of an object, this is set to the object the method is called on
@@ -517,26 +517,6 @@ document.write('some HTML'); // allows JS to produce HTML text
 // After onload: Uses HTML text to replace the current document.
 
 
-// Events
-// The browser has an event-driven, single-threaded programming model
-// Events are targeted to a particular node
-// Events cause the invocation of event handler functions
-
-node.addEventListener('type', function() {}, phase);
-// there sre 2 phases: bubbling and Capturing
-// phase - A Boolean value that specifies whether the event should be executed
-//         in the capturing or in the bubbling phase
-
-// Prevent bubbling
-event.cancelBubble = true;
-if (event.stopPropagation) event.stopPropagation();
-
-// Prevent default behaviour
-event.returnValue = false;
-if (event.preventDefault) event.preventDefault();
-return false;
-
-
 // What costs big performance:
 // 1. Touching a node
 // 2. Styling
@@ -590,7 +570,7 @@ Array.prototype.reduce(callback, initialValue); // reduce the array into single 
 Array.prototype.reduceRight(callback, initialValue) // reduce from end of array.
 Array.prototype.some(callback); // like every but runs until callback return false.
 Date.now() // current date.
-Date.prototype.toISOString(); // 'year'-'month'-'date'T'hours':'minutes'Z'seconds'. 
+Date.prototype.toISOString(); // 'year'-'month'-'date'T'hours':'minutes'Z'seconds'.
 new Date(isoString) && Date.parse(isoString); // will try ISO fromat first.
 Array.isArray(arr);
 Object.keys(obj); // returns an array of all owned properties (not inherited) of an obj.
@@ -1059,7 +1039,7 @@ function curry(func) {
         this gets bound to global object, which gives away the farm.
     2. Stop using null. Use undefined instead.
     3. Stop using falsiness. Use clear conditions in if-statement.
- 
+
 Recommendation:
     1. Use array.forEach instead of for-statement.
     2. Use Object.keys(myObject).forEach instead of for-in. Because for-in get into prototype.
