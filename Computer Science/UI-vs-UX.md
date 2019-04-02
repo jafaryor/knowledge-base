@@ -15,10 +15,3 @@ Or, in other words, UX deals with purpose, while UI deals with appearance and fu
 Picture yourself in a cafe. Think of the cup, the table, the chair, the coffee beans as the UI of the place. Now, think of the way the coffee is made, the ambience, the service, the music as the UX aspect. UX is literally everything that has impact on your overall experience as a user of “something.”
 
 Next time you’re in a car, pay closer attention to the button/switch that controls the hazard lights. Traditionally, in most cars, it’s the most central, best visible switch on the dashboard. I argue that the placement of that switch is a result of a UX decision. While the look itself is a UI decision.
-
-    
-
-
-
-
-

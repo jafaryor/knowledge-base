@@ -1,7 +1,10 @@
 ## Event flow
 The browser has an event-driven, single-threaded programming model.
 
-The standard [DOM Events](http://www.w3.org/TR/DOM-Level-3-Events/) describes 3 phases of event propagation:
+### Eventy propagation
+_Event Propagation_ is a mechanism that defines how events propagate or travel through the DOM tree to arrives at its target and what happens to it afterward.
+
+The _Event Propagation_ proceeds in 3 phases:
 1. __Capturing phase__ – the event goes down to the element.
 2. __Target phase__ – the event reached the target element.
 3. __Bubbling phase__ – the event bubbles up from the element.
@@ -49,3 +52,24 @@ event.returnValue = false;
 if (event.preventDefault) event.preventDefault();
 return false;
 ```
+
+### Event Binding vs Event Delegation
+_Standard event handling_ is to add event listener directly to DOM element which will be handled.
+```javascript
+element.addEventListener("eventName",function(e){
+    //here event handling code
+});
+```
+
+_Delegated event handling_ is adding handler on parent element of our target one, and check what target started event. It uses event propagation which means that event is propagated from element most nested on which event was fired to root of DOM tree.
+```javascript
+parentElement.addEventListener("eventName",function(e){
+    if (e.target===element){
+        //here event handling code
+    }
+});
+```
+
+
+
+
