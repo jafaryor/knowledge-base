@@ -21,6 +21,12 @@ Version 1.0 vs. Version 2.0
         was the major difficulty. But this bottleneck was eliminated in Angular v2.0
     * $scope
         Angular 2 is not using $scope anymore to glue view and controller.
+    * Two-way data binding in Angular 2 really just boils down to event binding and property binding.
+        Therefore, it can assume that a single pass of change detection will always be sufficient.
+        If we take a look at the source code, we’ll notice that ngModel actually comes
+        with a property and event binding as well.
+
+        https://codewithstyle.info/change-detection-angular-versus-angularjs/
 
 Version 2.0 vs. Version 4.0
     * Architecture
