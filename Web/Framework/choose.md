@@ -58,7 +58,6 @@ Maintained by Facebook, React is a JavaScript library for building UI components
 * View-orientendness is one of the cons of ReactJS. It should be found 'Model' and 'Controller' to resolve 'View' problem.
 * Not using isomorphic approach to exploit application leads to search engines indexing problems.
 * Lots of developers dislike JSX React’s documentation, manuals are difficult for newcomers’ understanding.
-* React’s large size library.
 
 > React is just old enough to be mature and has a huge number of contributions from the community. It is gaining widespread acceptance. The job market for React is really good, and the future for this framework looks bright.
 React looks like a good choice for someone getting started with front-end JavaScript frameworks, startups and developers who like some flexibility. The ability to integrate with other frameworks seamlessly gives it a great advantage for those who would like some flexibility in their code.
@@ -86,15 +85,15 @@ New in the market, Vue.js is one of the most-discussed and rapidly growing JavaS
 
 * Minor issues with iOS and Safari: I’ve found minor issues with older iOS and Safari devices; but, being entirely honest the issues are often fixable, albeit with a little more digging for some issues.
 
-* Reactivity caveats: If you read the documentation, there are some reactivity caveats, like setting an item from an array directly (e.g., this.items[key]=value) or adding a new data property. This might be both good and bad depending on use cases. However, for most cases it's nice to have everything specified upfront inside data.
+* Reactivity caveats: If you read the documentation, there are some reactivity caveats, like setting an item from an array directly (e.g., `this.items[key]=value`) or adding a new data property. This might be both good and bad depending on use cases. However, for most cases it's nice to have everything specified upfront inside data.
 
 > Vue is new to the arena, without the backing of a major company.
-However, it has done really well in the last few years to come out as a strong competitor for Angular and React. This is perhaps playing a role with a lot of Chinese giants like Alibaba and Baidu picking Vue as their primary front-end JavaScript framework. However, it remains to be seen how it does in the future and one is justified to be cautious with it. Vue should be your choice if you prefer simplicity, but also like flexibility.
+However, it has done really well in the last few years to come out as a strong competitor for Angular and React. This is perhaps playing a role with a lot of Chinese giants like Alibaba and Baidu picking Vue as their primary front-end JavaScript framework. Vue should be your choice if you prefer simplicity, but also like flexibility.
 
 ___
 
 #### [Read More]([Choosing a JavaScript Framework in 2018](https://medium.com/@ZombieCodeKill/choosing-a-javascript-framework-535745d0ab90))
 
-[How to Choose the Best Front-end Framework](https://www.toptal.com/javascript/choosing-best-front-end-framework)
+#### [How to Choose the Best Front-end Framework](https://www.toptal.com/javascript/choosing-best-front-end-framework)
 
-[Angular vs. React vs. Vue vs. Riot](https://aimconsulting.com/insights/blog/angular-vs-react-vs-vue-vs-riot-choosing-the-right-javascript-framework-for-your-organization/)
+#### [The Best JS Frameworks for Front End](https://rubygarage.org/blog/best-javascript-frameworks-for-front-end)
