@@ -1,5 +1,5 @@
 ## Angular
-Angular is a known Typescript-based JavaScript MVVM framework, founded in 2009, backed by Google and used for developing highly interactive web applications. It is widely used by Google, Forbes, WhatsApp and many other Fortune 500 companies. Right from the beginning, AngularJS became extremely popular among engineers. A strong community provided enough training materials, discussions, and third-party tools to embark on using AngularJS as well as find a solution to nearly every arising issue, the trend also continues even today with Angular 2+.
+Angular is a known Typescript-based JavaScript MVVM framework, founded in 2009, backed by Google and used for developing highly interactive web applications. It is widely used by Google, Forbes, WhatsApp and many other Fortune 500 companies.
 
 ### Benefits:
 * Component-based architecture that provides a higher quality of code: Components can be thought of as small pieces of an interface that are independent of each other.
@@ -12,18 +12,24 @@ Angular is a known Typescript-based JavaScript MVVM framework, founded in 2009, 
 
 * Maintainability: Components that are easily decoupled from each other can be easily replaced with better implementations.
 
-* RxJS: RxJS is a library commonly used with Angular to handle asynchronous data calls. It allows for handling events independently in parallel and continuing execution without waiting for some event to happen and leaving a web page unresponsive. RxJS has a steep learning curve, but once you master it, it makes life easier. The library operates with Observables, sort of blueprints that describe how data streams are combined and how the application reacts to variables in these streams. Basically, once you’ve got a grip on observables, you can easily reuse them, manage, and combine them as Lego blocks reducing the complexity of such programming operations as building drag-and-drop features, handling large volumes of data in chunks, etc. You can leverage RxJS with other frameworks that function with front-end (React.JS) or back-end operations (Node.JS), but in Angular RxJS is a necessity, which we’ll also discuss in the cons section.
+* RxJS: RxJS is a library commonly used with Angular to handle asynchronous data calls. It allows for handling events independently in parallel and continuing execution without waiting for some event to happen and leaving a web page unresponsive. RxJS has a steep learning curve, but once you master it, it makes life easier.
 
 ### Limitations:
-* Migrating legacy systems from AngularJS to Angular requires time: The difference between AngularJS and 
+* Migrating legacy systems from AngularJS to Angular requires time:
 
-    Angular is large, so is the path of migration from the past to the future. Unlike updating from say Angular 5 to Angular 6, it won’t be a breeze, especially if you’re dealing with a legacy monstrosity.There are different ways to do that, one of which is to use a hybrid approach. It entails having both old and new Angular operating at the same time while you incrementally update the whole product. Not only does it take time, you’ll have to review many tools, the transition to a new language, and deal with a heavier app.
+    The difference between AngularJS and Angular is large, so is the path of migration from the past to the future. Unlike updating from say Angular 5 to Angular 6, it won’t be a breeze, especially if you’re dealing with a legacy monstrosity. There are different ways to do that, one of which is to use a hybrid approach. It entails having both old and new Angular operating at the same time while you incrementally update the whole product. Not only does it take time, you’ll have to review many tools, the transition to a new language, and deal with a heavier app.
 
 * Steep learning curve
 
-    On-boarding new developers familiar with JavaScript to learn and use new Angular, will be challenged compared to similar React or Vue on-boarding. The array of topics and aspects to be covered is large: modules, dependency injection, components, services, templates, etc. Another barrier is RxJS, a reactive programming library for asynchronous programming. Learning it, at least on the basic level, is mandatory for using Angular. Engineers complain about error messages that are too cryptic to grasp without additional research followed by trial-and-error manipulations.
+    On-boarding new developers familiar with JavaScript to learn and use new Angular, will be challenged compared to similar React or Vue on-boarding. The array of topics and aspects to be covered is large. Learning it, at least on the basic level, is mandatory for using Angular. Engineers complain about error messages that are too cryptic to grasp without additional research followed by trial-and-error manipulations.
 
-    TypeScript, as we’ve already mentioned in the benefits section, is also a bone of contention. While TypeScript improves maintainability of code, having to learn it doesn’t make the curve gentler.
+* TypeScript
+
+    While TypeScript improves maintainability of code, having to learn it doesn’t make the curve gentler.
+
+> Angular is the most mature of the frameworks, has good backing in terms of contributors and is a complete package. However, the learning curve is steep and concepts of development in Angular may put off new developers. Angular is a good choice for companies with large teams and developers who already use TypeScript.
+
+___
 
 ## React
 Maintained by Facebook, React is a JavaScript library for building UI components for web applications. It is widely used by Facebook(duh!), Uber, Netflix, Udemy and may more.
@@ -39,8 +45,12 @@ Maintained by Facebook, React is a JavaScript library for building UI components
 
 * Testable. React’s native tools are offered for testing, debugging code.
 
-* SEO-friendly. React presents the first-load experience by server side rendering and connecting event-handlers on the side of the user:   1. React.renderComponentToString is called on the server. 2. React.renderComponent() is called on the client side. 3. React preserves markup rendered on the server side, attaches event handlers.  
+* SEO-friendly.
+
+* React presents the first-load experience by server side rendering and connecting event-handlers on the side of the user.
+
 * Up to date. Facebook team supports the library. Advice or code samples can be given by Facebook community.
+
 * Using React+ES6/7, application gets high-tech and is suitable for high load systems.
 
 ### Limitations:
@@ -49,6 +59,11 @@ Maintained by Facebook, React is a JavaScript library for building UI components
 * Not using isomorphic approach to exploit application leads to search engines indexing problems.
 * Lots of developers dislike JSX React’s documentation, manuals are difficult for newcomers’ understanding.
 * React’s large size library.
+
+> React is just old enough to be mature and has a huge number of contributions from the community. It is gaining widespread acceptance. The job market for React is really good, and the future for this framework looks bright.
+React looks like a good choice for someone getting started with front-end JavaScript frameworks, startups and developers who like some flexibility. The ability to integrate with other frameworks seamlessly gives it a great advantage for those who would like some flexibility in their code.
+
+___
 
 ## Vue
 New in the market, Vue.js is one of the most-discussed and rapidly growing JavaScript framework. Released in February 2014, you can build interactive UIs using HTML, CSS and Javascript. It is widely used by Alibaba. Gitlab, and is being picked up by many developers globally.
@@ -73,10 +88,13 @@ New in the market, Vue.js is one of the most-discussed and rapidly growing JavaS
 
 * Reactivity caveats: If you read the documentation, there are some reactivity caveats, like setting an item from an array directly (e.g., this.items[key]=value) or adding a new data property. This might be both good and bad depending on use cases. However, for most cases it's nice to have everything specified upfront inside data.
 
-[Angular vs Vue vs React: Which Framework to Choose in 2019](https://www.codeinwp.com/blog/angular-vs-vue-vs-react/)
+> Vue is new to the arena, without the backing of a major company.
+However, it has done really well in the last few years to come out as a strong competitor for Angular and React. This is perhaps playing a role with a lot of Chinese giants like Alibaba and Baidu picking Vue as their primary front-end JavaScript framework. However, it remains to be seen how it does in the future and one is justified to be cautious with it. Vue should be your choice if you prefer simplicity, but also like flexibility.
+
+___
+
+#### [Read More]([Choosing a JavaScript Framework in 2018](https://medium.com/@ZombieCodeKill/choosing-a-javascript-framework-535745d0ab90))
 
 [How to Choose the Best Front-end Framework](https://www.toptal.com/javascript/choosing-best-front-end-framework)
-
-[Choosing a JavaScript Framework in 2018](https://medium.com/@ZombieCodeKill/choosing-a-javascript-framework-535745d0ab90)
 
 [Angular vs. React vs. Vue vs. Riot](https://aimconsulting.com/insights/blog/angular-vs-react-vs-vue-vs-riot-choosing-the-right-javascript-framework-for-your-organization/)

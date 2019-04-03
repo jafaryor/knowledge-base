@@ -102,7 +102,10 @@ _GRASP_ stands for __General Responsibility Assignment Software Patterns__. Thes
 
 * __Low Coupling__
 
-    _It means you try to reduce the dependency between your objects._
+    _Low coupling is an evaluative pattern that dictates how to assign responsibilities to support:_
+    * _lower dependency between the classes,_
+    * _change in one class having lower impact on other classes,_
+    * _higher reuse potential._
 
     Now low coupling does not mean no coupling. Objects need to know about each other, but as much as possible they should do what they can with the minimum of dependencies.
 
@@ -118,6 +121,8 @@ _GRASP_ stands for __General Responsibility Assignment Software Patterns__. Thes
 
 * __Controller__
 
+    _The controller pattern assigns the responsibility of dealing with system events to a non-UI class that represents the overall system or a use case scenario._
+
     If, for example, we have a user interface and also some business related classes.
 
     We don’t want to have high coupling between them to actually tie them directly together, where the user interface object has to know about the business objects and the vice-versa.
@@ -128,6 +133,8 @@ _GRASP_ stands for __General Responsibility Assignment Software Patterns__. Thes
 
 * __Pure Fabrication__
 
+    _A pure fabrication is a class that does not represent a concept in the problem domain, specially made up to achieve low coupling, high cohesion, and the reuse potential thereof derived._
+
     What if there’s something that needs to exist in the application that doesn’t announce itself as an obvious class or real-world object?. What if you have behavior that doesn’t naturally fit in existing classes?
 
     Well, rather than force that behavior into an existing class where it doesn’t belong, which means we are decreasing cohesion, we instead invent, we fabricate a new class.
@@ -136,7 +143,7 @@ _GRASP_ stands for __General Responsibility Assignment Software Patterns__. Thes
 
 * __Indirection__
 
-    _This is the idea that we can decrease coupling between objects._
+    _The indirection pattern supports low coupling and reuse potential between two elements by assigning the responsibility of mediation between them to an intermediate object._
 
     Give the responsibility of interaction to an intermediate object so that the coupling among different components remain low.
 
