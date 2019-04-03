@@ -30,12 +30,15 @@ Alternative to `CSS-in-JS` is __[CSS Modules](https://medium.com/front-end-devel
 
 A `CSS Module` is a CSS file in which all class names and animation names are _scoped locally_ by default.
 
-> ![css-modules-compiler-extended](./images/css-modules-compiler-extended.png)
+![css-modules-compiler-extended](./images/css-modules-compiler-extended.png)
 
 Where do you get a _CSS Modules compiler_? If you are using `Webpack`, you already have one. Just add the `"?modules"` option to `css-loader`.
 
 Example:
 
-> ![css-modules-compiler](./images/css-modules-compiler.png)
+![css-modules-compiler](./images/css-modules-compiler.png)
 
 __[More Detailed about CSS Modules](https://medium.com/front-end-developers/css-modules-solving-the-challenges-of-css-at-scale-85789980b04f)__
+
+## BEM
+As an alternative. BEM methodology advocates modularity in CSS through the use of selector naming conventions.
