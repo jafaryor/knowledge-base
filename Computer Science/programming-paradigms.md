@@ -43,6 +43,8 @@ Objects are first-class values (you can pass them around, store in variables, et
 
 #### [An intro to object-oriented programming in JavaScript](https://medium.freecodecamp.org/an-intro-to-object-oriented-programming-in-javascript-objects-prototypes-and-classes-5d135e7361b1)
 
+#### [OOP: Everything you need to know about Object Oriented Programming](https://medium.com/from-the-scratch/oop-everything-you-need-to-know-about-object-oriented-programming-aee3c18e281b)
+
 ___
 
 ## Functional Programming
