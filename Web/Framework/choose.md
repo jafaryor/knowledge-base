@@ -36,26 +36,17 @@ Maintained by Facebook, React is a JavaScript library for building UI components
 
 ### Benefits:
 * Updates process is optimized and accelerated.
-
 * JSX makes components/blocks code readable. It displays how components are plugged or combined with.
-
-* React’s data binding establishes conditions for creation dynamic applications.
-
-* Prompt rendering. Using comprises methods to minimize number of DOM operations helps to optimize updating process and accelerate it.
-
-* Testable. React’s native tools are offered for testing, debugging code.
-
-* SEO-friendly.
-
-* React presents the first-load experience by server side rendering and connecting event-handlers on the side of the user.
-
-* Up to date. Facebook team supports the library. Advice or code samples can be given by Facebook community.
-
-* Using React+ES6/7, application gets high-tech and is suitable for high load systems.
+* Has a fairly low learning curve.
+* Uses JSX for template creation instead of the usual JavaScript.
+* Uses just one direction data flow — downward. And in this type of structure, there is no way that child elements can affect the parent data.
+* Uses Virtual DOM which greatly increases the Speed of your app and only updates the parts where the changes have occurred.
+* Excellent cross platform supporter.
+* Easy to adopt and has UI focused Design.
 
 ### Limitations:
 * Learning curve. Being not full-featured framework it is requered in-depth knowledge for integration user interface free library into MVC framework.
-* View-orientendness is one of the cons of ReactJS. It should be found 'Model' and 'Controller' to resolve 'View' problem.
+* In ReactJS you need more code for development then it’s counterparts.
 * Not using isomorphic approach to exploit application leads to search engines indexing problems.
 * Lots of developers dislike JSX React’s documentation, manuals are difficult for newcomers’ understanding.
 
@@ -92,8 +83,10 @@ However, it has done really well in the last few years to come out as a strong c
 
 ___
 
-#### [Read More]([Choosing a JavaScript Framework in 2018](https://medium.com/@ZombieCodeKill/choosing-a-javascript-framework-535745d0ab90))
+* #### [Choosing a JavaScript Framework in 2018](https://medium.com/@ZombieCodeKill/choosing-a-javascript-framework-535745d0ab90)
 
-#### [How to Choose the Best Front-end Framework](https://www.toptal.com/javascript/choosing-best-front-end-framework)
+* #### [How to Choose the Best Front-end Framework](https://www.toptal.com/javascript/choosing-best-front-end-framework)
 
-#### [The Best JS Frameworks for Front End](https://rubygarage.org/blog/best-javascript-frameworks-for-front-end)
+* #### [The Best JS Frameworks for Front End](https://rubygarage.org/blog/best-javascript-frameworks-for-front-end)
+
+* #### [Virtual DOM vs Real DOM , Angular vs React , Framework vs Libraries , SPA’s vs MPA’s](https://medium.com/@ahaseeb12251998/virtual-dom-vs-real-dom-angular-vs-react-framework-vs-libraries-spas-vs-mpa-s-946fceb70955)

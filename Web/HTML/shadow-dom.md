@@ -1,23 +1,3 @@
-## Virtual DOM in React
-![react-virtual-dom](./images/react-virtual-dom.png)
-
-`DOM` is a way of representing a structured document via objects.
-* _Document_ - means page
-* _Object_ - pieces, components of the document
-* _Model_ - what do we call these individual pieces and how do we describe relationship between them
-
-The main problem is that `DOM` was never optimized for creating dynamic UI. We can work with it using `JavaScript` and libraries like `jQuery`. But `jQuery` and others did little to solve performance issues. 
-
-Currently, `W3C` group is working on new `Shadow DOM`.
-
-Another option is `Virtual DOM` — Not a standard. `Virtual DOM` is an abstraction of real DOM. They still utilize DOM eventually, but do it as little as possible and very efficiently.
-
-`Virtual DOM` is a technique and set of libraries / algorithms that allow us to improve front end performance by avoiding direct work with DOM and work only with lightweight JavaScript object that mimics the DOM tree.
-
-__[How React Virtual DOM works (Video)](https://www.youtube.com/watch?v=mLMfx8BEt8g)__
-
-__[More about React Virtual DOM](https://evilmartians.com/chronicles/optimizing-react-virtual-dom-explained)__
-
 ## Web Components
 `Web Components` are developer defined HTML Elements which work in the browser with other HTML elements.
 
@@ -27,7 +7,7 @@ __[More about React Virtual DOM](https://evilmartians.com/chronicles/optimizing-
 
 * __`Shadow DOM`__: A set of JavaScript APIs for attaching an encapsulated "shadow" DOM tree to an element — which is rendered separately from the main document DOM — and controlling associated functionality. In this way you can keep an element's features private, so they can be scripted and styled without the fear of collision with other parts of the document.
 
-    `Shadow DOM` is a new part of the HTML spec which allows developers to encapsulate their HTML markup, CSS styles and JavaScript. 
+    `Shadow DOM` is a new part of the HTML spec which allows developers to encapsulate their HTML markup, CSS styles and JavaScript.
 
     All the content of `Shadow DOM` goes inside `#shadow-root` element.
 

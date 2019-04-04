@@ -34,3 +34,35 @@
     | Dirty checking is dynamic. Watchers are created at runtime. | Every component has its own custom change detector. With AOT enabled change detectors can be generated at build time. |
 
     > If we take a look at the source code, we’ll notice that `ngModel` actually comes with a property and event binding as well.
+
+* #### Ahead-of-Time (AOT) Compilation in Angular
+
+    AOT Benefits:
+    * Faster startup
+
+        As the code is already compiled and shipped without angular-compiler.
+
+    * Smaller bundle size.
+
+        Don't need to ship the angular-compiler along with the angular code.
+
+    * Fewer asynchronous requests
+
+        The compiler inlines external HTML templates and CSS style sheets within the application JavaScript, eliminating separate ajax requests for those source files.
+
+    * Catch template error earlier at compile time.
+
+    * Better security.
+
+        As the HTML templates are compiled to JS, before they served to the client.
+        With no templates to read and no risky client-side HTML or JavaScript evaluation, there are fewer opportunities for injection attacks.
+
+    The default flow was __Just-in-Time (JIT)__ - compilation happens at runtime.
+
+    JIT Disadvantages:
+    * Inefficient for production.
+    * Happens for every user.
+    * More component we have, more slower compilation.
+    * We have to ship Angular compiler as part of `vendor.bundle.js`.
+
+* #### Both of them compile the template.
