@@ -11,6 +11,40 @@ The declarative paradigm forces programmers to write “what” a program need t
 
 ___
 
+## Object-oriented Programming
+Object-Oriented Programming is a paradigm where you express programs in terms of objects.
+
+Objects are first-class values (you can pass them around, store in variables, etc.)
+
+### Within this paradigm we have several other concepts:
+* Encapsulation
+
+    Encapsulation is a mechanism of wrapping the data (instance variables) and code acting on the data (methods) together as a single unit like a Class.
+
+    > Encapsulation prevents access to data except through the object’s functions.
+
+* Inheritance
+
+    Subclasses can inherit properties and functions from superclasses while adding properties and functions of their own.
+
+* Abstraction
+
+    Abstraction is a process of hiding the implementation details from the user, only the functionality will be provided to the user.
+
+    > In other words, the user will have the information on what the object does instead of how it does it.
+
+* Polymorphism
+
+    Polymorphism (from the Greek meaning “having multiple forms”) is the characteristic of being able to assign a different meaning or usage to something in different contexts — specifically, to allow an entity such as a function, or an object to have more than one form.
+
+    > It’s about making your code accept many different shapes in a single code path.
+
+#### [OOP in JS](https://medium.freecodecamp.org/an-introduction-to-object-oriented-programming-in-javascript-8900124e316a)
+
+#### [An intro to object-oriented programming in JavaScript](https://medium.freecodecamp.org/an-intro-to-object-oriented-programming-in-javascript-objects-prototypes-and-classes-5d135e7361b1)
+
+___
+
 ## Functional Programming
 Functional programming is a programming paradigm — a style of building the structure and elements of computer programs — that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
 
