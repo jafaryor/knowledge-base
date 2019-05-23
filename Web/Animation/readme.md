@@ -67,6 +67,56 @@ Where you can, you should avoid animating properties that trigger layout or pain
 
 Use the `will-change` to ensure the browser knows that you intend to change an element’s property. This allows the browser to put the most appropriate optimizations in place ahead of when you make the change. Don't overuse `will-change`, however, because doing so can cause the browser to waste resources, which in turn causes even more performance issues.
 
+Modern browsers can animate four things really cheaply:
+
+![cheap-operations](../images/cheap-operations.jpg)
+
+Here are the most popular CSS properties that, when changed, trigger layout:
+
+| | |
+| --- | --- |
+| width | height |
+| padding | margin |
+| display | border-width |
+| border | top |
+| position | font-size |
+| float | text-align |
+| overflow-y | font-weight |
+| overflow | left |
+| font-family | line-height |
+| vertical-align | right |
+| clear | white-space |
+| bottom | min-height |
+
+Changing an element may also trigger painting, and the majority of painting in modern browsers is done in software rasterizers. Depending on how the elements in your app are grouped into layers, other elements besides the one that changed may also need to be painted.
+
+| | |
+| --- | --- |
+| color | border-style |
+| visibility | background |
+| text-decoration | background-image |
+| background-position | background-repeat |
+| outline-color | outline |
+| outline-style | border-radius |
+| outline-width | box-shadow |
+| background-size | |
+
+### Animating Composite Properties
+There is one CSS property, however, that you might expect to cause paints that sometimes does not: opacity. Changes to opacity can be handled by the GPU during compositing by simply painting the element texture with a lower alpha value. For that to work, however, the element must be the only one in the layer. If it has been grouped with other elements then changing the opacity at the GPU would (incorrectly) fade them too.
+
+In Blink and WebKit browsers a new layer is created for any element which has a CSS transition or animation on opacity, but many developers use translateZ(0) or translate3d(0,0,0) to manually force layer creation. Forcing layers to be created ensures both that the layer is painted and ready-to-go as soon as the animation starts.
+
+### Imperative vs Declarative Animations
+Developers often have to decide if they will animate with JavaScript (_imperative_) or CSS (_declarative_). There are pros and cons to each, so let’s take a look:
+
+#### Imperative
+The main pro of imperative animations happens to also be its main con: it’s running in JavaScript on the browser’s main thread. The main thread is already busy with other JavaScript, style calculations, layout and painting. Often there is thread contention. This substantially increases the chance of missing animation frames, which is the very last thing you want.
+
+Animating in JavaScript does give you a lot of control: starting, pausing, reversing, interrupting and cancelling are trivial. Some effects, like parallax scrolling, can only be achieved in JavaScript.
+
+#### Declarative
+The alternative approach is to write your transitions and animations in CSS. The primary advantage is that the browser can optimize the animation. It can create layers if necessary, and run some operations off the main thread which, as you have seen, is a good thing. The major con of CSS animations for many is that they lack the expressive power of JavaScript animations. It is very difficult to combine animations in a meaningful way, which means authoring animations gets complex and error-prone.
+
 __JS vs CSS__:
 * CSS-based animations, and Web Animations where supported natively, are typically handled on a thread known as the __compositor thread__. This is different from the browser's _main thread_, where styling, layout, painting, and JavaScript are executed. This means that if the browser is running some expensive tasks on the main thread, these animations can keep going without being interrupted.
 * Other changes to `transform` and `opacity` can, in many cases, also be handled by the _compositor thread_.
