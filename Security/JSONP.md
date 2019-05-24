@@ -7,6 +7,6 @@ The aggregation of the site's scheme, port number and host name identifies as it
 
 `JSONP` makes sense only when used with a script element. For each new `JSONP` request, the browser must add a new `<script>` element, or reuse an existing one. The former option—adding a new script element—is done via dynamic `DOM` manipulation, and is known as _script element injection_.
 
-After the element is injected, the browser evaluates the element, and performs an `HTTP GET` on the src `URL`, retrieving the content. Then the browser evaluates the return payload as JavaScript. 
+After the element is injected, the browser evaluates the element, and performs an `HTTP GET` on the src `URL`, retrieving the content. Then the browser evaluates the return payload as JavaScript.
 
 ![JSONP workflow](./images/jsonp.png)
