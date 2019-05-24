@@ -82,7 +82,7 @@ To avoid violating the DRY principle, divide your system into pieces. Divide you
 ## GRASP Principles
 The _GRASP_ principles are a set of design patterns that came after the original Gang of Four book that many of you might be familiar with.
 
-_GRASP_ stands for __General Responsibility Assignment Software Patterns__. These patterns, as the name suggests, aim primarily to answer the question: _“Who does what?”_
+_GRASP_ stands for __General Responsibility Assignment Software Patterns__ and is a set of design patterns which aim primarily to answer the question: _`“Who does what?”`_.
 
 * __Information Expert__
 
@@ -185,3 +185,31 @@ _GRASP_ stands for __General Responsibility Assignment Software Patterns__. Thes
 > Now _SOLID_ and _GRASP_ don’t conflict with each other, they are not competing sets, you might choose to use one or both or neither.
 
 [Read More](https://en.wikipedia.org/wiki/GRASP_(object-oriented_design))
+
+### ACID
+ACID (_Atomicity_, Con_sistency, _Isolation_, _Durability_) is a set of properties of database transactions intended to guarantee validity even in the event of errors, power failures, etc.
+
+Where:
+* Atomicity.
+
+    Transactions are often composed of multiple statements.
+
+    Atomicity guarantees that each transaction is treated as a single "unit", which either succeeds completely, or fails completely: if any of the statements constituting a transaction fails to complete, the entire transaction fails and the database is left unchanged.
+
+    An atomic system must guarantee atomicity in each and every situation, including power failures, errors and crashes.
+
+* Consistency.
+
+    A transaction either creates a new and valid state of data, or, if any failure occurs, returns all data to its state before the transaction was started.
+
+* Isolation.
+
+    A transaction in process and not yet committed must remain isolated from any other transaction.
+
+    Transactions are often executed concurrently (e.g., reading and writing to multiple tables at the same time). Isolation ensures that concurrent execution of transactions leaves the database in the same state that would have been obtained if the transactions were executed sequentially. Implmeents via DB locks.
+
+* Durability.
+
+    Committed data is saved by the system such that, even in the event of a failure and system restart, the data is available in its correct state.
+
+    This usually means that completed transactions (or their effects) are recorded in non-volatile memory.

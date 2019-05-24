@@ -3,7 +3,7 @@
 Two ways:
 1. If you tend towards being friendly, approachable, and being seen as “one of the team”.
 
-    Building a close working relationship between all team members will result in a natural increase in motivation – for example, organising team events, encouraging socialisation together outside of work, showing flexibility in working hours in return for extra hard work during busy times, and rewards for the entire team together. 
+    Building a close working relationship between all team members will result in a natural increase in motivation – for example, organising team events, encouraging socialisation together outside of work, showing flexibility in working hours in return for extra hard work during busy times, and rewards for the entire team together.
 
 2. If you feel like that method is too imprecise or too unprofessional, you can opt for a more serious and structured method of motivation
 
@@ -16,3 +16,8 @@ Two ways:
 ### Resources:
 * https://career.guru99.com/top-50-leadership-interview-questions/
 * https://content.wisestep.com/top-team-leader-interview-questions-answers/
+
+### How to motivate a team member
+
+
+

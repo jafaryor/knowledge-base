@@ -184,3 +184,24 @@ Data driven progamming is a programming model where the data itself controls the
 
 ## Event-driven Development
 Event-driven programming is a programming paradigm in which the flow of program execution is determined by events - for example a user action such as a mouse click, key press, or a message from the operating system or another program. An event-driven application is designed to detect events as they occur, and then deal with them using an appropriate event-handling procedure. The idea is an extension of interrupt-driven programming of the kind found in early command-line environments such as DOS, and in embedded systems (where the application is implemented as firmware).
+
+
+## Service-oriented architecture
+Service-oriented architecture (SOA) is a style of software design where services are provided to the other components by application components, through a communication protocol over a network. The basic principles of service-oriented architecture are independent of vendors, products and technologies.[1] A service is a discrete unit of functionality that can be accessed remotely and acted upon and updated independently, such as retrieving a credit card statement online.
+
+A service has four properties according to one of many definitions of SOA:
+* It logically represents a business activity with a specified outcome.
+* It is self-contained.
+* It is a black box for its consumers.
+* It may consist of other underlying services.
+
+___
+
+## OOP vs Functional Programming
+In all programs, there are two primary components: the data (the stuff a program knows) and the behaviors (the stuff a program can do to/with that data).
+* _OOP_ says that bringing together data and its associated behavior in a single location (called an “object”) makes it easier to understand how a program works.
+* _FP_ says that data and behavior are distinctively different things and should be kept separate for clarity.
+
+#### [Read More](https://www.codenewbie.org/blogs/object-oriented-programming-vs-functional-programming)
+
+___

@@ -43,19 +43,6 @@ Patterns are not an exact solution. It’s important that we remember the role o
     patterns can be best used. This can ensure that pattern-based solutions continue
     to become more robust than ad-hoc solutions may be.
 
-**ANTI-PATTERN** is a bad design that is worthy of documenting. Examples of anti-patterns in JavaScript are the following:
-* Polluting the global namespace by defining a large number of variables in the global context
-* Passing strings rather than functions to either `setTimeout` or `setInterval` as this triggers the use of `eval()` internally.
-* Modifying the Object class prototype (this is a particularly bad anti-pattern)
-* Using JavaScript in an inline form as this is inflexible
-* The use of `document.write` where native DOM alternatives such as `document.createElement`
-    are more appropriate. `document.write` has been grossly misused over
-    the years and has quite a few disadvantages including that if it's executed after the
-    page has been loaded it can actually overwrite the page you're on, whilst `document.createElement`
-    does not. You can see here for a live example of this in action.
-    It also doesn't work with XHTML which is another reason opting for more DOMfriendly
-    methods such as `document.createElement` is favorable.
-
 **Categories of Design Patterns:**
 * `Creational Design Pattern` -  focus on handling object creation mechanisms where objects
     are created in a manner suitable for the situation you are working in. The basic approach
