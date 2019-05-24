@@ -632,7 +632,7 @@ Controll Access to Repositories:
 * Policy and procedure for removal of distributed code in case of employee left
 * If Open Source project, consider the model: read-only, fork, pull requests
 
-Constroll Content in Repositories:
+Contoll Content in Repositories:
 * Do not commit DBs, credentials, tokens, hashes
 * Maintain key info in discreet files and list them in _`.gitignore`_ file
 * Removing data later is difficult, as the system keeps history
