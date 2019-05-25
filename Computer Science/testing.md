@@ -23,6 +23,14 @@ Where:
 
     These should count for the majority of tests you have for your codebase. They tests the smallest unit of code possible. Normally, only test a single method each.
 
+* __Functional testing__
+    
+    Is a type of software testing whereby the system is tested against the functional requirements/specifications.
+
+    This type of testing is not concerned with how processing occurs, but rather, with the results of processing. It simulates actual system usage but does not make any system structure assumptions.
+
+    During functional testing, Black Box Testing technique is used in which the internal logic of the system being tested is not known to the tester.
+
 * __Integration Tests__
 
     The tests designed to verify the integration of different parts of separate components/modules of a software system together.
@@ -35,6 +43,8 @@ Where:
 * __End-to-End Tests__
 
     The tests that verifies the end to end workflows of your codebase. They tests the system from the user-action entry point right to the end of the system down to the database level. However, these are typically black-box tests.
+
+    The biggest difference between E2E and Functional testing is that an E2E test requires the test to setup the system components as they are in production. Real database, services, queues, etc. But the only thing the Functional test cares about is that a feature works as expected.
 
 * __Component Tests__
 
