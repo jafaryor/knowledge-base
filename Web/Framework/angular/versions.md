@@ -35,6 +35,8 @@
 
     > If we take a look at the source code, we’ll notice that `ngModel` actually comes with a property and event binding as well.
 
+    Zone.js provides Angular with information on when asynchronous actions have completed
+
 * #### Ahead-of-Time (AOT) Compilation in Angular
 
     AOT Benefits:

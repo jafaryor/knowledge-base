@@ -148,7 +148,9 @@ The ordering protocol is a method of getting fine grained size estimates. Works 
 ___
 
 ### Next Step
-Team velocity is the number of story points which is the sum of story pints assigned to the tasks done during the sprint.
+__Team velocity__ is the number of story points delivered in a sprint.
+
+__Team Capacity__ is the total number of available hours for a sprint.
 
 To determine the budget of your project, you can use this basic formula:
 

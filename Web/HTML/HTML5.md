@@ -94,12 +94,32 @@ ___
 ## `<script></script>`
 The HTML `<script>` element is used to embed or reference executable code; this is typically used to embed or refer to JavaScript code.
 
+![legend](./images/legend.svg)
+
+The HTML file will be parsed until the script file is hit, at that point parsing will stop and a request will be made to fetch the file (if it’s external). The script will then be executed before parsing is resumed.
+
+![script](./images/script.svg)
+
 ### Attributes:
-* `async` = `false` - a Boolean attribute indicating that the browser should, if possible, execute the script asynchronously. The browser downloads the script asynchronously while it continues to parse the HTML document. When the script finishes downloading, parsing is blocked while the script executes.
+* `async` = `false` - a Boolean attribute indicating that the browser should, if possible, execute the script asynchronously.
+
+    The browser downloads the script asynchronously while it continues to parse the HTML document. When the script finishes downloading, parsing is blocked while the script executes.
 
     Dynamically inserted scripts (using `document.createElement`) execute asynchronously by default, so to turn on synchronous execution (i.e. scripts execute in the order they were inserted) set `async=false`.
 
+    ![script-async](./images/script-async.svg)
+
     > This attribute must not be used if the src attribute is absent (i.e. for inline scripts). If it is included in this case it will have no effect.
+
+* `defer` - the Boolean attribute is set to indicate to a browser that the script is meant to be executed after the document has been parsed, but before firing `DOMContentLoaded`.
+
+    Scripts with the `defer` attribute will prevent the `DOMContentLoaded` event from firing until the script has loaded and finished evaluating.
+
+    ![script-defer](./images/script-defer.svg)
+
+    > This attribute must not be used if the src attribute is absent (i.e. for inline scripts), in this case it would have no effect.
+
+    To achieve a similar effect for dynamically inserted scripts use `async=false` instead. Scripts with the `defer` attribute will execute in the order in which they appear in the document.
 
 * `crossorigin` - some HTML elements which provide support for CORS, such as `<img>`, `<video>` or `<script>`, have a `crossorigin` attribute (crossOrigin property), which lets you configure the CORS requests for the element's fetched data. These attributes are enumerated, and have the following possible values:
 
@@ -107,14 +127,6 @@ The HTML `<script>` element is used to embed or reference executable code; this 
     * `use-credentials` - CORS requests for this element will have the credentials flag set; this means the request will provide credentials via cookies, client-side SSL certificates or HTTP authentication.
 
     By default (that is, when the attribute is not specified), CORS is not used at all.
-
-* `defer` - the Boolean attribute is set to indicate to a browser that the script is meant to be executed after the document has been parsed, but before firing `DOMContentLoaded`.
-
-    Scripts with the defer attribute will prevent the `DOMContentLoaded` event from firing until the script has loaded and finished evaluating.
-
-    > This attribute must not be used if the src attribute is absent (i.e. for inline scripts), in this case it would have no effect.
-
-    To achieve a similar effect for dynamically inserted scripts use `async=false` instead. Scripts with the `defer` attribute will execute in the order in which they appear in the document.
 
 * `integrity` - contains inline metadata that a user agent can use to verify that a fetched resource has been delivered free of unexpected manipulation.
 

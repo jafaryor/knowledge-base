@@ -346,11 +346,15 @@ ___
     A key principle of Scrum is the dual recognition that customers will change their minds about what they want or need (requirements volatility) and that there will. Scrum adopts an evidence-based empirical approach — accepting that the problem cannot be fully understood or defined up front, and instead focusing on how to maximize the team’s ability to deliver quickly, to respond to emerging requirements, and to adapt to evolving technologies and changes in market conditions.
 
     Main features of Scrum:
-    * a living backlog of prioritized work to be done
-    * completion of a fixed set of backlog items in a series of short iterations or sprints
-    * a brief daily meeting (“a scrum”) for explaining the progress, describing an upcoming work and possible obstacles
-    * a brief planning session in which the backlog items for the sprint will be defined
-    * a brief heartbeat retrospective when all team members reflect about the past sprint
+    * A living backlog of prioritized work to be done
+    * Completion of a fixed set of backlog items in a series of short iterations or sprints
+    * A brief daily meeting (“a scrum”) for explaining the progress, describing an upcoming work and possible obstacles
+    * A brief planning session in which the backlog items for the sprint will be defined
+    * A brief heartbeat retrospective when all team members reflect about the past sprint.
+
+        No matter how good a Scrum team is, there is always opportunity to improve.
+
+        The sprint retrospective is usually the last thing done in a sprint. Many teams will do it immediately after the sprint review. The entire team, including both the ScrumMaster and the product owner should participate.
 
     Scrum is best suited when the cost of delay is high and deadlines should meet a minimal delay. Scrum is often used when the end product is unclear or the requirements have no proper feedback from the clients. Here the client is involved in the whole process and determine and focus on certain sprint product backlog items that need to be completed (along with the team). Scrum takes its place among flexible methodologies that are appropriate for long-run development with frequent changes to requirements.
 
@@ -529,6 +533,19 @@ ___
     * __Iterations__: The iteration is the defining characteristic of Scrum, whereas Scrumban takes the Kanban approach of continuous workflow - with iterations being optional.
     * __Team roles__: Scrum has defined roles with development team members wearing all the hats of a development project , whereas Scrumban only requires roles as needed.
     * __Visualization__: Scrum can use a board, but is mostly dependent on backlogs and burndown charts, while Scrumban, like Kanban, is dependent on the Scrumban Board for maintaining visibility into the work.
+
+        __Burndown Chart__ displays the remaining effort for a given period of time.
+
+        Burndown chart should consist of:
+        * X axis to display working days
+        * Y axis to display remaining effort
+        * Ideal progress as a guideline
+        * Real progress
+
+        ![burndown-chart](../images/burndoswn-chart.jpg)
+
+        #### [What burndown charts can say](http://www.methodsandtools.com/archive/scrumburndown.php)
+
     * __Meetings__: Both Scrum and Scrumban hold daily meetings, but there are no Sprint or release planning meetings and retrospectives in Scrumban. Scrumban embraces on-demand planning.
     * __Estimating__: Scrum teams must estimate the time work takes in order to meet the commitments of a Sprint, whereas Scrumban doesn’t have a time constraint. Instead, estimating becomes apparent over time as the team accomplishes more tasks.
     * __WIP__: The Scrum WIP (Work in Progress) is defined entirely by the Sprint backlog and planned at the start of each Sprint, while the Scrumban team limits the WIP to the available resources.
@@ -602,6 +619,12 @@ ___
     * Modelling and Iterative Development.
     * MoSCoW Prioritisation - to identify the order and importance of the requirements.
     * Time boxing.
+
+    __MoSCoW__: is a technique for prioritising work items or requirements. It is an acronym that stands for:
+    1. Must have : All features classified in this group must be implemented and if they are not delivered, the system would simply not work
+    2. Should have : Features of this priority is important to the system but can be omitted if time constraints endanger.
+    3. Could have : These features enhance the system with functional items which can easily be reassigned to a later timebox.
+    4 .Want to have : These features only serve a limited group of users and are of little value.
 
     DSDM has been developed to address common problems faced by projects such as late delivery, cost overruns or the final deliverable not being completely fit for purpose.
 

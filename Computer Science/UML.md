@@ -1,6 +1,15 @@
 ## Unified Modeling Language (UML)
 UML stands for Unified Modeling Language. It’s a rich language to model software solutions, application structures, system behavior and business processes. There are 14 UML diagram types to help you model these behaviors.
 
+UML makes it possible to describe systems with words and pictures. It can be used to model a variety of systems: software systems, business systems, or any other system.
+
+There are several reasons to use UML as a modeling language:
+* The unification of terminology and the standardization of notation lead to a significant easing of communication for all parties involved. It facilitates the exchange of models between different departments or companies. Moreover, it eases the transfer of projects between project teams or project team members.
+* UML grows as the requirements for modeling grow. Because UML is a powerful modeling language, you can start with the development of simple models or model complex systems in great detail. If the basic functionality of UML is not sufficient, you can extend it through the use of stereotypes.
+* UML builds upon widely used and proven approaches. UML was not devised in an ivory tower but was developed mainly from real-world problems and existing modeling languages. This guarantees usability and real-life functionality.
+* UML is widely supported.
+* UML-based bids for software systems can be compared much more easily.
+
 There are two main categories; _structure diagrams_ and _behavioral diagrams_:
 
 ![uml-diagram-types](./images/uml-diagram-types.png)
@@ -63,6 +72,6 @@ Timing diagrams are very similar to sequence diagrams. They represent the behavi
 
 ___
 
-#### [Read more about UML](https://creately.com/blog/diagrams/uml-diagram-types-examples/)
+#### [Read More](https://sourcemaking.com/uml)
 
 #### [Drawing Tool](https://creately.com/Draw-UML-and-Class-Diagrams-Online)
