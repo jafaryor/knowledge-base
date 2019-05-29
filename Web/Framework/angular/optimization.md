@@ -47,8 +47,3 @@ Instead leverage the use of pure pipes thereby taking advantage of Angular cachi
 14. `console.log()`: Using `console.log()` statements in your production code could be a bad idea as it will slow down the performance of the app and also logging objects with `console.log()` creates memory leak issue. When browser’s console window is open, the `console.log()` execution slows down even further by many times thus impacting site’s performance significantly. It’s better to completely remove the `console.log()` statements from your production code or at least have an environment specific conditional logging.
 15. __Global Variables__: The variables defined in the global scope won’t be cleared until the window is reloaded or tab is closed thus resulting in the memory leak if the global variable is not intended to be used throughout the app. If for some reason you want to have global variables, there are [better ways](https://stackoverflow.com/questions/36158848/what-is-the-best-way-to-declare-a-global-variable-in-angular-2-typescript) to do it in the Angular.
 16. __Event listeners__: Adding event listeners to your DOM node could create memory leak issue. If you forget to remove the listener inside the $destroy event of your directive, it will hold a reference to a DOM node even if it is removed from the document. The DOM tree will then become a “Detached DOM tree” and will leak. Modern JS engines are able to figure most of this situations for you and remove the listeners, but more complex tree hierarchies can challenge even the best GC.
-
-
-
-
-

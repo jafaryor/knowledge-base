@@ -3,9 +3,9 @@
         jQuery where, although an implementation may support methods with a wide range of
         behaviors, only a 'facade' or limited abstraction of these methods is presented
         to the public for use.
-    The facade pattern provides a con- venient higher-level interface to a larger body of code,
-        hiding its true underlying com- plexity. Think of it as simplifying the API being
-        presented to other developers, some- thing which almost always improves usability.
+    The facade pattern provides a convenient higher-level interface to a larger body of code,
+        hiding its true underlying complexity. Think of it as simplifying the API being
+        presented to other developers, something which almost always improves usability.
     To build on what we've learned, the facade pattern both simplifies the interface of a
         class and it also decouples the class from the code that utilizes it.
         This gives us the ability to indirectly interact with subsystems in a way that
@@ -46,7 +46,7 @@ $.ajax({
 
 // $.post
 $.ajax({
-    type: "POST",
+    type: 'POST',
     url: url,
     data: data,
     dataType: dataType
@@ -55,12 +55,12 @@ $.ajax({
 // $.getJSON()
 $.ajax({
     url: url,
-    dataType: "json",
-    data: data,
+    dataType: 'json',
+    data: data
 }).done(callback);
 
 // $.getScript()
 $.ajax({
     url: url,
-    dataType: "script",
+    dataType: 'script'
 }).done(callback);
