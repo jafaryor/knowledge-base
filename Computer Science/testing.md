@@ -121,3 +121,23 @@ A testing pyramid is a pyramid of where all the different types of tests fits.
 Where:
 * DIT - automation test people
 * SDET = QA + DIT
+
+### Benefits of Unit Testing
+* FACILITATES CHANGES & SIMPLIFIES INTEGRATION
+
+    When you add more and more features to a software, you sometimes need to change old design and code. But changing already tested code is both risky and costly. If we have unit tests in place, then we can proceed for refactoring confidently.
+
+* QUALITY OF CODE
+* FIND SOFTWARE BUGS EARLY
+* PROVIDES DOCUMENTATION
+* DEBUGGING PROCESS
+
+    If a test fails then only latest changes made in code needs to be debugged.
+
+* DESIGN
+
+    Writing the test first forces you to think through your design and what it must accomplish before you write the code.
+
+* REDUCE THE COSTS
+
+    Since the bugs are found early in unit testing, it helps in reducing the cost of bug fixes.
