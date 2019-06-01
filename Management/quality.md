@@ -59,8 +59,97 @@ FURPS is an acronym representing a model for classifying software quality attrib
     Is the ability of the system to provide useful information for identifying and solving problems.
 
 ### Quality Metrics
+Software metrics can be classified into three categories:
+* #### Product metrics
 
+    It includes size, design, complexity, performance and other parameters that are associated with the product's quality.
 
+* #### Process metrics
+
+    It involves parameters like, time-duration in locating and removing defects, response time for resolving issues, etc.
+
+* #### Project metrics
+
+    It may include number of teams, developers involved, cost and duration for the project, etc.
+
+__Software quality metrics__ are a subset of software metrics that focus on the quality aspects of the product, process, and project.
+
+#### Product Quality Metrics
+* Mean Time to Failure
+
+    It is the time between failures. This metric is mostly used with safety critical systems such as the airline traffic control systems, avionics, and weapons.
+
+* Defect Density
+
+    `defect_density = defects / lines_of_code`
+
+* Customer Problems
+
+    It measures the problems that customers encounter when using the product.
+
+    The problems metric is usually expressed in terms of __Problems per User-Month (PUM)__.
+
+    ```
+    PUM =
+        Total Problems that customers reported for a time period +
+        + Total number of license-months of the software during the period
+    ```
+    
+    Where:
+    ```
+    Number of license-month of the software =
+        Number of install license of the software ×
+        × Number of months in the calculation period
+    ```
+
+* Customer Satisfaction
+
+    Customer satisfaction is often measured by customer survey data
+
+#### Process Quality Metrics
+In-process quality metrics deals with the tracking of defect arrival during formal machine testing for some organizations. This metric includes:
+* Defect density during machine testing
+* Defect arrival pattern during machine testing
+* Phase-based defect removal pattern
+
+    In addition to testing, it tracks the defects at all phases of the development cycle, including the design reviews, code inspections, and formal verifications before testing.
+
+    Because a large percentage of programming defects is related to design problems, conducting formal reviews, or functional verifications to enhance the defect removal capability of the process at the front-end reduces error in the software.
+
+* Defect removal effectiveness
+
+    `DRE = (Defect removed during development phase / Possible defects in the product) × 100%`
+
+### How to improve
+* Includes Code Quality improvements techniques.
+* Test early and Test often with Automation
+* Implement quality controls from the beginning.
+
+    Define __Definition of Done (DoD)__ and __Definition of Ready (DoR)__.
+
+* Communication is key
+
+#### Definition of Done
+The DoD is usually a short document in the form of a checklist, that defines when a product backlog item (i.e. user story) is __considered “done”__.
+
+A typical DoD might look like this example:
+* Automated nd unit tests are written and all tests are green
+* Code is refactored and reviewed
+* Code is integrated with master branch
+* Deployed to staging environment
+* Sanity check is passed.
+
+#### Definition of Ready
+It is a checklist of what needs to be done to a product backlog item __before the team can start implementing it__ in the next sprint.
+
+A typical DoR might look like this example:
+* PO and Dev Team need to have talked about the story at least once
+* Story must have clear business value
+* Effort needs to be estimated
+* Story must be broken down enough to fit in a single sprint
+* Story needs at least one acceptance criterium
+
+> A good guideline for DoR, consider the __INVEST__ schema: A user story should be Independent, Negotiatable, Valuable, Estimatable, Small and Testable.
 
 ___
 
