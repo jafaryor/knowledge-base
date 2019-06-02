@@ -1,33 +1,24 @@
 ## `F.I.R.S.T` Principles of Unit Testing
 * ### Fast
-    * A developer should not hesitate to run the tests as they are slow.
-    * All of these including setup, the actual test and tear down should execute really fast (milliseconds) as you may have thousands of tests in your entire project.
+
+    Tests should be fast. They should run quickly. When tests run slow, you won’t want to run them frequently
 
 * ### Isolated/Independent
-    * A test method should do the 3 As => Arrange, Act, Assert
-    * Arrange: The data used in a test should not depend on the environment in which the test is running. All the data needed for a test should be arranged as part of the test.
-    * Act: Invoke the actual method under test.
-    * Assert: A test method should test for a single logical outcome, implying that typically there
-    should be only a single logical assert. A logical assert could have multiple physical asserts as
-    long as all the asserts test the state of a single object. In a few cases, an action can update
-    multiple objects.
-    * Avoid doing asserts in the Arrange part, let it throw exceptions and your test will still fail.
-    * No order-of-run dependency. They should pass or fail the same way in suite or when run individually.
-    * Do not do any more actions after the assert statement(s), preferably single logical assert.
+
+    Tests should not depend on each other. One test should not set up the conditions for the next test. You should be able to run each test independently and run the tests in any order you like.
 
 * ### Repeatable
-    * A test method should NOT depend on any data in the environment/instance in which it is running.
-    * Deterministic results - should yield the same results every time and at every location where they run.
-    No dependency on date/time or random functions output.
-    * Each test should setup or arrange it's own data.
-    What if a set of tests need some common data? Use Data Helper classes that can setup this data for re-usability.
+
+    Tests should be repeatable in any environment. You should be able to run the tests in the production environment, in the QA environment, and on your laptop while riding home on the train without a network.
 
 * ### Self-Validating
-    * No manual inspection required to check whether the test has passed or failed.
+
+    No manual inspection required to check whether the test has passed or failed.
 
 * ### Thorough and Timely
+
     * Should cover every use case scenario and NOT just aim for 100% coverage.
-    * Should try to aim for Test Driven Development (TDD) so that code does not need re-factoring later.
+    * Should try to aim for TDD so that code does not need re-factoring later.
 
 # Code Coverage
 Code coverage is about finding untested code.

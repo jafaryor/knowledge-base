@@ -11,6 +11,8 @@ Behavioral Driven Development (BDD) is a software development approach that has 
 
 Unit Testing gives you the __what__. Test-Driven Development gives you the __when__. Behavior Driven-Development gives you the __how__. Although you can use each individually, you should combine them for best results as they complement each other very nicely.
 
+BDD tools: [Cucumber](https://cucumber.io/docs/guides/browser-automation/)
+
 ### [More](https://www.youtube.com/watch?v=4QFYTQy47yA)
 
 ## Data-driven Developmment
@@ -21,3 +23,22 @@ Event-driven programming is a programming paradigm in which the flow of program 
 
 ## Timeboxing
 Timeboxing is the approach for completing the project incrementally by breaking it down into splitting the project in portions, each with a fixed budget and a delivery date. For each portion a number of requirements are prioritised and selected. Because time and budget are fixed, the only remaining variables are the requirements.
+
+## Big Design Up Front (BDUF)
+Big Design Up Front is an approach where a website, app, or software design is completed and perfected up-front, before its implementation is started.
+
+It necessitates a waterfall process, and relies on prediction.
+
+#### Pros
+* If you know exactly what you want, this is the most efficient way to get there.
+* Since all design is done at once, there’s ample opportunity for zooming out, integrating often, and designing holistically.
+* User experience is designed and refined by designers, and that design documentation dictates the functionality for engineers to develop. Each role plays to their strengths.
+* Easy to cost and schedule design, as it’s a known quantity from the start.
+
+#### Cons:
+* Not easily adaptable to changes in scope, or pivots in purpose. You may have to swim back up the waterfall to start again if goals or requirements move.
+* Design is not as easily tested and validated, because no part of it is fully functional until near the end of the linear process.
+* Doesn’t take advantage of new learnings or better solutions that may arise during later stages of the waterfall process.
+
+
+
