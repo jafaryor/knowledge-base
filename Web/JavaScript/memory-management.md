@@ -102,4 +102,7 @@ The four types of common JavaScript leaks:
     }
     ```
 
-__[Read More](https://blog.sessionstack.com/how-javascript-works-memory-management-how-to-handle-4-common-memory-leaks-3f28b94cfbec)__
+## Unintuitive behavior of Garbage Collectors
+Although Garbage Collectors are convenient they come with their own set of trade-offs. GC is nondeterminism. In other words, GCs are unpredictable. It is not usually possible to be certain when a collection will be performed. This means that in some cases more memory than is actually required by the program is being used. In other cases, short-pauses may be noticeable in particularly sensitive applications.
+
+#### [Read More](https://blog.sessionstack.com/how-javascript-works-memory-management-how-to-handle-4-common-memory-leaks-3f28b94cfbec)
