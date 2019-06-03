@@ -60,7 +60,7 @@ Where:
 
     > The main function or goal of this testing is to test the interfaces between the units/modules, integrated links, data transfer between the modules as modules/components that are already unit tested.
 
-    ![Integration--diagram](./images/Integration--diagram.jpg)
+    ![integration-diagram](./images/integration-diagram.jpg)
 
     * __Big Bang__: In the big bang approach, All components or modules are integrated together to complete a software system. After that, integration testing is performed.
 
@@ -189,7 +189,8 @@ A testing pyramid is a pyramid of where all the different types of tests fits.
 
 ![test-pyramid-params](./images/test-pyramid-params.png)
 
-### Who should implement these test
+Who should implement these test
+
 ![testing-assignment](./images/testing-assignment.png)
 
 Where:
@@ -197,7 +198,6 @@ Where:
 * SDET = QA + DIT
 
 #### Box Testing
-Consists of:
 * Black-box testing
 
     Includes: Manual Testing, UI testing, E2E testing, Performance Testing

@@ -114,7 +114,7 @@ Law of Demeter says that a method f of a class C should only call the methods of
 
 * Clean code is SOLID.
 
-#### Principles to follow:
+#### How to achieve:
 * DRY
 * SOLID
 * Follow design patterns and its associated terms
