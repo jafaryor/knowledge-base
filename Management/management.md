@@ -7,9 +7,9 @@ Management skils:
 * Managing the business
 
 ### Manager vs Leader
-Leaders promote change and grwth.
+> Managers promote order and consistency.
 
-Managers promote order and consistency.
+> Leaders promote change and growth.
 
 Approches:
 * Managing is tactical and hands-on.
@@ -32,8 +32,9 @@ Task goals:
 * For Leading - Setting a long-term visoin and stategy to bring change.
 
 People skills:
-* Managing: 1:1 meetings, Delegating tasks, Coaching employees.
-* Leadng: Building culture, Inspired vision, Fostering collaboration, Cultivating future leaders.
+* Both relies on emotional intelligence.
+* Managing is more tactical by conducting: 1:1 meetings, Delegating tasks, Coaching employees performance.
+* Leadng is about building the culture by: Building culture, Inspired vision, Fostering collaboration, Cultivating future leaders.
 
 ## People Management
 __People Management__, also known as human resource management (HRM), encompasses the tasks of recruitment, management, and providing ongoing support and direction for the employees of an organization. These tasks can include the following: compensation, hiring, performance management, organization development, safety, wellness, benefits, employee motivation, communication, administration, and training.
@@ -74,4 +75,3 @@ When managing the people within an organization, a manager must focus on both hi
 * Give Your Employees Purpose.
 
 [Read More](https://www.snacknation.com/blog/how-to-motivate-employees/)
-
