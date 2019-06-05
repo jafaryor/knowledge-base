@@ -213,6 +213,25 @@ Maslow's hierarchy of needs is a _motivational theory_ in psychology comprising 
 
 Needs lower down in the hierarchy must be satisfied before individuals can attend to needs higher up.
 
+Maslow stated that people are motivated to achieve certain needs and that some needs take precedence over others.
+
+Our most basic need is for physical survival, and this will be the first thing that motivates our behavior. Once that level is fulfilled the next level up is what motivates us, and so on.
+1. __Physiological needs__ - these are biological requirements for human survival, e.g. air, food, drink, shelter, clothing, warmth, sex, sleep.
+
+    If these needs are not satisfied the human body cannot function optimally. Maslow considered physiological needs the most important as all the other needs become secondary until these needs are met.
+
+2. __Safety needs__ - protection from elements, security, order, law, stability, freedom from fear.
+
+3. __Love and belongingness needs__ - after physiological and safety needs have been fulfilled, the third level of human needs is social and involves feelings of belongingness. The need for interpersonal relationships motivates behavior
+
+    Examples include friendship, intimacy, trust, and acceptance, receiving and giving affection and love. Affiliating, being part of a group (family, friends, work).
+
+4. __Esteem needs__ - which Maslow classified into two categories: (i) esteem for oneself (dignity, achievement, mastery, independence) and (ii) the desire for reputation or respect from others (e.g., status, prestige).
+
+    Maslow indicated that the need for respect or reputation is most important for children and adolescents and precedes real self-esteem or dignity.
+
+5. __Self-actualization needs__ - realizing personal potential, self-fulfillment, seeking personal growth and peak experiences. A desire “to become everything one is capable of becoming”
+
 Organizations are also most successful when their people can be focused on the top level, achieving their full potential. This not only uleashes the highest levels of their skills and intelligence, but also supports an ever growing and improving workforce, because we're innately drwan toward self-improvement.
 
 __Engagement__ - is the level of positive attachement employees feel toward their job and organization.
