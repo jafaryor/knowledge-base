@@ -174,7 +174,7 @@ Integrity is your most precious asset. Because in order to move to higher levels
 
 2. Expert/Manager
 
-    Exepert is the best at what he does and works on more complex projects. Wants to further develops his craft, innovates (вводить новшества), and demonstrates readiness. 
+    Exepert is the best at what he does and works on more complex projects. Wants to further develops his craft, innovates (вводить новшества), and demonstrates readiness.
 
     Managers lead others. Maximazes the talent of your team, think strategic about how your team contributes to the organization's goals.
 
@@ -458,61 +458,6 @@ These ideas and practices must come from the top and be infused into every aspec
 * Policies and procedures
 
 [www.greatplacetowork.com](https://www.greatplacetowork.com/)
-
-
-### Practicing sustainability
-Sustainability - keeping yourself in good shape so that you can meet and respond to the daily challenges over time.
-
-#### Strategy
-1. Keep yourself physicaly and emotionally strong.
-2. Nutrition (питание)
-
-    * Keeps immune system strong, so you could fight stress.
-
-3. Meditative activities
-
-    Provides:
-    * Stress reduction
-    * Clarity and inspiration
-    * Good ideas
-
-4. Sleep
-
-    The rule of thumb: When you wake up naturally without the need of an alarm clock, that is how many hours you need.
-
-    * Reduce the use of media at least 1 hour before bedtime.
-    * Play
-
-
-### Developing resilience
-The ability to recover quickly from adversity (неблагоприятная обстановка).
-
-Resilience is a 2 phase process:
-1. Self protection
-
-    With the person assessing and reducing potential sources of adversity.
-
-    * Using emotional intelligence
-    * Developing key relationship
-    * Scanning your industry
-    * Facilitating the change process.
-
-2. Promote well being
-
-    Focus on promoting well being to effectively bounce back from the effects of adversity when it does happen.
-
-#### Strategy
-1. Practice sustainability by taking care of yourself
-2. Spend time with a supportive social netwoek
-3. Express feelings
-
-    Researche has shon that feelings need to be outwardly expressed either through talking or writing in order to be truly processed and shifted.
-
-4. Practice gratitude daily    
-
-    As you go to bed, identify 3 things that you are grateful for. The goal is to find 3 new tings and only repeating after you have gone 15 days.
-
-5. Keep your sense of humor
 
 
 ### What steps do you take to motivate your team?
