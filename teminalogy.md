@@ -145,3 +145,11 @@ re-identify a visiting user, user agent or device via configuration settings or
 other observable characteristics
 
 * __heuristic__ is a technique designed for solving a problem more quickly when classic methods are too slow, or for finding an approximate solution when classic methods fail to find any exact solution. The objective of a heuristic is to produce a solution in a reasonable time frame that is good enough for solving the problem at hand.
+
+* __Communication__: The exchange of ideas and information
+
+* __Cooperation__: Independent goals with agreements not to interfere with each other.
+
+* __Coordination__: Actions of users directed by a coordinator to achieve a common goal.
+
+* __Collaboration__: The process of shared creation; collectively creating something new that could not have been created by the individual users.
