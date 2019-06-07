@@ -17,5 +17,5 @@ There are five types of `position` property:
 
     How it finds positioning context: It goes up from its direct parent to the `<html>` tag. The first element with __non-static positioning__ will be its positioning context, otherwise positioning context will be `<html>`.
 
-* `fixed` - removes our element from document flow, in the same way as absolute positioning. However instead of the offsets beign applied from the container, they are applied from the viewport.
+* `fixed` - removes our element from document flow, in the same way as `absolute` positioning. However instead of the offsets being applied from the container, they are applied from the viewport.
 * `sticky` - is a newer positioning method which makes an element act like position: `static` until it hits a defined offset from the viewport, at which point it acts like position: `fixed`.
