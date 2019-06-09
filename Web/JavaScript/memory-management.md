@@ -13,6 +13,7 @@ function f() {
 
 f();
 ```
+They will go out of scope after the function call, so they are effectively useless and could be freed. However, the reference-counting algorithm considers that since each of the two objects is referenced at least once, neither can be garbage-collected.
 
 ### Mark-and-sweep algorithm
 In order to decide whether an object is needed, this algorithm determines whether the object is reachable.
@@ -63,25 +64,24 @@ The four types of common JavaScript leaks:
 
 * __Closures__
 
+    Any object inside the timer will hold a reference in order to run that piece of code somewhere in the future without any problems.
+
     ```javascript
-    var theThing = null;
-    var replaceThing = function () {
-    var originalThing = theThing;
-    var unused = function () {
-        if (originalThing) // a reference to 'originalThing'
-        console.log("hi");
-    };
-    theThing = {
-        longStr: new Array(1000000).join('*'),
-        someMethod: function () {
-        console.log("message");
+    var myObj = {
+        callMeMaybe: function () {
+            var myRef = this;
+
+            var val = setTimeout(function () { 
+                console.log('Time is running out!'); 
+                myRef.callMeMaybe();
+            }, 1000);
         }
     };
-    };
-    setInterval(replaceThing, 1000);
+
+    myObj.callMeMaybe();
     ```
 
-    Once a scope for closures is created for closures in the same parent scope, the scope is shared. In the above example, the scope created for the closure `someMethod` is shared with `unused`, while `unused` references `originalThing`. `someMethod` can be used through `theThing` outside of the `replaceThing` scope, despite the fact that `unused` is never used. The fact that `unused` references `originalThing` requires that it remains active since `someMethod` shares the closure scope with `unused`.
+    The timer will still fire. `myObj` won’t be garbage collected as the closure passed to `setTimeout` has to be kept alive in order to be executed. In turn, it holds references to `myObj` as it captures `myRef`.
 
 * __Out of DOM references__
 
@@ -102,7 +102,29 @@ The four types of common JavaScript leaks:
     }
     ```
 
-## Unintuitive behavior of Garbage Collectors
+
+### Garbage Collectors
 Although Garbage Collectors are convenient they come with their own set of trade-offs. GC is nondeterminism. In other words, GCs are unpredictable. It is not usually possible to be certain when a collection will be performed. This means that in some cases more memory than is actually required by the program is being used. In other cases, short-pauses may be noticeable in particularly sensitive applications.
 
-#### [Read More](https://blog.sessionstack.com/how-javascript-works-memory-management-how-to-handle-4-common-memory-leaks-3f28b94cfbec)
+
+### How to Optmize
+* #### BENCHMARKING
+
+    Benchmarking is simply comparing two timestamps.
+
+* #### PROFILING
+
+    Tip: Ideally, you want to ensure that your profiling isn’t being affected by extensions or applications you’ve installed
+
+* #### THREE SNAPSHOTS TECHNIQUE
+
+    You record a number of actions in your application, force a garbage collection, check if the number of DOM nodes doesn’t return to your expected baseline and then analyze three heap snapshots to determine if you have a leak.
+
+* #### Performance monitor
+
+    Use it to track momery allcation in real time.
+
+
+___
+
+#### [Read More](https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/)

@@ -81,11 +81,11 @@ Margin collapsing occurs in three basic cases:
 
 * Parent and first/last child
 
-    If there is no _border_, _padding_, _inline part_ or _clearance_ to separate the `margin-top` of a block from the `margin-top` of its first child block.
+    If there is no `border`, `padding`, _inline part_ or _clearance_ to separate the `margin-top` of a block from the `margin-top` of its first child block.
 
     > ![margin-collapse-child-top](./images/margin-collapse-child-top.png)
 
-    Or no border, padding, inline content, `height`, `min-height`, or `max-height` to separate the `margin-bottom` of a block from the `margin-bottom` of its last child, then those margins collapse.
+    Or no `border`, `padding`, _inline content_, `height`, `min-height`, or `max-height` to separate the `margin-bottom` of a block from the `margin-bottom` of its last child, then those margins collapse.
 
     > ![margin-collapse-child-bottom](./images/margin-collapse-child-bottom.png)
 
@@ -93,7 +93,7 @@ Margin collapsing occurs in three basic cases:
 
 * Empty blocks
 
-    If there is no border, padding, inline content, `height`, or `min-height` to separate a block's `margin-top` from its `margin-bottom`, then its top and bottom margins collapse.
+    If there is no `border`, `padding`, _inline content_, `height`, or `min-height` to separate a block's `margin-top` from its `margin-bottom`, then its top and bottom margins collapse.
 
     > ![margin-collapse-self](./images/margin-collapse-self.png)
 

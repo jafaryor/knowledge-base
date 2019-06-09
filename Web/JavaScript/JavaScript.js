@@ -14,7 +14,8 @@
 //=====================================ES3======================================
 
 // ALWAYS PUT { IN THE RIGHT
-return {
+return
+{
     ok: false
 };
 // transforms into
@@ -73,7 +74,7 @@ for (var i...) {... } // 'i' is not scoped to the loop, that is why declare it i
 
 // 'new' prefix. Forgotting it causes a constructor to clobber global variables without warning.
 
-// Constructor functions sjould be named with InitialCaps. Nothing else should be named with InitialCaps.
+// Constructor functions should be named with InitialCaps. Nothing else should be named with InitialCaps.
 
 
 var a = b = 0; // not var a = 0, b = 0;

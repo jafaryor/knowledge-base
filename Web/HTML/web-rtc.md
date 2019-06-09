@@ -38,14 +38,7 @@ The answer to all these questions lie inside a concept called as __Signalling Me
 WebRTC does not define any standard for implementing such a signalling mechanism and leaves it to the developer to create a mechanism of his/her choice. The signalling mechanism to exchange the information can be achieved by simply copy-pasting either information into respective peers or by using a communication channel like `WebSockets`, `Socket.io`, `Server Side Events`, etc. In short, a signalling mechanism is just a mode of exchanging connection related information between peers so that the peers can identify each other and start communicating further using WebRTC.
 
 ### Recap:
-1. Peer A generates it’s `ICE` candidates using __Interactive Connectivity Establishment (`ICE`)__. In most cases it requires a __Session Traversal Utilities for `NAT` (`STUN`)__ or a __Traversal Using Relays around `NAT` (`TURN`)__ server.
+1. Peer A generates it’s `ICE candidate` using __Interactive Connectivity Establishment (`ICE`)__. In most cases it requires a __Session Traversal Utilities for `NAT` (`STUN`)__ or a __Traversal Using Relays around `NAT` (`TURN`)__ server.
 2. Peer A bundles the `ICE` candidate and __Session Description__ into a single object. This object is stored as __Local Description__ (a peer’s own connection information) within peer A and transferred to peer B via a signalling mechanism. This part is called as the __Offer__.
-3. Peer B receives the _offer_ and stores it as __Remote Description__ (connection information of the peer at other end) for further use. Peer B generates it’s own `ICE` candidate and _Session Description_, stores them as it’s _Local Description_ and sends it to peer A via the signalling mechanism. This part is called as the _Answer_. (Note: As said earlier, the `ICE` candidates in step 2 and 3 may also be sent separately)
+3. Peer B receives the _offer_ and stores it as __Remote Description__ (connection information of the peer at other end) for further use. Peer B generates it’s own `ICE candidate` and _Session Description_, stores them as it’s _Local Description_ and sends it to peer A via the signalling mechanism. This part is called as the _Answer_. (Note: As said earlier, the `ICE` candidates in step 2 and 3 may also be sent separately)
 4. Peer A receives the answer from peer B and stores it as it’s _Remote Description_.
-
-
-
-
-
-
-
