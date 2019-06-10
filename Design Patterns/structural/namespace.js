@@ -1,5 +1,5 @@
 /*
-    Namespacing is a technique employed to avoid col- lisions with other objects or variables in the global namespace.
+    Namespacing is a technique employed to avoid collisions with other objects or variables in the global namespace.
 */
 
 // ================================================================================================
@@ -12,7 +12,8 @@ var myApp = myApp || {};
 function extend(ns, ns_string) {
     var parts = ns_string.split('.'),
         parent = ns,
-        pl, i;
+        pl,
+        i;
     pl = parts.length;
     for (i = 0; i < pl; i++) {
         // create a property if it doesnt exist
@@ -78,7 +79,7 @@ function extend(destination, source) {
     }
 
     return destination;
-};
+}
 
 var myNS = myNS || {};
 // 1. extend namespace with a 'utils' object
@@ -103,9 +104,8 @@ var myApplication = (function() {
     }
     return {
         // ...
-    }
+    };
 })();
-
 
 // PREFIX NAMESPACING PATTERN
 /*
@@ -116,7 +116,9 @@ var myApplication = (function() {
 var myApplication_propertyA = {};
 var myApplication_propertyB = {};
 
-function myApplication_myMethod() { /*..*/ }
+function myApplication_myMethod() {
+    /*..*/
+}
 /*
     This is effective from the perspective of trying to lower the chances of a
         particular variable existing in the global scope, but remember that a uniquely
@@ -127,7 +129,6 @@ function myApplication_myMethod() { /*..*/ }
         so be careful if opting to use this.
 */
 
-
 // OBJECT LITERAL NOTATION PATTERN
 /*
     Object literals have the advantage of not polluting the global namespace but
@@ -136,7 +137,9 @@ function myApplication_myMethod() { /*..*/ }
         to support deep nesting. 
 */
 var myApplication = {
-    getInfo: function() { /**/ },
+    getInfo: function() {
+        /**/
+    },
     // we can also populate object literal to support
     // further object namespaces containing anything really: models : {},
     views: {
@@ -155,7 +158,7 @@ var myApplication = myApplication || {};
 if (!MyApplication) MyApplication = {};
 
 // Option 3:
-var myApplication = myApplication = myApplication || {}
+var myApplication = (myApplication = myApplication || {});
 
 // Option 4:
 myApplication || (myApplication = {});
@@ -174,7 +177,6 @@ var myApplication = myApplication === undefined ? {} : myApplication;
         modified without the need to search through your entire codebase just to
         alter them - object literals work great for this purpose.
 */
-
 
 // NESTED NAMESPACING PATTERN
 /*
@@ -208,7 +210,7 @@ var myNamespace = (function() {
     };
 
     return {
-        myPublicVar: "foo",
+        myPublicVar: 'foo',
         myPublicFunction: function(bar) {
             myPrivateVar++;
             myPrivateMethod(bar);
@@ -217,9 +219,9 @@ var myNamespace = (function() {
 })();
 
 (function(o) {
-    o.foo = "foo";
+    o.foo = 'foo';
     o.bar = function() {
-        return "bar";
+        return 'bar';
     };
 })(namespace);
 
@@ -242,17 +244,17 @@ myApp.utils = {};
         return val;
     };
     this.setValue = function(newVal) {
-            val = newVal;
-        }
-        // also introduce a new sub-namespace
+        val = newVal;
+    };
+    // also introduce a new sub-namespace
     this.tools = {};
-}).apply(myApp.utils);
+}.apply(myApp.utils));
 // inject new behaviour into the tools namespace // which we defined via the utilities module
 (function() {
     this.diagnose = function() {
         return 'diagnosis';
-    }
-}).apply(myApp.utils.tools);
+    };
+}.apply(myApp.utils.tools));
 // note, this same approach to extension could be applied
 // to a regular IIFE, by just passing in the context as
 // an argument and modifying the context rather than just

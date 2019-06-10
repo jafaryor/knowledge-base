@@ -1,5 +1,5 @@
 /*
-    Mixins are classes which pro- vide the functionality to be inherited by a subclass.
+    Mixins are classes which provide the functionality to be inherited by a subclass.
         Inheriting from mixins are a means of collecting functionality and classes may
         inherit functionality from multiple mixins through multiple inheritance.
 */
@@ -22,7 +22,8 @@ Mixin.prototype = {
 };
 
 // Augment existing 'class' with a method from another
-function augment(receivingClass, givingClass) { // only provide certain methods
+function augment(receivingClass, givingClass) {
+    // only provide certain methods
     if (arguments[2]) {
         for (var i = 2, len = arguments.length; i < len; i++) {
             receivingClass.prototype[arguments[i]] = givingClass.prototype[arguments[i]];

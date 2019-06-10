@@ -9,11 +9,11 @@
     The flyweight is also a structural pattern, meaning that it aims to assist
         with both the structure of your objects and the relationships between them.
     There are two ways in which the Flyweight pattern can be applied.
-        The first is on the data-layer, where we deal with the concept of large
-        quantities of similar objects stored in memory. The second is on the
-        DOM-layer where the flyweight can be used as a central event-manager
-        to avoid attaching event handlers to every child element in a parent
-        container you wish to have some similar behavior.
+        * The first is on the data-layer, where we deal with the concept of large
+        quantities of similar objects stored in memory.
+        * The second is on the DOM-layer where the flyweight can be used as a
+        central event-manager to avoid attaching event handlers to every child
+        element in a parent container you wish to have some similar behavior.
     
     In data-layer:
         We can now separate our data into intrinsic and extrinsic states as follows:

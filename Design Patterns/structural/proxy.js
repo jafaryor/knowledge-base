@@ -1,12 +1,25 @@
 /*
-    There are times when it is necessary for us to control the access and context
-        behind an object, and this is where the Proxy pattern can be useful.
-    It can help us control when an expensive object should be instantiated,
-        provide advanced ways to reference the object, or modify the object
-        to function a particular way in specific contexts.
+    The Proxy pattern provides a surrogate or placeholder object for another
+        object and controls access to this other object.
+
+    In object-oriented programming, objects do the work they advertise through
+        their interface (properties and methods). Clients of these objects expect
+        this work to be done quickly and efficiently. However, there are
+        situations where an object is severely constrained and cannot live up to
+        its responsibility. Typically this occurs when there is a dependency on
+        a remote resource (resulting in network latency) or when an object
+        takes a long time to load.
+
+    In situations like these you apply the Proxy pattern and create a proxy
+        object that ‘stands in’ for the original object. The Proxy forwards the
+        request to a target object. The interface of the Proxy object is the same
+        as the original object and clients may not even be aware they are dealing
+        with a proxy rather than the real object.
+    
     In jQuery core, a jQuery.proxy() method exists that accepts as input a
         function and returns a new one that will always have a specific context.
         This ensures that the value of this within a function is the value we expect.
+    
     There is a slight difference between bind and proxy, which can matter a lot if
         you are using jQuery. Function.prototype.bind always returns a new function
         pointer. jQuery.proxy only returns a new function if a proxy of the same

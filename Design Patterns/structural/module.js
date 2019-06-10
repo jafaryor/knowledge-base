@@ -31,7 +31,7 @@ var someModule = (function() {
         getData: function() {
             return privateMethod() + this.publicMethod() + privateVar;
         }
-    }
+    };
 })(); // the parens here cause the anonymous function to execute and return
 
 // ================================================================================================
@@ -41,7 +41,7 @@ var someModule = (function() {
     Module Pattern allows us to encapsulate logic for a unit of code such that we can
         have both private and public methods and variables.
 */
-! function(exports, $, undefined) {
+!(function(exports, $, undefined) {
     var Plugin = function() {
         // Our private API
         var priv = {},
@@ -54,20 +54,24 @@ var someModule = (function() {
         priv.method1 = function() {};
         priv.method2 = function() {};
         // Public methods
-        Plugin.method1 = function() { /*...*/ };
-        Plugin.method2 = function() { /*...*/ };
+        Plugin.method1 = function() {
+            /*...*/
+        };
+        Plugin.method2 = function() {
+            /*...*/
+        };
         // Public initialization
         Plugin.init = function(options) {
-                $.extend(priv.options, defaults, options);
-                priv.method1();
-                return Plugin;
-            }
-            // Return the Public API (Plugin) we want to expose
+            $.extend(priv.options, defaults, options);
+            priv.method1();
+            return Plugin;
+        };
+        // Return the Public API (Plugin) we want to expose
         return Plugin;
-    }
+    };
     exports.Plugin = Plugin;
-}(this, jQuery);
+})(this, jQuery);
 
-var myPlugin = new Plugin;
-myPlugin.init( /* custom options */ );
+var myPlugin = new Plugin();
+myPlugin.init(/* custom options */);
 myPlugin.method1();
