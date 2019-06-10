@@ -13,7 +13,7 @@ Cross browser testing is the practice of making sure that the web sites and web 
 
     This is inevitable when you are dealing with bleeding edge features that browsers are just getting round to implementing, or if you have to support really old browsers that are no longer being developed, which may have been frozen.
 
-* Some devices may have constraints that cause a web site to run slowly (mobile deices), or display badly (low resoution displays). 
+* Some devices may have constraints that cause a web site to run slowly (mobile devices), or display badly (low resoution displays). 
 
 > If you leave all the testing to the end of a project, any bugs you uncover will be a lot more expensive and time consuming to fix than if you uncover them and fix them as you go along.
 

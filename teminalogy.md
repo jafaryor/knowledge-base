@@ -1,36 +1,29 @@
-* __BACKWARD COMPATIBILITY__:
-    is a property of a system, product, or technology that allows for interoperability
-    with an older legacy system, or with input designed for such a system, especially
-    in telecommunications and computing.
+* __BACKWARD COMPATIBILITY__
 
-* __LOOSE COUPLING__ & __TIGHT COUPLING__:
-    Coupling measures the degree to which program modules rely on other modules.
-    Loose coupling implies each component can operate or be tested independently of other
-    components. Tight coupling implies each component "knows" the details or inner
-    workings of other components.
+    Is a property of a system, product, or technology that allows for interoperability with an older legacy system, or with input designed for such a system, especially in telecommunications and computing.
+
+* __LOOSE COUPLING__ & __TIGHT COUPLING__
+
+    Coupling measures the degree to which program modules rely on other modules. Loose coupling implies each component can operate or be tested independently of other components. Tight coupling implies each component "knows" the details or inner workings of other components.
 
 * __SERIALIZATION__ - copying structured data to or from a primitive form such as a byte stream.
 
 * __MARSHALING__ - rule to tell compiler how the data will be represented on another environment/system.
 
-* __MIME__ - The Multipurpose Internet Mail Extensions (MIME) type is a standardized way to indicate the
-    nature and format of a document.
-    MIME Sniffing - In the absence of a MIME type, or in some other cases where a client
-    believes they are incorrectly set, browsers may conduct MIME sniffing, which is guessing
-    the correct MIME type by looking at the resource. Each browser performs this differently and
-    under different circumstances. There are some security concerns with this practice, as some
-    MIME types represent executable content and others not. Servers can block MIME sniffing
-    by sending the X-Content-Type-Options along the Content-Type.
-    Complete list of MIME types:
-        https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types
-    application/octet-stream - binary files
-    text/plain - textual files
-    text/css, text/html
-    image/gif, image/jpeg, image/png, image/svg+xml
-    audio/wave, audio/wav, audio/x-wav, audio/x-pn-wav, audio/webm, audio/ogg
-    video/webm, video/ogg, application/ogg
-    multipart/form-data - content of a completed HTML Form from the browser to the server
-    multipart/byteranges - is used in the context of sending partial responses back to the browser
+* __MIME__ - The Multipurpose Internet Mail Extensions (MIME) type is a standardized way to indicate the nature and format of a document.
+
+    _MIME Sniffing_ - In the absence of a MIME type, or in some other cases where a client believes they are incorrectly set, browsers may conduct MIME sniffing, which is guessing the correct MIME type by looking at the resource. Each browser performs this differently and under different circumstances. There are some security concerns with this practice, as some MIME types represent executable content and others not. Servers can block MIME sniffing by sending the X-Content-Type-Options along the Content-Type.
+
+    [Complete list of MIME types:](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types)
+    
+    * application/octet-stream - binary files
+    * text/plain - textual files
+    * text/css, text/html
+    * image/gif, image/jpeg, image/png, image/svg+xml
+    * audio/wave, audio/wav, audio/x-wav, audio/x-pn-wav, audio/webm, audio/ogg
+    * video/webm, video/ogg, application/ogg
+    * multipart/form-data - content of a completed HTML Form from the browser to the server
+    * multipart/byteranges - is used in the context of sending partial responses back to the browser
 
 * __URI__ — Uniform Resource Identifier. Обозначает имя и адрес ресурса в сети. Как правило делится на
     URL и URN, поэтому URL и URN это составляющие URI. (URI = URL + URN)
@@ -40,41 +33,20 @@
     ресурса и способ обращения к нему. (URI = URL)
     Example: http://handynotes.ru
 
-* __URN__ (Unifrorm Resource Name) - identifies a resource by name in a particular namespace. (URI = URN)
+* __URN__ (Unifrorm Resource Name) - identifies a resource by name in a particular namespace.
     Example: /2009/09/uri-url-urn.html
 
-* In telecommunications, the round-trip delay time (__RTD__) or round-trip time (__RTT__) is the length of time
-    it takes for a signal to be sent plus the length of time it takes for an acknowledgment of that
-    signal to be received.
-    In the context of computer networks, the signal is generally a data packet, and the RTT is also
-    known as the ping time. An internet user can determine the RTT by using the ping command.
+* In telecommunications, the round-trip delay time (__RTD__) or round-trip time (__RTT__) is the length of time it takes for a signal to be sent plus the length of time it takes for an acknowledgment of that signal to be received. In the context of computer networks, the signal is generally a data packet, and the RTT is also known as the ping time. An internet user can determine the RTT by using the ping command.
 
-* __Head-of-line blocking__ (HOL blocking) in computer networking is a performance-limiting phenomenon that
-    occurs when a line of packets is held up by the first packet. Examples include input buffered network
-    switches, out-of-order delivery and multiple requests in HTTP pipelining.
+* __Head-of-line blocking__ (HOL blocking) in computer networking is a performance-limiting phenomenon that occurs when a line of packets is held up by the first packet. Examples include input buffered network switches, out-of-order delivery and multiple requests in HTTP pipelining.
 
-* An __HTTP__ method is safe if it doesn't alter the state of the server. In other words, a method is
-    safe if it leads to a read-only operation. Several common HTTP methods are safe: GET, HEAD, or OPTIONS
+* Data buffer (or just __BUFFER__) is a region of a physical memory storage used to temporarily store data while it is being moved from one place to another.
 
-* An __HTTP__ method is idempotent if an identical request can be made once or several times in a row
-    with the same effect while leaving the server in the same state. In other words, an idempotent
-    method should not have any side-effects (except for keeping statistics). Implemented correctly,
-    the GET, HEAD, PUT, and DELETE method are idempotent, but not the POST method.
+* __LATENCY__ - an expression of how much time it takes for a packet of data to get from one designated point to another
 
-* Data buffer (or just __BUFFER__) is a region of a physical memory storage used to temporarily store
-    data while it is being moved from one place to another.
+* __CANONICAL URL__ - allows you to tell search engines that certain similar URLs are actually one and the same. Sometimes you have products or content that is accessible under multiple URLs, or even on multiple websites. Using a canonical URL (an HTML link tag with attribute `rel=canonical`) these can exist without harming your rankings.
 
-* __LATENCY__ - an expression of how much time it takes for a packet of data to get from one
-    designated point to another
-
-* __CANONICAL URL__ - allows you to tell search engines that certain similar URLs are actually one
-    and the same. Sometimes you have products or content that is accessible under multiple URLs,
-    or even on multiple websites. Using a canonical URL (an HTML link tag with attribute
-    rel=canonical) these can exist without harming your rankings.
-
-* __TLS__ - Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL), is a protocol
-    used by applications to communicate securely across a network, preventing tampering with and
-    eavesdropping on email, web browsing, messaging, and other protocols.
+* __TLS__ - Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL), is a protocol used by applications to communicate securely across a network, preventing tampering with and eavesdropping on email, web browsing, messaging, and other protocols.
 
 * __WEBMASTER__ (from web and master),[1] is a person responsible for maintaining one or many websites.
 
@@ -153,3 +125,7 @@ other observable characteristics
 * __Coordination__: Actions of users directed by a coordinator to achieve a common goal.
 
 * __Collaboration__: The process of shared creation; collectively creating something new that could not have been created by the individual users.
+
+* __Web Server vs Application Server__
+
+    The _Web server_'s main job is to display the site content and the _application server_ is in charge of the logic, the interaction between the user and the displayed content. The application server is working in conjunction with the web server, where one displays and the other one interacts.

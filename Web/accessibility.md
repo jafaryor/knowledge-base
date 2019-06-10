@@ -1,5 +1,5 @@
 ## Web Accessibility
-Web accessibility is the inclusive practice of ensuring there are no barriers that prevent interaction with, or access to, websites on the World Wide Web by people with disabilities.
+Web accessibility is the inclusive practice of ensuring there are no barriers that prevent interaction with, or access to, by people with disabilities.
 
 Best practices:
 1. Clear and logical designs benefit everyone, as does consistent navigation. The big difference, though, is that inconveniences like cluttered screens or navigation inconsistency become even bigger obstacles for people who are visually impaired.
