@@ -1,7 +1,7 @@
 # Web Browser
 The main function of a browser is to present the web resource you choose, by requesting it from the server and displaying it in the browser window. The resource is usually an HTML document, but may also be a `PDF`, image, or some other type of content. The location of the resource is specified by the user using a `URI` (Uniform Resource Identifier).
 
-Say tou have entered _'google.com'_  and hit _Enter_ key. Actions which takes browser:
+Say you have entered _'google.com'_  and hit _Enter_ key. Actions which takes browser:
 1. ### Parse the URL
 
     When no protocol or valid domain name is given the browser proceeds to feed the text given in the address box to the browser's default web search engine.

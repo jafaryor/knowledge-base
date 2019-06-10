@@ -1,20 +1,20 @@
 /*
     Mediator is a behavioral design pattern that allows us to expose a unified interface
-        through which the different parts of a system may commu- nicate.
+        through which the different parts of a system may communicate.
     If it appears a system may have too many direct relationships between modules (colleagues),
-        it may be time to have a central point of control that modules communi- cate through
+        it may be time to have a central point of control that modules communicate through
         instead. The Mediator promotes loose coupling by ensuring that instead of modules
         referring to each other explicitly, their interaction is handled through this central point.
 
     Advantage:
-        Broadcasted events can be handled by any number of modules at once.
-            It also can be used for a number of other purposes such as permissions
+        * Broadcasted events can be handled by any number of modules at once.
+        * It also can be used for a number of other purposes such as permissions
             management, given a Mediator can control what messages in a system
             can be subscribed to and which can be broadcast. Because communication is centralized.
 
     Disadvantage:
-        It can introduce a single point of failure.
-        Placing a Mediator between modules can also cause a perfor- mance hit as
+        * It can introduce a single point of failure.
+        * Placing a Mediator between modules can also cause a performance hit as
             they are always communicating indirectly.
     
     That said, it's useful to remind ourselves that decoupled systems have a number of other

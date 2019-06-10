@@ -1,5 +1,5 @@
 ## AntiPatterns
-Are a pattern that tells how to go from a problem to a bad solution. Identifying bad practices can be as valuable as identifying good practices.
+Are a pattern that tell how to go from a problem to a bad solution. Identifying bad practices can be as valuable as identifying good practices.
 
 A well formulated AntiPattern also tells you why the bad solution looks attractive (e.g. it actually works in some narrow context), why it turns out to be bad, and what positive patterns are applicable in its stead.
 

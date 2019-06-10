@@ -47,7 +47,7 @@ Patterns are not an exact solution. It’s important that we remember the role o
 * `Creational Design Pattern` -  focus on handling object creation mechanisms where objects
     are created in a manner suitable for the situation you are working in. The basic approach
     to object creation might otherwise lead to added complexity in a project whilst these
-    patterns aim to solve this problem by controllingthe creation process.
+    patterns aim to solve this problem by controlling the creation process.
     [ `Constructor`, `Factory`, `Abstract`, `Prototype`, `Singleton`, `Builder` ]
 * `Structural Design Patterns` - are concerned with object composition and typically identify simple
     ways to realize relationships between different objects. They help ensure that when one
@@ -55,8 +55,7 @@ Patterns are not an exact solution. It’s important that we remember the role o
     They also assist in recasting parts of the system which don't fit a particular purpose
     into those that do.
     [  `Decorator`, `Facade`, `Flyweight`, `Adapter`, `Proxy` ]
-* `Behavioral Design Patterns` - focus on improving or streamlining the communication between
-    disparate objects in a system.
+* `Behavioral Design Patterns` - focus on improving the communication between disparate objects in a system.
     [ `Iterator`, `Mediator`, `Observer`, `Visitor` ]
 
 ## Design Pattern List:

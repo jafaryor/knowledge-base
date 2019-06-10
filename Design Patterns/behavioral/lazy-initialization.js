@@ -1,5 +1,5 @@
 /*
-    Lazy Initializationis a design pattern which allows us to delay expensive processes
+    Lazy Initialization is a design pattern which allows us to delay expensive processes
         (e.g. the creation of objects) until the first instance they are needed.
         An example of this is the .ready() function in jQuery that only executes
         a function once the DOM is ready.
