@@ -38,38 +38,29 @@
 
 * __Enable Cache__
 
-    Two main types of cache headers, `cache-control` and `expires`, define the caching characteristics for your resources.
+    Two main types of cache headers, `Cache-control` and `expires`, define the caching characteristics for your resources.
 
-    > Tip: Don't use an expiry greater than one year; that's effectively forever on the internet and, as noted above, is the maximum value for `max-age` under `cache-control`.
+    > Tip: Don't use an expiry greater than one year; that's effectively forever on the internet and, as noted above, is the maximum value for `max-age` under `Cache-control`.
 
-__Real User Monitoring__ (`RUM`) relies on JavaScript APIs in the browser to gather statistics on how sites perform for real users. Two specific APIs measure how fast documents and resources load for users by capturing high-resolution timings which measure various phases of resource loading. These are the Network and Resource Timing APIs, and this guide will help you make sense of the data they provide.
-* _Navigation Timing_ collects performance metrics for HTML documents.
-* _Resource Timing_ collects performance metrics for document-dependent resources. Stuff like style sheets, scripts, images, et cetera.
+* __Reduce Latency with a Content Delivery Network (CDN)__
 
+    Besides speeding up the delivery of your assets around the globe a CDN also can dramatically decrease your latency.
 
-[Performance Measuring Tools](https://developers.google.com/web/fundamentals/performance/speed-tools/)
+    A content delivery network (__CDN__) is a network of edge servers strategically placed across the globe with the purpose of delivering digital content to users as fast as possible.
 
-### APIs used to measure the performance:
-* [`PerformanceObserver`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver) - interface is used to observe performance measurement events and be notified of new `PerformanceEntry`s as they are recorded in the browser's performance timeline.
+    [Read More about CDN](https://www.keycdn.com/what-is-a-cdn)
 
-    > This feature is available in Web Workers.
+* __Avoid 301 Redirects__
 
-* [`DOMHighResTimeStamp`](https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp) - type is a `double` and is used to store a time value. The value could be a discrete point in time or the difference in time between two discrete points in time.
+    Redirects are performance killers. Avoid them whenever possible. A redirect will generate additional round trip times (RTT) and therefore quickly doubles the time that is required to load the initial HTML document before the browser even starts to load other assets.
 
-> You must ensure your `PerformanceObserver` is registered in the `<head>` of your document before any stylesheets, so it runs before _First Paint_ happens.
+* __Hotlink Protection__
+    
+    Hotlink protection refers to restricting HTTP referrers in order to prevent others from embedding your assets on other websites. Hotlink protection will save you bandwidth by prohibiting other sites from displaying your images.
 
-Once you have the data for a particular performance event, you can send it to whatever analytics service (_Google Analytics_) you use to capture the metric for the current user.
+* __Infrastructure__
 
-The [RAIL performance model](https://developers.google.com/web/fundamentals/performance/rail) teaches us that in order for a user interface to feel smooth, it should respond within `100ms` of user input.
-
-| The Experience | The Metric |
-| - | - |
-| Is it happening? | First Paint (`FP`) / First Contentful Paint (`FCP`) |
-| Is it useful?	| First Meaningful Paint (`FMP`) / Hero Element Timing |
-| Is it usable? |	Time to Interactive (`TTI`) |
-| Is it delightful? |	Long Tasks (technically the absence of long tasks) |
-
-![perf-metrics-load-timeline](../images/perf-metrics-load-timeline.png)
+    Having a fast web host is equally as important as any website performance optimization you could make, as it is the backbone of your site. Stay away from cheap shared hosting.
 
 ### Optimizing performance
 * __Optimizing `FP`/`FCP`__:
@@ -328,7 +319,21 @@ Fonts are a great example of late-discovered resources that must be fetched, oft
 
     > Note that the use of crossorigin here is important; without this attribute, the preloaded font is ignored by the browser, and a new fetch takes place. This is because fonts are expected to be fetched anonymously by the browser, and the preload request is only made anonymous by using the crossorigin attribute.
 
-* Use `font-display` property.
+* `font-display` property.
+
+    The `font-display` descriptor determines how a font face is displayed based on whether and when it is downloaded and ready to use.
+    ```css
+    font-display: auto;
+    font-display: block;
+    font-display: swap;
+    font-display: fallback;
+    font-display: optional;
+    ```
+    * `auto` - The font display strategy is defined by the user agent.
+    * `block` - Gives the font face a short block period and an infinite swap period.
+    * `swap` - Gives the font face an extremely small block period and an infinite swap period.
+    * `fallback` - Gives the font face an extremely small block period and a short swap period.
+    * `optional` - Gives the font face an extremely small block period and no swap period.
 
 ### Client Hint
 Client hints are a set of opt-in _HTTP request headers_ that give us insight into these aspects of the user’s device and the network they’re connected to. This is an another method of content negotiation, which means changing content responses based on browser request headers.
@@ -396,7 +401,7 @@ Code-splitting can be done in the following ways:
     });
     ```
 
-    Since import() returns a Promise, you can also use async/await:
+    Since `import()` returns a Promise, you can also use async/await:
 
     ```javascript
     let module = await import("./myFancyModule.js");
@@ -411,7 +416,7 @@ Code-splitting can be done in the following ways:
 
 Use [Workbox](https://developers.google.com/web/tools/workbox/) to add service workers for your app.
 
-### What ca ngo wrong when lazy loading images and videos
+### What can go wrong when lazy loading images and videos
 * Layout shifting and placeholders
 
     Lazy loading media can cause shifting in the layout if placeholders aren't used. These changes can be disorienting for users and trigger expensive DOM layout operations that consume system resources and contribute to jank. At a minimum, consider using a solid color placeholder occupying the same dimensions as the target image, or techniques such as [LQIP](http://www.guypo.com/introducing-lqip-low-quality-image-placeholders) or [SQIP](https://github.com/technopagan/sqip) that hint at the content of a media item before it loads.

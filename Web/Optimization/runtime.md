@@ -109,8 +109,6 @@
     * Let the browser handle scrolls and touch if you can.
     * If you can’t do that then bind the listener as late as possible. That is, if you don’t need a listener to be attached to an element don’t have it there.
     * Bind the listener as close to the element as you can, ideally on the target element itself.
-    *
-
 
 * ## Debouncing events
 

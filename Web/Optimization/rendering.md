@@ -88,6 +88,31 @@ For browsers that don’t support will-change, use `transform`:
 }
 ```
 
+___
+
+### `will-change`
+The will-change CSS property hints to browsers how an element is expected to change.
+
+With this property set on an element, the browser will (but not always!) promote it to a compositing layer in advance, so that the animation can start and stop smoothly.
+
+But don’t misuse this property, or else you’ll end up with a tremendous increase in memory consumption!
+```css
+/* Keyword values */
+will-change: auto;
+will-change: scroll-position;
+will-change: contents;
+will-change: transform;        /* Example of <custom-ident> */
+will-change: opacity;          /* Example of <custom-ident> */
+will-change: left, top;        /* Example of two <animateable-feature> */
+
+/* Global values */
+will-change: inherit;
+will-change: initial;
+will-change: unset;
+```
+
+___
+
 A browser will promote an element to a compositing layer for many reasons, just a few of which are:
 * 3D transforms: `translate3d`, `translateZ` and so on;
 * `<video>`, `<canvas>` and `<iframe>` elements;
@@ -123,7 +148,7 @@ So, try to use CSS-based animation as much as possible, especially for loading a
 
 * __Do not make style changes in input handlers.__
 
-* __Debounce your handlers; store event values and deal with style changes in the next requestAnimationFrame callback.__
+* __Debounce your handlers; store event values and deal with style changes in the next `requestAnimationFrame` callback.__
 
     Input handlers, like those for scroll and touch, are scheduled to run just before any `requestAnimationFrame` callbacks.
 

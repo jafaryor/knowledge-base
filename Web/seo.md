@@ -34,7 +34,7 @@ Serving different HTML based on device type reduces unnecessary redirects, serve
 * There may be intermediate proxies between a user's browsers and the server. Unless the proxy knows that the content varies depending on user agent, it may serve unexpected results.
 * Changing contents depending on user agent risks being considered "cloaking", which is a violation of Google’s Webmaster Guidelines.
 
-To indicate that the URL serves different HTML depending on user agent, provide a b `Vary: User-Agent` in the HTTP header. This allows search indexing to treat desktop and mobile versions separately, and intermediate proxies to cache those contents gracefully.
+To indicate that the URL serves different HTML depending on user agent, provide a `Vary: User-Agent` in the HTTP header. This allows search indexing to treat desktop and mobile versions separately, and intermediate proxies to cache those contents gracefully.
 
 ### The difference between "crawl" and "index"
 __Crawling__ - is when a search engine bot fetches your web page to analyze its content. The content is stored in the search engine's database and can be used to populate search result details, rank pages, and discover new pages by following links.

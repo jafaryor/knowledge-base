@@ -2,7 +2,7 @@
 Common problems:
 | Problem	| Example	| Solution |
 | --- | --- | --- |
-| Expensive input handlers affecting response or animation. | Touch, parallax scrolling.	| Let the browser handle touch and scrolls, or bind the listener as late as possible (see [Expensive Input Handlers in Paul Lewis' runtime performance checklist](http://calendar.perfplanet.com/2013/the-runtime-performance-checklist/)). |
+| Expensive input handlers affecting response or animation. | Touch, parallax scrolling.	| Let the browser handle touch and scrolls, or bind the listener as late as possible (see [Expensive Input Handlers in Paul Lewis' runtime performance checklist](http://calendar.perfplanet.com/2013/the-runtime-performance-checklist/) ). |
 | Badly-timed JavaScript affecting response, animation, load. | User scrolls right after page load, `setTimeout` / `setInterval`. |	Optimize JavaScript execution: use `requestAnimationFrame`, spread DOM manipulation over frames, use Web Workers. |
 | Long-running JavaScript affecting response.	| The `DOMContentLoaded` event stalls as it's swamped with JS work. |	Move pure computational work to Web Workers. If you need DOM access, use `requestAnimationFrame` (see also Optimize JavaScript Execution). |
 | Garbage-y scripts affecting response or animation. | Garbage collection can happen anywhere.	| Write less garbage-y scripts (see [Garbage Collection in Animation in Paul Lewis' runtime performance checklist](https://developers.google.com/web/fundamentals/performance/rendering/optimize-javascript-execution)). |
