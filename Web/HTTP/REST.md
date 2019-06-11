@@ -9,7 +9,7 @@ The six constraints are:
     The uniform interface constraint defines the interface between clients and servers. It simplifies and decouples the architecture, which enables each part to evolve independently. The four guiding principles of the uniform interface are:
 
     * _Resource-Based_
-        
+
         Individual resources are identified in requests using URIs as resource identifiers. The resources themselves are conceptually separate from the representations that are returned to the client. For example, the server does not send its database, but rather, some HTML, XML or JSON that represents some database records expressed.
 
     * _Manipulation of Resources Through Representations_
@@ -38,10 +38,6 @@ The six constraints are:
 
 5. __Code on Demand (optional)__
 
-    Servers are able to temporarily extend or customize the functionality of a client by transferring logic to it that it can execute. Examples of this may include compiled components such as Java applets and client-side scripts such as JavaScript.
-
-6. __Code on Demand__ (optional)
-
     REST allows client functionality to be extended by downloading and executing code in the form of applets or scripts. This simplifies clients by reducing the number of features required to be pre-implemented.
 
 #### [More about REST](https://restfulapi.net/)
@@ -58,7 +54,7 @@ This model of division of REST services to identify their maturity level – is 
 
 * #### Level 1
 
-    Uses URIs. These services employ many URIs but only a single HTTP verb – generally HTTP POST. They give each individual resource in their universe a URI. Every resource is separately identified by a unique URI.
+    Uses URIs. These services employ many URIs but only a single HTTP verb – generally HTTP `POST`. They give each individual resource in their universe a URI. Every resource is separately identified by a unique URI.
 
 * #### Level 2
 
@@ -153,7 +149,6 @@ The purpose of each of the HTTP request types when used with a RESTful web servi
 __Safe__ methods are HTTP methods that do not modify the resource.
 
 __Idempotent__ means that making multiple identical requests must produce the same result every time until another API (`POST` or `PUT`) has changed the state of the resource on the server.
-
 
 | Method  | Safe | Idempotent |
 | --- | --- | --- |

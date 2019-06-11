@@ -9,7 +9,6 @@ Cross-site scripting attacks usually occur when
 The malicious content often includes JavaScript, but sometimes HTML, Flash, or any other
     code the browser can execute.
 
-
 The HTTP X-XSS-Protection response header is a feature of Internet Explorer, Chrome and
     Safari that stops pages from loading when they detect reflected cross-site scripting
     (XSS) attacks. Although these protections are largely unnecessary in modern browsers

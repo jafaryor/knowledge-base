@@ -19,7 +19,7 @@ How to avoid XSS:
 
     It should be clear that CSP is based on whitelisting origins, as that's an unambiguous way of instructing the browser to treat specific sets of resources as acceptable and to reject the rest. Origin-based whitelisting doesn't, however, solve the biggest threat posed by XSS attacks: inline script injection.
 
-    f an attacker can inject a script tag that directly contains some malicious payload (`<script>sendMyDataToEvilDotCom();</script>`), the browser has no mechanism by which to distinguish it from a legitimate inline script tag. CSP solves this problem by banning inline script entirely: it's the only way to be sure.
+    If an attacker can inject a script tag that directly contains some malicious payload (`<script>sendMyDataToEvilDotCom();</script>`), the browser has no mechanism by which to distinguish it from a legitimate inline script tag. CSP solves this problem by banning inline script entirely: it's the only way to be sure.
 
     This ban includes not only scripts embedded directly in `script` tags, but also inline event handlers (`onclick='doAmazingThings();'`) and `javascript:` URLs.
 
