@@ -20,18 +20,18 @@
     * Should cover every use case scenario and NOT just aim for 100% coverage.
     * Should try to aim for TDD so that code does not need re-factoring later.
 
-# Code Coverage
+## Code Coverage
 Code coverage is about finding untested code.
 
 > Test coverage is a measure used to describe the degree to which the source code of a program is executed when a particular test suite runs.
 
 To measure what percentage of code has been exercised by a test suite, one or more coverage criteria are used.
 
-Coverage criteria is usually defined as a rule or requirement, which test suite needs to satisfy.
-There are a number of coverage criteria, the main ones being:
-* __Function coverage__ – Has each function (or subroutine) in the program been called?
-* __Statement coverage__ – Has each statement in the program been executed?
-* __Branch coverage__ – Has each branch (also called DD-path) of each control structure (such as in if and case statements) been executed? For example, given an if statement, have both the true and false branches been executed? Another way of saying this is, has every edge in the program been executed?
+The best way to measure test effectiveness is to track test coverage. It shows what portion (%) of the code is covered by the testing algorithm. To get a better understanding, it’s worth breaking down test coverage:
+* __Statement coverage__ (%): number of statements executed during a test divided by all statements
+* __Branch coverage__ (%): number of executed conditions (`if` and `case`) divided by all conditions
+* __Function coverage__ (%): number of executed functions divided by all functions
+* __Lines coverage__ (%): number of lines ran during a test divided by all lines
 * __Condition coverage__ (or predicate coverage) – Has each Boolean sub-expression evaluated both to true and false?
 
 For example, consider the following C function:
@@ -61,3 +61,19 @@ There are further coverage criteria, which are used less often:
 * __Loop coverage__ – Has every possible loop been executed zero times, once, and more than once?
 * __State coverage__ – Has each state in a finite-state machine been reached and explored?
 * __Data-flow coverage__ – Has each variable definition and its usage been reached and explored?
+
+[Istanbul](https://istanbul.js.org/) is a cool tool for measuring test coverage for JavaScript codebase.
+
+___
+
+> Even if coverage wouldn’t be flawed, it still would be a mistake to try and get 100% coverage. While everything can be tested, not everything is easy to test!
+
+Think about UI animations, communication between Threads, operations on filesystem,…
+
+![test-coverage-graph](./images/test-coverage-graph.png)
+
+Trying to test complex things doesn’t just take way to much effort. The resulting tests usually also tend to be so complex that they will end up being a maintenance burden.
+
+___
+
+_[Read More](https://ordepdev.me/posts/code-coverage)_

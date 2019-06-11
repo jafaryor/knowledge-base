@@ -46,7 +46,7 @@ Use _Static Code Analysis Tools — Sonar_. Below there’s a small list of 
 * #### Complexity
 
     It is the Cyclomatic Complexity calculated based on the number of paths through the code.
-    
+
     Complexity is incremented by one for each: function (i.e non-abstract and non-anonymous constructors, functions, procedures or methods), `if`, short-circuit (AKA lazy) logical conjunction (`&&`), short-circuit (AKA lazy) logical disjunction (`||`), ternary conditional expressions, loop, `case` clause of a `switch` statement, `throw` and `catch` statement.
 
 * #### Cognitive Complexity
@@ -61,29 +61,17 @@ Use _Static Code Analysis Tools — Sonar_. Below there’s a small list of 
 
     Code Smell and Technical Debt. (read about them separately)
 
+* #### Code Style Consistency (following style guides)
+
+* #### Following Best Practices
+
 * #### Security
 
-* #### Unit test failures.
+* #### Performance
+
+* #### Unit Test Failures.
 
 * #### Test Coverage
-
-    The best way to measure test effectiveness is to track test coverage. It shows what portion (%) of the code is covered by the testing algorithm. To get a better understanding, it’s worth breaking down test coverage:
-    * __Statement coverage__ (%): number of statements executed during a test divided by all statements
-    * __Branch coverage__ (%): number of executed conditions divided by all conditions
-    * __Function coverage__ (%): number of executed functions divided by all functions
-    * __Lines coverage__ (%): number of lines ran during a test divided by all lines
-
-    [Istanbul](https://istanbul.js.org/) is a cool tool for measuring test coverage for JavaScript codebase.
-
-    Even if coverage wouldn’t be flawed, it still would be a mistake to try and get 100% coverage. While everything can be tested, not everything is easy to test!
-
-    Think about UI animations, communication between Threads, operations on filesystem,…
-
-    ![test-coverage-graph](./images/test-coverage-graph.png)
-
-    Trying to test complex things doesn’t just take way to much effort. The resulting tests usually also tend to be so complex that they will end up being a maintenance burden.
-
-    _[Read More](https://ordepdev.me/posts/code-coverage)_
 
 * #### Duplications
 

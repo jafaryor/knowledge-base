@@ -33,7 +33,7 @@ The CISQ model provides a good platform for understanding software quality, but 
 * __Usability__
 
     The user interface is the only part of the software visible to users, so it’s vital to have a good UI. Simplicity and task execution speed are two factors that lead to a better UI.
-    
+
     Accessibility, Hot keys, List of suggestions, List of supported devices are also incuded.
 
 ### FURPS
@@ -94,7 +94,7 @@ __Software quality metrics__ are a subset of software metrics that focus on the 
         Total Problems that customers reported for a time period +
         + Total number of license-months of the software during the period
     ```
-    
+
     Where:
     ```
     Number of license-month of the software =
