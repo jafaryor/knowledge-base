@@ -1,3 +1,34 @@
+# How to choose a framework
+What are the main features I should consider when choosing a framework?
+* Flexible
+
+    > Our chosen framework would need to present a range of configuration options and be relatively simple to customize. Much of this seems to come down the architectural philosophies: making architectural decisions on your behalf or leaving them entirely open.
+
+    Angular 2 exists at the monolithic end of this with every choice (state server, router, handlers) made for you. The benefit of this is it’s very easy to get up and running quickly, while the potential cost is modules not working how you need them to and having nowhere to go.
+
+    React, Vue, and Aurelia are at the other end of the scale, offering the ability to swap in components as required. Aurelia and Vue have a key advantage over React with configurable boilerplates in their initial setup.
+
+* Offline Support
+
+* Light Weight
+
+    Vue’s developers have gone to great lengths to shrink their core libraries down to an impressive `23 KB`. React and Aurelia sit somewhere in the middle (about `42 KB` and 64 KB respectively) while Angular 2 is a remains a heavyweight pushing `143 KB` (including RxJS for state management).
+
+* Server Rendering
+
+    Vue and React add server rendering with plugins. Angular 2 is currently merging their Universal feature into the core although the functionality doesn’t match what’s offered by Vue or React.
+
+* Maturity
+
+    > In choosing a framework for an enterprise-level site, broad community support, stability and ability to hire are very important factors. It is difficult to speculate whether any framework will still be supported in three years but we decided to look at the current health or otherwise of each to make a decision.
+
+* Simplicity
+* Performance
+* Security
+* License
+* Technical properties and features
+* Community involvement
+
 ## Angular
 Angular is a known Typescript-based JavaScript MVVM framework, founded in 2009, backed by Google and used for developing highly interactive web applications. It is widely used by Google, Forbes, WhatsApp and many other Fortune 500 companies.
 
