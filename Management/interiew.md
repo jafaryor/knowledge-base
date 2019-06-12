@@ -45,7 +45,7 @@
 
     Why:
     * Helps summarise the impression.
-    * Explains the evaluatin.
+    * Explains the evaluation.
     * Candidates like it.
 
     Avoid giving feedback to candidate, due to:
@@ -112,7 +112,7 @@
 3. Technical pre-screening
 
     * Optional step.
-    * Used when too there is a hight number of candidates.
+    * Used when there is a hight number of candidates.
     * To filter out those who definitely do not match.
     * Few technical questions.
     * Remote
@@ -205,7 +205,7 @@ Evaluation approaches:
 * S - Self-appraisal (оценка)
 
     * What was the most valuable experience you have gained?
-    * What was bitter lesson learned? What
+    * What was bitter lesson learned?
     * What could have gone better?
     * What would they do different next time?
 

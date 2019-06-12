@@ -15,7 +15,9 @@ Pair programming is a form of mentoring. This interaction is the crucial part of
 
 With the pair programming technique, knowledge is easier to be transferred. Not only is domain knowledge shared, the system’s code can be easier inspected and refactored.
 
-In __Pair Programming__ there are always two people working on a single piece of code at the same time on the same machine. One who writes the code is called driver and another constantly reviews it as it is being written, he is called navigator. They constantly switch roles. The key advantage is the quality of the code. It brings the best possible solution as two minds are better than one.
+In __Pair Programming__ there are always two people working on a single piece of code at the same time on the same machine. One who writes the code is called __driver__ and another constantly reviews it as it is being written, he is called __navigator__. They constantly switch roles.
+
+The key advantage is the quality of the code. It brings the best possible solution as two minds are better than one.
 
 Pros:
 * Having 2 sets of eyes on code generally increases the quality of the code

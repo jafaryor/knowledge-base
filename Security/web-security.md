@@ -356,7 +356,7 @@ Solution:
 * Avoid System Execution Keywords
 * Perform system execution with extreme caution
 * Sanitize any dynamic data carefully
-* Understand the commands and thir syntax completely
+* Understand the commands and their syntax completely
 * Add additional data validation
 
 ### File Upload Abuse (злоупотребление)
