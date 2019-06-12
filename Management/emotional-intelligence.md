@@ -1,5 +1,5 @@
 ## Emotional Intelligence (EQ)
-EQ is about how smart we are with the human connection. In other words, how effective we manage ourselves and our relationship.
+EQ is essentially how smart you are in reading and working with emotions, both your own and others. In other words, how effective we manage ourselves and our relationship.
 
 > Emotion - is information. Emotions, or feelings, contain important data that's tied to our thoughts, attitudes, beliefs and actions, which is why being able to read emotions, your own and others
 
@@ -8,7 +8,7 @@ EQ has 4 main components:
 |  | Self | Others |
 | --- | --- | --- |
 __Awareness__ | Self-awareness | Awareness of others |
-__Management__ | Self-control | Bulding relationships |
+__Management__ | Self-control | Building relationships |
 
 Where:
 * Self-awareness
@@ -52,12 +52,14 @@ Where:
 
     Is about how we utilize our awareness of others to maximize their potential and our relationship.
 
-There 20 competencies within these quadrants. Competency has two aspects:
+There are 20 competencies within these quadrants. Competency has two aspects:
 * Proficency - is how good you are at smth.
 * Frequency - is how often you do smth when faced with the opportunity.
 
-Amygdala Hijack - is when your brain under stress turns on reptilian brain, but other parts of brain is shut down. This emotional state makes us incapable of any kind of intelligent actions. It lowers both youe EQ and IQ (traditional intelligence).
+__Amygdala Hijack__ - is when your brain under stress shuts down your brain, except the reptilian brain. This emotional state makes us incapable of any kind of intelligent actions. It lowers both youe EQ and IQ (traditional intelligence).
 
+
+### Leadership
 As a leader you actually have three levels of responsibility for developing emotional intelligence. Here are four key strategies you can use everyday:
 1. Role model EQ
 

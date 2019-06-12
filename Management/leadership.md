@@ -111,7 +111,7 @@ There is a range of key leadership skills and practices but they fall mainly int
 
 * Organizational strategy
 
-    The ability to set the vision and direction for he long-term success of the organization.
+    The ability to set the vision and direction for the long-term success of the organization.
 
     Includes:
     * Industry analysis
@@ -199,12 +199,7 @@ As you move to a new Leader Level, 3 key things shift:
 
 #### What qualities are people looking for in their leaders
 1. Lead from teir values
-2. Share an inspiring visin of the future
-
-### Emotional inteligence (EI)
-EI is essentially how smart you are in reading and working with emotions, both your own and others.
-
-Both self-awareness and Building relationship is a part of EI.
+2. Share an inspiring vision of the future
 
 ### Motivation
 Maslow's hierarchy of needs is a _motivational theory_ in psychology comprising a five-tier model of human needs
@@ -234,7 +229,8 @@ Our most basic need is for physical survival, and this will be the first thing t
 
 Organizations are also most successful when their people can be focused on the top level, achieving their full potential. This not only uleashes the highest levels of their skills and intelligence, but also supports an ever growing and improving workforce, because we're innately drwan toward self-improvement.
 
-__Engagement__ - is the level of positive attachement employees feel toward their job and organization.
+#### Engagement
+Is the level of positive attachement employees feel toward their job and organization.
 
 Causes of disengagement:
 * Feeling invisible
@@ -249,7 +245,7 @@ Causes of disengagement:
 * Lack of trust or confidence in senior leaders
 
 How to improve engagement:
-* Hiring people into the irght position
+* Hiring people into the right position
 * Job description match real work expectations
 * Providing training and developement
 * Accurate performance review systems
@@ -269,7 +265,7 @@ But the true spirit of engaging employees lives in the relationship that leaders
 
 4. Look for growth opportunities
 
-When employees feel respected and empowered they can face challenges with a collaborative spirit and positive attitude.
+When employees feel respected and empowered, they can face challenges with a collaborative spirit and positive attitude.
 
 #### Strategies for engaging a group or a team:
 1. Be clear about events and goals
@@ -277,7 +273,7 @@ When employees feel respected and empowered they can face challenges with a coll
 
     When you give the group the bigger picture, you first demonstrate trust and you also harness their intelligence and talent to solve the problem.
 
-3. Express your fith in the team
+3. Express your faith in the team
 
     By allowing them to generate their own solutions to the problem.
 
@@ -293,11 +289,11 @@ Discover 6 core components of each person:
 1. Employee's strength and weaknesses
 2. The factos that motivate and engage your emloyees
 3. Learning style (How best the person learns?)
-4. How well do they manag their tiggers
+4. How well do they manage their tiggers
 
     It is helpful to have an open and honest discussion about it.
 
-5. Emplyee's wrk/life balance needs
+5. Emplyee's work/life balance needs
 6. Employee's long-range career dreams
 
 
@@ -305,7 +301,7 @@ Discover 6 core components of each person:
 To be a team, group must have the following 4 qualities:
 1. A common purpose
 2. Efforts must be interdependent
-3. Share responsibility for success of failure
+3. Share responsibility for success or failure
 4. Belief: Better together than alone
 
 #### Reasons team fail:
@@ -317,7 +313,7 @@ To be a team, group must have the following 4 qualities:
 6. Lack of trust
 
 #### How to avoid fail
-Create a team gudelines by making clear the following:
+Create a team guidelines by making clear the following:
 1. Understand and agree on the goal
 
     * Purpose
@@ -332,9 +328,9 @@ Create a team gudelines by making clear the following:
     * Challenges
     * Peeves
 
-3. Agree on sared practices
+3. Agree on shared practices
 
-    * How evaulate ideas
+    * How evualate ideas
     * Make decisions
     * Appropriate behaviour
     * Communication
@@ -349,7 +345,7 @@ Create a team gudelines by making clear the following:
 
 As a leader, you need to:
 * Help them buld trust
-* Help through conflct
+* Help through conflict
 * Coach them when needed
 * Value their worth
 * Praise efforts and successes
@@ -368,7 +364,7 @@ Transition is the psychological process that involves the human thoughts and fee
 ![change-curve](./images/change-curve.png)
 
 #### Strategy
-1. Empower people n the change process
+1. Empower people in the change process
 
     Instead of pushing people to change, which triggers resistance. You genuinely involve them in designing and implementing tha change.
 
@@ -450,35 +446,15 @@ Great cultures have 4 key factors in common:
 3. People genuinely like colleagues
 4. Learning and development is encouraged
 
-These ideas and practices must come from the top and be infused into every aspect of the organization. Inclding:
+These ideas and practices must come from the top and be infused into every aspect of the organization. Including:
 * Company values
 * Hiring practices
 * Performance measurement system
-* Training and develoopment
+* Training and development
 * Policies and procedures
 
 [www.greatplacetowork.com](https://www.greatplacetowork.com/)
 
-
-### What steps do you take to motivate your team?
-Two ways:
-1. If you tend towards being friendly, approachable, and being seen as “one of the team”.
-
-    Building a close working relationship between all team members will result in a natural increase in motivation – for example, organising team events, encouraging socialisation together outside of work, showing flexibility in working hours in return for extra hard work during busy times, and rewards for the entire team together.
-
-2. If you feel like that method is too imprecise or too unprofessional, you can opt for a more serious and structured method of motivation
-
-    At the most basic level, direct praise for a job well done is a powerful motivator, and done openly in front of other team members it will motivate everybody, not just the person already doing a good job.
-
-    Bonuses, intangible but coveted rewards like “Employee of the Month” status, and the promise of promotion or further opportunities are all structured and distinct methods of driving improvement.
-
-    Negative feedback is also extremely important in this style of management. Letting someone know when the work they have done is not good enough can be the push they need to do better, but it needs to be carefully balanced with praise to avoid demoralizing them.
-
 ### Resources:
 * https://career.guru99.com/top-50-leadership-interview-questions/
 * https://content.wisestep.com/top-team-leader-interview-questions-answers/
-
-### How to motivate a team member
-
-
-
