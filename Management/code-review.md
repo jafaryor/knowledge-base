@@ -86,6 +86,30 @@ Verify that API endpoints perform appropriate authorization and authentication c
 * Reviews should be concise and written in neutral language.
 * Critique the code, not the author.
 
+
+### Best practices
+1. Know What to Look for in Code Reviews
+2. Build and Test — Before Code Reviews
+3. Don’t Review Code For Longer Than 60 Minutes
+
+    Never review for longer than 60 minutes at a time. Performance and attention-to-detail tend to drop off after that point. It’s best to do code reviews often (and in short sessions).
+
+4. Check No More Than 400 Lines at a Time
+5. Give Feedback That Helps (Not Hurts)
+6. Comment source code before review
+7. Use checklists
+
+    Checklists are the most effective way to eliminate frequently made errors and to combat the challenges of omission finding. Code review checklists also provide team members with clear expectations for each type of review and can be helpful to track for reporting and process improvement purposes.
+
+8. Practice lightweight code reviews
+9. Include Everyone in the Code Review Process
+10. Foster a Positive Culture
+
+    Fostering a positive culture around code reviews is important. Code reviews play a vital role in product quality. It doesn’t matter who introduced the error. What matters is the bug was caught before it went into the product. And that should be celebrated.
+
+11. Use static code analyzer.
+
+
 ### Responding to reviews
 * Respond to every comment, even if it’s only a simple “ACK” or “done.”
 * Squashing commits during the review process makes it hard for the reviewer to follow up on changes.
