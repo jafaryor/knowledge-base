@@ -36,7 +36,7 @@ ___
 
     The Waterfall model is a sequential development approach, in which development is seen as flowing steadily downwards (like a waterfall) through several phases, typically:
     * analysis
-    * software requirements specificationSoftware design
+    * software requirements specification
     * software design
     * testing
     * integration (if there are multiple subsystems)
@@ -289,17 +289,6 @@ ___
     ![kanban-practices](../images/kanban-practices.png)
 
     Where:
-
-    * __Limit Work in Progress (WIP)__: WIP is the number of items (i.e. cards, tickets, stories, tasks etc) that a team is currently working on.
-
-        There are lots of good reasons why you should limit WIP:
-        * You complete work faster
-        * You get feedback faster
-        * You deliver value to your customer faster
-        * You avoid context switching
-        * You can easily see bottlenecks
-        * You won’t be flooded by unfinished work because it helps you manage capacity
-
     * __Make process policies explicit__: A list of “rules” for each stage of the workflow.
 
     * __Improve collaboratively, evolve experimentally__: The one event I advise you borrow from Scrum and lock into your team calendar from the get-go is regular Retrospectives. A key difference between Scrum-styled verses Kanban-styled Retrospectives is the focus on metrics and experimentation in Kanban.
@@ -319,6 +308,47 @@ ___
 
     ![kanban-work](../images/kanban-work.png)
 
+    #### Kanban metrics
+    * __Limit Work in Progress (`WIP`)__: WIP is the number of items (i.e. cards, tickets, stories, tasks etc) that a team is currently working on.
+
+        There are lots of good reasons why you should limit WIP:
+        * You complete work faster
+        * You get feedback faster
+        * You deliver value to your customer faster
+        * You avoid context switching
+        * You can easily see bottlenecks
+        * You won’t be flooded by unfinished work because it helps you manage capacity
+
+    * __Cumulative Flow Diagram (`CFD`)__ is a simple yet powerful metric that provides you rich information about your system/ team capability at a glance. The CFD is a time-based plot of the cards as they move from the left to the right on a Kanban board.
+
+        ![cumulative-flow-diagram](../images/cumulative-flow-diagram.png)
+
+        The topmost band is typically the “Backlog” where work items originate and the bottom band is the archived or completed cards
+
+    * __Lead Time__ - measures the total time it takes for work to move through the value stream, from the moment the work is requested to the time it’s delivered. Lead time measures duration from beginning to end. This includes process time, as well as time that work spends sitting in queues, or wait states.
+
+        By tracking lead time metrics over a set period of time, you can determine impact of any changes you make — whether they help you deliver value faster, or get in the way of delivering value to your customers. Lead time helps you become more predictable by quantifying the probability of the percentage of work that will get done in a particular time frame.
+
+    * __Cycle Time__ - measures how long it takes a work item to get from point A to point B. Since cycle time can be measured from any two starting and ending points on the board, it’s common for several categories of cycle time to exist on one board (e.g., deployment cycle time, development cycle time, QA cycle time, etc.).
+
+        For example, if you want to improve the delivery capabilities of your software development team, your cycle time measurement can track the time it takes a work item to go from the commitment point to deployment.
+        
+        The flexibility between lead time and cycle time allows you to improve specific components of your process so you can better impact overall efficiency.
+
+    * __Queues__ - form (формироваться) in your process when work waits between different stages.
+
+        Identify the queues in your workflow so you can see where work could get stuck in your process. Track the amount of work you have in queues and try to minimize it, relative to the total WIP in the system. Shorter queues lead to shorter wait times and lower overall cycle time.
+
+    * Kanban systems commonly use a __Blocker__ symbol to visually indicate work that cannot move forward in the process.
+
+    * __Throughput__ - is the average number of units processed per time unit. Examples:
+        * “cards per day,”
+        * “cards per week,”
+        * “story points per iteration.”
+
+        Determine throughput and pair it with cycle time and lead time to get an advanced picture of your workflow.
+
+    #### Improvements
     Once you are up and running as a Kanban team, you will need to work on incremental process improvements. This is where Retrospectives come in. How to hold it:
     1. Open: Use a quick check-in activity to set the stage and engage the team.
     2. Last improvement: Review the last experiment. What did we learn from it? Should we keep it or discard it?
@@ -542,7 +572,7 @@ ___
         * Ideal progress as a guideline
         * Real progress
 
-        ![burndown-chart](../images/burndoswn-chart.jpg)
+        ![burndown-chart](../images/burndown-chart.jpg)
 
         #### [What burndown charts can say](http://www.methodsandtools.com/archive/scrumburndown.php)
 
