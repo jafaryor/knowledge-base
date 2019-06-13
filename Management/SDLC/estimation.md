@@ -13,12 +13,27 @@ Notable features of story points are that they:
 > Consistency reduces complexity and thus optimises predictability.
 
 ### Story points vs. hours
-Here are few reasons to use story points:
+Why hours is bad option:
+* Some tasks are difficult to estimate precisely.
+* If one developer estimates a project but another completes the task, the estimate becomes invalid. The time needed to complete a task will vary based on a developer’s level of experience.
+* People generally underestimate obstacles they might face and consider only the best-case scenario.
+
+Why story points are better than hours:
+* No correlation with skills and experience of the estimator
+* Velocity is Tracked
+* No Re-Estimation if Velocity Changes (Flexibility)
+
+    Let you re-plan product release deadlines without re-estimating all tasks if members of the team are changed.
+
 * Dates don’t account for the non-project related work that inevitably creeps into our days: emails, meetings, and interviews that a team member may be involved in.
-* Dates have an emotional attachment to them. Relative estimation removes the emotional attachment.
-* Each team will estimate work on a slightly different scale, which means their velocity (measured in points) will naturally be different. This, in turn, makes it impossible to play politics using velocity as a weapon.
 * Once you agree on the relative effort of each story point value, you can assign points quickly without much debate.
 * Story points reward team members for solving problems based on difficulty, not time spent. This keeps team members focused on shipping value, not spending time.
+
+### Fibonacci Sequence
+Teams use fibonacci sequence (`1, 2, 3, 5, 8, 13, 21 ...`), rather than a linear `1 – 10` as it forces them to provide a relative estimate. Easier to ask ‘is that a 5 or an 8?’ than ‘is that a 6 or a 7?’.
+
+The idea is that the larger the story is, the more uncertainty there is around it and the less accurate the estimate will be. Using the Fibonacci sequence helps teams to recognise this uncertainty, deliberately creating a lack of precision instead of wasting time trying to produce estimates that might also carry a false degree of confidence.
+
 
 ### Techniques
 ___
