@@ -1,11 +1,13 @@
 # Critical Rendering Path
 The __Critical Path__ refers to the resources that must be loaded before your initial render.
 
-Optimizing for performance is all about understanding what happens in these intermediate steps between receiving the HTML, CSS, and JavaScript bytes and the required processing to turn them into rendered pixels - that's the __critical rendering path__.
+The __Critical Rendering Path__ is the sequence of steps the browser goes through to convert the HTML, CSS, and JavaScript into pixels on the screen.
 
 ![progressive-rendering](../images/progressive-rendering.png)
 
 By optimizing the critical rendering path we can significantly improve the time to first render of our pages.
+
+The critical rendering path includes the Document Object Model (DOM), CSS Object Model (CSSOM), render tree and layout.
 
 ### How does the browser rendering engine work?
 In order to render content the browser has to go through a series of steps:
