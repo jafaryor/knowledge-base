@@ -101,7 +101,7 @@ The HTML file will be parsed until the script file is hit, at that point parsing
 ![script](./images/script.svg)
 
 ### Attributes:
-* `async` = `false` - a Boolean attribute indicating that the browser should, if possible, execute the script asynchronously.
+* `async` - a Boolean attribute indicating that the browser should, if possible, execute the script asynchronously.
 
     The browser downloads the script asynchronously while it continues to parse the HTML document. When the script finishes downloading, parsing is blocked while the script executes.
 
