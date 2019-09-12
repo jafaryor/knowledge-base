@@ -1,7 +1,7 @@
 ## Video
 
 ### What is video
-__Co__der + __Dec__ode = Codec.
+__Co__ der + __Dec__ ode = __Codec__
 
 Codec is the algorithm which used for packaging and unpackaging for further streaming and recording.
 
