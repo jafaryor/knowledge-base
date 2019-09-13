@@ -11,7 +11,7 @@ Video format is a standarized set of rules for storing containers, codec, meta d
 
 ![video-container.png](../images/video-container.png)
 
-Bitrate - rate at which data is encoded per second. The higher it is the higher the quality as mre data is transmitted.
+Bitrate - rate at which data is encoded per second. The higher it is the higher the quality as more data is transmitted.
 
 The higher the frame rate, more data need to be encoded.
 
