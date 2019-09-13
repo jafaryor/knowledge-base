@@ -3,7 +3,7 @@
 ### What is video
 __Co__ der + __Dec__ ode = __Codec__
 
-Codec is the algorithm which used for packaging and unpackaging for further streaming and recording.
+Codec is the algorithm which used for packaging and unpackaging for further streaming and playing.
 
 Encoding is another term for compression. Which makes the size of file, making it easier to transmit over distance. Decoding reverses the process.
 
