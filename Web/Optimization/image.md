@@ -30,6 +30,45 @@ Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify
 
 [Converting MP4 to WEBM](https://gist.github.com/Vestride/278e13915894821e1d6f)
 
+### Image lazy-loading
+* [_IntersectionObserver_](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/)
+
+* [_Native lazy-loading_](https://addyosmani.com/blog/lazy-loading/)
+
+    The `loading` attribute allows a browser to defer loading offscreen images and iframes until users scroll near them. `loading` supports three values:
+
+    * lazy: is a good candidate for lazy loading.
+    * eager: is not a good candidate for lazy loading. Load right away.
+    * auto: browser will determine whether or not to lazily load.
+
+    ```html
+    <!-- Lazy-load an offscreen image when the user scrolls near it -->
+    <img src="unicorn.jpg" loading="lazy" alt=".."/>
+
+    <!-- Load an image right away instead of lazy-loading -->
+    <img src="unicorn.jpg" loading="eager" alt=".."/>
+
+    <!-- Browser decides whether or not to lazy-load the image -->
+    <img src="unicorn.jpg" loading="auto" alt=".."/>
+
+    <!-- Lazy-load images in <picture>. <img> is the one driving image 
+    loading so <picture> and srcset fall off of that -->
+    <picture>
+    <source media="(min-width: 40em)" srcset="big.jpg 1x, big-hd.jpg 2x">
+    <source srcset="small.jpg 1x, small-hd.jpg 2x">
+    <img src="fallback.jpg" loading="lazy">
+    </picture>
+
+    <!-- Lazy-load an image that has srcset specified -->
+    <img src="small.jpg"
+        srcset="large.jpg 1024w, medium.jpg 640w, small.jpg 320w"
+        sizes="(min-width: 36em) 33.3vw, 100vw"
+        alt="A rad wolf" loading="lazy">
+
+    <!-- Lazy-load an offscreen iframe when the user scrolls near it -->
+    <iframe src="video-player.html" loading="lazy"></iframe>
+    ```
+
 ### Lossy Compression
 The first form of compression is lossy. Lossy compression involves eliminating some of the data in your image. Because of this, it means you might see degradation (reduction in quality or what some refer to as pixelated). So you have to be careful by how much you’re reducing your image. Not only due to quality, but also because you can’t reverse the process. Of course, one of the great benefits of lossy compression and why it’s one of the most popular compression methods is that you can reduce the file size by a very large amount.
 
