@@ -221,20 +221,6 @@
 
     Image resources for `<img>`, `<picture>`, `srcset` and SVGs can all take advantage of this optimization.
 
-    `<video preload>`
-
-    This enumerated attribute is intended to provide a hint to the browser about what the author thinks will lead to the best user experience with regards to what content is loaded before the video is played. It may have one of the following values:
-
-    * `none`: Indicates that the video should not be preloaded.
-    * `metadata`: Indicates that only video metadata (e.g. length) is fetched.
-    * `auto`: Indicates that the whole video file can be downloaded, even if the user is not expected to use it.
-    * _empty string_: Synonym of the `auto` value.
-    The default value is different for each browser. The spec advises it to be set to `metadata`.
-
-    > The `autoplay` attribute has precedence over `preload`. If `autoplay` is specified, the browser would obviously need to start downloading the video for playback.
-
-    The specification does not force the browser to follow the value of this attribute; it is a mere hint.
-
 * __Prefetch__
 
     `prefetch` informs the browser of a resource that is expected to be needed as part of a future navigation or user interaction, for example, something that might be needed later, if the user takes the action we’re expecting. These resources are fetched at the Lowest priority in Chrome, when the current page is done loading and there’s bandwidth available.
