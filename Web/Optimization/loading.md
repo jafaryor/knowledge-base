@@ -219,38 +219,58 @@
     <link rel="preload" as="image" href="logo.jpg"/>
     ```
 
-    Image resources for `<img>`, `<picture>`, srcset and SVGs can all take advantage of this optimization.
+    Image resources for `<img>`, `<picture>`, `srcset` and SVGs can all take advantage of this optimization.
+
+    `<video preload>`
+
+    This enumerated attribute is intended to provide a hint to the browser about what the author thinks will lead to the best user experience with regards to what content is loaded before the video is played. It may have one of the following values:
+
+    * `none`: Indicates that the video should not be preloaded.
+    * `metadata`: Indicates that only video metadata (e.g. length) is fetched.
+    * `auto`: Indicates that the whole video file can be downloaded, even if the user is not expected to use it.
+    * _empty string_: Synonym of the `auto` value.
+    The default value is different for each browser. The spec advises it to be set to `metadata`.
+
+    > The `autoplay` attribute has precedence over `preload`. If `autoplay` is specified, the browser would obviously need to start downloading the video for playback.
+
+    The specification does not force the browser to follow the value of this attribute; it is a mere hint.
 
 * __Prefetch__
 
     `prefetch` informs the browser of a resource that is expected to be needed as part of a future navigation or user interaction, for example, something that might be needed later, if the user takes the action we’re expecting. These resources are fetched at the Lowest priority in Chrome, when the current page is done loading and there’s bandwidth available.
     ```html
     <link rel="prefetch" href="page-2.html">
+    <link as="image" href="/images/animation.svg" rel="prefetch"> 
+    ```
+
+* __Preconnect to server__ (_Experimantal_)
+
+    Provides a hint to the browser suggesting that it open a connection to the linked web site in advance, without disclosing any private information or downloading any content, so that when the link is followed the linked content can be fetched more quickly.
+
+    ```html
+    <link href="wss://server" rel="preconnect"> 
+    <link href="stun:stun.some-domain" rel="preconnect">   
+    ```
+
+* __DNS prefetch__
+
+    Suggests that the browser fetch the linked resource in advance, as it is likely to be requested by the user. Starting with Firefox 44, the value of the crossorigin attribute is taken into consideration, making it possible to make anonymous prefetches.
+
+    > Note: The Link Prefetch FAQ has details on which links can be prefetched and on alternative methods.
+
+    ```html
+    <link rel="dns-prefetch" href="//example.com">
+    ```
+
+* __Prerender__ (`Experimantal`)
+
+    Suggests that the browser fetch the linked resource in advance, and that it also render the prefetched content offscreen so it can be quickly presented to the user once needed.
+
+    ```html
+    <link rel="prerender" href="//example.com">
     ```
 
 [Read More](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/automating-image-optimization/)
-
-### Image decode and resize costs
-When a browser fetches an image, it has to decode the image from the original source format (e.g JPEG) to a bitmap in memory. Often the image needs to be resized (e.g width has been set to a percentage of its container). Decoding and resizing images are expensive and can delay how long it takes for an image to be displayed.
-
-![image-pipeline](../images/image-pipeline.jpg)
-
-> Omitting the `width` or `height` attributes on an image can also negatively impact performance. Without them, a browser assigns a smaller placeholder region for the image until sufficient bytes have arrived for it to know the correct dimensions. At that point, the document layout must be updated in what can be a costly step called reflow.
-
-### Replace Animated GIFs with Video
-Delivering the same file as an MP4 video can often shave _80%_ or more off your file-size. Not only do GIFs often waste significant bandwidth, but they take longer to load, include fewer colors and generally offer sub-part user experiences.
-
-GIFs (and other animated image formats) are suboptimal because an image decode is incurred for every frame in the image, which can contribute to jank. This makes sense, because each frame in a GIF is simply another image.
-
-[The Book of GIF](https://rigor.com/wp-content/uploads/2017/03/TheBookofGIFPDF.pdf)
-
-Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify), [GIFV](https://blog.imgur.com//2014/10/09/introducing-gifv/)
-
-[Article about how to convert GIF to Video](https://rigor.com/blog/2015/12/optimizing-animated-gifs-with-html5-video)
-
-[Step-by-step Instructions](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/)
-
-[Converting MP4 to WEBM](https://gist.github.com/Vestride/278e13915894821e1d6f)
 
 ### PRPL
 `PRPL` is a pattern that optimizes for interactivity through aggressive code-splitting and caching.

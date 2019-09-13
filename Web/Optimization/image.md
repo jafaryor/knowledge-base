@@ -1,5 +1,6 @@
-## Optimize image assets
+## Images
 
+### How to optimize
 * Use Image Compression Tools
 * Choose right format
 * Reduce image size
@@ -7,12 +8,34 @@
 * Lazy loading images
 * Intersection Observer API
 
-#### Lossy Compression
+### Image decode and resize costs
+When a browser fetches an image, it has to decode the image from the original source format (e.g JPEG) to a bitmap in memory. Often the image needs to be resized (e.g width has been set to a percentage of its container). Decoding and resizing images are expensive and can delay how long it takes for an image to be displayed.
+
+![image-pipeline](../images/image-pipeline.jpg)
+
+> Omitting the `width` or `height` attributes on an image can also negatively impact performance. Without them, a browser assigns a smaller placeholder region for the image until sufficient bytes have arrived for it to know the correct dimensions. At that point, the document layout must be updated in what can be a costly step called reflow.
+
+### Replace Animated GIFs with Video
+Delivering the same file as an MP4 video can often shave _80%_ or more off your file-size. Not only do GIFs often waste significant bandwidth, but they take longer to load, include fewer colors and generally offer sub-part user experiences.
+
+GIFs (and other animated image formats) are suboptimal because an image decode is incurred for every frame in the image, which can contribute to jank. This makes sense, because each frame in a GIF is simply another image.
+
+[The Book of GIF](https://rigor.com/wp-content/uploads/2017/03/TheBookofGIFPDF.pdf)
+
+Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify), [GIFV](https://blog.imgur.com//2014/10/09/introducing-gifv/)
+
+[Article about how to convert GIF to Video](https://rigor.com/blog/2015/12/optimizing-animated-gifs-with-html5-video)
+
+[Step-by-step Instructions](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/)
+
+[Converting MP4 to WEBM](https://gist.github.com/Vestride/278e13915894821e1d6f)
+
+### Lossy Compression
 The first form of compression is lossy. Lossy compression involves eliminating some of the data in your image. Because of this, it means you might see degradation (reduction in quality or what some refer to as pixelated). So you have to be careful by how much you’re reducing your image. Not only due to quality, but also because you can’t reverse the process. Of course, one of the great benefits of lossy compression and why it’s one of the most popular compression methods is that you can reduce the file size by a very large amount.
 
 > JPEGs is lossy image formats.
 
-#### Lossless Compression
+### Lossless Compression
 Now it’s time to dive into the second form of compression which is lossless. Lossless compression, unlike lossy, doesn’t reduce the quality of the image. How is this possible? It’s usually done by removing unnecessary metadata (automatically generated data produced by the device capturing the image). However, the biggest drawback to this method is that you won’t see a significant reduction in file size.
 
 > GIF, and PNG are lossless image formats.
