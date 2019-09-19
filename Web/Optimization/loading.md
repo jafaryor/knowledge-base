@@ -3,23 +3,6 @@
 * Text minification.
 * Remote resource compression with `Gzip`.
 
-### Graphical Content
-* As a rule of thumb, use `PNG` for clip art, line drawings, or wherever you need transparency, `JPG` for photographs (as it might weight less than `PNG`), and `GIF` when you need animation.
-* __Remove Image Metadata__
-* __Resize Image__
-
-    All your images should be appropriately sized for their intended use and should not rely on the browser to resize them for rendering.
-
-* __Crop images__ to show only what's important
-
-* __Reduce image quality__
-
-    In most cases, you can reduce the image quality, and thus the file size, without suffering any visible quality difference.
-
-* __Compress Images__
-
-    `PNG` and `JPG` images can be squashed down even more using a compression tool, which reduces file size without affecting either image dimensions or visual quality.
-
 ### HTTP
 * __Use module bundler__
 * __Combine Graphical Resources__ to get the `sprite`.
@@ -81,112 +64,7 @@
 
 > Test with low bandwidth and high latency
 
-### Optimizing Content Efficiency
-* Eliminate unnecessary data
-* Minification
-
-    It refers to the removal of whitespace and other nonessential characters like comments so that the code is still valid but as compact as possible. Minified code is still valid code in all respects and can be run immediately.
-
-* Data Compression
-
-    Compressed code would have to be uncompressed first before execution.
-
-* Text compression with `GZIP`
-
-    `GZIP` is a generic compressor that can be applied to any stream of bytes. However, in practice, it performs best on text-based content.
-
-### Image optimization:
-* __Use alternative technologies if possible__
-
-  * CSS effects
-  * Web Fonts
-
-* __Use `<picture>`__ for responsive images.
-
-* __Vector vs. Raster images__
-
-  * Vector images are ideal for images that consist of geometric shapes.
-
-  * Vector images are zoom and resolution-independent.
-
-  * Raster images should be used for complex scenes with lots of irregular shapes and details as raster images encode image data on a per-pixel basis.
-
-* __Optimizing vector images__
-
-  * SVG is an XML-based image format
-  * SVG files should be minified to reduce their size
-  * SVG files should be compressed with `GZIP`
-  * Optimization tool: [SVGOMG](https://jakearchibald.github.io/svgomg/)
-
-* __Optimizing raster images__
-
-  * A raster image is a grid of pixels
-  * Each pixel encodes color and transparency information
-  * Reduce color palette and [delta encoding](https://en.wikipedia.org/wiki/Delta_encoding)
-
-* __Selecting the right image format__
-
-    _JPEG_ are for photographs and realistic images. _PNG_ are for line art, text-heavy images, and images with few colors.
-
-    | Format | Transparency | Animation | Browser |
-    | - | - | - | - |
-    | [GIF](http://en.wikipedia.org/wiki/Graphics_Interchange_Format) |	Yes |	Yes |	All |
-    | [PNG](http://en.wikipedia.org/wiki/Portable_Network_Graphics) |	Yes |	No | All |
-    | [JPEG](http://en.wikipedia.org/wiki/JPEG) | No | No | All |
-    | [JPEG XR](http://en.wikipedia.org/wiki/JPEG_XR) | Yes | Yes | IE |
-    | [WebP](http://en.wikipedia.org/wiki/WebP) | Yes | Yes | Chrome, Opera, Android |
-
-    ![format-tree](../images/format-tree.png)
-
-    > If you are using a `Webview` to render content in your native application, then you have full control of the client and can use `WebP` exclusively! [Watch on YouTube](https://www.youtube.com/watch?v=pS8udLMOOaE)
-
-* __Tools__
-
-    | Tool | Description |
-    | - | - |
-    | [gifsicle](http://www.lcdf.org/gifsicle/) | create and optimize GIF images |
-    | [jpegtran](http://jpegclub.org/jpegtran/) | optimize JPEG images |
-    | [optipng](http://optipng.sourceforge.net/) | lossless PNG optimization |
-    | [pngquant](http://pngquant.org/) | lossy PNG optimization |
-
-* __Delivering scaled image assets__
-
-  * Resize images on the server and ensure that the "display" size is as close as possible to the "natural" size of the image. Pay close attention to large images in particular, as they account for largest overhead when resized!
-
-* __Remove unnecessary image metadata__
-
-    Many images contain unnecessary metadata about the asset: geo information, camera information, and so on. Use appropriate tools to strip this data
-
-### Automating Image Optimization
-
-* The browser itself is capable of choosing which image format to display through the use of the `<picture>` tag. The `<picture> `tag utilizes multiple `<source>` elements, with one `<img>` tag, which is the actual DOM element which contains the image. The browser cycles through the sources and retrieves the first match. If the `<picture>` tag isn't supported in the user's browser, a `<div>` is rendered and the `<img>` tag is used.
-    ```html
-    <picture>
-        <source srcset='paul_irish.jxr' type='image/vnd.ms-photo'>
-        <source srcset='paul_irish.jp2' type='image/jp2'>
-        <source srcset='paul_irish.webp' type='image/webp'>
-        <img src='paul_irish.jpg' alt='paul'>
-    </picture>
-    ```
-
-  * `srcset`
-
-    Allows a browser to select the best available image per device, e.g selecting a 2x image for a 2x mobile display. Browsers without `srcset` support can fallback to the default `src` specified in the `<img>` tag.
-
-    ```html
-    <img srcset="paul-irish-320w.jpg,
-                paul-irish-640w.jpg 2x,
-                paul-irish-960w.jpg 3x"
-        src="paul-irish-960w.jpg" alt="Paul Irish cameo">
-    ```
-
-    [Client Hints](https://www.smashingmagazine.com/2016/01/leaner-responsive-images-client-hints/) can also provide an alternative to specifying each possible pixel density and format in your responsive image markup. Instead, they append this information to the HTTP request so web servers can pick the best fit for the current device's screen density.
-
-* __Lazy-load non-critical images__
-
-    Use [`Intersection Observer`](https://developers.google.com/web/updates/2016/04/intersectionobserver)
-
-    [__Read More__](https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/)
+### CSS
 
 * __Avoiding the `display: none` trap__
 
@@ -196,7 +74,7 @@
     ```
     No. The image will be requested although it is hidden.
 
-    Does `display: none` avoid triggering a request for a background: `url()`?
+    Does `display: none` avoid triggering a request for a `background: url()`?
     ```html
     <div style="display:none">
         <div style="background: url(img.jpg)"></div>
@@ -421,39 +299,3 @@ Code-splitting can be done in the following ways:
     Like Parcel, webpack can split dynamic imports to separate files. It does so with little guidance, in fact.
 
 Use [Workbox](https://developers.google.com/web/tools/workbox/) to add service workers for your app.
-
-### What can go wrong when lazy loading images and videos
-* Layout shifting and placeholders
-
-    Lazy loading media can cause shifting in the layout if placeholders aren't used. These changes can be disorienting for users and trigger expensive DOM layout operations that consume system resources and contribute to jank. At a minimum, consider using a solid color placeholder occupying the same dimensions as the target image, or techniques such as [LQIP](http://www.guypo.com/introducing-lqip-low-quality-image-placeholders) (Low Quality Image Placeholders) or [SQIP](https://github.com/technopagan/sqip) (SVG-Based Image Placeholder) that hint at the content of a media item before it loads.
-
-    For `<img>` tags, src should initially point to a placeholder until that attribute is updated with the final image URL. Use the `poster` attribute in a `<video>` element to point to a placeholder image. Additionally, use `width` and `height` attributes on both `<img>` and `<video>` tags. This ensures that transitioning from placeholders to final images won't change the rendered size of the element as media loads.
-
-    LQIP’s logic is simple. In a sense, this is like loading progressive JPEGs, except it’s page wide. There are more implementation details below, but it boils down to two main steps:
-    * Initially load the page with low quality images
-
-        ```html
-        <!-- An image that eventually gets lazy loaded by JavaScript -->
-        <img class="lazy" src="placeholder-image.jpg" data-src="image-to-lazy-load.jpg" alt="I'm an image!">
-        ```
-
-    * Once the page loaded (e.g. in the onload event), replace them with the full quality images
-
-* Image decoding delays
-
-    Loading large images in JavaScript and dropping them into the DOM can tie up the main thread, causing the user interface to be unresponsive for a short period of time while decoding occurs. [Asynchronously decoding images using the `decode` method](https://medium.com/dailyjs/image-loading-with-image-decode-b03652e7d2d2) prior to inserting them into the DOM can cut down on this sort of jank, but beware: It's not available everywhere yet, and it adds complexity to lazy loading logic.
-
-    ```javascript
-    var newImage = new Image();
-    newImage.src = "my-awesome-image.jpg";
-
-    if ("decode" in newImage) {
-        // Fancy decoding logic
-        newImage.decode().then(function() {
-            imageContainer.appendChild(newImage);
-        });
-    } else {
-        // Regular image load
-        imageContainer.appendChild(newImage);
-    }
-    ```
