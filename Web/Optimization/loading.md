@@ -298,4 +298,6 @@ Code-splitting can be done in the following ways:
 
     Like Parcel, webpack can split dynamic imports to separate files. It does so with little guidance, in fact.
 
-Use [Workbox](https://developers.google.com/web/tools/workbox/) to add service workers for your app.
+* __Service Worker__
+
+    Use [Workbox](https://developers.google.com/web/tools/workbox/) to add service workers for your app.
