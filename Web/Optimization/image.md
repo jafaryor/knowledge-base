@@ -3,8 +3,6 @@
 ### How to optimize
 * __Choose right format__
 * __Image placeholder__
-* __Lazy loading images__
-* __Intersection Observer API__
 * __Remove Image Metadata__
 * __Resize Image__
 
@@ -41,20 +39,6 @@ Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify
 [Step-by-step Instructions](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/)
 
 [Converting MP4 to WEBM](https://gist.github.com/Vestride/278e13915894821e1d6f)
-
-### Optimizing Content Efficiency
-* Eliminate unnecessary data
-* Minification
-
-    It refers to the removal of whitespace and other nonessential characters like comments so that the code is still valid but as compact as possible. Minified code is still valid code in all respects and can be run immediately.
-
-* Data Compression
-
-    Compressed code would have to be uncompressed first before execution.
-
-* Text compression with `GZIP`
-
-    `GZIP` is a generic compressor that can be applied to any stream of bytes. However, in practice, it performs best on text-based content.
 
 ### Image optimization:
 * __Use alternative technologies if possible__
@@ -188,7 +172,7 @@ The first form of compression is lossy. Lossy compression involves eliminating s
 > JPEGs is lossy image formats.
 
 ### Lossless Compression
-Now it’s time to dive into the second form of compression which is lossless. Lossless compression, unlike lossy, doesn’t reduce the quality of the image. How is this possible? It’s usually done by removing unnecessary metadata (automatically generated data produced by the device capturing the image). However, the biggest drawback to this method is that you won’t see a significant reduction in file size.
+Lossless compression, unlike lossy, doesn’t reduce the quality of the image. How is this possible? It’s usually done by removing unnecessary metadata (automatically generated data produced by the device capturing the image). However, the biggest drawback to this method is that you won’t see a significant reduction in file size.
 
 > GIF, and PNG are lossless image formats.
 
@@ -198,6 +182,15 @@ JPGs can support millions of colors, so this file type is ideal for real-life im
 The JPG is “lossy” - which means that when the data is compressed, unnecessary information is deleted from the file permanently. That means that some quality will be lost or compromised when any file is converted to a JPG.
 
 Think of JPG as the default file format for uploading pictures to the web, unless they need transparency, have text in them, are animated, or would benefit from color changes (like logos or icons).
+
+### PNG (Portable Network Graphics)
+Represents a bit-mapped graphics format. The PNG images could be palette based or in formats such as grayscale or RGB. PNG supports 24 bits per pixel, so that a single image could reference over 16 million colors, as compared to the palette of 256 distinct colors supported by the GIF format.
+
+PNG (Portable Network Graphics) is a file format used for lossless image compression. PNG has almost entirely replaced the Graphics Interchange Format (GIF) that was widely used in the past.
+
+Like a GIF, a PNG file is compressed in lossless fashion, meaning all image information is restored when the file is decompressed during viewing. A PNG file is not intended to replace the JPEG format, which is "lossy" but lets the creator make a trade-off between file size and image quality when the image is compressed. Typically, an image in a PNG file can be 10 percent to 30 percent more compressed than in a GIF format.
+
+One of the standout features of PNG is its support of transparency.
 
 ### GIF (Graphics Interchange Format)
 GIFs are “lossless” - meaning that a GIF retains all the data contained in the file, but they are smaller than JPGs, specifically because they only accommodate up to 256 indexed colors.
@@ -258,6 +251,41 @@ While video can take more time to encode, HTML5 does offer a number of advantage
 * Small file size
 * Better performance
 * More colors and detail
+
+### Images vs Fonts
+Web Fonts are _scalable_, _zoomable_, and _high-DPI friendly_, meaning they can be easily shown across desktops, tablet, and mobile phones no matter what the resolution. Other advantages of using web fonts are _performance_, _design_, _readability_, and _accessibility_.
+
+The biggest disadvantage of using web fonts is that it instantly affects the overall rendering speed of your pages. If you are using a 3rd party such as Google or Typekit, then you also have no control if their services go down.
+
+#### Fallback Fonts
+You always want to have a fallback font in case the third party web font host is down or the visitor is using an older browser. These are referred to as web safe fonts, which are pre-installed by many operating systems and don’t use the CSS3 @font-face declaration.
+
+```css
+@font-face {
+    font-family: 'Open Sans';
+    src: local('Open Sans'), local('OpenSans'),
+        url('./fonts/open-sans.woff2') format('woff2'),
+        url('./fonts/open-sans.woff') format('woff');
+}
+
+body {
+    font: 18px 'Open Sans', Arial, sans-serif;
+}
+```
+
+CSS is by default treated as a render blocking resource. And since you are calling your web fonts with a CSS3 `@font` declaration this automatically means that web fonts can also be render blocking, keeping your page from loading as quickly as it could.
+
+> To optimize your critical rendering path and prevent render blocking you can include the CSS required for the initial rendering, typically styles for the above-the-fold content, directly in the HEAD section in the `<style></style>` elements. Then move the rest of your CSS to the bottom before the `</body>` element.
+
+You could also load your Google fonts asynchronously by using [Google’s Web Font Loader](https://developers.google.com/fonts/docs/webfont_loader).
+
+#### FOIT
+FOIT, or __“Flash of Invisible Text”__ can be another big disadvantage when using web fonts. This is when a browser hides all text that should be styled with a custom font until that font has finished loading. This is definitely something you want to avoid when optimizing your font’s performance because users will see a blank screen. This could increase your bounce rate and it hurts your branding.
+
+#### Others
+Store the Web Fonts in LocalStorage with Base64 Encoding.
+
+[Read More](https://www.keycdn.com/blog/web-font-performance)
 
 ### Conclusion
 If you’re uploading vacation pictures to Facebook, JPG is the winner. You want to make a short, hilarious animation from your favourite movie scene? GIF. If you’re going to be using high quality images, detailed icons or need to preserve transparency, PNG is the winner. SVG is ideal for high quality images and can be scaled to ANY size.

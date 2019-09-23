@@ -1,7 +1,17 @@
 ## Loading Performance
-### Text Content:
-* Text minification.
-* Remote resource compression with `Gzip`.
+### Optimizing Content Efficiency
+* Eliminate unnecessary data
+* Minification
+
+    It refers to the removal of whitespace and other nonessential characters like comments so that the code is still valid but as compact as possible. Minified code is still valid code in all respects and can be run immediately.
+
+* Data Compression
+
+    Compressed code would have to be uncompressed first before execution.
+
+* Text compression with `GZIP`
+
+    `GZIP` is a generic compressor that can be applied to any stream of bytes. However, in practice, it performs best on text-based content.
 
 ### HTTP
 * __Use module bundler__
@@ -80,7 +90,7 @@
         <div style="background: url(img.jpg)"></div>
     </div>
     ```
-    Yes. CSS backgrounds aren’t fetched as soon as an element is parsed.
+    Yes. CSS `background` is fetched as soon as an element is parsed.
 
 * __Caching image assets__
 
