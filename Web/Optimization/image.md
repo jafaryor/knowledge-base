@@ -166,24 +166,92 @@ Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify
     <iframe src="video-player.html" loading="lazy"></iframe>
     ```
 
-### Lossy Compression
+### Responsive images
+#### Resolution switching: Different sizes
+Resolution switching: The problem whereby you want to serve smaller image files to narrow screen devices, as they don't need huge images like desktop displays do — and also optionally that you want to serve different resolution images to high density/low density screens. You can also use SVG.
+
+```html
+<img srcset="elva-fairy-320w.jpg 320w,
+             elva-fairy-480w.jpg 480w,
+             elva-fairy-800w.jpg 800w"
+     sizes="(max-width: 320px) 280px,
+            (max-width: 480px) 440px,
+            800px"
+     src="elva-fairy-800w.jpg" alt="Elva dressed as a fairy">
+```
+
+`srcset` defines the set of images we will allow the browser to choose between, and what size each image is. Before each comma, we write:
+* An image filename (`elva-fairy-480w.jpg`)
+* A space
+* The image's inherent _width in pixels_ (`480w`) — note that this uses the w unit, not px as you might expect. This is the image's real size, which can be found by inspecting the image file on your computer (for example, on a Mac you can select the image in Finder and press `Cmd + I` to bring up the info screen).
+
+`sizes` defines a set of media conditions (e.g. screen widths) and indicates what image size would be best to choose, when certain media conditions are true — these are the hints we talked about earlier. In this case, before each comma we write:
+* A media condition (`(max-width:480px)`) — describes a possible state that the screen can be in. In this case, we are saying "when the viewport width is 480 pixels or less".
+* A space
+* The width of the slot the image will fill when the media condition is true (`440px`)
+
+> For the slot width, you may provide an absolute length (`px`, `em`) or a length relative to the viewport (`vw`), but not percentages.
+
+So, with these attributes in place, the browser will:
+* Look at its device width
+* Work out which media condition in the sizes list is the first one to be true
+* Look at the slot size given to that media query
+* Load the image referenced in the srcset list that most closely matches the chosen slot size
+
+If a supporting browser with a viewport width of `480px` loads the page, the (`max-width: 480px`) media condition will be true, and so the browser chooses the `440px` slot. The `elva-fairy-480w.jpg` will be loaded, as its inherent width (`480w`) is the closest to `440px`.
+
+> Older browsers that don't support these features will just ignore them. Instead, those browsers will go ahead and load the image referenced in the `src` attribute as normal.
+
+#### Resolution switching: Same size, different resolutions
+```html
+<img width="320px"
+    srcset="elva-fairy-320w.jpg,
+             elva-fairy-480w.jpg 1.5x,
+             elva-fairy-640w.jpg 2x"
+    src="elva-fairy-640w.jpg" alt="Elva dressed as a fairy">
+```
+
+In this case, `sizes` is not needed — the browser simply works out what resolution the display is that it is being shown on, and serves the most appropriate image referenced in the `srcset`. 
+
+So if the device accessing the page has a standard/low resolution display, with one device pixel representing each CSS pixel, the `elva-fairy-320w.jpg` image will be loaded (the `1x` is implied, so you don't need to include it.) If the device has a high resolution of two device pixels per CSS pixel or more, the `elva-fairy-640w.jpg` image will be loaded.
+
+#### Art direction
+Art direction: The problem whereby you want to serve cropped images for different layouts — for example a landscape image showing a full scene for a desktop layout, and a portrait image showing the main subject zoomed in for a mobile layout.
+
+```html
+<picture>
+  <source media="(max-width: 799px)" srcset="elva-480w-close-portrait.jpg">
+  <source media="(min-width: 800px)" srcset="elva-800w.jpg">
+  <img src="elva-800w.jpg" alt="Chris standing up holding his daughter Elva">
+</picture>
+```
+
+* The `<source>` elements include a media attribute that contains a media condition. The first one that returns true will be displayed. In this case, if the viewport width is `799px` wide or less, the first `<source>` element's image will be displayed. If the viewport width is `800px` or more, it'll be the second one.
+* The `srcset` attributes contain the path to the image to display. Just as we saw with `<img>` above, `<source>` can take a `srcset` attribute with multiple images referenced, as well as a `sizes` attribute. So, you could offer multiple images via a `<picture>` element, but then also offer multiple resolutions of each one. Realistically, you probably won't want to do this kind of thing very often.
+* In all cases, you must provide an `<img>` element, with `src` and `alt`, right before `</picture>`, otherwise no images will appear. This provides a default case that will apply when none of the media conditions return true.
+
+#### Why not using CSS or JavaScript?
+When the browser starts to load a page, it starts to download (preload) any images before the main parser has started to load and interpret the page's CSS and JavaScript.
+
+### Pick right Image format
+#### Lossy Compression
 The first form of compression is lossy. Lossy compression involves eliminating some of the data in your image. Because of this, it means you might see degradation (reduction in quality or what some refer to as pixelated). So you have to be careful by how much you’re reducing your image. Not only due to quality, but also because you can’t reverse the process. Of course, one of the great benefits of lossy compression and why it’s one of the most popular compression methods is that you can reduce the file size by a very large amount.
 
 > JPEGs is lossy image formats.
 
-### Lossless Compression
+#### Lossless Compression
 Lossless compression, unlike lossy, doesn’t reduce the quality of the image. How is this possible? It’s usually done by removing unnecessary metadata (automatically generated data produced by the device capturing the image). However, the biggest drawback to this method is that you won’t see a significant reduction in file size.
 
 > GIF, and PNG are lossless image formats.
 
-### JPG/JPEG (Joint Photographic Experts Group)
+#### JPG/JPEG (Joint Photographic Experts Group)
 JPGs can support millions of colors, so this file type is ideal for real-life images, like photographs.
 
 The JPG is “lossy” - which means that when the data is compressed, unnecessary information is deleted from the file permanently. That means that some quality will be lost or compromised when any file is converted to a JPG.
 
 Think of JPG as the default file format for uploading pictures to the web, unless they need transparency, have text in them, are animated, or would benefit from color changes (like logos or icons).
 
-### PNG (Portable Network Graphics)
+#### PNG (Portable Network Graphics)
 Represents a bit-mapped graphics format. The PNG images could be palette based or in formats such as grayscale or RGB. PNG supports 24 bits per pixel, so that a single image could reference over 16 million colors, as compared to the palette of 256 distinct colors supported by the GIF format.
 
 PNG (Portable Network Graphics) is a file format used for lossless image compression. PNG has almost entirely replaced the Graphics Interchange Format (GIF) that was widely used in the past.
@@ -192,19 +260,19 @@ Like a GIF, a PNG file is compressed in lossless fashion, meaning all image info
 
 One of the standout features of PNG is its support of transparency.
 
-### GIF (Graphics Interchange Format)
+#### GIF (Graphics Interchange Format)
 GIFs are “lossless” - meaning that a GIF retains all the data contained in the file, but they are smaller than JPGs, specifically because they only accommodate up to 256 indexed colors.
 
 GIF was intended for small, simple graphic icons, but with one important caveat - they can be animated! There is no audio associated with a GIF, but they are still a powerful way to bring motion to your online channels.
 
-### SVG (Scalable Vector Graphics)
+#### SVG (Scalable Vector Graphics)
 Unlike raster formats seen in JPG, GIF, and PNG, an SVG image remains crisp and clear at any resolution or size.
 
 That’s because an SVG is drawn from mathematically declared shapes and curves, not pixels. SVG’s can be animated, support transparency, and any combinations of colors or gradients.
 
 SVG is a lossless file format like GIF and PNG, and they tend to be fairly large files when compared with other formats for the web.
 
-### WebP
+#### WebP
 WebP is an image format that utilizes both lossy and lossless compression formats. Being able to create images that use mixed compression formats lets you create richer images that are smaller in file size than other formats.
 
 WebP essentially combines the features of all other image formats (JPEG, PNG, and GIF) together in a surprisingly seamless way. WebP offers file sizes that are around 30% smaller than JPEG without a quality gap. It also provides transparency (alpha channel) like PNG, and the ability to animate images like the GIF format.
@@ -213,22 +281,22 @@ So, usually lossy compression images are much smaller in size than lossless comp
 
 Even though WebP was announced in 2010, it isn’t universally compatible as of yet. It’s 100% compatible for anyone that’s using Chrome or Opera (which accounts for around 63% of users.) Currently, neither Firefox nor Safari natively support WebP without plugins.
 
-#### WebP vs. PNG
+##### WebP vs. PNG
 Essentially WebP offers the following benefits over PNG.
 
 WebP offers 26% smaller file sizes than PNG, while still providing transparency and the same quality.
 
 WebP loads faster (due to file size) than PNG images.
 
-#### WebP vs. JPEG
+##### WebP vs. JPEG
 WebP offers 25 – 35% smaller file sizes at the exact same SSIM quality index, which means that WebP images have smaller file sizes with the same quality.
 
-#### WebP vs. GIF
+##### WebP vs. GIF
 Sure, WebP is better than GIF. It offers the same quality at a smaller file size.
 
 WebP is an absolutely amazing image format for website designers, and it would be a mistake not to utilize WebP’s impressive quality-to-size ration on your website. It will make your site load faster and look better.
 
-#### GIF vs. Video
+##### GIF vs. Video
 GIFs were actually designed to hold multiple images in a single file, kind of like a ZIP file for images. And that’s how they were used until Netscape 2.0 came along in 1995 and introduced the looping extension that set GIF animations free, bringing them to life.
 
 Besides being fun to use, GIFs have several benefits:
@@ -252,7 +320,7 @@ While video can take more time to encode, HTML5 does offer a number of advantage
 * Better performance
 * More colors and detail
 
-### Images vs Fonts
+### Fonts
 Web Fonts are _scalable_, _zoomable_, and _high-DPI friendly_, meaning they can be easily shown across desktops, tablet, and mobile phones no matter what the resolution. Other advantages of using web fonts are _performance_, _design_, _readability_, and _accessibility_.
 
 The biggest disadvantage of using web fonts is that it instantly affects the overall rendering speed of your pages. If you are using a 3rd party such as Google or Typekit, then you also have no control if their services go down.
