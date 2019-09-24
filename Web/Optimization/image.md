@@ -215,6 +215,12 @@ In this case, `sizes` is not needed — the browser simply works out what resolu
 
 So if the device accessing the page has a standard/low resolution display, with one device pixel representing each CSS pixel, the `elva-fairy-320w.jpg` image will be loaded (the `1x` is implied, so you don't need to include it.) If the device has a high resolution of two device pixels per CSS pixel or more, the `elva-fairy-640w.jpg` image will be loaded.
 
+To calculate the pixel density of a screen, browsers make use of the pixel-device-ratio. A pixel-device-ratio of _1_ means that one device pixel corresponds to one CSS pixel. A pixel-device-ratio of _2_ means that two device pixels corresponds to one CSS pixel.
+
+For example, an iPad Air 2 has a screen resolution of _2048_ by _1536_ pixels. The pixel-device-ratio of this iPad is _2_. Which means that for the browser, the screen is _1024_ by _768_ pixels.
+
+[Read More](https://medium.com/@woutervanderzee/responsive-images-with-srcset-and-sizes-fc434845e948)
+
 #### Art direction
 Art direction: The problem whereby you want to serve cropped images for different layouts — for example a landscape image showing a full scene for a desktop layout, and a portrait image showing the main subject zoomed in for a mobile layout.
 
@@ -229,6 +235,8 @@ Art direction: The problem whereby you want to serve cropped images for differen
 * The `<source>` elements include a media attribute that contains a media condition. The first one that returns true will be displayed. In this case, if the viewport width is `799px` wide or less, the first `<source>` element's image will be displayed. If the viewport width is `800px` or more, it'll be the second one.
 * The `srcset` attributes contain the path to the image to display. Just as we saw with `<img>` above, `<source>` can take a `srcset` attribute with multiple images referenced, as well as a `sizes` attribute. So, you could offer multiple images via a `<picture>` element, but then also offer multiple resolutions of each one. Realistically, you probably won't want to do this kind of thing very often.
 * In all cases, you must provide an `<img>` element, with `src` and `alt`, right before `</picture>`, otherwise no images will appear. This provides a default case that will apply when none of the media conditions return true.
+
+[Read More](https://css-tricks.com/responsive-images-css/)
 
 #### Why not using CSS or JavaScript?
 When the browser starts to load a page, it starts to download (preload) any images before the main parser has started to load and interpret the page's CSS and JavaScript.
