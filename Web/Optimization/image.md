@@ -102,6 +102,23 @@ Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify
 
     Many images contain unnecessary metadata about the asset: geo information, camera information, and so on. Use appropriate tools to strip this data
 
+### Decode image async
+Loading large images in JavaScript and dropping them into the DOM can tie up the main thread, causing the user interface to be unresponsive for a short period of time while decoding occurs. Asynchronously decoding images using the `decode()` method prior to inserting them into the DOM can cut down on this sort of jank, but beware: It's not available everywhere yet, and it adds complexity to lazy loading logic.
+
+```javascript
+const img = new Image();
+
+img.src = "bigImage.jpg";
+img.decode()
+    .then(() => {
+        document.body.appendChild(img);
+    }).catch(() => {
+        throw new Error('Could not load/decode big image.');
+    });
+```
+
+[Read More](https://medium.com/dailyjs/image-loading-with-image-decode-b03652e7d2d2)
+
 ### Automating Image Optimization
 
 * The browser itself is capable of choosing which image format to display through the use of the `<picture>` tag. The `<picture> `tag utilizes multiple `<source>` elements, with one `<img>` tag, which is the actual DOM element which contains the image. The browser cycles through the sources and retrieves the first match. If the `<picture>` tag isn't supported in the user's browser, a `<div>` is rendered and the `<img>` tag is used.
@@ -211,7 +228,7 @@ If a supporting browser with a viewport width of `480px` loads the page, the (`m
     src="elva-fairy-640w.jpg" alt="Elva dressed as a fairy">
 ```
 
-In this case, `sizes` is not needed — the browser simply works out what resolution the display is that it is being shown on, and serves the most appropriate image referenced in the `srcset`. 
+In this case, `sizes` is not needed — the browser simply works out what resolution the display is that it is being shown on, and serves the most appropriate image referenced in the `srcset`.
 
 So if the device accessing the page has a standard/low resolution display, with one device pixel representing each CSS pixel, the `elva-fairy-320w.jpg` image will be loaded (the `1x` is implied, so you don't need to include it.) If the device has a high resolution of two device pixels per CSS pixel or more, the `elva-fairy-640w.jpg` image will be loaded.
 

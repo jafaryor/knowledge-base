@@ -5,7 +5,7 @@
 * Looks great on retina displays
 * Design control like interactivity and filters
 
-### Cnsiderations
+### Considerations
 * Alt and title attribute availability
 
     When we embed an image onto HTML, it's always good to have alt and title attributes, for better accessibility. An alt attribute allows a user to view the image description, even when it fails to render on a device, in addition to providing context for search engines. A title attribute allows hovering over the image to obtain more information.
@@ -24,7 +24,7 @@
     Google has publicly stated that it will index and crawl SVG files. Therefore, it makes sense for better SEO (Search Engine Optimization), that the embedding method we adopt would allow search engines to list our images on image search.
 
 ### `<img>`
-The simplest way.
+The simplest way. A linked SVG file is loaded in secure mode, meaning that no scripts run and no additional file assets are loaded.
 
 | Browser support | The `<img>` tag is now supported across all major browsers that support SVG (IE9+). |
 | - | - |
@@ -33,6 +33,10 @@ The simplest way.
 | GZip compression | Available. |
 | Interactivity | None. If interactivity is required, use `<object>` tag. |
 | Search engine indexing | Available. |
+
+```html
+<img src="placeholder-image.jpg" alt="I'm an image!">
+```
 
 If you use an `<img>` tag with web fonts, the fonts will fail to render and resort to using only system fonts. This is mainly because images with `<img>` tags are not allowed to refer to external resources including CSS, fonts and scripts, for [security reasons](https://blog.guya.net/2014/02/17/svg-for-fun-and-phishing/).
 
@@ -69,6 +73,17 @@ Because inline SVG is embedded into HTML, there is no necessity for another netw
 | Interactivity | Available. |
 | Search engine indexing | None. |
 
+```html
+<svg viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg" stroke="red" fill="grey">
+  <circle cx="50" cy="50" r="40" />
+  <circle cx="150" cy="50" r="4" />
+
+  <svg viewBox="0 0 10 10" x="200" width="100">
+    <circle cx="5" cy="5" r="4" />
+  </svg>
+</svg>
+```
+
 Since the SVG is essentially the DOM, you can easily use external CSS, fonts and scripts. Multiple SVG can be inlined that refers to a single CSS or font files, therefore saving bandwidth and resources.
 
 In addition, you get the ability to select, highlight and copy text in your SVG.
@@ -77,8 +92,10 @@ In addition, you get the ability to select, highlight and copy text in your SVG.
 It is not part of HTML specifications but widely supported on all browsers mainly used to implement Flash plugins.
 
 ```html
-<embed type="image/svg+xml" src="image.svg" />
+<embed type="image/svg+xml" src="image.svg" title="svg animation" />
 ```
+
+An `<embed>` should be functionally equivalent to `<object>`. The difference is in the syntax, which comes from pre-standardization HTML. An `<embed>` element is a single tag, with no child elements and therefore no fallback.
 
 ### `<iframe>`
 Do NOT use an `<iframe>` where you can use an `<object>` tag instead. Iframes are difficult to maintain, does not get indexed by search engines and bad for SEO (Search Engine Optimization).

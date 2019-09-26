@@ -75,6 +75,12 @@ __When we get to the paint stage, the browser has to pick up the layout result, 
 
 The more complicated the styles, the more time taken for painting also (for example, a solid color is "cheap" to paint, while a drop shadow is "expensive" to compute and render).
 
+Painting is actually two tasks:
+1. Creating a list of draw calls
+2. Filling in the pixels.
+
+The latter is called __rasterization__ and so whenever you see paint records in DevTools, you should think of it as including rasterization.
+
 [CSS statements paint times](http://www.html5rocks.com/en/tutorials/speed/css-paint-times/)
 
 > __If either the DOM or CSSOM were modified, you would have to repeat the process in order to figure out which pixels would need to be re-rendered on the screen.__

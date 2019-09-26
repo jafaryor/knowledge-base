@@ -15,7 +15,7 @@ Bitrate - rate at which data is encoded per second. The higher it is the higher 
 
 The higher the frame rate, more data need to be encoded.
 
-### Containers/Frmats
+### Containers/Formats
 MP4 was not designed with today, and tomorrow’s, internet in mind.
 
 #### Why `WebM`?
@@ -53,7 +53,7 @@ The specification does not force the browser to follow the value of this attribu
 
     Lazy loading media can cause shifting in the layout if placeholders aren't used. These changes can be disorienting for users and trigger expensive DOM layout operations that consume system resources and contribute to jank. At a minimum, consider using a solid color placeholder occupying the same dimensions as the target image, or techniques such as [LQIP](http://www.guypo.com/introducing-lqip-low-quality-image-placeholders) (Low Quality Image Placeholders) or [SQIP](https://github.com/technopagan/sqip) (SVG-Based Image Placeholder) that hint at the content of a media item before it loads.
 
-    For `<img>` tags, src should initially point to a placeholder until that attribute is updated with the final image URL. Use the `poster` attribute in a `<video>` element to point to a placeholder image. Additionally, use `width` and `height` attributes on both `<img>` and `<video>` tags. This ensures that transitioning from placeholders to final images won't change the rendered size of the element as media loads.
+    For `<img>` tags, `src` should initially point to a placeholder until that attribute is updated with the final image URL. Use the `poster` attribute in a `<video>` element to point to a placeholder image. Additionally, use `width` and `height` attributes on both `<img>` and `<video>` tags. This ensures that transitioning from placeholders to final images won't change the rendered size of the element as media loads.
 
     LQIP’s logic is simple. In a sense, this is like loading progressive JPEGs, except it’s page wide. There are more implementation details below, but it boils down to two main steps:
     * Initially load the page with low quality images
@@ -64,25 +64,6 @@ The specification does not force the browser to follow the value of this attribu
         ```
 
     * Once the page loaded (e.g. in the onload event), replace them with the full quality images
-
-* Image decoding delays
-
-    Loading large images in JavaScript and dropping them into the DOM can tie up the main thread, causing the user interface to be unresponsive for a short period of time while decoding occurs. [Asynchronously decoding images using the `decode` method](https://medium.com/dailyjs/image-loading-with-image-decode-b03652e7d2d2) prior to inserting them into the DOM can cut down on this sort of jank, but beware: It's not available everywhere yet, and it adds complexity to lazy loading logic.
-
-    ```javascript
-    var newImage = new Image();
-    newImage.src = "my-awesome-image.jpg";
-
-    if ("decode" in newImage) {
-        // Fancy decoding logic
-        newImage.decode().then(function() {
-            imageContainer.appendChild(newImage);
-        });
-    } else {
-        // Regular image load
-        imageContainer.appendChild(newImage);
-    }
-    ```
 
 
 ### ffmpeg
