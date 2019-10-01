@@ -7,19 +7,19 @@ Highlights:
 * WebRTC works via UDP.
 * No standard signaling protocol.
 * Not fully compatible with all browsers.
-* Live video streaming via WebSocket is possible but  the streaming is way slow and the lag is noticable.
+* Live video streaming via WebSocket is possible but  the streaming is way slow and the lag is noticeable.
 
 `RTCDataChannel`
 * Same API as WebSocket.
 * Ultra-low latency.
 * Unreliable (UDP) or reliable (TCP) to choose from.
-* The stream is fully encryted.
+* The stream is fully encrypted.
 
 `RTCPeerConnection` does the following things:
 * Signal processing (remove noise from audio & video)
 * Codec handling
 * Finding an actual route for peer to peer communication through Firewalls, NATS, relays ...
-* Secuity (stream encryption)
+* Security (stream encryption)
 * Bandwidth management (bitRate & framerate)
 
 ## How it works
@@ -67,11 +67,11 @@ WebRTC does not define any standard for implementing such a signalling mechanism
 ### Recap:
 1. Peer A generates it’s `ICE candidate` using __Interactive Connectivity Establishment (`ICE`)__. In most cases it requires a __Session Traversal Utilities for `NAT` (`STUN`)__ or a __Traversal Using Relays around `NAT` (`TURN`)__ server.
 2. Peer A bundles the `ICE` candidate and __Session Description__ into a single object. This object is stored as __Local Description__ (a peer’s own connection information) within peer A and transferred to peer B via a signalling mechanism. This part is called as the __Offer__.
-3. Peer B receives the _offer_ and stores it as __Remote Description__ (connection information of the peer at other end) for further use. Peer B generates it’s own `ICE candidate` and _Session Description_, stores them as it’s _Local Description_ and sends it to peer A via the signalling mechanism. This part is called as the _Answer_. (Note: As said earlier, the `ICE` candidates in step 2 and 3 may also be sent separately)
+3. Peer B receives the _offer_ and stores it as __Remote Description__ (connection information of the peer at other end) for further use. Peer B generates its own `ICE candidate` and _Session Description_, stores them as it’s _Local Description_ and sends it to peer A via the signalling mechanism. This part is called as the _Answer_. (Note: As said earlier, the `ICE` candidates in step 2 and 3 may also be sent separately)
 4. Peer A receives the answer from peer B and stores it as it’s _Remote Description_.
 
 ## Tools
-`adapter.js` - Let's you use the same code n all browsers:
+`adapter.js` - Let's you use the same code on all browsers:
 * Removes vendor prefixes
 * Abstracts Chrome/Firefox differences
 * Minimize effects of spec churn

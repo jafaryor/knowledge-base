@@ -183,6 +183,10 @@ img.decode()
     <iframe src="video-player.html" loading="lazy"></iframe>
     ```
 
+    > It will be available in Chrome 75 and can be turned on already by visiting `chrome://flags`
+
+[Read More](https://web.dev/native-lazy-loading)
+
 ### Responsive images
 #### Resolution switching: Different sizes
 Resolution switching: The problem whereby you want to serve smaller image files to narrow screen devices, as they don't need huge images like desktop displays do — and also optionally that you want to serve different resolution images to high density/low density screens. You can also use SVG.
