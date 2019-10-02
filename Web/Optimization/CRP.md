@@ -154,10 +154,14 @@ https://code.google.com/p/closure-stylesheets/#Renaming
 CSS is required to construct the render tree and JavaScript often blocks on CSS during initial construction of the page. Ensure that any non-essential CSS is marked as non-critical (for example, print and other media queries), and that the amount of critical CSS and the time to deliver it is as small as possible.
 
 ### Put CSS in the document head
-Specify all CSS resources as early as possible within the HTML document so that the browser can discover the `<link>` tags and dispatch the request for the CSS as soon as possible.
+Remember that CSS both blocks rendering and JS execution. It comes as no surprise that the golden rule for CSS is: Get CSS to the user as soon and as fast as possible! Make sure all the CSS link tags are in the head of your HTML code so the browser can dispatch the requests immediately.
+
+Style sheets should linked in the `<head>` so that the browser can style the HTML and render it as it goes. If you put the style information at the bottom of the document the browser will have to restyle and render the whole document from the top again.
+
+In-line your critical CSS within the head of your html. Asynchronously load your main CSS with the `preload` value for the `rel` attribute of the style element.
 
 ### Avoid CSS imports
-The CSS import (`@import`) directive enables one stylesheet to import rules from another stylesheet file. However, avoid these directives because they introduce additional roundtrips into the critical path: the imported CSS resources are discovered only after the CSS stylesheet with the `@import` rule itself is received and parsed.
+The CSS import (`@import`) directive enables one stylesheet to import rules from another stylesheet file. However, avoid these directives because they introduce additional roundtrips into the critical path: the browser of the visitor has to wait for every imported file to load instead of being able to load all your CSS files at once.
 
 ### Inline render-blocking CSS
 For best performance, you may want to consider inlining the critical CSS directly into the HTML document. This eliminates additional roundtrips in the critical path and if done correctly can deliver a "one roundtrip" critical path length where only the HTML is a blocking resource.

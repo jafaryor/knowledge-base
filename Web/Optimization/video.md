@@ -65,6 +65,14 @@ The specification does not force the browser to follow the value of this attribu
 
     * Once the page loaded (e.g. in the onload event), replace them with the full quality images
 
+### Turn on hardware acceleration
+If you do not know what is hardware acceleration, then in a word hardware acceleration is a technique by which the modern day browsers can handle the extra load of RAM and CPU to the browser’s graphical processor unit. Thus, it will improve the performance of the total browser and PC at a certain level.
+
+This is good for two reasons: the GPU is designed to handle these tasks and so your browser will perform much better, and by using the GPU it frees up the CPU to do other tasks.
+
+The best way to check whether hardware acceleration is turned on in Chrome is to type `chrome://gpu` into the address bar at the top of the browser.
+
+A whole host of results will be returned but the bit you're interested in is the section titled "Graphics Feature Status."
 
 ### ffmpeg
 `-b:v`: specifies the target (average) bit rate for the encoder to use.

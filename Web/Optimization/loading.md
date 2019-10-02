@@ -103,6 +103,8 @@
 
     `<link rel=preload>` is a declarative fetch, allowing you to force the browser to make a request for a resource without blocking the document’s onload event. It enables increasing the priority of requests for resources that might otherwise not be discovered until later in the document parsing process.
 
+    > So basically, when rendering engine meets the `<linl>` it will postpone its loading until base html is ready to sow to user. After that it starts fetching them in parallel.
+
     ```html
     <link rel="preload" as="image" href="logo.jpg"/>
     ```
