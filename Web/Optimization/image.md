@@ -26,13 +26,27 @@ When a browser fetches an image, it has to decode the image from the original so
 > Omitting the `width` or `height` attributes on an image can also negatively impact performance. Without them, a browser assigns a smaller placeholder region for the image until sufficient bytes have arrived for it to know the correct dimensions. At that point, the document layout must be updated in what can be a costly step called reflow.
 
 ### Replace Animated GIFs with Video
-Delivering the same file as an MP4 video can often shave _80%_ or more off your file-size. Not only do GIFs often waste significant bandwidth, but they take longer to load, include fewer colors and generally offer sub-part user experiences.
+Research has found that animated GIFs are usually 5 to 10 times larger than a properly encoded MP4 video.
 
 GIFs (and other animated image formats) are suboptimal because an image decode is incurred for every frame in the image, which can contribute to jank. This makes sense, because each frame in a GIF is simply another image.
 
-[The Book of GIF](https://rigor.com/wp-content/uploads/2017/03/TheBookofGIFPDF.pdf)
+When you use video in lieu of animated GIF, you're doing your users a big favor by reducing the amount of data you send to them, as well as potentially reducing system resource usage.
 
-Tools: [ffmpeg](https://www.ffmpeg.org/), [Gifify](https://github.com/vvo/gifify), [GIFV](https://blog.imgur.com//2014/10/09/introducing-gifv/)
+```shell
+ffmpeg -i input.gif -b:v 0 -crf 25 output.mp4
+
+ffmpeg -i input.gif -c vp9 -b:v 0 -crf 41 output.webm
+```
+
+* `-b:v` flag normally would limit the output bitrate, but when we want to use CRF mode, it must be set to `0`.
+* `-crf` flag accepts a value between `0` and `51`. Lower values yield higher quality (but larger) videos, whereas higher values do the opposite.
+* The codec we specify in the `-c` flag is `vp9`, which is the successor to the VP8 codec used by the WebM format. If this fails for you, replace `vp9` with `vp8`.
+* Because CRF values don't yield equivalent results across formats, we need to adjust it so our WebM output is visually similar to the MPEG-4 output. A `-crf` value of `41` is used in this example to achieve reasonably comparable quality to the MPEG-4 version while still outputting a smaller file.
+
+Tools:
+* [ffmpeg](https://www.ffmpeg.org/)
+* [Gifify](https://github.com/vvo/gifify)
+* [GIFV](https://blog.imgur.com//2014/10/09/introducing-gifv/)
 
 [Article about how to convert GIF to Video](https://rigor.com/blog/2015/12/optimizing-animated-gifs-with-html5-video)
 
