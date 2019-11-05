@@ -103,7 +103,7 @@
 
     `<link rel=preload>` is a declarative fetch, allowing you to force the browser to make a request for a resource without blocking the document’s onload event. It enables increasing the priority of requests for resources that might otherwise not be discovered until later in the document parsing process.
 
-    > So basically, when rendering engine meets the `<linl>` it will postpone its loading until base html is ready to sow to user. After that it starts fetching them in parallel.
+    > So basically, when rendering engine meets the `<link>` it will postpone its loading until base html is ready to sow to user. After that it starts fetching them in parallel.
 
     ```html
     <link rel="preload" as="image" href="logo.jpg"/>
@@ -119,7 +119,13 @@
     <link as="image" href="/images/animation.svg" rel="prefetch"> 
     ```
 
+    Preload is different from prefetch in that it focuses on fetching a resource for the current navigation. Prefetch focuses on fetching a resource for the next navigation.
+
 * __Preconnect to server__ (_Experimantal_)
+
+    Preconnect allows the browser to setup early connections before an HTTP request is actually sent to the server.
+
+    This includes DNS lookups, TLS negotiations, TCP handshakes. This in turn eliminates roundtrip latency and saves time for users.
 
     Provides a hint to the browser suggesting that it open a connection to the linked web site in advance, without disclosing any private information or downloading any content, so that when the link is followed the linked content can be fetched more quickly.
 
@@ -130,13 +136,26 @@
 
 * __DNS prefetch__
 
-    Suggests that the browser fetch the linked resource in advance, as it is likely to be requested by the user. Starting with Firefox 44, the value of the crossorigin attribute is taken into consideration, making it possible to make anonymous prefetches.
+    When a browser requests a resource from a cross-origin (third party) server, that cross-origin’s domain name must be resolved to an IP address before the browser can issue the request. This process is known as DNS resolution. While DNS caching can help to reduce this latency, DNS resolution can add significant latency to requests. For websites that open connections to many third parties, this latency can significantly reduce loading performance.
 
-    > Note: The Link Prefetch FAQ has details on which links can be prefetched and on alternative methods.
+    `dns-prefetch` helps developers mask DNS resolution latency.
 
     ```html
     <link rel="dns-prefetch" href="//example.com">
     ```
+
+    > You should place `dns-prefetch` hints in the `<head>` element any time your site references resources on cross-origin domains
+
+    `dns-prefetch` is only effective for DNS lookups on cross-origin domains, so avoid using it for your site. This is because the IP behind your site’s domain will have already been resolved by the time the browser sees the hint.
+
+    consider pairing `dns-prefetch` with the `preconnect` hint. While `dns-prefetch` only performs a DNS lookup, `preconnect` establishes a connection to a server. This process includes DNS resolution, as well as establishing the TCP connection, and performing the TLS handshake—if a site is served over HTTPS. Combining the two provides an opportunity to further reduce the perceived latency of cross-origin requests.
+
+    ```html
+    <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+    ```
+
+    The logic behind pairing these hints is because support for dns-prefetch is better than support for preconnect. Browsers that don’t support preconnect will still get some added benefit by falling back to dns-prefetch.
 
 * __Prerender__ (`Experimantal`)
 
@@ -146,7 +165,7 @@
     <link rel="prerender" href="//example.com">
     ```
 
-[Read More](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/automating-image-optimization/)
+[Read More](https://www.keycdn.com/blog/resource-hints)
 
 ### PRPL
 `PRPL` is a pattern that optimizes for interactivity through aggressive code-splitting and caching.
