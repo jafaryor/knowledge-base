@@ -215,6 +215,8 @@ The multi-column layout module gives us a way to layout content in columns, simi
 
 To turn a block into a multicol container we use either the `column-count` property, which tells the browser how many columns we would like to have, or the `column-width` property, which tells the browser to fill the container with as many columns of at least that width.
 
+When the viewport can't contain all columns, it start merging columns one by one. So you can end up event to single column at the end.
+
 ### Float, Grid, Flex
 
 ### Positioning scheme
