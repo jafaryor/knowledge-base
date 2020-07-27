@@ -637,3 +637,10 @@ Contoll Content in Repositories:
 * Maintain key info in discreet files and list them in _`.gitignore`_ file
 * Removing data later is difficult, as the system keeps history
 * Many `SCM`s are designed to prevent data loss/removal
+
+### The Regular expression Denial of Service (ReDoS)
+Is a Denial of Service attack, that exploits the fact that most Regular Expression implementations may reach extreme situations that cause them to work very slowly (exponentially related to input size). An attacker can then cause a program using a Regular Expression to enter these extreme situations and then hang for a very long time.
+
+There are some tools to check your regexps for safety, like:
+* [safe-regex](https://github.com/substack/safe-regex)
+* [rxxr2](http://www.cs.bham.ac.uk/~hxt/research/rxxr2/). However, neither of these will catch all vulnerable regexps.

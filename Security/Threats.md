@@ -46,3 +46,11 @@
 
 * ### `SQL` injection
     An attacker modifies a query that your application creates as the result of user or other input. In many cases, the application requests query input data, but it receives `SQL` elements instead. Other forms of `SQL` injection attack involve the use of escape or other unexpected characters or character sequences. A good way to avoid `SQL` injection attacks is to avoid dynamically generated queries.
+
+* ### The Regular expression Denial of Service (ReDoS)
+
+    Is a Denial of Service attack, that exploits the fact that most Regular Expression implementations may reach extreme situations that cause them to work very slowly (exponentially related to input size). An attacker can then cause a program using a Regular Expression to enter these extreme situations and then hang for a very long time.
+
+* ### Fork bomb
+
+    In computing, a fork bomb (also called rabbit virus or wabbit[1]) is a denial-of-service attack wherein a process continually replicates itself to deplete available system resources, slowing down or crashing the system due to resource starvation.
