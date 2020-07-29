@@ -68,9 +68,9 @@ Since any of these operations may schedule more operations and new events proces
 
 * #### Pending IO Callbacks
 
-    Executes I/O callbacks deferred to the next loop iteration.
+    In this phase, the event loop executes system-related callbacks if any.
     
-    This phase executes callbacks for some system operations such as types of TCP errors. For example if a TCP socket receives _ECONNREFUSED_ when attempting to connect, some _*nix_ systems want to wait to report the error. This will be queued to execute in the pending callbacks phase.
+    For example, let's say you are writing a node server and the port on which you want to run the process is being used by some other process, node will throw an error `ECONNREFUSED`, some of the *nix systems may want the callback to wait for execution due to some other tasks that the operating system is processing. Hence, such callbacks are pushed to the pending callbacks queue for execution.
 
 * #### Idle, Prepare
 
@@ -104,6 +104,10 @@ Since any of these operations may schedule more operations and new events proces
     Here all `on(‘close’, ...)` event callbacks are processed.
 
 Between each run of the event loop, Node.js checks if it is waiting for any asynchronous I/O or timers and shuts down cleanly if there are not any.
+
+#### Now, there are two things which happen when any JavaScript code is run by the event loop.
+1. #### When a function in our JavaScript code is called, the event loop first goes without actually the execution to register the initial callbacks to the respective queues.
+2. #### Once they are registered, the event loop enters its phases and starts iterating and executing the callbacks until all them are processed.
 
 ### `setImmediate()` vs `setTimeout()`
 The order in which the timers are executed will vary depending on the context in which they are called. If both are called from within the main module, then timing will be bound by the performance of the process (which can be impacted by other applications running on the machine).
@@ -160,11 +164,15 @@ immediate
 timeout
 ```
 
+As we run our script, the event loop first runs without actually executing the callbacks. We encounter the `fs.readFile` with a callback which is registered and the callback is pushed to the __Poll phase queue__. Since all the callbacks for the given function are registered, the event loop is now free to start execution of the callbacks. Hence, it traverses through its phases starting from the timers. It doesn't find anything in the _Timers phase_ and _Pending callbacks_ phase.
+
+When the event loop keeps traversing through its phases and when it sees that the file reading operation is complete, it starts executing the callback. Remember, when the event loop starts executing the callback of `fs.readFile`, it is in the __Poll phase__, after which, it will move to the __Check(`setImmediate`) phase__. Thus, the Check phase comes before the _Timers phase_ for the current run. Hence, when in _Poll phase_, the callback of `setImmediate` will always run before `setTimeout(fn, 0)`.
+
 The main advantage to using `setImmediate()` over `setTimeout()` is `setImmediate()` will always be executed before any timers if scheduled within an I/O cycle, independently of how many timers are present.
 
 
 ### `process.nextTick()`
-`process.nextTick()` is not technically part of the event loop. Instead, the nextTickQueue will be processed after the current operation is completed, regardless of the current phase of the event loop.
+`process.nextTick()` is not technically part of the event loop. Instead, the `nextTickQueue` will be processed after the current operation is completed, regardless of the current phase of the event loop.
 
 Looking back at our diagram, any time you call `process.nextTick()` in a given phase, all callbacks passed to `process.nextTick()` will be resolved before the event loop continues. This can create some bad situations because it __allows you to "starve" your I/O by making recursive `process.nextTick()` calls__, which prevents the event loop from reaching the __poll phase__.
 
@@ -270,7 +278,7 @@ A good way to ensure this is to reason about the "computational complexity" of y
 Node.js uses the Google V8 engine for JavaScript, which is quite fast for many common operations. Exceptions to this rule are __regexps__ and __JSON operations__.
 
 #### Regular Expressions
-A regular expression (regexp) matches an input string against a pattern. We usually think of a regexp match as requiring a single pass through the input string - `O(n)` time where n is the length of the input string. In many cases, a single pass is indeed all it takes. Unfortunately, in some cases the regexp match might require an exponential number of trips through the input string - `O(2^n)` time. 
+A regular expression (regexp) matches an input string against a pattern. We usually think of a regexp match as requiring a single pass through the input string - `O(n)` time where n is the length of the input string. In many cases, a single pass is indeed all it takes. Unfortunately, in some cases the regexp match might require an exponential number of trips through the input string - `O(2^n)` time.
 
 A vulnerable regular expression is one on which your regular expression engine might take exponential time, exposing you to [REDOS](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS) on "evil input". Whether or not your regular expression pattern is vulnerable (i.e. the regexp engine might take exponential time on it) is actually a difficult question to answer, and varies depending on whether you're using Perl, Python, Ruby, Java, JavaScript, etc., but here are some rules of thumb that apply across all of these languages:
 * Avoid nested quantifiers like `(a+)*`. V8's regexp engine can handle some of these quickly, but others are vulnerable.
@@ -406,6 +414,10 @@ To avoid reading a big files at once and penetrating yout server. Use `fs.read()
 Node.js has two types of threads: one Event Loop and k Workers. The Event Loop is responsible for JavaScript callbacks and non-blocking I/O, and a Worker executes tasks corresponding to C++ code that completes an asynchronous request, including blocking I/O and CPU-intensive work. Both types of threads work on no more than one activity at a time. If any callback or task takes a long time, the thread running it becomes blocked. If your application makes blocking callbacks or tasks, this can lead to degraded throughput (clients/second) at best, and complete denial of service at worst.
 
 To write a high-throughput, more DoS-proof web server, you must ensure that on benign and on malicious input, neither your Event Loop nor your Workers will block.
+
+We say that a 'tick' has happened when the event loop iterates over all of its phases for one time (one iteration of the event loop).
+
+#### High event loop tick frequency and low tick duration(time spent in one iteration) indicates the healthy event loop.
 
 
 ### Monitoring the Event Loop
