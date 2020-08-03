@@ -11,10 +11,6 @@ Node.js is non-blocking which means that all functions (callbacks) are delegated
 * It is important to know that state is not shared between master and forked process.
 * We can pass messages to forked process (which is different script) and to master process from forked process with function send.
 
-__NodeJS uses the concurrency model.__
-
-![concurrency-vs-parallelism](../images/concurrency-vs-parallelism.png)
-
 > The event loop is different than models in many other languages where additional threads may be created to handle concurrent work.
 
 ### NudeJS uses non-blocking I/O model

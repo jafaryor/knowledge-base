@@ -24,7 +24,7 @@ That test will serve as a guideline what to build and to make sure we don’t br
 * Initially, it slows down development.
 * Hard to apply to existing legacy code.
 
-## Behaviour Driven Development (BDD)
+## Behavior Driven Development (BDD)
 BDD is a methodology and a philosophy of test first software development, Like TTD.
 
 Like in TDD, in BDD also we write tests first and then add application code. The major difference that we get to see here are:

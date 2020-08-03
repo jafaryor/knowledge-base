@@ -22,7 +22,7 @@ __Event Loop__ - is a constantly running process that checks if the call stack i
 
 You sometimes get that when you make an infinite recursion but sometimes you actually have a big number of recursive calls that you want to make. There’s a simple yet hacky workaround which will allow you to retain your code structure and still make an absurd amount of calls — wrap your recursion calls in `setTimeout`.
 
-A `web worker` or a cross-origin `iframe` has its own stack, heap, and message queue. Two distinct runtimes can only communicate through sending messages via the postMessage method. This method adds a message to the other runtime if the latter listens to message events.
+A `web worker` or a cross-origin `iframe` has its own stack, heap, and message queue. Two distinct runtimes can only communicate through sending messages via the `postMessage` method. This method adds a message to the other runtime if the latter listens to message events.
 
 __[Video about JS Runtime](https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=0s&list=WL&index=64)__
 
