@@ -1,7 +1,7 @@
 ## Event flow
 The browser has an event-driven, single-threaded programming model.
 
-### Eventy propagation
+### Event propagation
 _Event Propagation_ is a mechanism that defines how events propagate or travel through the DOM tree to arrives at its target and what happens to it afterward.
 
 The _Event Propagation_ proceeds in 3 phases:
@@ -47,7 +47,7 @@ If several listeners are attached to the same element for the same event type, t
 event.cancelBubble = true;
 if (event.stopPropagation) event.stopPropagation();
 
-// Prevent default behaviour
+// Prevent default behavior
 event.returnValue = false;
 if (event.preventDefault) event.preventDefault();
 return false;
@@ -69,7 +69,3 @@ parentElement.addEventListener("eventName",function(e){
     }
 });
 ```
-
-
-
-
