@@ -127,43 +127,6 @@ Practices:
     ```
 
 
-## HTTP Methods
-The purpose of each of the HTTP request types when used with a RESTful web service is as follows
-* `GET`: Retrieves data from the server (should only retrieve data and should have no other effect).
-* `POST`: Sends data to the server for a new entity. It is often used when uploading a file or submitting a completed web form.
-* `PUT`: Similar to `POST`, but used to replace/update an existing entity.
-* `PATCH`: Similar to `PUT`, but used to update only certain fields within an existing entity.
-
-    > Support for `PATCH` in browsers, servers, and web application frameworks is not universal.
-
-* `DELETE`: Removes resource from the server.
-* `TRACE`: Provides a means to test what a machine along the network path receives when a request is made. As such, it simply returns what was sent.
-* `OPTIONS`: Allows a client to request information about the request methods supported by a service. The relevant response header is `Allow` and it simply lists the supported methods. (It can also be used to request information about the request methods supported for the server where the service resides by using a * wildcard in the URI.)
-* `HEAD`: Same as the `GET` method for a resource, but returns only the response headers (i.e., with no entity-body).
-* `CONNECT`: Primarily used to establish a network connection to a resource (usually via some proxy that can be requested to forward an HTTP request as TCP and maintain the connection). Once established, the response sends a 200 status code and a “Connection Established” message.
-
-> There is a limit on the number of concurrent http connections that can happen at a time in a browser. The number depends on a browser.
-
-> Workers also adhere to a global max number of connections per host name.
-
-__Safe__ methods are HTTP methods that do not modify the resource.
-
-__Idempotent__ means that making multiple identical requests must produce the same result every time until another API (`POST` or `PUT`) has changed the state of the resource on the server.
-
-| Method  | Safe | Idempotent |
-| --- | --- | --- |
-| `CONNECT` |   |   |
-| `DELETE`  |   | √ |
-| `GET`     | √ | √ |
-| `HEAD`    | √ | √ |
-| `OPTIONS` | √ | √ |
-| `POST`    |   |   |
-| `PUT`     |   | √ |
-| `TRACE`   | √ | √ |
-
-#### [Read More](https://restfulapi.net/http-methods/)
-
-
 ## HATEOAS (Hypermedia as the Engine of Application State)
 HATEOAS is a constraint of the REST application architecture that keeps the RESTful style architecture unique from most other network application architectures. The term “hypermedia” refers to any content that contains links to other forms of media such as images, movies, and text.
 
