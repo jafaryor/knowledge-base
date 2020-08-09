@@ -418,6 +418,54 @@ We say that a 'tick' has happened when the event loop iterates over all of its p
 #### High event loop tick frequency and low tick duration(time spent in one iteration) indicates the healthy event loop.
 
 
+## Best Practices
+* ### Avoid sync I/O inside repeatedly invoked code blocks
+
+    Always try to avoid sync I/O functions (`fs.readFileSync`, `fs.renameSync` etc.) inside repeatedly invoked code blocks such as loops and frequently called functions. This can reduce your application’s performance on a considerable scale because each time the synchronous I/O operation is executed, event loop will stay blocked until the completion.
+    
+    One of the safest use cases of these sync functions is to read configuration files during the application bootstrapping time.
+
+* ### Functions should be completely async or completely sync
+
+    Your application consists of the small components called functions. In a NodeJS application, there will be two types of functions.
+    * __Synchronous Functions__ — Most of the time returns the outputs using return keyword (e.g, Math functions, fs.readFileSync etc.) or uses the Continuation-Passing style to return the results/perform an operation(e.g, Array prototype functions such as map, filter, reduce etc.).
+    * __Asynchronous Functions__ — Returns the results deferred using a callback or a promise (e.g, fs.readFile, dns.resolve etc.)
+
+    The rule of thumb is, the function you write should be,
+    * _Completely synchronous_ — Behave synchronously for all the inputs/conditions
+    * _Completely asynchronous_ — Behave asynchronously for all the inputs/conditions.
+
+    If your function is a hybrid of the above two and behaves differently for different inputs/conditions, it may result in unpredictable outcomes of your applications. 
+
+* ### Too many `nextTick`s
+
+    While `process.nextTick` is very useful in many cases, recursively using `process.nextTick` can result in I/O starvation. This will enforce Node to execute `nextTick` callbacks recursively without moving to the I/O phase.
+
+    Ancient NodeJS versions (≤0.10) offered a way to set a maximum depth for `nextTick` callbacks which can be set using `process.maxTickDepth`. But this was ditched in NodeJS >0.12 with the introduction of `setImmediate`. Due to this, there is no way currently to limit `nextTicks` starving I/O indefinitely.
+
+* ### `dns.lookup()` vs `dns.resolve*()`
+
+    There are two ways to resolve a host name to an IP address using dns module. They are either using `dns.lookup `or using one of the dns resolve functions such as `dns.resolve4`, `dns.resolve6` etc. While these two approaches seem to be the same, there is a clear distinction between them on how they work internally.
+
+    `dns.lookup` function behaves similarly to how `ping` command resolves a hostname. It calls the `getaddrinfo` function in operating system’s network API. Unfortunately, this call is not an asynchronous call. Therefore to mimic the async behavior, this call is run on libuv’s thread pool using the `uv_getaddrinfo` function. This could increase the contention for threads among other tasks which run on the thread pool and could result in a negative impact to the application’s performance. It is also important to revise that libuv thread pool contains only 4 threads by default. Therefore, four parallel `dns.lookup` calls can entirely occupy the thread pool starving other requests (file I/O, certain crypto functions, possibly more dns lookups).
+
+    In contrast, `dns.resolve()` and other `dns.resolve*()` functions are implemented quite differently than `dns.lookup().` They do not use `getaddrinfo(3)` and they always perform a DNS query on the network. This network communication is always done asynchronously, and does not use libuv's thread pool.
+
+    `dns.resolve` does not overload the libuv thread pool. Therefore, it is desirable to use `dns.resolve` instead of `dns.lookup` unless there’s a requirement to adhere to configuration files such as `/etc/nsswitch.conf`, `/etc/hosts` which are considered during `getaddrinfo`.
+
+    Let’s say you are using NodeJS to make an HTTP request to `www.example.com`. First, it will resolve `www.example.com` into an IP address. Then it will use the resolved IP to set up the TCP connection __asynchronously__. So, sending an HTTP request is a __two-step__ process.
+
+    Currently, Both Node `http` and `https` modules internally use `dns.lookup` to resolve hostname to IP. During a failure of the DNS provider or a due to a higher network/dns latency, multiple http requests can easily keep the thread pool out-of-service for other requests. This has been a raised concern about `http` and `https`, but is still left as-is at the time of this writing, in order to stick to the native OS behavior. Making things worse, many userland http client modules such as `request` also use `http` and `https` under the hood and are affected by this issue.
+
+    If you notice drastic performance drop in your application in terms of file I/O, crypto or any other threadpool-dependent task, there are few things you can do to improve your application’s performance.
+    * You can increase the capacity of the threadpool up-to 128 threads by setting `UV_THREADPOOL_SIZE` environment variable.
+    * Resolve hostname to IP address using `dns.resolve*` function and use IP address directly. The following is an example of the same with `request` module.
+
+### Concerns about the Thread Pool
+
+    As we have seen throughout the series, libuv’s threadpool is used for many purposes other than file I/O and can be a bottleneck for certain applications. If you think your application seems to slow down in terms of file I/O or crypto operations than usual, consider increasing the threadpool size by setting `UV_THREADPOOL_SIZE` env variable.
+
+
 ### Monitoring the Event Loop
 We see that in fact everything that goes on in a Node applications runs through the event loop. This means that if we could get metrics out of it, they should give us valuable information about the overall health and performance of an application.
 
@@ -427,8 +475,25 @@ There is no API to fetch runtime metrics from the event loop and as such each mo
 
 > __Tick Duration__ - The time one tick takes.
 
+The easiest way to identify an event loop delay is by checking the additional time a timer takes to execute its callback. In simple terms, let’s say we schedule a timer for 500ms, if it took 550ms to execute the timer’s callback, we can deduce the event loop delay to be roughly 50ms. This additional 50ms should account for the time taken to execute events in other phases of the event loop. You don’t need to write the above from scratch, instead, you can use [loopbench](https://www.npmjs.com/package/loopbench) module which implements the same logic to accomplish the event loop monitoring. Let’s see how you can do this.
+
+Once installed, you can use `loopbench` in your application with few simple lines of code.
+
+```javascript
+const LoopBench = require('loopbench');
+const loopBench = LoopBench();
+
+console.log(`loop delay: ${loopBench.delay}`);
+console.log(`loop delay limit: ${loopBench.limit}`);
+console.log(`is loop overloaded: ${loopBench.overlimit}`);
+```
+
+An interesting use case of this is, you can expose a health check endpoint exposing the above values so that you can integrate your application with an external alerting/monitoring tool. With this implementation, you can return a 503 Service unavailable response in your health check API if the loop is overloaded to prevent further overloading. This will also help the load balancers to route the requests to other instances of your application if you have High Availability implemented.
+
+
 ### Utilize all CPUs
 A Node.js application runs on a single thread. On multicore machines that means that the load isn’t distributed over all cores. Using the [cluster module](https://nodejs.org/api/cluster.html) that comes with Node it’s easy to spawn a child process per CPU. Each child process maintains its own event loop and the master process transparently distributes the load between all childs.
+
 
 ### Tune the Thread Pool
 Libuv by default creates a thread pool with four threads to offload asynchronous work to. Today’s operating systems already provide asynchronous interfaces for many I/O tasks (e.g. AIO on Linux).
@@ -436,6 +501,7 @@ Whenever possible, libuv will use those asynchronous interfaces, avoiding usage 
 In short: Only if there is no other way, the thread pool will be used for asynchronous I/O.
 
 The default size of the pool can be overridden by setting the environment variable `UV_THREADPOOL_SIZE`.
+
 
 ### Offload the work to Services
 If Node.js spends too much time with CPU heavy operations, offloading work to services maybe even using another language that better suits a specific task might be a viable option.

@@ -76,6 +76,10 @@ The internet industry was naturally forced to hack these constraints with practi
     * Encodes large headers as well as commonly used headers which eliminates the need to send the entire header frame itself. The individual transfer size of each data stream shrinks rapidly.
     * Not vulnerable to security attacks such as CRIME exploiting data streams with compressed headers.
 
+* It’s backwards compatible with `HTTP/1.1`
+* It is slower than `HTTP/1.1` with common front-end practices, e.g.
+sprites, file concatenation, etc.
+
 An important operational benefit of `HTTP/2` is that it avoids the head-of-line blocking problem in `HTTP 1`.
 
 `Head-of-line blocking` (`HOL` blocking) in computer networking is a performance-limiting phenomenon that occurs when a line of packets is held up by the first packet
