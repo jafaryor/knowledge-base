@@ -468,6 +468,29 @@ MongoClient.connect('mongodb://localhost:27017/animals', function (err, client) 
 ```
 
 
+## Validation
+[joi](https://github.com/sideway/joi) lets you describe your data using a simple, intuitive, and readable language. Like the rest of the [hapi](https://hapi.dev/) ecosystem it fits in, joi allows you to describe your data for both input and output validation, as part of a hapi HTTP server or standalone.
+
+
+## Extra modules
+* Config handler – get config for the current environment and validate it:
+  * [config](https://github.com/lorenwest/node-config)
+  * [nconf](https://github.com/indexzero/nconf)
+  * [dotenv](https://github.com/motdotla/dotenv)
+* Error handler – throw error with extra details, handlers for popular errors:
+  * [boom](https://github.com/hapijs/boom)
+  * [http-errors](https://github.com/jshttp/http-errors)
+* Log handler – log errors and debug data for different environments
+  * [winston](https://github.com/winstonjs/winston)
+  * [banyan](https://github.com/trentm/node-bunyan)
+* Validator – validate request payloads and params:
+  * [ajv](https://github.com/epoberezkin/ajv)
+  * [joi](https://github.com/hapijs/joi)
+* Helpers – add HAL links, check permissions, test request/response against spec:
+  * [halson](https://github.com/seznam/halson)
+
+
+
 ---
 
 #### [ExpressJS Code Examples](http://expressjs.com/en/starter/examples.html)
