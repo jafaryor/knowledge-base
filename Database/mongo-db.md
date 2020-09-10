@@ -9,3 +9,9 @@ Features:
 * The tool has a powerful query language
 * It uses rich JSON documents to store tables in a relational database.
 * It provides MongoDB Atlas, which is a global cloud database.
+
+---
+
+#### [Official Docs](https://docs.mongodb.com/)
+
+#### [MongoDB vs PostgreSQL](https://www.mongodb.com/compare/mongodb-postgresql)

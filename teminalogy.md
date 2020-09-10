@@ -129,3 +129,7 @@ other observable characteristics
 * __Web Server vs Application Server__
 
     The _Web server_'s main job is to display the site content and the _application server_ is in charge of the logic, the interaction between the user and the displayed content. The application server is working in conjunction with the web server, where one displays and the other one interacts.
+
+* __DTO (Data Transfer Object)__
+
+    Data transfer object is an object that defines how data will be sent over the network. They are also used for validation and type checking.

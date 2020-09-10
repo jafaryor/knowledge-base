@@ -605,4 +605,6 @@ export function Auth(...roles: Role[]) {
 
 ---
 
-[NestJS Official Docs](https://docs.nestjs.com/)
+#### [NestJS Official Docs](https://docs.nestjs.com/)
+
+#### [NestJS Tools](https://github.com/juliandavidmr/awesome-nestjs)

@@ -1,6 +1,26 @@
-# Structure Query Language (SQL)
+## Structure Query Language (SQL)
 Structure Query Language (SQL) is a database query language used for storing and managing data in Relational DBMS
 
+### When to use 
+* SQL is the easiest language used to communicate with the RDBMS
+* Analyzing behavioral related and customized sessions
+* Building custom dashboards
+* It allows you to store and gets data from the database quickly
+* Preferred when you want to use joins and execute complex queries
+
+### Pros
+* Reduced data storage footprint due to normalization and other optimization opportunities. Often results in better performance and more efficient use of resources.
+* Strong and well-understood data integrity semantics through ACID (Atomicity, Consistency, Isolation, Durability).
+* Standard access to data via SQL.
+* Generally more flexible query support capable of handling a broader range of workloads. SQL abstracts over the underlying implementation and allows the engine to optimize queries to fit their on-disk representation.
+
+### Cons
+* Rigid data models that require careful up-front design to ensure adequate performance and resist evolution—changing a schema will often include downtime
+* Scaling horizontally is challenging—either completely unsupported, supported in an ad-hoc way, or only supported on relatively immature technologies
+* Non-distributed engines are generally a "single point of failure" that must be mitigated by replication and failover techniques; no illusion of infinite scalability
+* Needs a Database Administrator.
+
+### Operations
 SQL defines following ways to manipulate data stored in an RDBMS.
 * #### DDL: Data Definition Language
 
@@ -144,15 +164,7 @@ There are mainly two types of joins in DBMS:
     An outer join doesn't require each record in the two join tables to have a matching record.
 
 
-## When to use 
-* SQL is the easiest language used to communicate with the RDBMS
-* Analyzing behavioral related and customized sessions
-* Building custom dashboards
-* It allows you to store and gets data from the database quickly
-* Preferred when you want to use joins and execute complex queries
-
-
-## Cheat Sheet
+### Cheat Sheet
 
 ![sql-cheat-sheet-01](../../../Desktop/knowledge-base/Cheat%20Sheets/../Cheat%20Sheets/sql-cheat-sheet-01.png)
 

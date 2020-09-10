@@ -1,5 +1,7 @@
-# Object-Relational-Mapper (ORM)
+## Object-Relational-Mapper (ORM)
 __Object-relational-mapping__ is the idea of being able to write queries like the one above, as well as much more complicated ones, using the object-oriented paradigm of your preferred programming language.
+
+ORM which is to map an object with a relational world, it basically converts data between incompatible types in object oriented programming languages.
 
 ### Pros
 * You get to write in the language you are already using anyway. If we’re being honest, we probably aren’t the greatest at writing SQL statements. SQL is a ridiculously powerful language, but most of us don’t write in it often. We do, however, tend to be much more fluent in one language or another and being able to leverage that fluency is awesome!
@@ -17,6 +19,7 @@ __Object-relational-mapping__ is the idea of being able to write queries like th
 * Performance is OK for usual queries, but a SQL master will always do better with his own SQL for big projects.
 * Might dictate certain DB design decisions.
 
+### Sequelize
 __Sequelize__ is a promise-based ORM for Node.js and io.js. It supports PostgreSQL, MySQL, MariaDB, SQLite and MSSQL and features transaction support, relations, read replication and more.
 
 Example
