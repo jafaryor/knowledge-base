@@ -266,10 +266,6 @@ const filePth = path.join(__dirname, '../..', 'node-js/hello-world.js');
 
 ---
 
-### [Creating a Server](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/)
+#### [Creating a Server](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/)
 
-### [Implementing a WebSocket server with Node.js](https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8)
-
-### [Socket.IO](https://socket.io/)
-
-### [Faster Node with ES4X](https://github.com/reactiverse/es4x)
+#### [Faster Node with ES4X](https://github.com/reactiverse/es4x)

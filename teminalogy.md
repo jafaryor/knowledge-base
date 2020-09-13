@@ -133,3 +133,7 @@ other observable characteristics
 * __DTO (Data Transfer Object)__
 
     Data transfer object is an object that defines how data will be sent over the network. They are also used for validation and type checking.
+
+* __Socket__
+
+    A network socket is a software structure within a network node of a computer network that serves as an endpoint for sending and receiving data across the network. A socket is created by concatenating the __IP__ number of a system and a software __port__ number (not a ​hardware port number).
