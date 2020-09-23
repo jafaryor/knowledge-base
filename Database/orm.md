@@ -115,3 +115,7 @@ export class UserRepository extends Repository<User> {
     }
 }
 ```
+
+---
+
+[Sequelize Typescript Docs](https://github.com/RobinBuschmann/sequelize-typescript)
