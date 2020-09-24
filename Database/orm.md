@@ -118,4 +118,6 @@ export class UserRepository extends Repository<User> {
 
 ---
 
-[Sequelize Typescript Docs](https://github.com/RobinBuschmann/sequelize-typescript)
+#### [Sequelize Typescript Docs](https://github.com/RobinBuschmann/sequelize-typescript)
+
+#### [Sequelize relationships](https://medium.com/@eth3rnit3/sequelize-relationships-ultimate-guide-f26801a75554)

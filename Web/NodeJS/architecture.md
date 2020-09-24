@@ -168,3 +168,7 @@ cluster.on('exit', function (worker) {
 It may seem scary to try this out in your already in production node.js server, but you don’t have to worry. Unless you are using some type of home-made CRON in the same server that runs your API.
 
 #### [Here is the Example Project](https://github.com/santiq/bulletproof-nodejs)
+
+---
+
+#### [Node.js design best practices](https://www.joyent.com/node-js/production/design)
