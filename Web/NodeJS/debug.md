@@ -8,6 +8,31 @@ Logging levels:
 * __ERROR__ - error events that might still allow the app to continue running.
 * __FATAL__ - very severe error events that will presumably lead the app to abort.
 
+Essential exception and error handlers:
+```javascript
+/**
+ * The 'uncaughtException' event is emitted when an uncaught JavaScript
+ * exception bubbles all the way back to the event loop.
+ * By default, Node.js handles such exceptions by printing the
+ * stack trace to stderr and exiting with code 1.
+ */
+process.on('uncaughtException', (error, origin) => {
+  console.error(`Caught exception: ${error}. \n Exception origin: ${origin}.`);
+});
+
+/**
+ * The 'unhandledRejection' event is emitted whenever a Promise
+ * is rejected and no error handler is attached to the promise
+ * within a turn of the event loop.
+ * The 'unhandledRejection' event is useful for detecting and
+ * keeping track of promises that were rejected whose rejections
+ * have not yet been handled.
+ */
+process.on('unhandledRejection', (reason, promise) => {
+  console.warn(`Unhandled Rejection at: ${promise}, reason: ${reason}.`);
+});
+```
+
 
 ### Logging Libraries:
 * [Debug](https://github.com/visionmedia/debug#readme) - a tiny JS debugging utility modelled after Node.js core debugging technique. Works in both Node.js and web browser.

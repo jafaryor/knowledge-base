@@ -272,3 +272,6 @@ The HTTP request headers
             Access-Control-Request-Headers: <field-name>[, <field-name>]*
         -------------------------------------------------------------------------------------
 
+---
+
+[CORS](https://javascript.info/fetch-crossorigin#why-is-cors-needed-a-brief-history)
