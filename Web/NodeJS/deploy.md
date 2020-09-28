@@ -1,5 +1,9 @@
 ## Deploy
 
+### Software Development Life Cycle
+
+![sdlc](../images/sdlc.png)
+
 ### The Twelve-Factor App
 
 In the modern era, software is commonly delivered as a service: called web _apps_, or _software-as-a-service_. The [**twelve-factor app**](https://12factor.net/) is a methodology for building software-as-a-service apps that:
