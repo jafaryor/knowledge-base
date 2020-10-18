@@ -15,7 +15,7 @@
     _MIME Sniffing_ - In the absence of a MIME type, or in some other cases where a client believes they are incorrectly set, browsers may conduct MIME sniffing, which is guessing the correct MIME type by looking at the resource. Each browser performs this differently and under different circumstances. There are some security concerns with this practice, as some MIME types represent executable content and others not. Servers can block MIME sniffing by sending the X-Content-Type-Options along the Content-Type.
 
     [Complete list of MIME types:](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types)
-    
+
     * application/octet-stream - binary files
     * text/plain - textual files
     * text/css, text/html
@@ -137,3 +137,11 @@ other observable characteristics
 * __Socket__
 
     A network socket is a software structure within a network node of a computer network that serves as an endpoint for sending and receiving data across the network. A socket is created by concatenating the __IP__ number of a system and a software __port__ number (not a ​hardware port number).
+
+* __Stub__
+
+    Stub is an object that holds predefined data and uses it to answer calls during tests. Such as: an object that needs to grab some data from the database to respond to a method call.
+
+* __Mocks__
+
+    Mocks are objects that register calls they receive. In test assertion, we can verify on Mocks that all expected actions were performed. Such as: a functionality that calls e-mail sending service.

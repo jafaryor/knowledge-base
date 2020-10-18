@@ -21,7 +21,7 @@ When a defect reaches the end customer it is called a failure and if the defect 
 Where:
 * __Unit Tests__
 
-    These should count for the majority of tests you have for your codebase. They tests the smallest unit of code possible. Normally, only test a single method each.
+    Software testing method to test small, independent and isolated unit of code.
 
     Pros:
     * FACILITATES CHANGES & SIMPLIFIES INTEGRATION
@@ -47,7 +47,7 @@ Where:
     * Takes time to implement.
 
 * __Functional testing__
-    
+
     Is a type of software testing whereby the system is tested against the functional requirements/specifications.
 
     This type of testing is not concerned with how processing occurs, but rather, with the results of processing. It simulates actual system usage but does not make any system structure assumptions.
@@ -124,7 +124,7 @@ Where:
 * __UI Tests__
 
     Perhaps not so well known until recent years are these tests which tests the ‘UI’ aspect of your system (if your system has an UI).
-    
+
     It checks only the UI (color, vorder, position ...) and the begaviour (toggle, hidden, disable ...) of the UI elements, but don't require to setup the system components/units.
 
 * __System Test__
@@ -151,7 +151,7 @@ Where:
             Types:
             * __Load Testing__ checks the application's ability to perform under real-life loads. Objective: Measure the max operating capacity.
             * __Endurance testing__ checks how an application handles load over time. Objective: Find memory leaks issue.
-            * __Stress testing__ includes testing the behavior of a software under abnormal conditions (no internet, no services ...). Objective: Measure softwre stability. 
+            * __Stress testing__ includes testing the behavior of a software under abnormal conditions (no internet, no services ...). Objective: Measure softwre stability.
 
         * __Compatibility Testing__: Is a type of Software testing to check whether your software is capable of running on different hardware, operating systems, applications , network environments or Mobile devices
         * __Portability testing__: Includes testing a software with the aim to ensure its reusability and that it can be moved from another software as well.
@@ -197,6 +197,11 @@ Where:
 * DIT - automation test people
 * SDET = QA + DIT
 
+The popular anti-patter here is so called __Ice Cream Anti Patter__.
+
+![icecream-anti-pattern](./images/icecream-anti-pattern.png)
+
+
 #### Box Testing
 * Black-box testing
 
@@ -218,4 +223,4 @@ Where:
 
 ___
 
-[Why Integration Testing is Important](https://code.likeagirl.io/why-is-integration-testing-important-in-software-testing-life-cycle-b3c7e586c8ba)
+#### [Why Integration Testing is Important](https://code.likeagirl.io/why-is-integration-testing-important-in-software-testing-life-cycle-b3c7e586c8ba)
