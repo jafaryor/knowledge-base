@@ -45,9 +45,17 @@ Here is the process:
 Use _Static Code Analysis Tools — Sonar_. Below there’s a small list of some of the cool things a tool of this sort can offer. It also provides the code quality metrics, which are:
 * #### Complexity
 
-    It is the Cyclomatic Complexity calculated based on the number of paths through the code.
+    It is the __Cyclomatic Complexity__ calculated based on the number of paths through the code.
 
-    Complexity is incremented by one for each: function (i.e non-abstract and non-anonymous constructors, functions, procedures or methods), `if`, short-circuit (AKA lazy) logical conjunction (`&&`), short-circuit (AKA lazy) logical disjunction (`||`), ternary conditional expressions, loop, `case` clause of a `switch` statement, `throw` and `catch` statement.
+    You can calculate the complexity of code by starting with a count of one for the method and add one for each flow-related element that is found in the method.
+
+    ![code_complexity_calc](./images/code_complexity_calc.png)
+
+    Alternatively, if you have a graph of your code, you can calculate Complexity(`M`) for the method by subtracting the number of nodes(`N`) from the number of edges(`E`) and adding the number of connected components(`P`). This gives you the equation `E – N + P = M`
+
+    > The goal is to keep complexity under 10.
+
+    How do you deal with high complexity? Simplify it by refactoring, or reducing complex methods into two highly cohesive, well named, methods.
 
 * #### Cognitive Complexity
 
@@ -57,9 +65,29 @@ Use _Static Code Analysis Tools — Sonar_. Below there’s a small list of 
 
     The analyzer detects possible failure points and points them out to us. These types of issues are important and should be resolved first since they expose points of failure. That means that our code is not simply low quality, but potentially broken.
 
-* #### Maintainability (code smells)
+* #### Technical Debt
 
-    Code Smell and Technical Debt. (read about them separately)
+    Technical Debt is the cost associated with maintaining and enhancing a platform where shortcuts were taken in the design and/or implementation phases. Nonstrategic debt is when there are gaps created without stakeholder approval and strategic objectives aren’t properly considered.
+
+    How do you deal with nonstrategic debt? Enforcing standards and conventions in code writing, avoiding shortcuts taken to meet time constraints, and identifying and defining debt in order to manage it are all ways to combat nonstrategic debt.
+
+* #### Code Smell
+
+* #### Lack of Cohesion in Methods
+
+    Measuring the consistency of a class, Lack of Cohesion in Methods, or LOCM, is an object-oriented metric. It measures the connection between methods and local instance variables of a class. High cohesion indicates good class subdivision.
+
+    LOCM is calculated as the proportion of methods that don’t access a specific data field averaged over all data fields in the class. Here’s how the calculation works. For each field in the class, count the methods that reference it, and then add them across all fields (`X`). You then divide by the count of methods (`a`) times the count of fields (`b`) and subtract the result from one: `1 – (X) / (a * b) = LOCM`
+
+    LOCM for a class will range between 0 and 1, with 0 being totally cohesive and 1 being totally non-cohesive. This makes sense since a low “lack of cohesion” score would mean high cohesion.
+
+    How do you deal with low cohesion? Subdivide the classes into two or more subclasses that have increased cohesion.
+
+* #### Coupling Between Objects
+
+    Coupling Between Objects, or CBO, represents the number of classes coupled to a given class. High coupling equates to low cohesion, and vice versa. Low coupling supports the general goals of high readability and maintainability.
+
+    How do you deal with high coupling? Create a well-structured computer system with good design, and high cohesion.
 
 * #### Code Style Consistency (following style guides)
 
@@ -69,12 +97,28 @@ Use _Static Code Analysis Tools — Sonar_. Below there’s a small list of 
 
 * #### Performance
 
-* #### Unit Test Failures.
+* #### Unit Test Success Percentage
 
-* #### Test Coverage
+    Unit test success percentage is the number of unit tests that ran successfully during a given Unit Test execution. Get as close to 100% as you can. If one or more tests fail, the build is considered unstable.
+
+    How do you deal with a failed unit test? Fixing the code to pass the unit tests, fixing the unit test if the failed unit test is related to a change in the requirements and muting, or removing, the unit test if it’s no longer relevant, and adding new tests are all viable options depending on the need.
+
+* #### Code Coverage
+
+    Code coverage is a metric for finding untested parts of a codebase. Use this metric to determine whether you are testing enough. Low coverage numbers—typically below half—are a sign there is not enough testing. Coverage should be used more as a metric to identify the areas of code which are not being covered by tests.
+
+    How do you deal with coverage? Write enough tests. Along with having high code coverage, make sure to implement effective assertions and multiple test cases with varied input data.
 
 * #### Duplications
 
-* #### Issues
+    When you change the same code in several places for a system, the chance of missing changes is high. Duplicate code percentage is the percentage of identical code structures identified in more than one instance.
+
+    How do you deal with duplicate code? Use the DRY Principles to make every piece of code have a single, unambiguous, authoritative representation within a system.
+
+* #### Comments
+
+    Percentage of comments, or comment density, calculates the number of comment lines in code. Density is calculated against the total lines of code in the codebase.
+
+    How do you deal with code comments? Following effective clean code practices, the code will be readable without needing any unnecessary comments.
 
 ![code-qualitymeasure](./images/code-qualitymeasure.webp)

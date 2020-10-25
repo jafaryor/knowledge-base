@@ -1,7 +1,6 @@
 ## Software Design Principles
-### `S.O.L.I.D`
-
-__`S.O.L.I.D`__ is an acronym for the first five object-oriented design(OOD) principles by Robert C. Martin, popularly known as Uncle Bob.
+### SOLID
+__`SOLID`__ is an acronym for the first five object-oriented design(OOD) principles by Robert C. Martin, popularly known as Uncle Bob.
 
 `S.O.L.I.D` stands for:
 * __S__ - _Single-responsiblity principle_
@@ -79,6 +78,30 @@ DRY stand for "Don't Repeat Yourself," a basic principle of software development
 
 To avoid violating the DRY principle, divide your system into pieces. Divide your code and logic into smaller reusable units and use that code by calling it where you want.
 
+
+### WET
+WET (Write Every Time) is a term used to describe when the dry principle is not applied to code. Essentially, WET code causes the need to write code repeatedly due to maintenance and reusability challenges caused by code that doesn’t follow the DRY principle.
+
+WET might be useful in the following cases:
+* Performance
+
+    By introducing duplication, you can improve performance. The key here is to control the scope of duplication, like introducing it only to one place where a performance boost is needed.
+
+* Reduce Coupling
+
+    You introduce some duplication to reduce component coupling. For example, you can have a dedicated data access layer for every microservice instead of creating one shared data access layer which makes all microservices couple to it.
+
+* Test readability
+
+    The readability of a test case is more important than possible duplication. Keeping in mind that in most cases duplication is a bad thing, you still can find tests where duplication is warranted in order to express the "test case."
+
+* Auto-generated code
+
+    Code that is automatically generated can have a lot of duplications. Even though this is true, it’s important not to manually change the code. Over time, manually changing generated code will make it difficult, if not impossible, to replace the code automatically.
+
+Code reviews, static code analysis tools, documentation reduce code duplicates.
+
+
 ### Law of Demeter
 Law of Demeter says that a method f of a class C should only call the methods of these:
 * C
@@ -86,84 +109,8 @@ Law of Demeter says that a method f of a class C should only call the methods of
 * An object passed as an argument to f
 * An object held in an instance variable of C
 
-### Clean Code
-#### Definition:
-* Clean code is simple.
 
-    Perhaps not simple in algorithmic or system-level complexity, but certainly simple in implementation. Overly clever tricks, hacks, and sleights of programmatic hand are only fun for the author and diminish the code’s long-term value. The same goes for long-winded code that takes forever to get to the point.
-
-* Clean code is readable.
-
-    If the naming conventions, spacing, structure, and flow used in a program are not designed with the reader in mind, then that reader will almost certainly fail to understand the original author’s intent. Conventions about how to write readable code may seem dogmatic or lacking in expressiveness, but they help to make code communal rather than arcane.
-
-* Clean code is considerate (внимательный).
-
-    Code that does not do its best to inform future readers is code that does not respect their time. Clean code should be written with the assumption that future consumers are intelligent, thoughtful professionals (like you), and it should go out of its way to help them.
-
-* Clean code is tested.
-
-    No one writes perfect, bug-free code on the first try. Even if it were possible to do so, there is no guarantee that perfect code won’t break later. Writing clean code means writing tested code. That way, future users can be confident they’re interacting with something that works. Moreover, when making changes, they will have a ready-made test suite to confirm that nothing broke.
-
-* Clean code is practiced.
-
-    Writing clean code requires good muscle memory, just like playing an instrument, kicking a ball, or frying an egg. The best way to learn to write clean code — and, more importantly, retain the skill — is to do it all the time. When you’re at home working on a personal project, do it with clean code — even when no one else will ever see it.
-
-* Clean code is relentlessly (беспрестанно) refactored.
-
-    Clean code should be in a constant state of refactoring. With a good test suite to back up your code, you can refactor it as much as you like and never worry about breakage.
-
-* Clean code is SOLID.
-
-#### How to achieve:
-* DRY
-* SOLID
-* Follow design patterns and its associated terms
-* Follow __law of demeter__ to enable less coupling and more cohesion.
-* Follow the TDD, and keep your test code as clean as production code.
-* A _Function_ should do one thing only and do it really well.
-
-    Certain tips for writing effective functions:
-    * Avoid passing boolean into a function, this is a hint that func has an `if` statement within which causes it to do more than one thing.
-    * Functions should either do something or answer something, but not both. This ensures a function does not have hidden side effects. e.g a func named `isPresent()` should only return a bool and not do any other operations
-    * Prefer Exceptions to Returning Error Codes and extract error handling `try catch` into their own function.
-    * Avoid output arguments. Function if it has to, should change state of its owning object
-    * Code should always be separated with blank line to club logical blocks together. Think of different lines of code as thoughts and then always think of organizing similar thoughts together
-    * Each function should read like a newspaper, every functions implementation following its call and having less vertical density
-    * Don’t return null
-
-* Object and data structures:
-    * Variables should be private so that we can change their type or implementation when required. There is no need to add getters/setter to each variable to expose them as public.
-    * Hiding implementation is not just a matter of putting a layer of functions between the variables. Hiding implementation is about abstractions! We do not want to expose details of data but rather express data as abstract terms
-
-* Exception handling:
-    * Try and extract `try catch` blocks into separate well named functions. Having them mixed with other code just confuses the structure of the program. This is inline with “Function should do one thing”, Well error handling is one thing.
-    * Prefer returning Exceptions instead of Error Codes.
-    * Each exception that you throw should provide enough context to determine the source and location of an error.
-
-* Comments
-    * The only truly good comment is the comment you found a way not to write.
-    * Don’t Use a Comment When You Can Use a well named Function or a Variable
-    * Any comment which forces you to look into another module for meaning has failed miserably in communicating and is not worth it at all.
-    * Don’t comment bad code, Rewrite it.
-
-* Boundaries
-    
-    Always wrap third party code/API to minimize your dependency on it and allow the freedom to move to a different one in future without changing the consuming code.
-
-* Code organization and Design
-    * Nearly all code is read left to right and top to bottom. Each line represents an expression or a clause, and each group of lines represents a _complete thought_. Those thoughts should be separated from each other with blank lines
-    * Local variables should be declared as close to their usage as possible.
-    * Instance variables should be declared at top of the class since in a well defined class they would be used by multiple functions
-    * If one function calls another, they should be vertically close, and the caller should be above the callee, if at all possible. This gives the program a natural flow.
-    * Try to follow the _“The Principle of Least Surprise”_ any function or class should implement the behaviors that another programmer could reasonably expect.
-    * It is NOT necessary to do a _Big Design Up Front (BDUF)_. In fact, BDUF is even harmful because it inhibits adapting to change, due to the psychological resistance to discarding prior effort and because of the way architecture choices influence subsequent thinking about the design.
-
-* Tests
-
-    Clean tests should follow F.I.R.S.T principles
-
-
-## GRASP Principles
+### GRASP Principles
 The _GRASP_ principles are a set of design patterns that came after the original Gang of Four book that many of you might be familiar with.
 
 _GRASP_ stands for __General Responsibility Assignment Software Patterns__ and is a set of design patterns which aim primarily to answer the question: _`“Who does what?”`_.
@@ -268,36 +215,6 @@ _GRASP_ stands for __General Responsibility Assignment Software Patterns__ and i
 
 > Now _SOLID_ and _GRASP_ don’t conflict with each other, they are not competing sets, you might choose to use one or both or neither.
 
-[Read More](https://en.wikipedia.org/wiki/GRASP_(object-oriented_design))
-
-### ACID
-ACID (_Atomicity_, Con_sistency, _Isolation_, _Durability_) is a set of properties of database transactions intended to guarantee validity even in the event of errors, power failures, etc.
-
-Where:
-* Atomicity.
-
-    Transactions are often composed of multiple statements.
-
-    Atomicity guarantees that each transaction is treated as a single "unit", which either succeeds completely, or fails completely: if any of the statements constituting a transaction fails to complete, the entire transaction fails and the database is left unchanged.
-
-    An atomic system must guarantee atomicity in each and every situation, including power failures, errors and crashes.
-
-* Consistency.
-
-    A transaction either creates a new and valid state of data, or, if any failure occurs, returns all data to its state before the transaction was started.
-
-* Isolation.
-
-    A transaction in process and not yet committed must remain isolated from any other transaction.
-
-    Transactions are often executed concurrently (e.g., reading and writing to multiple tables at the same time). Isolation ensures that concurrent execution of transactions leaves the database in the same state that would have been obtained if the transactions were executed sequentially. Implmeents via DB locks.
-
-* Durability.
-
-    Committed data is saved by the system such that, even in the event of a failure and system restart, the data is available in its correct state.
-
-    This usually means that completed transactions (or their effects) are recorded in non-volatile memory.
-
 ___
 
-[Read more about Clean Code](https://hackernoon.com/how-to-write-clean-code-d557d998bb08)
+#### [Read more about Clean Code](https://hackernoon.com/how-to-write-clean-code-d557d998bb08)

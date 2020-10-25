@@ -54,12 +54,14 @@ An index is a data structure technique which allows you to quickly retrieve reco
 
 Queries that filter using those attributes can find matching tuples directly using the index, without having to check each tuple in turn. This is analogous to using the index of a book to go directly to the page on which the information you are looking for is found, so that you do not have to read the entire book to find what you are looking for.
 
-Relational databases typically supply multiple indexing techniques, each of which is optimal for some combination of data distribution, relation size, and typical access pattern. Indices are usually implemented via [B+ trees](https://en.wikipedia.org/wiki/B%2B_tree), [R-trees](https://en.wikipedia.org/wiki/R-tree), and bitmaps. 
+Relational databases typically supply multiple indexing techniques, each of which is optimal for some combination of data distribution, relation size, and typical access pattern. Indices are usually implemented via [B+ trees](https://en.wikipedia.org/wiki/B%2B_tree), [R-trees](https://en.wikipedia.org/wiki/R-tree), and bitmaps.
 
 ## ACID
 In order for a database management system (DBMS) to operate efficiently and accurately, it must use ACID transactions.
 
-__ACID__ (atomicity, consistency, isolation, durability) is a set of properties of database transactions intended to guarantee data validity despite errors, power failures, and other mishaps. In the context of databases, a sequence of database operations that satisfies the ACID properties (which can be perceived as a single logical operation on the data) is called a transaction. For example, a transfer of funds from one bank account to another, even involving multiple changes such as debiting one account and crediting another, is a single transaction.
+__ACID__ (atomicity, consistency, isolation, durability) is a set of properties of database transactions intended to guarantee data validity despite errors, power failures, and other mishaps.
+
+In the context of databases, a sequence of database operations that satisfies the ACID properties (which can be perceived as a single logical operation on the data) is called a transaction. For example, a transfer of funds from one bank account to another, even involving multiple changes such as debiting one account and crediting another, is a single transaction.
 
 * #### Atomicity
 
@@ -189,7 +191,7 @@ The drawbacks of data redundancy include:
 4. __4NF__ (Fourth Normal Form) Rules
     * It should be in the Boyce-Codd Normal Form.
     * It should not have any __Multi-valued Dependency__.
-    
+
     If no database table instance contains two or more, independent and multi-valued data describing the relevant entity, then it is in 4th Normal Form.
 
     [Example](https://www.studytonight.com/dbms/fourth-normal-form.php)
@@ -213,9 +215,9 @@ Problems:
     Notice that for each `SalesPerson` we have listed both the `SalesOffice` and `OfficeNumber`. There are duplicate salesperson data. Duplicated information presents two problems:
     1. It increases storage and decrease performance.
     2. It becomes more difficult to maintain data changes.
-    
+
     For example:
-    Consider if we move the Chicago office to Evanston, IL. To properly reflect this in our table, we need to update the entries for all the SalesPersons currently in Chicago. 
+    Consider if we move the Chicago office to Evanston, IL. To properly reflect this in our table, we need to update the entries for all the SalesPersons currently in Chicago.
 
 * Insert Anomaly
 
