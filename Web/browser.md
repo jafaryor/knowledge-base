@@ -16,7 +16,7 @@ Say you have entered _'google.com'_  and hit _Enter_ key. Actions which takes br
     2. OS cache: If the browser cache does not contain the desired record, the browser makes a system call (gethostbyname in Windows). The OS has its own cache.
     3. Router cache: The request continues on to your router, which typically has its own DNS cache.
     4. ISP DNS cache: The next place checked is the cache ISP’s DNS server. With a cache, naturally.
-    5. Recursive search: Your ISP’s DNS server begins a recursive search, from the root nameserver, through the .com top-level nameserver, to Google’s nameserver. Normally, the DNS server will have names of the .com nameservers in cache, and so a hit to the root nameserver will not be necessary.
+    5. Recursive search: Your ISP’s DNS server begins a recursive search, from the root nameserver, through the `.com` top-level nameserver, to Google’s nameserver. Normally, the DNS server will have names of the `.com` nameservers in cache, and so a hit to the root nameserver will not be necessary.
 
         ![dns-recursive-search](./images/dns-recursive-search.png)
 

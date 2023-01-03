@@ -42,7 +42,13 @@
 
 * Data buffer (or just __BUFFER__) is a region of a physical memory storage used to temporarily store data while it is being moved from one place to another.
 
-* __LATENCY__ - an expression of how much time it takes for a packet of data to get from one designated point to another
+* __LATENCY__ - the time it takes for a certain operation to complete in a system. Most often this measure is a time duration, like milliseconds or seconds.
+
+* __THROUGHPUT__ - the number of operations that a system can handle properly per time unit. For instance the throughput of a server can often be measured in requests per second (RPS or QPS).
+
+    In the context of network, throughput is the number of data packets being successfully sent per second, and latency is the actual time those packets are taking to get there.
+
+* __Hot Spot__ - when distributing a workload across a set of servers, that workload might be spread unevenly. This can happen if your sharding key or your hashing function are suboptimal, or if your workload is naturally skewed: some servers will receive a lot more traffic than others, thus creating a "hot spot".
 
 * __CANONICAL URL__ - allows you to tell search engines that certain similar URLs are actually one and the same. Sometimes you have products or content that is accessible under multiple URLs, or even on multiple websites. Using a canonical URL (an HTML link tag with attribute `rel=canonical`) these can exist without harming your rankings.
 
