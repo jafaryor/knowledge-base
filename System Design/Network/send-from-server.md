@@ -85,3 +85,9 @@ The HTTP protocol is based on a request/response pattern, which means that the s
     To achieve an indefinite response, the server must respond to client requests by specifying `Transfer Encoding: chunked` and omitting `Content-Length` in the header. This sets up a persistent connection from server to client and allows the server to send response data in chunks of newline-delimited strings. These chunks of data can then be received and processed on-the-fly by the client.
 
     Streaming involves breaking a resource that you want to receive over a network down into small chunks, then processing it bit by bit. This is something browsers do anyway when receiving assets to be shown on webpages — videos buffer and more is gradually available to play, and sometimes you'll see images display gradually as more is loaded.
+
+7. __Webhook:__ is an HTTP-based callback function that allows lightweight, event-driven communication between 2 APIs.
+
+    To set up a webhook, the client gives a unique URL to the server API and specifies which event it wants to know about. Once the webhook is set up, the client no longer needs to poll the server; the server will automatically send the relevant payload to the client’s webhook URL when the specified event occurs.
+
+    Instead of the client sending HTTP requests—asking for data until the server responds—the server sends the client a single HTTP POST request as soon as the data is available.

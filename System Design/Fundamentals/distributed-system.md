@@ -85,7 +85,28 @@ One common way to categorize distributed systems is by their architecture, which
 
     ![3-tier-architecture](./images/3-tier-architecture.gif)
 
-* __Multi-Tier:__ Such architectures are used when an application needs to forward requests to various network services. Here the application servers interact both with the presentation tiers and data tiers.
+* __Multi-Tier:__ divides an application into logical layers and physical tiers. Layers are a way to separate responsibilities and manage dependencies. Each layer has a specific responsibility. A higher layer can use services in a lower layer, but not the other way around.
+
+    ![n-tier-architecture](./images/n-tier-architecture.jpg)
+
+    Tiers are physically separated, running on separate machines. A tier can call to another tier directly, or use asynchronous messaging. Although each layer might be hosted in its own tier, that's not required. Several layers might be hosted on the same tier. Physically separating the tiers improves scalability and resiliency and adds latency from the additional network communication.
+
+    Types:
+    * In a __closed layer architecture__, a layer can only call the next layer immediately down.
+    * In an __open layer architecture__, a layer can call any of the layers below it.
+
+    Advantages:
+    * Can improve availability.
+    * Better security as layers can behave like a firewall.
+    * Separate tiers allow us to scale them as needed.
+    * Improve maintenance as different people can manage different tiers.
+
+    Disadvantages:
+    * Increased complexity of the system as a whole.
+    * Increased network latency as the number of tiers increases.
+    * Expensive as every tier will have its own hardware cost.
+    * Difficult to manage network security.
+
 * __Peer-to-Peer:__ A collection of machines referred to as peers that divide a workload between themselves to presumably complete the workload faster than would otherwise be possible. Peer-to-peer networks are often used in file-distribution systems.
 
 ### Disadvantages of Distributed Systems
@@ -108,13 +129,22 @@ We can only build a system that has any two of these three properties. Because, 
 Distributed networks heavily depend on NoSQL databases as they offer horizontal scalability, and they are highly distributed. Hence, they can easily and rapidly scale across a growing network of multiple interconnected nodes.
 
 The different combinations and their use cases are discussed below:
-* __CP System:__ This system focuses more on consistency and partition tolerance. So these systems are not available most of the time. When any issue occurs in the system, it has to shut down the non-consistent node until the partition is resolved, and during that time, it is not available.
+* __CP System:__ these systems are not available most of the time. When any issue occurs in the system, it has to shut down the non-consistent node until the partition is resolved, and during that time, it is not available.
 * __AP System:__ This type of database focuses more on availability and partition tolerance rather than consistency. When any issue occurs in the system, then it will no longer remain in a consistent state. However, all the nodes remain available, and affected nodes might return a previous version of data, and the system will take some time to become consistent.
-* __CA System:__ This type of database focuses more on consistency and availability across all nodes than partition tolerance. Fault-Tolerance is the basic necessity of any distributed system, and hence it is almost rare to use a CA type of architecture for any practical purpose.
+* __CA System:__ delivers consistency and availability across all nodes. It can't do this if there is a partition between any two nodes in the system, and therefore can't deliver fault tolerance.
 
 ![cap-theorem](./images/cap-theorem.png)
 
 If horizontal scalability is essential to the application with eventual consistency, an `AP` database like `Cassandra` can help meet deployment requirements and simplify deployment. On the other hand, if the application depends heavily on data consistency, such as in a payment service, it may be better to opt for a relational database like `PostgreSQL`, which focuses on a `CP` database style.
+
+### PACELC Theorem
+PACELC theorem states that in the case of Network Partition a distributed system can have tradeoffs between Availability and Consistency Else if there is no Network Partition then a distributed system can have tradeoffs between Latency and Consistency.
+
+![pacelc-theorem](./images/pacelc-theorem.webp)
+
+One of the major pitfalls of the CAP Theorem was it did not make any provision for Performance or Latency, in other words, CAP Theorem didn’t provide tradeoffs when the system is under normal functioning or non-partitioned. Let’s try to understand this by an example:
+
+Consider a scenario, in which you are making a request to Signup up and getting the confirmation after an hour. According to the CAP theorem, this system is available but such latency is unacceptable in any real-world application.
 
 ---
 

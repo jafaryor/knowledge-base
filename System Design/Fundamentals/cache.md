@@ -83,16 +83,3 @@ Solving this problem is known as cache invalidation; there are three main scheme
 * __Reduce Database Cost:__ Caching can take up additional traffic to its cache server and reduce database traffic, eventually reducing database cost.
 * __Reduce the Load on the Backend:__ Offloading the same request traffic from the main server to caching server would reduce the backend load.
 * __Increase Read Throughput (IOPS):__ Caching server responds much faster than the main server for the cached key, which increases read throughput.
-
----
-
-## Content Distribution Network (CDN)
-A __CDN__ is a network of edge servers strategically placed across the globe with the purpose of delivering digital content to users as fast as possible.
-
-Besides speeding up the delivery of your assets around the globe a CDN also can dramatically decrease your latency.
-
-CDNs are a kind of cache that comes into play for sites serving large amounts of static media. In a typical CDN setup, a request will first ask the CDN for a piece of static media; the CDN will serve that content if it has it locally available. If it isn’t available, the CDN will query the back-end servers for the file, cache it locally, and serve it to the requesting user.
-
-If the system we are building isn’t yet large enough to have its own CDN, we can ease a future transition by serving the static media off a separate subdomain (e.g. `static.yourservice.com`) using a lightweight HTTP server like Nginx, and cut-over the DNS from your servers to a CDN later.
-
-> Content Distribution Network (CDN) and Content Delivery Network (CDN) are the same.

@@ -20,7 +20,7 @@ The six constraints are:
 
         Each message includes enough information to describe how to process the message. For example, which parser to invoke may be specified by an Internet media type (previously known as a MIME type). Responses also explicitly indicate their cache-ability.
 
-    * Hypermedia as the Engine of Application State (HATEOAS)
+    * _Hypermedia as the Engine of Application State (HATEOAS)_
 
         Clients deliver state via body contents, query-string parameters, request headers and the requested URI (the resource name). Services deliver state to clients via body content, response codes, and response headers. This is technically referred-to as hypermedia (or hyperlinks within hypertext).
 
@@ -40,8 +40,21 @@ The six constraints are:
 
     REST allows client functionality to be extended by downloading and executing code in the form of applets or scripts. This simplifies clients by reducing the number of features required to be pre-implemented.
 
-#### [More about REST](https://restfulapi.net/)
+6. _Client-Server_
 
+    A client-server architecture managed through HTTP.
+
+### Advantages
+* Simple and easy to understand.
+* Flexible and portable.
+* Good caching support.
+* Client and server are decoupled.
+
+### Disadvantages
+* Over-fetching of data.
+* Sometimes multiple round trips to the server are required.
+
+REST APIs are pretty much used universally and are the default standard for designing APIs. Overall REST APIs are quite flexible and can fit almost all scenarios.
 
 ## Richardson Maturity Model
 This model of division of REST services to identify their maturity level – is called Richardson Maturity Model. The more a service employs Rest Naming Convention, HTTP Methods and HATEOAS (Hypermedia) technologies – more mature it shall be considered.

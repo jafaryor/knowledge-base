@@ -215,6 +215,18 @@ The drawbacks of data redundancy include:
 | 1004 | John Hunt | New York | 789123 | Dell | HP | Google |
 | 1005 | MArtin Hap | Chicago | 456789 | Boeing | | |
 
+#### Advantages
+* Reduces data redundancy.
+* Better data design.
+* Increases data consistency.
+* Enforces referential integrity.
+
+#### Disadvantages
+* Data design is complex.
+* Slower performance.
+* Maintenance overhead.
+* Require more joins.
+
 Problems:
 * Data Duplication and Modification Anomalies
 
@@ -243,6 +255,25 @@ Problems:
 
     Our current table makes this tough. You would have to use three separate UNION queries! You can eliminate or reduce these anomalies by separating the data into different tables. This puts the data into tables serving a single purpose.
 
+
+## Denormalization
+Denormalization is a database optimization technique in which we add redundant data to one or more tables. This can help us avoid costly joins in a relational database. It attempts to improve read performance at the expense of some write performance. Redundant copies of the data are written in multiple tables to avoid expensive joins.
+
+Once data becomes distributed with techniques such as federation and sharding, managing joins across the network further increases complexity. Denormalization might circumvent the need for such complex joins.
+
+> Note: Denormalization does not mean reversing normalization.
+
+#### Advantages
+* Retrieving data is faster.
+* Writing queries is easier.
+* Reduction in number of tables.
+* Convenient to manage.
+
+#### Disadvantages
+* Expensive inserts and updates.
+* Increases complexity of database design.
+* Increases data redundancy.
+* More chances of data inconsistency.
 
 ---
 

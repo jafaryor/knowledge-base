@@ -79,7 +79,25 @@ It uses either the TCP or the UDP to carry messages between communicating progra
 
 There are several advantages to using RPC. It can improve performance by omitting many protocol layers and minimize code rewriting or redevelopment efforts. However, RPC has not yet been proven to work effectively over wide-area networks and does not support other transport protocols besides TCP/IP.
 
-The most preferred version of RPC is __gRPC__.
+The most preferred version of RPC is __`gRPC`__.
+
+### Advantages
+* Lightweight and efficient.
+* High performance.
+* Built-in code generation support.
+* Bi-directional streaming.
+
+### Disadvantages
+* Relatively new compared to REST and GraphQL.
+* Limited browser support.
+* Steeper learning curve.
+* Not human readable.
+
+### Use cases
+* Real-time communication via bi-directional streaming.
+* Efficient inter-service communication in microservices.
+* Low latency and high throughput communication.
+* Polyglot environments.
 
 ## What physical infrastructure makes the Internet work?
 A lot of different kinds of hardware and infrastructure go into making the Internet work for everyone. Some of the most important types include the following:
