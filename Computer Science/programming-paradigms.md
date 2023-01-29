@@ -16,34 +16,55 @@ Object-Oriented Programming is a paradigm where you express programs in terms of
 
 Objects are first-class values (you can pass them around, store in variables, etc.)
 
-### Within this paradigm we have several other concepts:
-* Encapsulation
+OOP is a programming paradigm that is based on the concept of 'objects', which can contain both data and behavior. It is designed to make it easier to understand, reuse, and maintain large software systems.
 
-    Encapsulation is a mechanism of wrapping the data (instance variables) and code acting on the data (methods) together as a single unit like a Class.
+An __object__ is a logical construct that consists of user-defined data and a set of operations for manipulating that data. It can be thought of as a combination of data and behavior (Data + Operations = Object). OOP is a way of organizing and structuring a program around these objects.
 
-    > Encapsulation prevents access to data except through the object’s functions.
+### Four principles of OOPS:
+1. #### Abstraction
 
-* Inheritance
+    Refers to an object's ability to present higher-level functionality to the user while hiding implementation details. It involves exposing only the necessary information and hiding the implementation details.
 
-    Subclasses can inherit properties and functions from superclasses while adding properties and functions of their own.
+    It allows us to focus on the general properties of an object or concept, rather than being overwhelmed by the specifics.
 
-* Abstraction
+    There are several ways to implement abstraction, but the most common ones in Java are through interfaces and abstract classes.
+    * Abstraction through Classes: This is achieved using the `abstract` keyword with a class. In Java, marking a class as `abstract` means that it cannot be instantiated.
+    * Abstraction via Interfaces: Similar to abstract classes, we can use the `interface` keyword to define an interface.
 
-    Abstraction is a process of hiding the implementation details from the user, only the functionality will be provided to the user.
+2. #### Encapsulation
 
-    > In other words, the user will have the information on what the object does instead of how it does it.
+    Refers to an ability of a system to hide information in such a way that it cannot be accessed or manipulated directly by other entities.
 
-* Polymorphism
+    Encapsulation helps us to better control our systems. When a class or system has no access boundaries, it is "open for modification," which can lead to unintended side effects. Encapsulation adds boundaries to a system, allowing us to better control how data is accessed and modified. This helps to protect the integrity of the system and prevent unwanted changes.
 
-    Polymorphism (from the Greek meaning “having multiple forms”) is the characteristic of being able to assign a different meaning or usage to something in different contexts — specifically, to allow an entity such as a function, or an object to have more than one form.
+    We can use access modifiers to achieve encapsulation in our system
 
-    > It’s about making your code accept many different shapes in a single code path.
+    The concept of getters and setters is a common programming technique used to protect the data within an object. This is done by marking attributes of a class as "private" or "protected" and providing public methods, known as getters and setters, to allow controlled access to these attributes. By using this mechanism, an object can maintain control over how its data can be changed.
 
-#### [OOP in JS](https://medium.freecodecamp.org/an-introduction-to-object-oriented-programming-in-javascript-8900124e316a)
+    > The main difference abstraction and encapsulation is the intent behind them. Abstraction is used to simplify and make the interface more user-friendly, while encapsulation is used to control the access and modification of data within an object.
 
-#### [An intro to object-oriented programming in JavaScript](https://medium.freecodecamp.org/an-intro-to-object-oriented-programming-in-javascript-objects-prototypes-and-classes-5d135e7361b1)
+3. #### Inheritance
 
-#### [OOP: Everything you need to know about Object Oriented Programming](https://medium.com/from-the-scratch/oop-everything-you-need-to-know-about-object-oriented-programming-aee3c18e281b)
+    Refers to a mechanism that allows an object to reuse or extend the functionality of another object. It allows a subclass or derived class to inherit the properties and methods of a superclass or base class, allowing the subclass to have access to the functionality of the superclass.
+
+    When designing with inheritance, you can place common code in a superclass and specify that other, more specific classes are subclasses of the superclass. This allows the subclass to inherit the members of the superclass and use them in a similar way to how it uses its own members. This approach makes it easier to reuse and extend code, as you can use the inherited members in the subclass without having to rewrite them.
+
+4. #### Polymorphism
+
+    Refers to a concept in object-oriented programming that refers to the ability of an object to behave differently based on the context of its invocation. In Java, you can create multiple implementations of a method with different arguments, which allows the method to behave differently based on the number and type of arguments provided. This is known as __static polymorphism__, as the decision of which method to invoke is made at compile time, rather than at runtime.
+
+    For example, consider a class called "Shape" that has a method called "area." You could create multiple implementations of this method, each with a different set of arguments, to calculate the area of different shapes. When calling the "area" method on an object of the "Shape" class, the correct implementation would be invoked based on the arguments provided. This allows the same method name to be used in different contexts, making the code more flexible and reusable.
+
+    __Runtime polymorphism__, also known as method overriding, is a form of polymorphism in which the decision of which method to invoke is made at runtime, rather than at compile time. In method overriding, a subclass or derived class can provide its own implementation of a method that is defined in the superclass or base class. When calling the method on an object of the subclass, the subclass's implementation of the method will be invoked, rather than the implementation in the superclass.
+
+    For example, consider a class called "Shape" that has a method called "area" You could create multiple subclasses of "Shape," such as "Circle" and "Rectangle," each with its own implementation of the "area" method. When calling the "area" method on an object of the "Shape" class, the correct implementation would be invoked based on the type of object that it is working with. This allows the same method name to be used in different contexts, making the code more flexible and reusable.
+
+An object is a single instance of a class, which contains data and methods working on that data. So an object consists of three things: 
+* Name: This is a variable name that represents the object.
+* Member data: The data that describes the object.
+* Member methods: Behavior that describes the object.
+
+### [Full OOP Course](https://www.enjoyalgorithms.com/oops-course/)
 
 ___
 

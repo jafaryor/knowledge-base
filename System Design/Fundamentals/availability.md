@@ -75,7 +75,23 @@ There are 2 ways to sync master db with slave dbs:
 
 > Replication ensures Consistency while Redundancy increases reliability.
 
-### SLA and SLO
+### SLA, SLO, SLI
+SLAs, SLOs, and SLIs allow companies to define, track and monitor the promises made for a service to its users. Together, SLAs, SLOs, and SLIs should help teams generate more user trust in their services with an added emphasis on continuous improvement to incident management and response processes.
+
 __Service-level Agreement (SLA)__ - is a collection of guarantees given to a customer by a service provider. SLAs typically make guarantees on a system's availability, amongst other things. SLAs are made up of one or multiple SLOs.
 
-__Service-level Objective (SLO)__ - is a guarantee given to a customer by a service provider. SLOs typically make guarantees on a system's availability, amongst other things. SLOs constitute an SLA.
+__Service-level Objective (SLO)__ - is the promise that a company makes to users regarding a specific metric such as incident response or uptime. SLOs exist within an SLA as individual promises contained within the full user agreement.
+
+__Service Level Indicator (SLI)__ - is a key metric used to determine whether or not the SLO is being met. It is the measured value of the metric described within the SLO. In order to remain in compliance with the SLA, the SLI's value must always meet or exceed the value determined by the SLO.
+
+---
+
+## Disaster recovery
+Disaster recovery (DR) is a process of regaining access and functionality of the infrastructure after events like a natural disaster, cyber attack, or even business disruptions.
+
+Disaster recovery relies upon the replication of data and computer processing in an off-premises location not affected by the disaster. When servers go down because of a disaster, a business needs to recover lost data from a second location where the data is backed up. Ideally, an organization can transfer its computer processing to that remote location as well in order to continue operations.
+
+Strategies:
+* __Back-up:__ the simplest type of disaster recovery and involves storing data off-site or on a removable drive.
+* __Cold Site:__ an organization sets up basic infrastructure in a second site.
+* __Hot site:__ a hot site maintains up-to-date copies of data at all times. Hot sites are time-consuming to set up and more expensive than cold sites, but they dramatically reduce downtime.

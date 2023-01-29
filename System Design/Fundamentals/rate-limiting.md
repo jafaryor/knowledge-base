@@ -32,14 +32,24 @@ Rate limiting runs within an application rather than on the web server. It is ba
 
 * Tocken Bucket
 
-    The token bucket algorithm is similar to leaky bucket, but instead, we assign tokens on a user level. For a given time duration `d`, the number of request `r` packets that a user can receive is defined.
-    
-    Every time a new request arrives at a server, there are two operations that happen:
-    * Fetch token: The current number of tokens for that user is fetched. If it is greater than the limit defined, then the request is dropped.
-    * Update token: If the fetched token is less than the limit for the time duration `d`, then the request is accepted and the token is appended.
+    Here we use a concept of a bucket. When a request comes in, a token from the bucket must be taken and processed. The request will be refused if no token is available in the bucket, and the requester will have to try again later. As a result, the token bucket gets refreshed after a certain time period.
 
 Rate limiting counter DoS and DDoS Attacks
 * __DoS__ (denial-of-service attack) - is a DoS attack is an attack in which a malicious user tries to bring down or damage a system in order to render it unavailable to users. Much of the time, it consists of flooding it with traffic. Some DoS attacks are easily preventable with rate limiting, while others can be far trickier to defend against.
 * __DDoS__ (distributed denial-of-service attack) - is a DDoS attack is a DoS attack in which the traffic flooding the target system comes from many different sources (like thousands of machines), making it much harder to defend against.
 
 __Redis__ - is an in-memory key-value store. Does offer some persistent storage options but is typically used as a really fast, best-effort caching solution. Redis is also often used to implement rate limiting.
+
+### Rate Limiting in Distributed Systems
+Rate Limiting becomes complicated when distributed systems are involved. The two broad problems that come with rate limiting in distributed systems are:
+* Inconsistencies
+
+    When using a cluster of multiple nodes, we might need to enforce a global rate limit policy. Because if each node were to track its rate limit, a consumer could exceed a global rate limit when sending requests to different nodes. The greater the number of nodes, the more likely the user will exceed the global limit.
+
+    The simplest way to solve this problem is to use sticky sessions in our load balancers so that each consumer gets sent to exactly one node but this causes a lack of fault tolerance and scaling problems. Another approach might be to use a centralized data store like Redis but this will increase latency and cause race conditions.
+
+* Race Conditions
+
+    This issue happens when we use a naive "get-then-set" approach, in which we retrieve the current rate limit counter, increment it, and then push it back to the datastore. This model's problem is that additional requests can come through in the time it takes to perform a full cycle of read-increment-store, each attempting to store the increment counter with an invalid (lower) counter value. This allows a consumer to send a very large number of requests to bypass the rate limiting controls.
+
+    One way to avoid this problem is to use some sort of distributed locking mechanism around the key, preventing any other processes from accessing or writing to the counter. Though the lock will become a significant bottleneck and will not scale well. A better approach might be to use a "set-then-get" approach, allowing us to quickly increment and check counter values without letting the atomic operations get in the way.

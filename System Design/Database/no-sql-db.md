@@ -86,6 +86,17 @@ Following are the most common types of NoSQL:
 
     ![quadtree](./images/quadtree.png)
 
+    Why do we need quadtrees? While in theory using latitude and longitude we can determine things such as how close points are to each other using euclidean distance, for practical use cases it is simply not scalable because of its CPU-intensive nature with large data sets.
+
+    Quadtrees enable us to search points within a two-dimensional range efficiently, where those points are defined as latitude/longitude coordinates or as cartesian (x, y) coordinates. Additionally, we can save further computation by only subdividing a node after a certain threshold. And with the application of mapping algorithms such as the Hilbert curve, we can easily improve range query performance.
+
+    Use cases:
+    * Image representation, processing, and compression.
+    * Spacial indexing and range queries.
+    * Location-based services like Google Maps, Uber, etc.
+    * Mesh generation and computer graphics.
+    * Sparse data storage.
+
 * #### Time Series Database
 
     A time-series database is optimized for data entries that need to be strictly organized by time. The key use case is storing real-time data streams from system monitors. Because time series databases need a lot of writing, they typically include services for sorting streams as they arrive to ensure that they are appended in the correct order. These datasets can readily be divided into periods.

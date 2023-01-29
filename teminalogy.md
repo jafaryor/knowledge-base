@@ -52,8 +52,6 @@
 
 * __CANONICAL URL__ - allows you to tell search engines that certain similar URLs are actually one and the same. Sometimes you have products or content that is accessible under multiple URLs, or even on multiple websites. Using a canonical URL (an HTML link tag with attribute `rel=canonical`) these can exist without harming your rankings.
 
-* __TLS__ - Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL), is a protocol used by applications to communicate securely across a network, preventing tampering with and eavesdropping on email, web browsing, messaging, and other protocols.
-
 * __WEBMASTER__ (from web and master),[1] is a person responsible for maintaining one or many websites.
 
 * decision-to-decision path, or __DD-path__, is a path of execution (usually through a flow graph representing a program, such as a flow chart) between two decisions.

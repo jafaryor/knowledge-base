@@ -1,6 +1,9 @@
 ## Software Design Principles
+Software engineering is a set of principles, procedures, and methods to analyze user requirements and develop effective, reliable, and high-quality software.
+
+
 ### SOLID
-__`SOLID`__ is an acronym for the first five object-oriented design(OOD) principles by Robert C. Martin, popularly known as Uncle Bob.
+__`SOLID`__ is the first five object-oriented design(OOD) principles.
 
 `S.O.L.I.D` stands for:
 * __S__ - _Single-responsiblity principle_
@@ -24,7 +27,7 @@ __`SOLID`__ is an acronym for the first five object-oriented design(OOD) princip
 
 * __D__ - _Dependency Inversion Principle_
 
-    Entities must depend on abstractions not on concretions. It states that the high level module must not depend on the low level module, but they should depend on abstractions.
+    Entities must depend on abstractions not on concretions. It states that the high level module must not depend on the low level module, but they should depend on abstractions. In simple words, It suggests that we should use interfaces instead of concrete implementations wherever possible.
 
     Example:
     ```java
@@ -58,29 +61,31 @@ __`SOLID`__ is an acronym for the first five object-oriented design(OOD) princip
         }
     ```
 
-more: https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#toc-liskov-substitution-principle
-[more](scotch.io)
 
-### KISS
-KISS means “Keep it simple, stupid”. It is probably one of the oldest principles of software design (but we keep forgetting it).
-
-> “The KISS principle states that most systems work best if they are kept simple rather than made complex; therefore simplicity should be a key goal in design and unnecessary complexity should be avoided.”
+### KISS (Keep it simple, stupid)
+The KISS principle states that most systems work best if they are kept simple rather than made complex; therefore simplicity should be a key goal in design and unnecessary complexity should be avoided.
 
 Software systems must be maintained by human developers with limited capabilities, thus any increase in a system’s complexity also augments the difficulty to maintain it.
 
-### YAGNI
-YAGNI means “You Aren’t Gonna Need It”.  It is a principle of Extreme Programming (XP) that states that a programmer should not add functionality until really necessary.
+Methods should be small and focused on solving a single problem. If there are many conditions, try breaking them down into smaller blocks of code. This helps to keep our code clean and reduces the likelihood of bugs. Simply put, simple code is easier to debug and maintain.
 
-> “Always implement things when you actually need them, never when you just foresee that you need them.” – Ron Jeffries
 
-### DRY
-DRY stand for "Don't Repeat Yourself," a basic principle of software development aimed at reducing repetition of information.
+### YAGNI (You Aren’t Gonna Need It)
+This principle advises us to only implement things when we actually need them, rather than adding functionality to solve potential future problems. By following YAGNI, we can avoid unnecessary complexity and stay focused on the current needs of the project. YAGNI is a core principle of the Extreme Programming (XP) software development methodology.
+
+
+### DRY (Don't Repeat Yourself)
+A basic principle of software development aimed at reducing repetition of information.
 
 To avoid violating the DRY principle, divide your system into pieces. Divide your code and logic into smaller reusable units and use that code by calling it where you want.
 
+The recommended solution idea would be:
+* Avoid copy-pasting code in different places and try to reuse code whenever possible. If a code block appears more than twice, consider moving it to a separate method.
+* Have a single reference point or source of truth for each piece of data. This way, if we need to change any part of the data, we only need to make the change in one place instead of multiple locations.
 
-### WET
-WET (Write Every Time) is a term used to describe when the dry principle is not applied to code. Essentially, WET code causes the need to write code repeatedly due to maintenance and reusability challenges caused by code that doesn’t follow the DRY principle.
+
+### WET (Write Every Time)
+WET is a term used to describe when the dry principle is not applied to code. Essentially, WET code causes the need to write code repeatedly due to maintenance and reusability challenges caused by code that doesn’t follow the DRY principle.
 
 WET might be useful in the following cases:
 * Performance
@@ -102,12 +107,28 @@ WET might be useful in the following cases:
 Code reviews, static code analysis tools, documentation reduce code duplicates.
 
 
-### Law of Demeter
-Law of Demeter says that a method f of a class C should only call the methods of these:
-* C
-* An object created by f
-* An object passed as an argument to f
-* An object held in an instance variable of C
+### Law of Demeter (The Principle of Least Knowledge)
+Law of Demeter says that a method `f` of a class `C` should only call the methods of:
+* Class `C`
+* An object created by `f`
+* An object passed as an argument to `f`
+* An object held in an instance variable of `C`
+
+There are a few key recommendations to follow in order to achieve this:
+* Keep software entities independent of each other.
+* Minimize coupling between different classes.
+* Achieve cohesion by grouping related classes in the same package or module.
+
+
+### Others
+* __Consistency is key:__ Following a consistent coding style helps improve efficiency in understanding and reading the code. Remember: complex code might look better, readable code is always better!
+* __Keep it general:__ Design your software to be free from unnatural restrictions and limitations, so that it can serve a wide range of customer needs.
+* __Utilize open source options:__ There are many open-source options available, so it's important to avoid reinventing the wheel and wasting time building code that has already been written.
+* __Stay up to date:__ To meet current technology trends and user requirements in the most advanced way, it's important to follow modern programming practices.
+* __Understand your requirements:__ A well-defined requirement analysis process is essential for understanding user requirements and creating good software.
+* __Define a project vision:__ Maintaining the project's vision throughout the development process is critical for success.
+* __Document your work:__ Providing good documentation for each step of development helps other developers understand your code and avoids surprises or wasted time.
+* __Use sensible logging:__ Make sure to include a way of logging or tracing code execution with different log levels (e.g., informational, warning, error).
 
 
 ### GRASP Principles
