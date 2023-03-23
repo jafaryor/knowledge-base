@@ -140,7 +140,7 @@ other observable characteristics
 
 * __Socket__
 
-    A network socket is a software structure within a network node of a computer network that serves as an endpoint for sending and receiving data across the network. A socket is created by concatenating the __IP__ number of a system and a software __port__ number (not a ​hardware port number).
+    A network socket is a software structure within a network node of a computer network that serves as an endpoint for sending and receiving data across the network. A socket is created by concatenating the __IP__ number of a system and a software __port__ number (not a ​hardware port number). While port is bound to a process. It means socket refers to a process in a machine specified by its IP.
 
 * __Stub__
 
@@ -149,3 +149,11 @@ other observable characteristics
 * __Mocks__
 
     Mocks are objects that register calls they receive. In test assertion, we can verify on Mocks that all expected actions were performed. Such as: a functionality that calls e-mail sending service.
+
+* __CAPEX__ - Capital expenditures are major investments over assets that are held for a long time.
+
+* __OPEX__ - Operational Expenditures are day-to-day expenses that keep the company running.
+
+* __Serialization__ - is the process of translating data into a format that can be transmitted or stored elsewhere. Later, reconstruction or deserialization of the data should be possible.
+
+* __Cold storages__ - are low-cost storages where archived data is kept. It is done to save money on storage charges and to migrate data that isn’t used frequently.
