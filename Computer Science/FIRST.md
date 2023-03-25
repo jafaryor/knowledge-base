@@ -72,7 +72,7 @@ Think about UI animations, communication between Threads, operations on filesyst
 
 ![test-coverage-graph](./images/test-coverage-graph.png)
 
-Trying to test complex things doesn’t just take way to much effort. The resulting tests usually also tend to be so complex that they will end up being a maintenance burden.
+Trying to test complex things doesn’t just take way too much effort. The resulting tests usually also tend to be so complex that they will end up being a maintenance burden.
 
 ___
 
