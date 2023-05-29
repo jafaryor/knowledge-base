@@ -1,0 +1,98 @@
+MVVM (Model View ViewModel) is an architectural pattern based on MVC and MVP,
+    which attempts to more clearly separate the development of user-interfaces
+    (UI) from that of the business logic and behavior in an application.
+This facilitates UI and development work occurring almost simultaneously
+    within the same codebase. UI developers write bindings to the ViewModel
+    within their document markup (HTML), where the Model and ViewModel are
+    maintained by developers working on the logic for the application.
+
+Model:
+    Models hold information, but typically don’t handle behavior. They
+    don’t format in- formation or influence how data appears in the
+    browser as this isn’t their responsibility. Instead, formatting
+    of data is handled by the View, whilst behavior is considered
+    business logic that should be encapsulated in another layer
+    that interacts with the Model - the ViewModel. The only exception
+    to this rule tends to be validation and it’s considered acceptable
+    for Models to validate data being used to define or update existing models.
+    
+View:
+    As with MVC, the View is the only part of the application of users actually
+    interact with. They are an interactive UI that represent the state of a
+    ViewModel. In this sense, MVVM View is considered active rather than passive.
+    A passive View has no real knowledge of the models in our application and is
+    manipulated by a controller. MVVM’s active View contains the data-bindings,
+    events and behaviors which require an understanding of the Model and ViewModel.
+    Although these behaviors can be mapped to properties, the View is still
+    responsible for handling events to the ViewModel.
+    It’s important to remember the View isn’t responsible here for handling state
+    - it keeps this in sync with the ViewModel.
+
+ViewModel:
+    The ViewModel can be considered a specialized Controller that acts as a data
+    converter. It changes Model information into View information,
+    passing commands from the View to the Model.
+    The ViewModel may also expose methods for helping to maintain the View's state,
+    update the model based on the ac- tion's on a View and trigger events on the View.
+    In summary, the ViewModel sits behind our UI layer. It exposes data needed by
+    a View (from a Model) and can be viewed as the source our Views go to for both
+    data and actions.
+
+Recap: The View and the ViewModel
+    Views and ViewModels communicate using data-bindings and events. As we saw in our
+    initial ViewModel example, the ViewModel doesn’t just expose Model attributes but
+    also access to other methods and features such as validation.
+    Our Views handle their own user-interface events, mapping them to the ViewModel
+    as necessary. Models and attributes on the ViewModel are synchronized and
+    updated via two-way data-binding.
+    Triggers (data-triggers) also allow us to further react to changes in the state
+    of our Model attributes.
+
+Recap: The ViewModel and the Model
+    Whilst it may appear the ViewModel is completely responsible for the Model in MVVM,
+    there are some subtleties with this relationship worth noting. The ViewModel
+    can expose a Model or Model attributes for the purposes of data-binding and
+    can also contain interfaces for fetching and manipulating properties exposed in the view.
+
+Advantages:
+    • MVVM Facilitates easier parallel development of a UI and the building blocks that power it.
+    • Abstracts the View and thus reduces the quantity of business logic (or glue)
+        required in the code behind it.
+    • The ViewModel can be easier to unit test than event-driven code.
+    • The ViewModel (being more Model than View) can be tested without concerns
+        of UI automation and interaction.
+
+Disadvantages:
+• For simpler UIs, MVVM can be overkill (излишество)
+• Whilst data-bindings can be declarative and nice to work with, they can be harder to
+    debug than imperative code where we simply set breakpoints.
+• Data-bindings in non-trivial applications can create a lot of book-keeping.
+    You also don’t want to end up in a situation where bindings are heavier
+    than the objects being bound to.
+
+
+MVC Vs. MVP Vs. MVVM
+    Both MVP and MVVM are derivatives of MVC. The key difference between it and its
+        derivatives is the dependency each layer has on other layers as well as how
+        tightly bound they are to each other.
+    In MVC, the View sits on top of our architecture with the controller laying below
+        this. Models sit below the controller and so our Views know about our controllers
+        and controllers know about Models. Here, our Views have direct access to Models.
+        Exposing the complete Model to the View however may have security and performance
+        costs, depending on the complexity of our application. MVVM attempts to avoid these issues.
+    In MVP, the role of the controller is replaced with a Presenter. Presenters sit at the
+        same level as views, listening to events from both the View and model and mediating
+        the actions between them. Unlike MVVM, there isn’t a mechanism for binding Views to
+        ViewModels, so we instead rely on each View implementing an interface allowing the
+        Presenter to interact with the View.
+    MVVM consequently allows us to create View-specific subsets of a Model which can contain
+        state and logic information, avoiding the need to expose the entire Model to a View.
+        Unlike MVP’s Presenter, a ViewModel is not required to reference a View. The View can
+        bind to properties on the ViewModel which in turn expose data contained in Models
+        to the View. As we’ve mentioned, the abstraction of the View means there is less
+        logic required in the code behind it.
+    One of the downsides to this however is that a level of interpretation is needed between
+        the ViewModel and the View and this can have performance costs. The complexity of
+        this interpretation can also vary - it can be as simple as copying data or as
+        complex as manipulating them to a form we would like the View to see. MVC doesn’t
+        have this problem as the whole Model is readily available and such manipulation can be avoided.

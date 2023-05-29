@@ -1,0 +1,21 @@
+Model-View-Presenter (MVP) is a derivative of the MVC design pattern which focuses on improving presentation logic.
+Presenter component which contains the user-interface business logic for the view.
+    Unlike MVC, invocations from the view are delegated to the presenter, which
+    are decoupled from the view and instead talk to it through an interface.
+    This allows for all kinds of useful things such as being able to mock views in unit tests.
+The benefit of this change from MVC is that it increases the testability of your
+    application and provides a more clean separation between the view and the model.
+This isn't however without its costs as the lack of data binding support in the
+    pattern can often mean having to take care of this task separately.
+
+MVP or MVC?
+MVP is generally used most often in enterprise-level applications where it's necessary
+    to reuse as much presentation logic as possible. Applications with very complex
+    views and a great deal of user interaction may find that MVC doesn't quite fit
+    the bill here as solving this problem may mean heavily relying on multiple controllers.
+    In MVP, all of this complex logic can be encapsulated in a presenter,
+    which can simplify maintenance greatly.
+As MVP views are defined through an interface and the interface is technically the
+    only point of contact between the system and the view (other than a presenter),
+    this pattern also allows developers to write presentation logic without needing
+    to wait for designers to produce layouts and graphics for the application.
