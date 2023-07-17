@@ -1,6 +1,8 @@
 ## RAIL Model
 RAIL is a user-centric performance model that breaks down the user's experience into key actions. RAIL's goals and guidelines aim to help developers and designers ensure a good user experience for each of these actions.
 
+> Core Web Vitals is a newer initiative by Google to provide unified guidance for quality signals that are essential to delivering a great user experience on the web. It is the recommended approach for defining performance goals over RAIL, and has different thresholds than those detailed here.
+
 ### Response: process events in under 50ms
 * __Goal__:
 
@@ -55,3 +57,7 @@ RAIL is a user-centric performance model that breaks down the user's experience 
         * Cache eviction
         * Differences in L2/L3 caching
         * Parsing JavaScript
+
+---
+
+#### [Read More](https://web.dev/rail)
