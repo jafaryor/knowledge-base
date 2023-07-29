@@ -8,17 +8,15 @@ __`SOLID`__ is the first five object-oriented design(OOD) principles.
 `S.O.L.I.D` stands for:
 * __S__ - _Single-responsiblity principle_
 
-    A class should have one and only one reason to change, meaning that a class should have only one job.
+    A class should have only one job.
 
 * __O__ - _Open-closed principle_
 
-    Objects or entities should be open for extension, but closed for modification.
+    A class should be easy to extend without the need for modification.
 
 * __L__ - _Liskov substitution principle_
 
-    Let `q(x)` be a property provable about objects of `x` of type `T`. Then `q(y)` should be provable for objects `y` of type `S` where `S` is a subtype of `T`.
-
-    Every subclass/derived class should be substitutable for their base/parent class.
+    It states that the objects of a subclass should behave the same way as the objects of the superclass, such that they are replaceable.
 
 * __I__ - _Interface segregation principle_
 
@@ -60,7 +58,8 @@ __`SOLID`__ is the first five object-oriented design(OOD) principles.
             }
         }
     ```
-
+    
+    The DIP reduces the number of dependencies among modules. It provides a layer of abstraction between lower and higher classes, allowing for changes in the lower class without making changes in the higher class.
 
 ### KISS (Keep it simple, stupid)
 The KISS principle states that most systems work best if they are kept simple rather than made complex; therefore simplicity should be a key goal in design and unnecessary complexity should be avoided.
