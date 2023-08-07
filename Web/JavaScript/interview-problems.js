@@ -1,3 +1,8 @@
+/**
+ * The this keyword in JavaScript refers to the object that the function is a method of.
+ * The value of this depends on how the function is called.
+ */
+
 // Task #1
 (function() {
     var car = function() {
@@ -111,7 +116,7 @@
         setTimeout(function() {
             console.log(i, arr[i]);
         }, 3000);
-    } // four time - 3 undefined
+    } // four time - 3 undefined, because by the time the callbacks are run, i is equal to 3. arr[3] === undefined.
 
     for (var i = 0; i < arr.length; i++) {
         // pass in the variable i so that each function
